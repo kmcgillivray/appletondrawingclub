@@ -11,7 +11,11 @@
 }
 
 body {
-  @apply max-w-prose mx-auto p-4 rubik;
+  @apply max-w-prose mx-auto p-4 rubik bg-orange-50;
+}
+
+a {
+  @apply text-green-700 hover:text-green-900;
 }
 
 h1,
@@ -20,7 +24,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-bold;
+  @apply font-bold text-green-900;
 }
 
 h1 {
@@ -35,10 +39,6 @@ nav {
   @apply py-3;
 }
 
-a {
-  @apply text-green-700 hover:text-green-900;
-}
-
-section {
+section, header {
   @apply my-8;
 }
