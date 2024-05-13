@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.rubik {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
 body {
-  @apply max-w-prose mx-auto p-4 font-serif;
+  @apply max-w-prose mx-auto p-4 rubik;
 }
 
 h1,
@@ -19,8 +27,16 @@ h1 {
   @apply text-2xl;
 }
 
+h2 {
+  @apply text-xl pb-3;
+}
+
+nav {
+  @apply py-3;
+}
+
 a {
-  @apply text-green-700 underline;
+  @apply text-green-700 hover:text-green-900;
 }
 
 section {
