@@ -11,7 +11,7 @@
 }
 
 body {
-  @apply max-w-prose mx-auto p-4 rubik bg-orange-50;
+  @apply rubik bg-orange-50;
 }
 
 a {
@@ -40,5 +40,5 @@ nav {
 }
 
 section, header {
-  @apply my-8;
+  @apply my-8 px-4 max-w-prose mx-auto;
 }
