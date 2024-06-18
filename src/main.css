@@ -42,3 +42,7 @@ nav {
 section, header {
   @apply my-8 px-4 max-w-prose mx-auto;
 }
+
+li {
+  @apply pb-2;
+}
