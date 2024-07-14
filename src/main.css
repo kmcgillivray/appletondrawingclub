@@ -35,6 +35,10 @@ h2 {
   @apply text-xl pb-3;
 }
 
+p {
+  @apply pb-3;
+}
+
 nav {
   @apply py-3;
 }
@@ -45,4 +49,14 @@ section, header {
 
 li {
   @apply pb-2;
+}
+
+label {
+  @apply pb-2 block text-green-900;
+}
+input {
+  @apply w-full p-2 border rounded;
+}
+button {
+  @apply bg-green-900 text-white p-2 rounded;
 }
