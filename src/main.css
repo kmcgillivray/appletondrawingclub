@@ -48,7 +48,7 @@ section, header {
 }
 
 li {
-  @apply pb-2;
+  @apply mb-2;
 }
 
 label {
