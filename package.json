@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx tailwindcss -i ./src/main.css -o ./public/styles/main.css --watch",
-    "build": "npx tailwindcss -i ./src/main.css -o ./public/styles/main.css && node build.js"
+    "build": "node build.js && npx tailwindcss -i ./src/main.css -o ./public/styles/main.css"
   },
   "author": "",
   "license": "ISC",
