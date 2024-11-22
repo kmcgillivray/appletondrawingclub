@@ -40,6 +40,13 @@ function writeIndex() {
   const template = fs.readFileSync(path.resolve('src/template.html'), 'utf8');
   const indexHtml = fs.readFileSync(path.resolve('src/index.html'), 'utf8');
   const newHtml = template.replace('{{ content }}', indexHtml);
+
+  // create public directory if it doesn't exist
+  const publicDir = path.resolve('public');
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir);
+  }
+
   fs.writeFileSync(path.resolve('public/index.html'), newHtml);
   console.log('Done writing index!');
 }
