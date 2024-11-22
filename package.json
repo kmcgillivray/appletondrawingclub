@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./src/main.css -o ./public/main.css --watch",
-    "build": "npx tailwindcss -i ./src/main.css -o ./public/main.css && node build.js"
+    "dev": "npx tailwindcss -i ./src/main.css -o ./public/styles/main.css --watch",
+    "build": "npx tailwindcss -i ./src/main.css -o ./public/styles/main.css && node build.js"
   },
   "author": "",
   "license": "ISC",
