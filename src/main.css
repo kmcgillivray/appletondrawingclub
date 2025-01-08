@@ -43,8 +43,13 @@ nav {
   @apply py-3;
 }
 
-section, header {
+section, header, footer {
   @apply my-8 px-4 max-w-prose mx-auto;
+}
+
+.bullet {
+  list-style: disc;
+  @apply ml-6;
 }
 
 li {
