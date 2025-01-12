@@ -28,7 +28,7 @@ h6 {
 }
 
 h1 {
-  @apply text-2xl;
+  @apply text-2xl pb-3;
 }
 
 h2 {
