@@ -35,6 +35,10 @@ h2 {
   @apply text-xl pb-3;
 }
 
+h3 {
+  @apply pb-3;
+}
+
 p {
   @apply pb-3;
 }
