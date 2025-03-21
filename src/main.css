@@ -63,7 +63,7 @@ li {
 label {
   @apply pb-2 block text-green-900;
 }
-input {
+input, textarea {
   @apply w-full p-2 border rounded;
 }
 button {
