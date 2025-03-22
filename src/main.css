@@ -64,7 +64,7 @@ label {
   @apply pb-2 block text-green-900 font-bold;
 }
 input, textarea {
-  @apply w-full p-2 border rounded;
+  @apply w-full p-2 border rounded font-normal text-black;
 }
 button {
   @apply bg-green-900 text-white p-2 rounded;
