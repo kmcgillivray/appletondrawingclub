@@ -61,7 +61,7 @@ li {
 }
 
 label {
-  @apply pb-2 block text-green-900;
+  @apply pb-2 block text-green-900 font-bold;
 }
 input, textarea {
   @apply w-full p-2 border rounded;
