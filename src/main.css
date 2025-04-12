@@ -39,6 +39,10 @@ h3 {
   @apply pb-3;
 }
 
+figure {
+  @apply text-sm italic my-3;
+}
+
 p {
   @apply pb-3;
 }

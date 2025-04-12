@@ -25,10 +25,11 @@ function writePosts() {
         fs.mkdirSync(newDirectory);
     }
     const markdown = fs.readFileSync(path.join(postsDir, file), 'utf8');
-    const ast = parser.parse(markdown);
+    const { frontMatterData, content } = getFrontMatterAndContent(markdown);
+    const ast = parser.parse(content);
     const html = renderer.render(ast);
     // Replace {{ content }} in the template with the HTML content
-    const newHtml = template.replace('{{ content }}', html);
+    const newHtml = template.replace('{{ content }}', html).replace('{{ title }}', frontMatterData.title || 'Untitled');
     fs.writeFileSync(path.join(publicDir, file.replace('.md', ''), 'index.html'), newHtml);
   }
   
@@ -39,7 +40,7 @@ function writeIndex() {
   // Read the src/pages/index.html file and write it to the public directory with the template
   const template = fs.readFileSync(path.resolve('src/template.html'), 'utf8');
   const indexHtml = fs.readFileSync(path.resolve('src/index.html'), 'utf8');
-  const newHtml = template.replace('{{ content }}', indexHtml);
+  const newHtml = template.replace('{{ content }}', indexHtml).replace('{{ title }}', 'Home');
 
   // create public directory if it doesn't exist
   const publicDir = path.resolve('public');
@@ -65,15 +66,30 @@ function writePages() {
       fs.mkdirSync(newDirectory);
     }
     const html = fs.readFileSync(path.join(pagesDir, file), 'utf8');
+    const { frontMatterData, content } = getFrontMatterAndContent(html);
     // Replace {{ content }} in the template with the HTML content
-    const newHtml = template.replace('{{ content }}', html);
+    const newHtml = template.replace('{{ content }}', content).replace('{{ title }}', frontMatterData.title || 'Untitled');
     fs.writeFileSync(path.join(newDirectory, 'index.html'), newHtml);
   }
   
   console.log('Done writing pages!');
 }
 
+function getFrontMatterAndContent(markdown) {
+  // Get the front matter from the markdown file
+  const [frontMatter, content] = markdown.split('----');
+  // Parse the front matter as YAML
+  const frontMatterData = {};
+  frontMatter.split('\n').forEach(line => {
+    const [key, value] = line.split(':');
+    if (key && value) {
+      frontMatterData[key.trim()] = value.trim();
+    }
+  });
+  return { frontMatterData, content };
+}
+
 // TODO: Delete the public directory before writing new files
 writeIndex();
 writePages();
-// writePosts();
+writePosts();
