@@ -51,7 +51,7 @@ nav {
   @apply py-3;
 }
 
-section, header, footer {
+.container, header, footer {
   @apply my-8 px-4 max-w-prose mx-auto;
 }
 
