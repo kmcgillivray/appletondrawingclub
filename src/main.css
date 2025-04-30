@@ -73,3 +73,6 @@ input, textarea {
 button {
   @apply bg-green-900 text-white p-2 rounded;
 }
+.bg-white {
+  background-color: #fff;
+}
