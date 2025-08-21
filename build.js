@@ -276,7 +276,7 @@ function generateNextEventBanner(events) {
   });
   
   return `
-    <div class="bg-green-800 text-white py-2 px-4 text-center text-sm">
+    <div class="bg-green-900 text-white py-2 px-4 text-center text-sm">
       <span class="font-medium">Next Session: ${nextEvent.title} - ${formattedDate}, ${nextEvent.time}</span>
       <a href="${nextEvent.url}" ${nextEvent.url.startsWith('http') ? 'target="_blank"' : ''} class="ml-2 underline hover:text-white hover:opacity-80 text-white">Reserve your spot →</a>
     </div>
