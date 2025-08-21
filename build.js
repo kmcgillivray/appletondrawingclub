@@ -30,7 +30,10 @@ function writePosts() {
     const ast = parser.parse(content);
     const html = renderer.render(ast);
     // Replace {{ content }} in the template with the HTML content
-    const newHtml = template.replace('{{ content }}', html).replace('{{ title }}', frontMatterData.title || 'Untitled');
+    const newHtml = template
+      .replace('{{ content }}', html)
+      .replace('{{ title }}', frontMatterData.title || 'Untitled')
+      .replace('{{ next_event_banner }}', ''); // No banner on blog posts
     fs.writeFileSync(path.join(publicDir, file.replace('.md', ''), 'index.html'), newHtml);
   }
   
@@ -46,14 +49,20 @@ function writeIndex() {
   const events = loadEvents();
   const upcomingEvents = filterUpcomingEvents(events);
   const upcomingEventsHtml = upcomingEvents
-    .slice(0, 8) // Show max 4 upcoming events on homepage
+    .slice(0, 4) // Show max 4 upcoming events on homepage
     .map(generateEventCardHtml)
     .join('');
+  
+  // Generate next event banner
+  const nextEventBannerHtml = generateNextEventBanner(events);
   
   // Replace event placeholders in the index HTML
   const processedIndexHtml = indexHtml.replace('{{ upcoming_events }}', upcomingEventsHtml);
   
-  const newHtml = template.replace('{{ content }}', processedIndexHtml).replace('{{ title }}', 'Home');
+  const newHtml = template
+    .replace('{{ content }}', processedIndexHtml)
+    .replace('{{ title }}', 'Home')
+    .replace('{{ next_event_banner }}', nextEventBannerHtml);
 
   // create public directory if it doesn't exist
   const publicDir = path.resolve('public');
@@ -110,7 +119,10 @@ function writePages() {
     }
     
     // Replace {{ content }} in the template with the HTML content
-    const newHtml = template.replace('{{ content }}', processedContent).replace('{{ title }}', frontMatterData.title || 'Untitled');
+    const newHtml = template
+      .replace('{{ content }}', processedContent)
+      .replace('{{ title }}', frontMatterData.title || 'Untitled')
+      .replace('{{ next_event_banner }}', ''); // No banner on other pages
     fs.writeFileSync(path.join(newDirectory, 'index.html'), newHtml);
   }
   
@@ -242,6 +254,32 @@ function generatePastEventHtml(event) {
         ${event.location}${event.model ? `<br />Model: ${event.model}` : ''}${event.instructor ? `<br />Instructor: ${event.instructor}` : ''}${specialNotesHtml}
       </a>
     </li>
+  `;
+}
+
+function generateNextEventBanner(events) {
+  const upcomingEvents = filterUpcomingEvents(events);
+  
+  if (upcomingEvents.length === 0) {
+    return ''; // No banner if no upcoming events
+  }
+  
+  const nextEvent = upcomingEvents[0];
+  const [year, month, day] = nextEvent.date.split('-');
+  const chicagoDateString = `${year}-${month}-${day}T12:00:00`;
+  const dateObj = new Date(chicagoDateString);
+  const formattedDate = dateObj.toLocaleDateString('en-US', { 
+    weekday: 'short', 
+    month: 'short', 
+    day: 'numeric',
+    timeZone: 'America/Chicago'
+  });
+  
+  return `
+    <div class="bg-green-800 text-white py-2 px-4 text-center text-sm">
+      <span class="font-medium">Next Session: ${nextEvent.title} - ${formattedDate}, ${nextEvent.time}</span>
+      <a href="${nextEvent.url}" ${nextEvent.url.startsWith('http') ? 'target="_blank"' : ''} class="ml-2 underline hover:text-white hover:opacity-80 text-white">Reserve your spot →</a>
+    </div>
   `;
 }
 
