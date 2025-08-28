@@ -11,11 +11,11 @@ events:
     event_type: "figure_drawing"
     status: "registration_open"
 
-  - title: "Mixed Pose Life Drawing (Baseball!)"
+  - title: "Mixed Pose Life Drawing"
     date: "2025-09-10"
     time: "7:00-9:00PM"
     location: "The Photo Opp Studio"
-    model: "Glenn"
+    model: "Emma"
     description: "Mixed pose figure drawing session with a baseball theme."
     url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-september-10-2025-registration-1603149034919?aff=oddtdtcreator"
     image_url: "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1725293285/IMG_0262_aaxson.jpg"
