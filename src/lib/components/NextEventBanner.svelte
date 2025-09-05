@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import { eventsData } from '$lib/data/events.js';
   import { filterUpcomingEvents } from '$lib/utils/events.js';
 
   const upcomingEvents = filterUpcomingEvents(eventsData.events);
   const nextEvent = upcomingEvents.length > 0 ? upcomingEvents[0] : null;
 
-  function formatEventDate(dateString) {
+  function formatEventDate(dateString: string) {
     const [year, month, day] = dateString.split('-');
     const chicagoDateString = `${year}-${month}-${day}T12:00:00`;
     const dateObj = new Date(chicagoDateString);

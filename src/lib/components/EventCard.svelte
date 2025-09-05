@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { formatEventDate } from '../utils/events.js';
 
   let { event } = $props();
@@ -6,7 +6,7 @@
   let formattedDate = $derived(formatEventDate(event.date));
   let specialNotesHtml = $derived(event.special_notes ? `<p><strong>${event.special_notes}</strong></p>` : '');
   let priceText = $derived(event.price || 'Details and registration');
-  let buttonText = $derived(event.price ? `${event.price} – Reserve your spot` : 'Details and registration');
+  let buttonText = $derived(event.price ? `$${event.price} – Reserve your spot` : 'Details and registration');
   let isExternalLink = $derived(event.url.startsWith('http'));
 </script>
 
@@ -24,7 +24,7 @@
       <p class="text-gray-600 mb-2 pb-3">
         {formattedDate}<br />
         {event.time}<br />
-        {event.location}
+        {event.location.name}
         {#if event.model}<br />Model: {event.model}{/if}
         {#if event.instructor}<br />Instructor: {event.instructor}{/if}
       </p>

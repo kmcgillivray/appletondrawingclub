@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
+  import type { Event } from '$lib/types';
+  
   // Test event data - hardcoded for now, will be replaced with dynamic data later
-  const event = {
+  const event: Event = {
     id: 'test-event',
     title: 'Mixed Pose Life Drawing',
     date: '2024-03-14',
@@ -26,7 +28,7 @@
   };
 
   // Format date for display
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
       weekday: 'long', 
@@ -36,14 +38,14 @@
     });
   };
 
-  const formattedDate = formatDate(event.date);
+  const formattedDate: string = formatDate(event.date);
   
   // Format location for display
-  const formatLocation = (location) => {
+  const formatLocation = (location: Event['location']): string => {
     return `${location.name}, ${location.address.streetAddress}, ${location.address.addressLocality}, ${location.address.addressRegion}`;
   };
   
-  const formattedLocation = formatLocation(event.location);
+  const formattedLocation: string = formatLocation(event.location);
 </script>
 
 <svelte:head>
@@ -107,7 +109,7 @@
     </h1>
     
     <div class="text-center mb-6">
-      <p class="text-2xl md:text-3xl font-semibold">{formattedDate}<br>{event.time}</p>
+      <p class="text-2xl">{formattedDate} • {event.time}</p>
     </div>
     
     {#if event.image_url}
