@@ -2,44 +2,45 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Development Workflow
+## Development Commands
 
-- Always run `npm run build` after making changes to verify the site builds correctly
-- When modifying event data, edit `src/events.yaml` and test both upcoming and past event filtering
-- For styling changes, use `npm run dev` to watch for changes while developing
+- `npm run dev` - Start development server with Vite
+- `npm run build` - Build for production (includes post generation)
+- `npm run preview` - Preview production build
+- `npm run generate:posts` - Generate blog post data from markdown files
+- `npm run prepare` - Sync SvelteKit (runs on install)
 
-## Code Patterns
+## Architecture Overview
 
-### Event Data Structure
-When working with events in `src/events.yaml`, maintain the existing structure:
-- Use `YYYY-MM-DD` date format
-- Include all required fields: `title`, `date`, `time`, `location`, `url`
-- Optional fields: `model`, `instructor`, `special_notes`, `price`, `image_url`
+This is a **SvelteKit static site** for the Appleton Drawing Club, configured for static site generation using `@sveltejs/adapter-static`. The site features:
 
-### Template System
-The site uses a simple placeholder replacement system in `src/template.html`:
-- `{{ content }}` - Main page content
-- `{{ title }}` - Page title
-- `{{ next_event_banner }}` - Event banner (homepage only)
+### Content Management System
+- **Blog posts** are stored as markdown files in `src/posts/` with custom front matter format using `----` delimiter
+- **Events** are managed in `src/lib/data/events.js` as a large JavaScript object
+- **Post generation** happens via `scripts/generate-posts.js` which:
+  - Parses markdown files with custom front matter format
+  - Processes mixed HTML/Markdown content using `marked`
+  - Outputs to `src/lib/data/posts.js` for static consumption
+  - Extracts metadata for preview cards (images, excerpts)
+  - Handles date formatting from filenames (YYYY-MM-DD format)
 
-### Front Matter Format
-Blog posts and pages use custom front matter with `----` delimiter (not standard `---`):
-```
-title: Page Title
-----
-Content goes here...
-```
+### SvelteKit Structure
+- **Static prerendering** is enabled across the site (`prerender = true`)
+- **Dynamic routes**: `/posts/[slug]` for individual blog posts
+- **Event system**: Events have different types (`figure_drawing`, `workshop`, `portrait`, `special_event`) and statuses
+- **Component library**: Reusable components in `src/lib/components/` for events, blog posts, and UI elements
 
-## Testing Considerations
+### Styling & Assets
+- **Tailwind CSS v4** via `@tailwindcss/vite` plugin (no separate config file)
+- **Cloudinary** for image hosting and transformation
+- **Custom CSS** in `src/app.css` for additional styling
 
-- Test event filtering logic with dates around current date
-- Verify timezone handling (America/Chicago) for event dates
-- Check responsive layout on mobile devices
-- Validate external links to Eventbrite registration pages
+### Key Files to Understand
+- `scripts/generate-posts.js` - Post generation logic with custom parsing
+- `src/lib/data/events.js` - All event data with detailed structure
+- `src/lib/utils/events.js` - Event filtering and utility functions
+- `src/routes/posts/[slug]/+page.js` - Dynamic post loading with prerendering entries
+- `svelte.config.js` - Static adapter configuration with 404 handling
 
-## Common Tasks
-
-- **Adding events**: Edit `src/events.yaml`, run build to test
-- **New blog posts**: Create markdown file in `src/posts/` with front matter
-- **Page updates**: Edit HTML files in `src/pages/` or `src/index.html`
-- **Style changes**: Modify `src/main.css` and run `npm run dev`
+### Build Process
+The build process requires generating posts before building (`npm run generate:posts && vite build`), ensuring all blog post data is available for static generation.

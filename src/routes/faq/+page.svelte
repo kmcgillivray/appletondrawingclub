@@ -1,5 +1,10 @@
-title: Frequently Asked Questions
-----
+<script>
+</script>
+
+<svelte:head>
+  <title>Frequently Asked Questions - Appleton Drawing Club</title>
+  <meta name="description" content="Get answers to common questions about life drawing sessions, what to expect, materials to bring, and etiquette at Appleton Drawing Club." />
+</svelte:head>
 
 <section class="container">
   <h1 class="text-5xl text-center mb-4">Frequently Asked Questions</h1>
@@ -58,7 +63,7 @@ title: Frequently Asked Questions
   <h2>Can I use other media like oil, watercolors, or digital tools?</h2>
 
   <p>
-    Yes! As long as your setup doesn’t disrupt others, you’re free to use the medium of your choice. Just be sure to clean up any mess from your supplies and respect the space.
+    Yes! As long as your setup doesn't disrupt others, you're free to use the medium of your choice. Just be sure to clean up any mess from your supplies and respect the space.
   </p>
 
   <h2>Is there an instructor?</h2>

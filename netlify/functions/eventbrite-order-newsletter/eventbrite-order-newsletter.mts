@@ -5,7 +5,7 @@ export default async (request: Request, context: Context) => {
     console.log('Function `eventbrite-order-newsletter` invoked');
     console.log(JSON.stringify(context, null, 2));
     const requestBody = await request.text();
-    console.log(JSON.parse(requestBody || '{}'));
+    console.log(JSON.parse(requestBody || '{}')); 
     const url = new URL(request.url)
     const subject = url.searchParams.get('name') || 'World'
 

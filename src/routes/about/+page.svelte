@@ -1,5 +1,10 @@
-title: About
-----
+<script>
+</script>
+
+<svelte:head>
+  <title>About - Appleton Drawing Club</title>
+  <meta name="description" content="Learn about Appleton Drawing Club, a welcoming community of artists and art models who meet to draw and paint from life in Appleton, Wisconsin." />
+</svelte:head>
 
 <section class="container">
   <h1 class="text-5xl text-center mb-4">Welcome to Appleton Drawing Club!</h1>

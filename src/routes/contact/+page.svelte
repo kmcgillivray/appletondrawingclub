@@ -1,5 +1,10 @@
-title: Contact
-----
+<script>
+</script>
+
+<svelte:head>
+  <title>Contact - Appleton Drawing Club</title>
+  <meta name="description" content="Contact Appleton Drawing Club with questions, comments, or inquiries about modeling or private events." />
+</svelte:head>
 
 <section class="container">
   <h1 class="text-5xl text-center mb-4">Contact Us</h1>
