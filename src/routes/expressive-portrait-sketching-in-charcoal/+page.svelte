@@ -1,4 +1,10 @@
-title: Expressive Portrait Sketching in Charcoal ----
+<script>
+</script>
+
+<svelte:head>
+  <title>Expressive Portrait Sketching in Charcoal - Appleton Drawing Club</title>
+  <meta name="description" content="Learn expressive portrait sketching in charcoal with Kevin McGillivray. Work from a live model in short poses, exploring gesture, structure, and value techniques." />
+</svelte:head>
 
 <section class="container">
   <h1 class="text-5xl text-center mb-4">
@@ -35,7 +41,7 @@ title: Expressive Portrait Sketching in Charcoal ----
       action="https://buttondown.com/api/emails/embed-subscribe/kevinmcgillivraystudio"
       method="post"
       target="popupwindow"
-      onsubmit="window.open('https://buttondown.com/kevinmcgillivraystudio', 'popupwindow')"
+      on:submit={() => window.open('https://buttondown.com/kevinmcgillivraystudio', 'popupwindow')}
       class="embeddable-buttondown-form space-y-2"
     >
       <label for="bd-email">
@@ -50,12 +56,6 @@ title: Expressive Portrait Sketching in Charcoal ----
 
       <button type="submit">Notify Me</button>
     </form>
-    <!-- <a
-      target="_blank"
-      href="https://richesongallery.com/expressive-charcoal-drawing-fundamentals/"
-      ><button class="font-bold uppercase">
-        Register at Richeson Gallery
-      </button></a> -->
   </div>
 
   <h2>About the class</h2>
@@ -69,7 +69,7 @@ title: Expressive Portrait Sketching in Charcoal ----
   <p>
     This three hour session introduces charcoal techniques and strategies to
     help you draw portraits efficiently and confidently.
-    <strong>You’ll work from a live model in short 5–20 minute poses</strong>,
+    <strong>You'll work from a live model in short 5–20 minute poses</strong>,
     exploring key skills—gesture, structure, and value—along with practical tips
     for quick sketching.
   </p>
@@ -119,7 +119,7 @@ title: Expressive Portrait Sketching in Charcoal ----
       action="https://buttondown.com/api/emails/embed-subscribe/kevinmcgillivraystudio"
       method="post"
       target="popupwindow"
-      onsubmit="window.open('https://buttondown.com/kevinmcgillivraystudio', 'popupwindow')"
+      on:submit={() => window.open('https://buttondown.com/kevinmcgillivraystudio', 'popupwindow')}
       class="embeddable-buttondown-form space-y-2"
     >
       <label for="bd-email">
@@ -134,26 +134,22 @@ title: Expressive Portrait Sketching in Charcoal ----
 
       <button type="submit">Notify Me</button>
     </form>
-    <!-- <a
-        target="_blank"
-        href="https://richesongallery.com/expressive-charcoal-drawing-fundamentals/"
-        ><button class="text-xl px-6 py-4 font-bold uppercase">
-          Register at Richeson Gallery
-        </button></a
-      > -->
   </div>
 
   <img
     class="my-4"
     src="https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_auto,h_1200,w_970/c_scale/v1755035848/IMG_7582_axa6si.jpg"
+    alt="Charcoal portrait drawing example"
   />
   <img
     class="my-4"
     src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1755035856/IMG_0626_le4smo.jpg"
+    alt="Student charcoal drawing work"
   />
   <img
     class="my-4"
     src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1755036930/IMG_7113_1_ytkudj.jpg"
+    alt="Portrait drawing demonstration"
   />
 
   <hr class="block my-8" />

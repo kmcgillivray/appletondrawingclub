@@ -1,23 +1,27 @@
 {
-  "name": "appletondrawingclub",
-  "type": "module",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "npx tailwindcss -i ./src/main.css -o ./public/styles/main.css --watch",
-    "build": "node build.js && npx tailwindcss -i ./src/main.css -o ./public/styles/main.css"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "commonmark": "^0.31.2",
-    "js-yaml": "^4.1.0",
-    "tailwindcss": "^3.4.3"
-  },
-  "dependencies": {
-    "@netlify/functions": "^3.1.10",
-    "@types/node": "^22.18.0",
-    "typescript": "^4.9.5"
-  }
+	"name": "appletondrawingclub-svelte",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "npm run generate:posts && vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"generate:posts": "node scripts/generate-posts.js"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/adapter-static": "^3.0.9",
+		"@sveltejs/kit": "^2.22.0",
+		"@sveltejs/vite-plugin-svelte": "^6.0.0",
+		"@tailwindcss/vite": "^4.1.12",
+		"svelte": "^5.0.0",
+		"vite": "^7.0.4"
+	},
+	"dependencies": {
+		"js-yaml": "^4.1.0",
+		"marked": "^16.2.1",
+		"tailwindcss": "^4.1.12"
+	}
 }

@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Rubik", Arial, sans-serif;
+
+  --color-orange-50: #fff7ed;
+
+  --color-green-600: #15803d;
+  --color-green-700: #14532d;
+  --color-green-800: #166534;
+
+  --max-width-65ch: 65ch;
+}
+
+@layer base {
+  .banner a {
+    @apply underline text-white hover:text-white hover:opacity-80;
+  }
+  a {
+    @apply underline text-green-700 hover:text-green-900;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-green-900;
+  }
+
+  h1 {
+    @apply text-2xl pb-3 leading-tight;
+  }
+  .headline {
+    @apply text-6xl text-center mb-4 pb-3;
+  }
+
+  h2 {
+    @apply text-xl pb-3;
+  }
+
+  h3 {
+    @apply pb-3;
+  }
+
+  figure {
+    @apply text-sm italic my-3;
+  }
+
+  p {
+    @apply pb-3;
+  }
+
+  .bullet {
+    list-style: disc;
+    @apply ml-6;
+  }
+
+  li {
+    @apply mb-2;
+  }
+
+  label {
+    @apply pb-2 block text-green-900 font-bold;
+  }
+  input,
+  textarea {
+    @apply w-full p-2 border rounded font-normal text-black bg-white;
+  }
+  button {
+    @apply bg-green-900 text-white p-2 rounded;
+  }
+  button[disabled] {
+    @apply bg-gray-400;
+  }
+}
+
+.container {
+  @apply my-8 px-4 max-w-prose mx-auto;
+}

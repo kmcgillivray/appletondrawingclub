@@ -1,5 +1,10 @@
-title: About
-----
+<script>
+</script>
+
+<svelte:head>
+  <title>Expressive Charcoal Drawing Fundamentals - Appleton Drawing Club</title>
+  <meta name="description" content="Join Kevin McGillivray for a beginner-friendly charcoal drawing class at Richeson Gallery. Learn fundamental drawing skills, mark-making, and expressive techniques." />
+</svelte:head>
 
 <section class="container">
   <h1 class="text-5xl text-center mb-4">Expressive Charcoal Drawing Fundamentals</h1>
@@ -39,8 +44,7 @@ title: About
     <a target="_blank" href="https://richesongallery.com/expressive-charcoal-drawing-fundamentals/"><button class="text-xl px-6 py-4 font-bold uppercase">Register at Richeson Gallery</button></a>
   </div>
 
-  <img class="my-4" src="https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_auto,h_970,w_970/c_scale/v1742399413/IMG_3675_oewd2t.jpg" />
+  <img class="my-4" src="https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_auto,h_970,w_970/c_scale/v1742399413/IMG_3675_oewd2t.jpg" alt="Charcoal drawing artwork example" />
 
   <hr class="block my-8" />
 </section>
-
