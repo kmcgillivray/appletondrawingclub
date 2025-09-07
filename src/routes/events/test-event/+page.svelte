@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Event } from '$lib/types';
+  import RegistrationForm from '$lib/components/RegistrationForm.svelte';
   
   // Test event data - hardcoded for now, will be replaced with dynamic data later
   const event: Event = {
@@ -178,11 +179,9 @@
         </div>
       </div>
       
-      <!-- Call to Action Button -->
-      <div class="pt-4 border-t border-gray-200 text-center">
-        <div class="inline-block bg-gray-200 text-gray-500 py-3 px-6 rounded-lg">
-          Registration Available Soon
-        </div>
+      <!-- Registration Form -->
+      <div class="pt-4 border-t border-gray-200">
+        <RegistrationForm eventId={event.id} eventPrice={event.price} />
       </div>
     </div>
   </div>
@@ -203,14 +202,8 @@
     </div>
   {/if}
 
-  <!-- Call to Action Placeholder -->
-  <div class="bg-green-50 rounded-lg p-8 text-center border border-green-200">
-    <h3 class="text-2xl font-bold text-green-900 mb-4">Ready to Join Us?</h3>
-    <p class="text-green-700 mb-6 text-lg">
-      Registration will be available soon. Sign up for our newsletter to be notified when registration opens.
-    </p>
-    <div class="inline-block bg-gray-200 text-gray-500 py-3 px-6 rounded-lg">
-      Registration Form Coming Soon
-    </div>
+  <!-- Registration Section -->
+  <div class="mt-8">
+    <RegistrationForm eventId={event.id} eventPrice={event.price} />
   </div>
 </div>

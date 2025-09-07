@@ -200,7 +200,7 @@ Create `src/lib/components/RegistrationForm.svelte`:
 
 ### 5. Create Registration Processing Function
 
-Create `netlify/functions/register.js`:
+Create `supabase/functions/register/index.ts`:
 ```javascript
 const { createClient } = require('@supabase/supabase-js');
 
@@ -310,11 +310,11 @@ Modify `src/routes/events/test-event/+page.svelte` to include the registration f
 
 ## Files Created/Modified
 - `supabase/migrations/YYYYMMDDHHMMSS_initial_schema.sql` - Database schema
-- `src/lib/supabase.js` - Supabase client setup
+- `src/lib/supabase.ts` - Supabase client setup
 - `src/lib/components/RegistrationForm.svelte` - Registration form component
-- `netlify/functions/register.js` - Registration processing function
+- `supabase/functions/register/index.ts` - Registration processing Edge Function
 - `src/routes/events/test-event/+page.svelte` - Updated with registration form
-- `.env.local` - Environment variables
+- `.env.local.example` - Environment variables template
 
 ## Next Steps
 After completing this task, proceed to **ADC-03** to add online payment registration functionality.
