@@ -192,7 +192,7 @@ This is a perfect opportunity for artists of all skill levels to practice their 
       
       <!-- Registration Form -->
       <div class="pt-4 border-t border-gray-200">
-        <RegistrationForm eventId={event.id} eventPrice={event.price} />
+        <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
       </div>
     </div>
   </div>
@@ -215,6 +215,6 @@ This is a perfect opportunity for artists of all skill levels to practice their 
 
   <!-- Registration Section -->
   <div class="mt-8">
-    <RegistrationForm eventId={event.id} eventPrice={event.price} />
+    <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
   </div>
 </div>

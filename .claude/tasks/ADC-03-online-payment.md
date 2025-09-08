@@ -528,5 +528,12 @@ VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
 - `src/routes/events/test-event/+page.svelte` - Updated to pass event title
 - Environment variables added via Supabase CLI and Netlify dashboard
 
+## Implementation Notes
+- ✅ Completed with redirect-based Stripe Checkout 
+- 🔄 **Consider migrating to Embedded Checkout** for better branding control (see [Stripe Embedded Checkout docs](https://docs.stripe.com/checkout/embedded/quickstart))
+  - Would eliminate redirects and keep users on appletondrawingclub.com
+  - Better branding control without needing separate Stripe accounts
+  - Same security and PCI compliance as hosted checkout
+
 ## Next Steps
 After completing this task, proceed to **ADC-04** to improve registration success/failure feedback and URL handling.
