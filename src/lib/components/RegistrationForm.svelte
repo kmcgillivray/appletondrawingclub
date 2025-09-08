@@ -22,7 +22,7 @@
       // Construct Supabase Edge Function URL
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
       if (!supabaseUrl) {
-        throw new Error('Missing Supabase configuration');
+        throw new Error('Missing Supabase url');
       }
       
       const supabasePublishableKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
