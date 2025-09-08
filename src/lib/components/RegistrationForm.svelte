@@ -25,8 +25,8 @@
         throw new Error('Missing Supabase configuration');
       }
       
-      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-      if (!supabaseAnonKey) {
+      const supabasePublishableKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
+      if (!supabasePublishableKey) {
         throw new Error('Missing Supabase configuration');
       }
       
@@ -34,7 +34,7 @@
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${supabaseAnonKey}`
+          'Authorization': `Bearer ${supabasePublishableKey}`
         },
         body: JSON.stringify({
           event_id: eventId,
