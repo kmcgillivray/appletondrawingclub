@@ -5,6 +5,7 @@ export interface RegistrationRequest {
   email: string;
   payment_method: string;
   newsletter_signup: boolean;
+  website?: string; // Honeypot field - should be empty for legitimate users
 }
 
 export interface Registration {

@@ -15,7 +15,13 @@ Deno.serve(async (req): Promise<Response> => {
   try {
     const supabase = createSupabaseClient()
     const requestData: RegistrationRequest = await req.json()
-    const { event_id, name, email, payment_method, newsletter_signup } = requestData
+    const { event_id, name, email, payment_method, newsletter_signup, website } = requestData
+
+    // Honeypot validation - reject if filled out
+    if (website) {
+      console.log('Honeypot triggered:', { website })
+      return jsonResponse({ error: 'Invalid submission' }, 400)
+    }
 
     // Validate required fields
     const validationError = validateRequired({ event_id, name, email, payment_method })

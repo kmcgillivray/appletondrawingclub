@@ -9,6 +9,9 @@
     email: '',
     newsletter_signup: false
   };
+
+  // Should remain empty for legitimate users
+  let website = '';
   
   let loading = false;
   let success = false;
@@ -41,7 +44,8 @@
           name: form.name,
           email: form.email,
           payment_method: 'door',
-          newsletter_signup: form.newsletter_signup
+          newsletter_signup: form.newsletter_signup,
+          website: website
         })
       });
       
@@ -106,6 +110,16 @@
           Subscribe to our newsletter for event updates
         </label>
       </div>
+      
+      <input 
+        type="text" 
+        name="website"
+        bind:value={website}
+        style="position: absolute; left: -9999px; top: -9999px;"
+        tabindex="-1" 
+        autocomplete="off"
+        aria-hidden="true"
+      />
     </div>
     
     <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
@@ -123,7 +137,7 @@
       disabled={loading}
       class="mt-6 w-full bg-green-700 hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 px-4 rounded-lg font-medium transition-colors"
     >
-      {loading ? 'Registering...' : 'Reserve My Spot (Pay at Door)'}
+      {loading ? 'Registering...' : 'Reserve a spot (pay at the door)'}
     </button>
   </form>
 {/if}
