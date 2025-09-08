@@ -89,15 +89,15 @@ export const eventsData: { events: Event[] } = {
       location: {
         name: "FSM Art House",
         address: {
-          streetAddress: "1107 N Lawe St",
+          streetAddress: "918 N Oneida Street",
           addressLocality: "Appleton",
           addressRegion: "WI",
           postalCode: "54911",
         },
       },
-      model: "TBD",
+      model: "Kerry",
       summary:
-        "Free extended pose portrait drawing session at FSM Art House. Relaxed, intimate setting.",
+        "Free extended pose portrait drawing session at FSM Art House.",
       description:
         "Extended pose portrait drawing session in a relaxed setting. This free event offers longer poses that allow for more detailed study and finished drawings. The intimate atmosphere at FSM Art House provides the perfect environment for focused artistic work.",
       url: "https://www.eventbrite.com/e/portrait-drawing-with-appleton-drawing-club-free-at-fsm-art-house-tickets-1603163347729?aff=oddtdtcreator",
@@ -423,7 +423,7 @@ export const eventsData: { events: Event[] } = {
       location: {
         name: "FSM Art House",
         address: {
-          streetAddress: "1107 N Lawe St",
+          streetAddress: "918 N Oneida Street",
           addressLocality: "Appleton",
           addressRegion: "WI",
           postalCode: "54911",
