@@ -1,0 +1,2 @@
+- [ ] Share state between multiple registration forms
+- [ ] Add remaining nice to have details to event detail page

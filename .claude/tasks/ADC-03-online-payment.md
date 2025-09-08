@@ -29,10 +29,16 @@ Create Stripe account and get API keys:
 - Set up webhook endpoint for payment events
 
 Add to `.env.local`:
-```
+```env
+# Stripe Configuration
 STRIPE_SECRET_KEY=sk_test_...
 VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
 STRIPE_WEBHOOK_SECRET=whsec_...
+
+# Supabase Configuration (if not already present)
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+SB_SECRET_KEY=your_supabase_secret_key
 ```
 
 ### 2. Install Stripe Dependencies
@@ -43,21 +49,25 @@ npm install stripe @stripe/stripe-js
 
 ### 3. Update Registration Form with Online Payment Option
 
-Update `src/lib/components/RegistrationForm.svelte`:
+Update `src/lib/components/RegistrationForm.svelte` to add payment method selection:
 ```svelte
-<script>
+<script lang="ts">
   import { loadStripe } from '@stripe/stripe-js';
+  import type { RegistrationFormData, RegistrationResponse } from '$lib/types';
   
-  export let eventId;
-  export let eventPrice;
-  export let eventTitle;
+  export let eventId: string;
+  export let eventPrice: number;
+  export let eventTitle: string;
   
-  let form = {
+  let form: RegistrationFormData & { payment_method: string } = {
     name: '',
     email: '',
     newsletter_signup: false,
     payment_method: 'door' // 'door' or 'online'
   };
+  
+  // Anti-spam field - should remain empty for legitimate users
+  let website = '';
   
   let loading = false;
   let success = false;
@@ -76,22 +86,32 @@ Update `src/lib/components/RegistrationForm.svelte`:
         await handleDoorPayment();
       }
     } catch (e) {
-      error = e.message;
+      error = e instanceof Error ? e.message : 'Registration failed';
       loading = false;
     }
   }
   
   async function handleOnlinePayment() {
-    const response = await fetch('/.netlify/functions/create-checkout', {
+    // Construct Supabase Edge Function URL
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    if (!supabaseUrl) {
+      throw new Error('Missing Supabase configuration');
+    }
+    
+    const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`
+      },
       body: JSON.stringify({
         event_id: eventId,
         event_title: eventTitle,
         name: form.name,
         email: form.email,
         newsletter_signup: form.newsletter_signup,
-        price: eventPrice
+        price: eventPrice,
+        website: website // Anti-spam field
       })
     });
     
@@ -110,19 +130,34 @@ Update `src/lib/components/RegistrationForm.svelte`:
   }
   
   async function handleDoorPayment() {
-    const response = await fetch('/.netlify/functions/register', {
+    // Use existing registration Edge Function
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    if (!supabaseUrl) {
+      throw new Error('Missing Supabase configuration');
+    }
+    
+    const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    if (!supabasePublishableKey) {
+      throw new Error('Missing Supabase configuration');
+    }
+    
+    const response = await fetch(`${supabaseUrl}/functions/v1/register`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${supabasePublishableKey}`
+      },
       body: JSON.stringify({
         event_id: eventId,
         name: form.name,
         email: form.email,
         payment_method: 'door',
-        newsletter_signup: form.newsletter_signup
+        newsletter_signup: form.newsletter_signup,
+        website: website // Anti-spam field
       })
     });
     
-    const result = await response.json();
+    const result: RegistrationResponse = await response.json();
     
     if (!response.ok) {
       throw new Error(result.error || 'Registration failed');
@@ -241,157 +276,185 @@ Update `src/lib/components/RegistrationForm.svelte`:
 {/if}
 ```
 
-### 4. Create Stripe Checkout Session Function
+### 4. Create Stripe Checkout Session Edge Function
 
-Create `netlify/functions/create-checkout.js`:
-```javascript
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+Create `supabase/functions/create-checkout/index.ts`:
+```typescript
+import Stripe from 'https://esm.sh/stripe@14.21.0'
+import { jsonResponse, handleCors, isValidEmail, validateRequired } from '../_shared/utils.ts'
 
-exports.handler = async (event, context) => {
-    if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ error: 'Method not allowed' })
-        };
+const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
+  apiVersion: '2023-10-16',
+})
+
+Deno.serve(async (req): Promise<Response> => {
+  // Handle CORS preflight requests
+  if (req.method === 'OPTIONS') {
+    return handleCors()
+  }
+
+  if (req.method !== 'POST') {
+    return jsonResponse({ error: 'Method not allowed' }, 405)
+  }
+
+  try {
+    const { event_id, event_title, name, email, newsletter_signup, price, website } = await req.json()
+
+    // Anti-spam protection - reject if honeypot filled
+    if (website) {
+      console.log('Honeypot triggered in checkout:', { website })
+      return jsonResponse({ error: 'Invalid submission' }, 400)
     }
 
-    try {
-        const { event_id, event_title, name, email, newsletter_signup, price } = JSON.parse(event.body);
-
-        // Validate required fields
-        if (!event_id || !event_title || !name || !email || !price) {
-            return {
-                statusCode: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Missing required fields' })
-            };
-        }
-
-        // Create Stripe checkout session
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items: [{
-                price_data: {
-                    currency: 'usd',
-                    product_data: {
-                        name: event_title,
-                        description: `Event registration for ${event_title}`
-                    },
-                    unit_amount: Math.round(price * 100), // Convert to cents
-                },
-                quantity: 1,
-            }],
-            mode: 'payment',
-            success_url: `${process.env.URL || 'http://localhost:5173'}/events/test-event?payment=success`,
-            cancel_url: `${process.env.URL || 'http://localhost:5173'}/events/test-event?payment=cancelled`,
-            metadata: {
-                event_id,
-                event_title,
-                name,
-                email,
-                newsletter_signup: newsletter_signup ? 'true' : 'false'
-            },
-            customer_email: email
-        });
-
-        return {
-            statusCode: 200,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sessionId: session.id })
-        };
-    } catch (error) {
-        console.error('Checkout creation error:', error);
-        return {
-            statusCode: 500,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ error: 'Failed to create checkout session' })
-        };
+    // Validate required fields
+    const validationError = validateRequired({ event_id, event_title, name, email, price })
+    if (validationError) {
+      return jsonResponse({ error: validationError }, 400)
     }
-};
+
+    // Validate email format
+    if (!isValidEmail(email)) {
+      return jsonResponse({ error: 'Invalid email format' }, 400)
+    }
+
+    // Validate price
+    if (typeof price !== 'number' || price <= 0) {
+      return jsonResponse({ error: 'Invalid price' }, 400)
+    }
+
+    // Create Stripe checkout session
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: event_title,
+            description: `Event registration for ${event_title}`
+          },
+          unit_amount: Math.round(price * 100), // Convert to cents
+        },
+        quantity: 1,
+      }],
+      mode: 'payment',
+      success_url: `${req.headers.get('origin') || 'http://localhost:5173'}/events/test-event?payment=success`,
+      cancel_url: `${req.headers.get('origin') || 'http://localhost:5173'}/events/test-event?payment=cancelled`,
+      metadata: {
+        event_id,
+        event_title,
+        name,
+        email,
+        newsletter_signup: newsletter_signup ? 'true' : 'false'
+      },
+      customer_email: email
+    })
+
+    return jsonResponse({ sessionId: session.id })
+
+  } catch (error) {
+    console.error('Checkout creation error:', error)
+    return jsonResponse({ error: 'Failed to create checkout session' }, 500)
+  }
+})
 ```
 
 ### 5. Create Stripe Webhook Handler
 
-Create `netlify/functions/stripe-webhook.js`:
-```javascript
-const { createClient } = require('@supabase/supabase-js');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+Create `supabase/functions/stripe-webhook/index.ts`:
+```typescript
+import Stripe from 'https://esm.sh/stripe@14.21.0'
+import { createSupabaseClient } from '../_shared/supabase.ts'
+import { jsonResponse, handleCors } from '../_shared/utils.ts'
 
-const supabase = createClient(
-    process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
+  apiVersion: '2023-10-16',
+})
 
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+const endpointSecret = Deno.env.get('STRIPE_WEBHOOK_SECRET') ?? ''
 
-exports.handler = async (event, context) => {
-    if (event.httpMethod !== 'POST') {
-        return { statusCode: 405, body: 'Method not allowed' };
+Deno.serve(async (req): Promise<Response> => {
+  // Handle CORS preflight requests
+  if (req.method === 'OPTIONS') {
+    return handleCors()
+  }
+
+  if (req.method !== 'POST') {
+    return new Response('Method not allowed', { status: 405 })
+  }
+
+  const signature = req.headers.get('stripe-signature')
+  if (!signature) {
+    return new Response('Missing stripe signature', { status: 400 })
+  }
+
+  let stripeEvent: Stripe.Event
+
+  try {
+    const body = await req.text()
+    stripeEvent = stripe.webhooks.constructEvent(body, signature, endpointSecret)
+  } catch (err) {
+    console.error('Webhook signature verification failed:', err.message)
+    return new Response(`Webhook Error: ${err.message}`, { status: 400 })
+  }
+
+  // Handle the event
+  switch (stripeEvent.type) {
+    case 'checkout.session.completed':
+      await handleCheckoutCompleted(stripeEvent.data.object as Stripe.Checkout.Session)
+      break
+    case 'payment_intent.payment_failed':
+      await handlePaymentFailed(stripeEvent.data.object as Stripe.PaymentIntent)
+      break
+    default:
+      console.log(`Unhandled event type ${stripeEvent.type}`)
+  }
+
+  return new Response('Success', { status: 200 })
+})
+
+async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+  try {
+    const supabase = createSupabaseClient()
+    const { event_id, event_title, name, email, newsletter_signup } = session.metadata || {}
+
+    if (!event_id || !name || !email) {
+      console.error('Missing required metadata in checkout session')
+      return
     }
 
-    const sig = event.headers['stripe-signature'];
-    let stripeEvent;
+    console.log('Creating registration for:', { event_id, name, email })
 
-    try {
-        stripeEvent = stripe.webhooks.constructEvent(event.body, sig, endpointSecret);
-    } catch (err) {
-        console.error('Webhook signature verification failed:', err.message);
-        return { statusCode: 400, body: `Webhook Error: ${err.message}` };
+    // Create registration record
+    const { data: registration, error: regError } = await supabase
+      .from('registrations')
+      .insert([{
+        event_id,
+        name,
+        email,
+        payment_method: 'online',
+        payment_status: 'completed',
+        newsletter_signup: newsletter_signup === 'true'
+      }])
+      .select()
+      .single()
+
+    if (regError) {
+      console.error('Failed to create registration:', regError)
+      return
     }
 
-    // Handle the event
-    switch (stripeEvent.type) {
-        case 'checkout.session.completed':
-            await handleCheckoutCompleted(stripeEvent.data.object);
-            break;
-        case 'payment_intent.payment_failed':
-            await handlePaymentFailed(stripeEvent.data.object);
-            break;
-        default:
-            console.log(`Unhandled event type ${stripeEvent.type}`);
-    }
-
-    return { statusCode: 200, body: 'Success' };
-};
-
-async function handleCheckoutCompleted(session) {
-    try {
-        const { event_id, event_title, name, email, newsletter_signup } = session.metadata;
-
-        console.log('Creating registration for:', { event_id, name, email });
-
-        // Create registration record
-        const { data: registration, error: regError } = await supabase
-            .from('registrations')
-            .insert([{
-                event_id,
-                name,
-                email,
-                payment_method: 'online',
-                payment_status: 'completed',
-                newsletter_signup: newsletter_signup === 'true'
-            }])
-            .select()
-            .single();
-
-        if (regError) {
-            console.error('Failed to create registration:', regError);
-            return;
-        }
-
-        console.log('Registration created successfully:', registration.id);
-        
-        // TODO: Send confirmation email (will be implemented in ADC-05)
-        
-    } catch (error) {
-        console.error('Error handling checkout completion:', error);
-    }
+    console.log('Registration created successfully:', registration.id)
+    
+    // TODO: Send confirmation email (will be implemented in ADC-05)
+    
+  } catch (error) {
+    console.error('Error handling checkout completion:', error)
+  }
 }
 
-async function handlePaymentFailed(paymentIntent) {
-    console.error('Payment failed for intent:', paymentIntent.id);
-    // TODO: Handle payment failure notifications
+async function handlePaymentFailed(paymentIntent: Stripe.PaymentIntent) {
+  console.error('Payment failed for intent:', paymentIntent.id)
+  // TODO: Handle payment failure notifications
 }
 ```
 
@@ -399,9 +462,15 @@ async function handlePaymentFailed(paymentIntent) {
 
 In Stripe Dashboard:
 1. Go to Developers > Webhooks
-2. Add endpoint: `https://yoursite.netlify.app/.netlify/functions/stripe-webhook`
+2. Add endpoint: `https://your-supabase-project.supabase.co/functions/v1/stripe-webhook`
 3. Listen for events: `checkout.session.completed`, `payment_intent.payment_failed`
 4. Copy webhook signing secret to environment variables
+
+**Deploy Edge Functions:**
+```bash
+supabase functions deploy create-checkout --no-verify-jwt
+supabase functions deploy stripe-webhook --no-verify-jwt
+```
 
 ### 7. Update Event Detail Page
 
@@ -426,13 +495,21 @@ Update `src/routes/events/test-event/+page.svelte` to pass event title:
 </div>
 ```
 
-### 8. Add Environment Variables to Netlify
+### 8. Add Environment Variables
 
-In Netlify dashboard, add environment variables:
-- `SUPABASE_URL`
-- `SUPABASE_SERVICE_ROLE_KEY` 
-- `STRIPE_SECRET_KEY`
-- `STRIPE_WEBHOOK_SECRET`
+**For Supabase Edge Functions:**
+```bash
+supabase secrets set STRIPE_SECRET_KEY=sk_test_...
+supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_...
+supabase secrets set SB_SECRET_KEY=your_supabase_secret_key
+```
+
+**For Netlify Site:**
+```env
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
+```
 
 ## Testing Criteria
 - [ ] User can select between online payment and pay-at-door options
@@ -446,10 +523,10 @@ In Netlify dashboard, add environment variables:
 
 ## Files Created/Modified
 - `src/lib/components/RegistrationForm.svelte` - Updated with online payment option
-- `netlify/functions/create-checkout.js` - Stripe checkout session creation
-- `netlify/functions/stripe-webhook.js` - Webhook handler for payment events
+- `supabase/functions/create-checkout/index.ts` - Stripe checkout session creation
+- `supabase/functions/stripe-webhook/index.ts` - Webhook handler for payment events
 - `src/routes/events/test-event/+page.svelte` - Updated to pass event title
-- `.env.local` - Added Stripe environment variables
+- Environment variables added via Supabase CLI and Netlify dashboard
 
 ## Next Steps
 After completing this task, proceed to **ADC-04** to improve registration success/failure feedback and URL handling.
