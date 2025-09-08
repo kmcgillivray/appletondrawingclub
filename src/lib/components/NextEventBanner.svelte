@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { eventsData } from '$lib/data/events.js';
+  import { eventsData } from '$lib/data/events';
   import { filterUpcomingEvents } from '$lib/utils/events.js';
 
   const upcomingEvents = filterUpcomingEvents(eventsData.events);

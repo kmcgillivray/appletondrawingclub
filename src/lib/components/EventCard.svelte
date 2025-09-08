@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { formatEventDate } from '../utils/events.js';
+  import { formatEventDate } from '../utils/events';
 
   let { event } = $props();
 

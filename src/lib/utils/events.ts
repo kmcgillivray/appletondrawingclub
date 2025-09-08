@@ -1,4 +1,4 @@
-import { eventsData } from '../data/events.js';
+import { eventsData } from '../data/events';
 
 export function loadEvents(): any[] {
   return eventsData.events || [];

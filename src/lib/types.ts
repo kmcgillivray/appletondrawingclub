@@ -20,12 +20,14 @@ export interface Event {
   doors_open?: string;
   location: EventLocation;
   model?: string;
+  instructor?: string;
   session_leader?: string;
   price: number;
   capacity?: number;
   event_type: EventType;
   special_notes?: string;
-  description: string;
+  summary: string; // Short plain-text description for previews, meta descriptions, etc.
+  description: string; // Detailed description, can contain markdown
   image_url?: string;
   status?: EventStatus;
   url?: string;
