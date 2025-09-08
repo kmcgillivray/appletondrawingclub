@@ -25,7 +25,7 @@
         throw new Error('Missing Supabase url');
       }
       
-      const supabasePublishableKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
+      const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
       if (!supabasePublishableKey) {
         throw new Error('Missing Supabase configuration');
       }
