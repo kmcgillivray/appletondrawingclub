@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Event } from '$lib/types';
   import RegistrationForm from '$lib/components/RegistrationForm.svelte';
+  import { renderMarkdown } from '$lib/utils/markdown';
   
   // Test event data - hardcoded for now, will be replaced with dynamic data later
   const event: Event = {
@@ -24,12 +25,22 @@
     capacity: 20,
     event_type: 'figure_drawing',
     special_notes: 'Bring your own drawing materials',
-    description: 'Join us for an evening of life drawing with mixed poses ranging from quick gesture sketches to longer studies. This is a perfect opportunity for artists of all skill levels to practice their figure drawing techniques in a supportive, welcoming environment.',
+    summary: 'Mixed pose life drawing session with professional model. Perfect for all skill levels.',
+    description: `Join us for an **evening of life drawing** with mixed poses ranging from quick gesture sketches to longer studies. 
+
+This is a perfect opportunity for artists of all skill levels to practice their figure drawing techniques in a supportive, welcoming environment.
+
+### What to Expect
+- **Warm-up sketches** (2-5 minutes)
+- **Medium poses** (10-15 minutes) 
+- **Long pose** (20+ minutes)
+- All drawing materials provided
+- Friendly, supportive atmosphere`,
     image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1703199034/IMG_8034_ab2tov.jpg'
   };
 
   // Format date for display
-  const formatDate = (dateString: string): string => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
       weekday: 'long', 
@@ -39,23 +50,23 @@
     });
   };
 
-  const formattedDate: string = formatDate(event.date);
+  const formattedDate = formatDate(event.date);
   
   // Format location for display
-  const formatLocation = (location: Event['location']): string => {
+  const formatLocation = (location: Event['location']) => {
     return `${location.name}, ${location.address.streetAddress}, ${location.address.addressLocality}, ${location.address.addressRegion}`;
   };
   
-  const formattedLocation: string = formatLocation(event.location);
+  const formattedLocation = formatLocation(event.location);
 </script>
 
 <svelte:head>
   <title>{event.title} | Appleton Drawing Club</title>
-  <meta name="description" content="Join us for {event.title} on {formattedDate} at {formattedLocation}. ${event.price} - {event.description}" />
+  <meta name="description" content="Join us for {event.title} on {formattedDate} at {formattedLocation}. ${event.price} - {event.summary}" />
   
   <!-- Open Graph tags -->
   <meta property="og:title" content="{event.title} | Appleton Drawing Club" />
-  <meta property="og:description" content="Join us for {event.title} on {formattedDate} at {formattedLocation}. ${event.price}" />
+  <meta property="og:description" content="Join us for {event.title} on {formattedDate} at {formattedLocation}. ${event.price} - {event.summary}" />
   <meta property="og:image" content="{event.image_url}" />
   <meta property="og:type" content="event" />
   
@@ -81,7 +92,7 @@
       }
     },
     "image": [event.image_url],
-    "description": event.description,
+    "description": event.summary,
     "offers": {
       "@type": "Offer",
       "url": "https://appletondrawingclub.com/events/test-event",
@@ -189,8 +200,8 @@
   <!-- Description Section -->
   <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8">
     <h2 class="text-xl font-bold text-green-900 mb-4">About This Event</h2>
-    <div class="prose max-w-none">
-      <p class="text-gray-700 leading-relaxed text-lg">{event.description}</p>
+    <div class="prose max-w-none text-gray-700">
+      {@html renderMarkdown(event.description)}
     </div>
   </div>
 
