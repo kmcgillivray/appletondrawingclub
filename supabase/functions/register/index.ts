@@ -13,7 +13,7 @@ Deno.serve(async (req): Promise<Response> => {
   }
 
   try {
-    const supabase = createSupabaseClient(req)
+    const supabase = createSupabaseClient()
     const requestData: RegistrationRequest = await req.json()
     const { event_id, name, email, payment_method, newsletter_signup } = requestData
 
