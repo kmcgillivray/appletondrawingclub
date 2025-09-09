@@ -1,13 +1,14 @@
 <script lang="ts">
   import { formatEventDate } from '../utils/events';
+  import type { Event } from '../types';
 
-  let { event } = $props();
+  let { event }: { event: Event } = $props();
 
-  let formattedDate = $derived(formatEventDate(event.date));
-  let specialNotesHtml = $derived(event.special_notes ? `<p><strong>${event.special_notes}</strong></p>` : '');
-  let priceText = $derived(event.price || 'Details and registration');
-  let buttonText = $derived(event.price ? `$${event.price} – Reserve your spot` : 'Details and registration');
-  let isExternalLink = $derived(event.url.startsWith('http'));
+  const formattedDate = formatEventDate(event.date);
+  const isFreeEvent = event.price === 0;
+  const priceString = isFreeEvent ? 'Free' : `$${event.price}`;
+  const buttonText = `${priceString} – Reserve your spot`;
+  const isExternalLink = event.url?.startsWith('http');
 </script>
 
 <li class="block shadow bg-white mb-2">
