@@ -7,7 +7,7 @@
 </svelte:head>
 
 <section class="container">
-  <h1 class="text-5xl text-center mb-4">Welcome to Appleton Drawing Club!</h1>
+  <h1 class="font-caveat text-5xl text-center mb-4">Welcome to Appleton Drawing Club!</h1>
   
   <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1742585378/250226_ADCWildlifeDrawing_M4W_012_teyyz9.jpg" alt="Wildlife Drawing" class="block mb-2" />
   

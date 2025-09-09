@@ -7,7 +7,7 @@
 </svelte:head>
 
 <section class="container">
-  <h1 class="text-5xl text-center mb-4">Contact Us</h1>
+  <h1 class="font-caveat text-5xl text-center mb-4">Contact Us</h1>
 
   <p>Have a question or comment? Send us a message!</p>
 
