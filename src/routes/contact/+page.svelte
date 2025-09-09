@@ -7,14 +7,14 @@
 </svelte:head>
 
 <section class="container">
-  <h1 class="text-5xl text-center mb-4">Contact Us</h1>
+  <h1 class="font-caveat text-5xl text-center mb-4">Contact Us</h1>
 
   <p>Have a question or comment? Send us a message!</p>
 
   <p>If you're interested in being an art model, <a href="/modeling">let us know here</a>.</p>
   <p>If you're interested in booking a private event, please fill out the form on the <a href="/private-events">private events</a> page.</p>
 
-  <form name="contact" netlify>
+  <form name="contact" method="POST" data-netlify="true">
     <p>
       <label>Name <input type="text" name="name" /></label>
     </p>

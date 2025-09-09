@@ -7,7 +7,7 @@
 </svelte:head>
 
 <section class="container">
-  <h1 class="text-5xl text-center mb-4">Frequently Asked Questions</h1>
+  <h1 class="font-caveat text-5xl text-center mb-4">Frequently Asked Questions</h1>
   <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1745864640/ADC_Portrait_20250423_014_us6umh.jpg" alt="An artist sketching a model." class="mb-4" />
 
   <h2>What is life drawing?</h2>

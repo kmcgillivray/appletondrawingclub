@@ -7,7 +7,7 @@
 </svelte:head>
 
 <section class="container">
-  <h1 class="text-5xl text-center mb-4">For Models</h1>
+  <h1 class="font-caveat text-5xl text-center mb-4">For Models</h1>
   <img class="mb-4" src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1745864470/ADC_Portrait_20250423_028_fpte5d.jpg" alt="A model posing for a life drawing session."/>
   <p>Appleton Drawing Club is always looking for models for our life drawing sessions. If you are interested in modeling, please fill out the form below.</p>
   <p>If you have any questions about modeling, please <a href="/contact">contact us</a>.</p>

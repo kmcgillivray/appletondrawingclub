@@ -59,9 +59,9 @@
 	</form>
 </section>
 
-<footer class="mx-auto my-8 px-4 max-w-prose">
+<footer class="mx-auto my-8 px-4 max-w-prose text-center">
 	<nav class="py-3 mb-3">
-		<ul class="md:flex gap-3 list-none">
+		<ul class="md:flex gap-3 list-none justify-center">
 			<li class="mb-2"><a href="/calendar" class="text-green-600 underline hover:text-green-700">Events</a></li>
 			<li class="mb-2"><a href="/modeling" class="text-green-600 underline hover:text-green-700">For models</a></li>
 			<li class="mb-2"><a href="/faq" class="text-green-600 underline hover:text-green-700">FAQs</a></li>
@@ -70,4 +70,5 @@
 			<li class="mb-2"><a href="/contact" class="text-green-600 underline hover:text-green-700">Contact</a></li>
 		</ul>
 	</nav>
+	<p class="text-xl font-caveat">Made with ♥️ and charcoal in Appleton, WI</p>
 </footer>

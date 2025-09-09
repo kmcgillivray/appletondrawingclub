@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Rubik", Arial, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", Arial, sans-serif;
 
   --color-orange-50: #fff7ed;
 
@@ -29,11 +29,16 @@
     @apply font-bold text-green-900;
   }
 
+  .font-caveat {
+    font-family: "Caveat", cursive;
+  }
+
   h1 {
     @apply text-2xl pb-3 leading-tight;
   }
   .headline {
-    @apply text-6xl text-center mb-4 pb-3;
+    @apply text-5xl md:text-8xl leading-none text-center mb-4 pb-3;
+    font-family: "Caveat", cursive;
   }
 
   h2 {
@@ -78,4 +83,8 @@
 
 .container {
   @apply my-8 px-4 max-w-prose mx-auto;
+}
+body {
+  line-height: 1.5;
+  font-size: 1.2rem;
 }
