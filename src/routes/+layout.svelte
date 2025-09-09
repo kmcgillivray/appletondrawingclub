@@ -70,5 +70,5 @@
 			<li class="mb-2"><a href="/contact" class="text-green-600 underline hover:text-green-700">Contact</a></li>
 		</ul>
 	</nav>
-	<p class="text-xl font-caveat">Made with ❤️ and charcoal in Appleton, WI</p>
+	<p class="text-xl font-caveat">Made with ♥️ and charcoal in Appleton, WI</p>
 </footer>
