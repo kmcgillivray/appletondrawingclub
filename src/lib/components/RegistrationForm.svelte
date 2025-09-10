@@ -25,6 +25,16 @@
   async function handleSubmit() {
     loading = true;
     error = '';
+
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    if (!supabaseUrl) {
+      throw new Error('Missing Supabase configuration');
+    }
+    
+    const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    if (!supabasePublishableKey) {
+      throw new Error('Missing Supabase configuration');
+    }
     
     try {
       if (form.payment_method === 'online') {
@@ -38,19 +48,23 @@
     }
   }
   
-  async function handleOnlinePayment() {
-    // Construct Supabase Edge Function URL
+  async function handleOnlinePayment() {   
     const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
     if (!supabaseUrl) {
       throw new Error('Missing Supabase configuration');
     }
     
+    const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    if (!supabasePublishableKey) {
+      throw new Error('Missing Supabase configuration');
+    } 
+
     const fetchClientSecret = async () => {
       const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`
+          'Authorization': `Bearer ${supabasePublishableKey}`
         },
         body: JSON.stringify({
           event_id: eventId,
@@ -85,7 +99,6 @@
   }
   
   async function handleDoorPayment() {
-    // Use existing registration Edge Function
     const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
     if (!supabaseUrl) {
       throw new Error('Missing Supabase configuration');
@@ -94,8 +107,8 @@
     const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
     if (!supabasePublishableKey) {
       throw new Error('Missing Supabase configuration');
-    }
-    
+    } 
+
     const response = await fetch(`${supabaseUrl}/functions/v1/register`, {
       method: 'POST',
       headers: { 
