@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { getCheckoutSession, getStatusMessage, getNextSteps, formatPrice, isPaymentSuccessful, canRetryPayment } from '$lib/utils/checkout';
@@ -11,7 +11,7 @@
   let eventData: { title: string; price: string; eventId: string } | null = null;
   
   onMount(async () => {
-    const sessionId = $page.url.searchParams.get('session_id');
+    const sessionId = page.url.searchParams.get('session_id');
     
     if (!sessionId) {
       error = 'No session ID provided in URL';
