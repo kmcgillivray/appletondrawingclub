@@ -174,7 +174,7 @@ export function getNextSteps(status: CheckoutStatus): string[] {
       ];
     default:
       return [
-        'Contact us at hello@appletondrawingclub.com',
+        'Visit our contact page for assistance',
         'Include your session ID in your message'
       ];
   }

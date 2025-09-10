@@ -196,9 +196,9 @@
       <!-- Contact info -->
       <div class="pt-4 border-t border-gray-200">
         <p class="text-sm text-gray-600">
-          Questions? Contact us at 
-          <a href="mailto:hello@appletondrawingclub.com" class="text-green-600 hover:text-green-700 font-medium">
-            hello@appletondrawingclub.com
+          Questions? 
+          <a href="/contact" class="text-green-600 hover:text-green-700 font-medium">
+            Contact us here
           </a>
         </p>
         {#if session.id}
