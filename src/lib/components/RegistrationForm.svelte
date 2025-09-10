@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { loadStripe } from '@stripe/stripe-js';
   import type { RegistrationFormData, RegistrationResponse } from '$lib/types';
+  import CheckoutModal from './CheckoutModal.svelte';
   
   export let eventId: string;
   export let eventPrice: number;
@@ -19,22 +19,11 @@
   let loading = false;
   let success = false;
   let error = '';
-  
-  const stripe = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+  let showCheckoutModal = false;
 
   async function handleSubmit() {
     loading = true;
     error = '';
-
-    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    if (!supabaseUrl) {
-      throw new Error('Missing Supabase configuration');
-    }
-    
-    const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-    if (!supabasePublishableKey) {
-      throw new Error('Missing Supabase configuration');
-    }
     
     try {
       if (form.payment_method === 'online') {
@@ -48,54 +37,15 @@
     }
   }
   
-  async function handleOnlinePayment() {   
-    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    if (!supabaseUrl) {
-      throw new Error('Missing Supabase configuration');
+  async function handleOnlinePayment() {
+    // Validate form before opening modal
+    if (!form.name.trim() || !form.email.trim()) {
+      throw new Error('Please fill in all required fields');
     }
     
-    const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-    if (!supabasePublishableKey) {
-      throw new Error('Missing Supabase configuration');
-    } 
-
-    const fetchClientSecret = async () => {
-      const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout`, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${supabasePublishableKey}`
-        },
-        body: JSON.stringify({
-          event_id: eventId,
-          event_title: eventTitle,
-          name: form.name,
-          email: form.email,
-          newsletter_signup: form.newsletter_signup,
-          price: eventPrice,
-          website: website // Anti-spam field
-        })
-      });
-      
-      const { clientSecret, error: fetchError } = await response.json();
-      
-      if (fetchError) {
-        throw new Error(fetchError);
-      }
-      
-      return clientSecret;
-    };
-    
-    const stripeInstance = await stripe;
-    if (!stripeInstance) {
-      throw new Error('Stripe not loaded');
-    }
-
-    const checkout = await stripeInstance.initEmbeddedCheckout({
-      fetchClientSecret
-    });
-
-    checkout.mount('#checkout');
+    // Open the checkout modal
+    showCheckoutModal = true;
+    loading = false;
   }
   
   async function handleDoorPayment() {
@@ -133,6 +83,10 @@
     
     success = true;
     loading = false;
+  }
+  
+  function handleModalClose() {
+    showCheckoutModal = false;
   }
 </script>
 
@@ -258,3 +212,18 @@
     </button>
   </form>
 {/if}
+
+<!-- Checkout Modal -->
+<CheckoutModal 
+  bind:isOpen={showCheckoutModal}
+  {eventId}
+  {eventTitle}
+  {eventPrice}
+  formData={{
+    name: form.name,
+    email: form.email,
+    newsletter_signup: form.newsletter_signup,
+    website: website
+  }}
+  on:close={handleModalClose}
+/>

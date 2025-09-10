@@ -82,7 +82,7 @@ Deno.serve(async (req): Promise<Response> => {
       },
       return_url: `${
         req.headers.get("origin") || "http://localhost:5173"
-      }/events/test-event`,
+      }/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
       metadata: {
         event_id,
         event_title,

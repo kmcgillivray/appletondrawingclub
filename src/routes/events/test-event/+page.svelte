@@ -113,8 +113,6 @@ This is a perfect opportunity for artists of all skill levels to practice their 
   </script>`}
 </svelte:head>
 
-<div id="checkout"></div>
-
 <div class="container mx-auto px-4 py-8 max-w-4xl">
   <!-- Hero Section -->
   <div class="mb-8">
