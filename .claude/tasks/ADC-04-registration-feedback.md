@@ -7,18 +7,20 @@ As a user, I want to see if my reservation was successful or not so that I know 
 - [ ] User sees clear success message after successful registration
 - [ ] Success message is different for online vs pay-at-door registrations
 - [ ] User sees appropriate error message if registration fails
-- [ ] Payment success redirects show confirmation on event page
-- [ ] Payment failure redirects show helpful error messages
-- [ ] URL parameters are cleaned up after showing messages
+- [ ] Embedded checkout return URL shows payment status correctly
+- [ ] Payment success shows confirmation with registration details
+- [ ] Payment failure/cancellation shows helpful error messages with retry options
 - [ ] Messages include next steps and contact information
 - [ ] Error messages suggest solutions when possible
-- [ ] Loading states show during form submission
+- [ ] Loading states show during form submission and checkout creation
 - [ ] Messages are visually distinct and easy to understand
+- [ ] Modal-based checkout provides clear completion feedback
 
 ## Prerequisites
 - ADC-03 (Online Payment Registration) completed
-- Stripe redirects are configured
-- Registration form handles both payment methods
+- ADC-13 (Embedded Checkout UX) completed
+- Modal-based checkout flow implemented
+- Return URL handling configured
 
 ## Implementation Steps
 
@@ -115,323 +117,147 @@ Create `src/lib/components/RegistrationMessages.svelte`:
 {/if}
 ```
 
-### 2. Update Event Detail Page to Handle URL Parameters
+### 2. Update Return Page to Handle Checkout Status
 
-Update `src/routes/events/test-event/+page.svelte`:
+Update `src/routes/checkout/return/+page.svelte` (created in ADC-13):
 ```svelte
 <script>
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import RegistrationForm from '$lib/components/RegistrationForm.svelte';
+  import { loadStripe } from '@stripe/stripe-js';
   import RegistrationMessages from '$lib/components/RegistrationMessages.svelte';
   
-  const event = {
-    id: 'test-event',
-    title: 'Mixed Pose Life Drawing',
-    description: 'Join us for an evening of life drawing with mixed poses ranging from quick gesture sketches to longer studies.',
-    date: '2024-03-14',
-    time: '7:00-9:00PM', 
-    location: 'The Photo Opp Studio, 123 Main St, Appleton, WI',
-    price: 15.00,
-    capacity: 20,
-    event_type: 'figure_drawing',
-    model: 'Professional model',
-    special_notes: 'Bring your own drawing materials'
-  };
+  let loading = true;
+  let session = null;
+  let error = '';
+  let eventData = null;
   
-  let showMessage = '';
-  let messageTimeout;
+  const stripe = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
   
-  onMount(() => {
-    const urlParams = $page.url.searchParams;
-    const payment = urlParams.get('payment');
+  onMount(async () => {
+    const sessionId = $page.url.searchParams.get('session_id');
     
-    if (payment === 'success') {
-      showMessage = 'success-online';
-    } else if (payment === 'cancelled') {
-      showMessage = 'cancelled';
+    if (!sessionId) {
+      error = 'No session ID provided';
+      loading = false;
+      return;
     }
     
-    // Clean up URL after 5 seconds and set message timeout
-    if (showMessage) {
-      messageTimeout = setTimeout(() => {
-        const newUrl = new URL(window.location);
-        newUrl.searchParams.delete('payment');
-        goto(newUrl.pathname, { replaceState: true });
-        showMessage = '';
-      }, 15000); // Show for 15 seconds
+    try {
+      const stripeInstance = await stripe;
+      const { session: checkoutSession } = await stripeInstance.retrieveCheckoutSession(sessionId);
+      session = checkoutSession;
+      
+      // Extract event data from session metadata
+      if (session.metadata) {
+        eventData = {
+          title: session.metadata.event_title,
+          price: parseFloat(session.amount_total) / 100 // Convert from cents
+        };
+      }
+    } catch (e) {
+      error = 'Failed to retrieve checkout session';
+      console.error('Checkout session error:', e);
+    } finally {
+      loading = false;
     }
   });
   
-  // Clean up timeout on component destroy
-  import { onDestroy } from 'svelte';
-  onDestroy(() => {
-    if (messageTimeout) {
-      clearTimeout(messageTimeout);
-    }
-  });
-  
-  function handleRegistrationSuccess(event) {
-    const { paymentMethod } = event.detail;
-    showMessage = paymentMethod === 'online' ? 'success-online' : 'success-door';
+  function getMessageType() {
+    if (!session) return '';
     
-    // Auto-hide after 15 seconds
-    messageTimeout = setTimeout(() => {
-      showMessage = '';
-    }, 15000);
+    switch (session.status) {
+      case 'complete':
+        return 'success-online';
+      case 'open':
+        return 'cancelled';
+      default:
+        return 'error';
+    }
   }
   
-  function handleRegistrationError(event) {
-    const { message } = event.detail;
-    showMessage = 'error';
-    console.error('Registration error:', message);
+  function getErrorMessage() {
+    if (session?.status === 'open') {
+      return 'Payment was not completed. Your registration is still pending.';
+    }
+    return error || 'Something went wrong with your payment.';
   }
 </script>
 
 <svelte:head>
-  <title>{event.title} - Appleton Drawing Club</title>
-  <meta name="description" content="{event.description}" />
+  <title>Payment Status - Appleton Drawing Club</title>
 </svelte:head>
 
-<div class="container mx-auto px-4 py-8">
-  <!-- Message Display -->
-  {#if showMessage}
-    <RegistrationMessages 
-      type={showMessage}
-      eventPrice={event.price}
-      eventTitle={event.title}
-    />
-  {/if}
-
-  <!-- Event Header -->
-  <div class="max-w-4xl mx-auto">
-    <div class="mb-8">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">{event.title}</h1>
-      
-      <!-- Event Details Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="text-sm text-gray-600">Date</div>
-          <div class="font-semibold">{new Date(event.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
-        </div>
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="text-sm text-gray-600">Time</div>
-          <div class="font-semibold">{event.time}</div>
-        </div>
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="text-sm text-gray-600">Location</div>
-          <div class="font-semibold">{event.location}</div>
-        </div>
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="text-sm text-gray-600">Price</div>
-          <div class="font-semibold">${event.price}</div>
-        </div>
+<div class="container mx-auto px-4 py-8 max-w-2xl">
+  {#if loading}
+    <div class="flex items-center justify-center py-12">
+      <div class="text-center">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+        <p class="text-gray-600">Checking your payment status...</p>
       </div>
     </div>
-
-    <!-- Event Description -->
-    <div class="prose max-w-none mb-8">
-      <p class="text-lg text-gray-700">{event.description}</p>
-      
-      {#if event.model}
-        <p><strong>Model:</strong> {event.model}</p>
+  {:else if error && !session}
+    <RegistrationMessages 
+      type="error"
+      message={error}
+    />
+    <div class="mt-6 text-center">
+      <a href="/events" class="text-green-600 hover:text-green-700 font-medium">← Back to Events</a>
+    </div>
+  {:else if session}
+    <RegistrationMessages 
+      type={getMessageType()}
+      message={getErrorMessage()}
+      eventPrice={eventData?.price || 0}
+      eventTitle={eventData?.title || 'Unknown Event'}
+    />
+    
+    <div class="mt-8 text-center space-y-4">
+      {#if session.status === 'complete'}
+        <p class="text-gray-600">You should receive a confirmation email shortly.</p>
+      {:else if session.status === 'open'}
+        <div class="space-y-2">
+          <p class="text-gray-600">You can try paying again or choose to pay at the door.</p>
+          <button 
+            onclick="window.history.back()" 
+            class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium"
+          >
+            Try Again
+          </button>
+        </div>
       {/if}
       
-      {#if event.special_notes}
-        <p><strong>Please note:</strong> {event.special_notes}</p>
-      {/if}
+      <div class="pt-4 border-t border-gray-200">
+        <a href="/events" class="text-green-600 hover:text-green-700 font-medium">← Back to Events</a>
+      </div>
     </div>
-
-    <!-- Registration Form -->
-    <div class="mt-8">
-      <RegistrationForm 
-        eventId={event.id} 
-        eventPrice={event.price} 
-        eventTitle={event.title}
-        on:registrationSuccess={handleRegistrationSuccess}
-        on:registrationError={handleRegistrationError}
-      />
-    </div>
-  </div>
+  {/if}
 </div>
 ```
 
-### 3. Update Registration Form to Emit Events
+### 3. Update Event Page for Pay-at-Door Success Messages
 
-Update `src/lib/components/RegistrationForm.svelte` to emit success/error events:
+Update event pages to show success messages for pay-at-door registrations:
+For pay-at-door registrations, the existing success state in `RegistrationForm.svelte` should be enhanced with the new `RegistrationMessages` component:
+
 ```svelte
-<script>
-  import { createEventDispatcher } from 'svelte';
-  // ... existing imports and variables
-  
-  const dispatch = createEventDispatcher();
-  
-  // ... existing code
-  
-  async function handleDoorPayment() {
-    const response = await fetch('/.netlify/functions/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        event_id: eventId,
-        name: form.name,
-        email: form.email,
-        payment_method: 'door',
-        newsletter_signup: form.newsletter_signup
-      })
-    });
-    
-    const result = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Registration failed');
-    }
-    
-    success = true;
-    loading = false;
-    
-    // Emit success event
-    dispatch('registrationSuccess', {
-      paymentMethod: 'door',
-      registration: result.registration
-    });
-  }
-  
-  // Update error handling to emit error events
-  async function handleSubmit() {
-    loading = true;
-    error = '';
-    
-    try {
-      if (form.payment_method === 'online') {
-        await handleOnlinePayment();
-      } else {
-        await handleDoorPayment();
-      }
-    } catch (e) {
-      error = e.message;
-      loading = false;
-      
-      // Emit error event
-      dispatch('registrationError', {
-        message: e.message
-      });
-    }
-  }
-</script>
-
-<!-- Rest of component stays the same -->
+<!-- Replace existing success state with: -->
+{#if success}
+  <RegistrationMessages 
+    type="success-door"
+    eventPrice={eventPrice}
+    eventTitle={eventTitle}
+  />
+{:else}
+  <!-- existing form markup -->
+{/if}
 ```
 
-### 4. Add Better Error Handling to Registration Function
+### 4. Add Better Error Handling to Registration Edge Function
 
-Update `netlify/functions/register.js` with more specific error messages:
-```javascript
-// ... existing code
-
-exports.handler = async (event, context) => {
-    if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ error: 'Method not allowed' })
-        };
-    }
-
-    try {
-        const { event_id, name, email, payment_method, newsletter_signup } = JSON.parse(event.body);
-
-        // Validate required fields
-        if (!event_id) {
-            return {
-                statusCode: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Event ID is required' })
-            };
-        }
-        
-        if (!name || name.trim().length < 2) {
-            return {
-                statusCode: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Please enter your full name' })
-            };
-        }
-        
-        if (!email || !email.includes('@')) {
-            return {
-                statusCode: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Please enter a valid email address' })
-            };
-        }
-        
-        if (!payment_method) {
-            return {
-                statusCode: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Please select a payment method' })
-            };
-        }
-
-        // Check for existing registration
-        const { data: existingReg } = await supabase
-            .from('registrations')
-            .select('id')
-            .eq('event_id', event_id)
-            .eq('email', email.toLowerCase().trim())
-            .single();
-
-        if (existingReg) {
-            return {
-                statusCode: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'This email is already registered for this event' })
-            };
-        }
-
-        // Create registration
-        const { data: registration, error: regError } = await supabase
-            .from('registrations')
-            .insert([{
-                event_id,
-                name: name.trim(),
-                email: email.toLowerCase().trim(),
-                payment_method,
-                payment_status: 'pending',
-                newsletter_signup: newsletter_signup || false
-            }])
-            .select()
-            .single();
-
-        if (regError) {
-            console.error('Database error:', regError);
-            return {
-                statusCode: 500,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Unable to process registration. Please try again.' })
-            };
-        }
-
-        return {
-            statusCode: 200,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                success: true,
-                registration: registration
-            })
-        };
-    } catch (error) {
-        console.error('Registration error:', error);
-        return {
-            statusCode: 500,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ error: 'Server error. Please try again or contact support.' })
-        };
-    }
-};
-```
+Update `supabase/functions/register/index.ts` with more specific error messages:
+The registration edge function should include comprehensive validation and error messages. Focus on improving user-facing error messages and handling edge cases like duplicate registrations and invalid input.
 
 ### 5. Add Auto-Hide Functionality for Messages
 
@@ -439,21 +265,22 @@ The messages will automatically hide after 15 seconds and clean up URL parameter
 
 ## Testing Criteria
 - [ ] Success message displays after successful pay-at-door registration
-- [ ] Success message displays after returning from successful Stripe payment
-- [ ] Cancelled message displays after returning from cancelled Stripe payment
+- [ ] Success message displays on return page after successful Stripe payment
+- [ ] Cancelled/failed message displays on return page after payment issues
+- [ ] Return page correctly retrieves and displays checkout session status
 - [ ] Error messages display for various failure scenarios
 - [ ] Messages include helpful next steps and contact information
-- [ ] URL parameters are cleaned up after messages display
-- [ ] Messages auto-hide after reasonable time period
-- [ ] Loading states work properly during form submission
+- [ ] Loading states work properly during checkout session retrieval
 - [ ] Error messages suggest appropriate solutions
 - [ ] Different success messages for online vs door payments
+- [ ] Retry functionality works for failed payments
+- [ ] Navigation back to events works correctly
 
 ## Files Created/Modified
 - `src/lib/components/RegistrationMessages.svelte` - New message display component
-- `src/routes/events/test-event/+page.svelte` - Updated to handle URL parameters and show messages
-- `src/lib/components/RegistrationForm.svelte` - Updated to emit success/error events
-- `netlify/functions/register.js` - Enhanced error handling and validation
+- `src/routes/checkout/return/+page.svelte` - Return page with status handling (from ADC-13)
+- `src/lib/components/RegistrationForm.svelte` - Updated to use RegistrationMessages for success states
+- `supabase/functions/register/index.ts` - Enhanced error handling and validation
 
 ## Next Steps
 After completing this task, proceed to **ADC-05** to implement email confirmation system for successful registrations.
