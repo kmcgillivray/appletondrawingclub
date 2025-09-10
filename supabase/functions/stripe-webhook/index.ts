@@ -27,7 +27,7 @@ Deno.serve(async (req): Promise<Response> => {
 
   try {
     const body = await req.text()
-    stripeEvent = stripe.webhooks.constructEvent(body, signature, endpointSecret)
+    stripeEvent = await stripe.webhooks.constructEventAsync(body, signature, endpointSecret)
   } catch (err) {
     console.error('Webhook signature verification failed:', err.message)
     return new Response(`Webhook Error: ${err.message}`, { status: 400 })

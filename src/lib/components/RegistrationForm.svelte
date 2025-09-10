@@ -10,7 +10,7 @@
     name: '',
     email: '',
     newsletter_signup: false,
-    payment_method: 'door' // 'door' or 'online'
+    payment_method: 'online' // 'door' or 'online'
   };
 
   // Should remain empty for legitimate users
@@ -45,39 +45,43 @@
       throw new Error('Missing Supabase configuration');
     }
     
-    const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout`, {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`
-      },
-      body: JSON.stringify({
-        event_id: eventId,
-        event_title: eventTitle,
-        name: form.name,
-        email: form.email,
-        newsletter_signup: form.newsletter_signup,
-        price: eventPrice,
-        website: website // Anti-spam field
-      })
-    });
-    
-    const { sessionId, error: checkoutError } = await response.json();
-    
-    if (checkoutError) {
-      throw new Error(checkoutError);
-    }
+    const fetchClientSecret = async () => {
+      const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`
+        },
+        body: JSON.stringify({
+          event_id: eventId,
+          event_title: eventTitle,
+          name: form.name,
+          email: form.email,
+          newsletter_signup: form.newsletter_signup,
+          price: eventPrice,
+          website: website // Anti-spam field
+        })
+      });
+      
+      const { clientSecret, error: fetchError } = await response.json();
+      
+      if (fetchError) {
+        throw new Error(fetchError);
+      }
+      
+      return clientSecret;
+    };
     
     const stripeInstance = await stripe;
     if (!stripeInstance) {
       throw new Error('Stripe not loaded');
     }
-    
-    const { error } = await stripeInstance.redirectToCheckout({ sessionId });
-    
-    if (error) {
-      throw new Error(error.message);
-    }
+
+    const checkout = await stripeInstance.initEmbeddedCheckout({
+      fetchClientSecret
+    });
+
+    checkout.mount('#checkout');
   }
   
   async function handleDoorPayment() {
@@ -161,6 +165,7 @@
       </div>
       
       <div>
+        <!-- TODO: Fix label -->
         <label class="block text-sm font-medium text-gray-700 mb-3">Payment Method *</label>
         <div class="space-y-2">
           <label for="payment-online" class="flex items-center">
@@ -186,7 +191,7 @@
               class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300"
             />
             <span class="ml-2 text-sm">
-              <strong>Pay at Door</strong> - ${eventPrice} (cash or card at event)
+              <strong>Pay at Door</strong> - ${eventPrice} (cash at event)
             </span>
           </label>
         </div>
