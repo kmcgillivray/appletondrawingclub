@@ -9,6 +9,7 @@ import type {
   RegistrationRequest,
   RegistrationResponse,
 } from "../_shared/types.ts";
+import { findOrCreateCustomer } from "../_shared/stripe-customer.ts";
 
 Deno.serve(async (req): Promise<Response> => {
   // Handle CORS preflight requests
@@ -54,6 +55,9 @@ Deno.serve(async (req): Promise<Response> => {
       return jsonResponse({ error: "Invalid email format" }, 400);
     }
 
+    // Find or create Stripe customer
+    const customerId = await findOrCreateCustomer(email, name);
+
     // Create registration
     const { data: registration, error: regError } = await supabase
       .from("registrations")
@@ -65,6 +69,7 @@ Deno.serve(async (req): Promise<Response> => {
           payment_method,
           payment_status: "pending",
           newsletter_signup: newsletter_signup || false,
+          stripe_customer_id: customerId,
         },
       ])
       .select()

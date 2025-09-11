@@ -51,14 +51,22 @@ Deno.serve(async (req): Promise<Response> => {
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   try {
     const supabase = createSupabaseClient()
-    const { event_id, event_title, name, email, newsletter_signup } = session.metadata || {}
+    const { event_id, event_title, name, email, newsletter_signup, customer_id } = session.metadata || {}
 
-    if (!event_id || !name || !email) {
-      console.error('Missing required metadata in checkout session')
+    // Get customer ID from session (prefer metadata, fallback to session customer)
+    const stripeCustomerId = customer_id || session.customer as string
+
+    if (!event_id || !name || !email || !stripeCustomerId) {
+      console.error('Missing required data in checkout session:', {
+        event_id: !!event_id,
+        name: !!name,
+        email: !!email,
+        stripeCustomerId: !!stripeCustomerId
+      })
       return
     }
 
-    console.log('Creating registration for:', { event_id, name, email })
+    console.log('Creating registration for:', { event_id, name, email, stripeCustomerId })
 
     // Create registration record
     const { data: registration, error: regError } = await supabase
@@ -69,7 +77,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         email,
         payment_method: 'online',
         payment_status: 'completed',
-        newsletter_signup: newsletter_signup === 'true'
+        newsletter_signup: newsletter_signup === 'true',
+        stripe_customer_id: stripeCustomerId
       }])
       .select()
       .single()

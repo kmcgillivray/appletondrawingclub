@@ -16,6 +16,7 @@ export interface Registration {
   payment_method: string;
   payment_status: string;
   newsletter_signup: boolean;
+  stripe_customer_id: string;
   created_at: string;
 }
 

@@ -5,6 +5,7 @@ import {
   isValidEmail,
   validateRequired,
 } from "../_shared/utils.ts";
+import { findOrCreateCustomer } from "../_shared/stripe-customer.ts";
 
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") ?? "", {
   apiVersion: "2023-10-16",
@@ -59,6 +60,9 @@ Deno.serve(async (req): Promise<Response> => {
       return jsonResponse({ error: "Invalid price" }, 400);
     }
 
+    // Find or create Stripe customer
+    const customerId = await findOrCreateCustomer(email, name);
+
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
@@ -89,8 +93,9 @@ Deno.serve(async (req): Promise<Response> => {
         name,
         email,
         newsletter_signup: newsletter_signup ? "true" : "false",
+        customer_id: customerId,
       },
-      customer_email: email,
+      customer: customerId,
     });
 
     return jsonResponse({ clientSecret: session.client_secret });
