@@ -62,6 +62,7 @@
       }
       
       const fetchClientSecret = async () => {
+        // TODO: Improve fetch response typing
         const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout`, {
           method: 'POST',
           headers: { 
