@@ -171,7 +171,7 @@
     aria-labelledby="checkout-modal-title"
   >
     <!-- Modal content -->
-    <div class="bg-white rounded-lg shadow-xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="bg-white rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
       <!-- Modal header -->
       <div class="flex items-center justify-between p-6 border-b border-gray-200">
         <h2 id="checkout-modal-title" class="text-xl font-bold text-gray-900">
