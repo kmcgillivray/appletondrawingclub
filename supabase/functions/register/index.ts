@@ -1,73 +1,97 @@
-import { createSupabaseClient } from '../_shared/supabase.ts'
-import { jsonResponse, handleCors, isValidEmail, validateRequired } from '../_shared/utils.ts'
-import type { RegistrationRequest, RegistrationResponse } from '../_shared/types.ts'
+import { createSupabaseClient } from "../_shared/supabase.ts";
+import {
+  handleCors,
+  isValidEmail,
+  jsonResponse,
+  validateRequired,
+} from "../_shared/utils.ts";
+import type {
+  RegistrationRequest,
+  RegistrationResponse,
+} from "../_shared/types.ts";
 
 Deno.serve(async (req): Promise<Response> => {
   // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
-    return handleCors()
+  if (req.method === "OPTIONS") {
+    return handleCors();
   }
 
-  if (req.method !== 'POST') {
-    return jsonResponse({ error: 'Method not allowed' }, 405)
+  if (req.method !== "POST") {
+    return jsonResponse({ error: "Method not allowed" }, 405);
   }
 
   try {
-    const supabase = createSupabaseClient()
-    const requestData: RegistrationRequest = await req.json()
-    const { event_id, name, email, payment_method, newsletter_signup, website } = requestData
+    const supabase = createSupabaseClient();
+    const requestData: RegistrationRequest = await req.json();
+    const {
+      event_id,
+      name,
+      email,
+      payment_method,
+      newsletter_signup,
+      website,
+    } = requestData;
 
     // Honeypot validation - reject if filled out
     if (website) {
-      console.log('Honeypot triggered:', { website })
-      return jsonResponse({ error: 'Invalid submission' }, 400)
+      console.log("Honeypot triggered:", { website });
+      return jsonResponse({ error: "Invalid submission" }, 400);
     }
 
     // Validate required fields
-    const validationError = validateRequired({ event_id, name, email, payment_method })
+    const validationError = validateRequired({
+      event_id,
+      name,
+      email,
+      payment_method,
+    });
     if (validationError) {
-      return jsonResponse({ error: validationError }, 400)
+      return jsonResponse({ error: validationError }, 400);
     }
 
     // Validate email format
     if (!isValidEmail(email)) {
-      return jsonResponse({ error: 'Invalid email format' }, 400)
+      return jsonResponse({ error: "Invalid email format" }, 400);
     }
 
     // Create registration
     const { data: registration, error: regError } = await supabase
-      .from('registrations')
-      .insert([{
-        event_id,
-        name,
-        email,
-        payment_method,
-        payment_status: 'pending',
-        newsletter_signup: newsletter_signup || false
-      }])
+      .from("registrations")
+      .insert([
+        {
+          event_id,
+          name,
+          email,
+          payment_method,
+          payment_status: "pending",
+          newsletter_signup: newsletter_signup || false,
+        },
+      ])
       .select()
-      .single()
+      .single();
 
     if (regError) {
-      console.error('Supabase error:', regError)
-      
+      console.error("Supabase error:", regError);
+
       // Handle duplicate registration (if unique constraint exists)
-      if (regError.code === '23505') {
-        return jsonResponse({ error: 'You have already registered for this event' }, 400)
+      if (regError.code === "23505") {
+        return jsonResponse(
+          { error: "You have already registered for this event" },
+          400,
+        );
       }
-      
-      throw regError
+
+      throw regError;
     }
 
     const response: RegistrationResponse = {
       success: true,
-      registration: registration
-    }
+      registration: registration,
+    };
 
-    return jsonResponse(response)
-
+    return jsonResponse(response);
   } catch (error) {
-    console.error('Registration error:', error)
-    return jsonResponse({ error: 'Internal server error' }, 500)
+    console.error("Registration error:", error);
+    return jsonResponse({ error: "Internal server error" }, 500);
   }
-})
+});

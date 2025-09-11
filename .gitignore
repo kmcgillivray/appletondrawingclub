@@ -10,6 +10,7 @@ node_modules/
 
 # Generated files
 /src/lib/data/posts.js
+deno.lock
 
 # OS
 .DS_Store

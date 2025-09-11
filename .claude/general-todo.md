@@ -1,2 +1,3 @@
 - [ ] Share state between multiple registration forms
 - [ ] Add remaining nice to have details to event detail page
+- [ ] Finalize details on checkout result page

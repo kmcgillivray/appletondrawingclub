@@ -143,3 +143,4 @@ Events in `src/lib/data/events.ts` follow this TypeScript interface:
 - Environment variables set in Supabase Edge Functions dashboard
 - Functions are automatically versioned and can be rolled back
 - Logs available in Supabase dashboard for debugging
+- I don't have hello@appletondrawingclub.com set up as an email address. Users will need to go to the contact page to send a message for now.
