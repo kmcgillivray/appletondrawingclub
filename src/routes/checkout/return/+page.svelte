@@ -87,8 +87,8 @@
           </svg>
         </div>
         <div class="ml-3">
-          <h3 class="text-sm font-medium text-red-800">Error Retrieving Payment Status</h3>
-          <div class="mt-2 text-sm text-red-700">
+          <h3 class="font-medium text-red-800">Error Retrieving Payment Status</h3>
+          <div class="mt-2 text-red-700">
             <p>{error}</p>
           </div>
         </div>
@@ -127,10 +127,10 @@
             {/if}
           </div>
           <div class="ml-3">
-            <h3 class="text-sm font-medium text-{statusInfo.type === 'success' ? 'green' : statusInfo.type === 'warning' ? 'yellow' : 'red'}-800">
+            <h3 class="text-2xl font-bold text-{statusInfo.type === 'success' ? 'green' : statusInfo.type === 'warning' ? 'yellow' : 'red'}-800">
               {statusInfo.title}
             </h3>
-            <div class="mt-2 text-sm text-{statusInfo.type === 'success' ? 'green' : statusInfo.type === 'warning' ? 'yellow' : 'red'}-700">
+            <div class="mt-2 text-{statusInfo.type === 'success' ? 'green' : statusInfo.type === 'warning' ? 'yellow' : 'red'}-700">
               <p>{statusInfo.message}</p>
               
               {#if eventData}
@@ -151,7 +151,7 @@
     <!-- Next steps -->
     {#if steps.length > 0}
       <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
-        <h3 class="text-lg font-medium text-gray-900 mb-4">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
           {isPaymentSuccessful(session.status) ? 'What\'s Next?' : 'Next Steps'}
         </h3>
         <ul class="space-y-2">
@@ -195,7 +195,7 @@
       
       <!-- Contact info -->
       <div class="pt-4 border-t border-gray-200">
-        <p class="text-sm text-gray-600">
+        <p class="text-gray-600">
           Questions? 
           <a href="/contact" class="text-green-600 hover:text-green-700 font-medium">
             Contact us here

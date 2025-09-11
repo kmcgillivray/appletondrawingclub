@@ -1,4 +1,4 @@
-export type CheckoutStatus = 'complete' | 'open' | 'expired' | 'unknown';
+export type CheckoutStatus = "complete" | "open" | "expired" | "unknown";
 
 export interface CheckoutSessionData {
   id: string;
@@ -25,32 +25,38 @@ export interface CheckoutStatusResult {
 /**
  * Retrieve and parse a Stripe checkout session from server
  */
-export async function getCheckoutSession(sessionId: string): Promise<CheckoutStatusResult> {
+export async function getCheckoutSession(
+  sessionId: string
+): Promise<CheckoutStatusResult> {
   try {
     if (!sessionId) {
       return {
         success: false,
-        error: 'No session ID provided'
+        error: "No session ID provided",
       };
     }
 
     const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-    
+    const supabasePublishableKey = import.meta.env
+      .VITE_SUPABASE_PUBLISHABLE_KEY;
+
     if (!supabaseUrl || !supabasePublishableKey) {
       return {
         success: false,
-        error: 'Missing Supabase configuration'
+        error: "Missing Supabase configuration",
       };
     }
 
+    // TODO: Improve typing on fetch results
     const response = await fetch(
-      `${supabaseUrl}/functions/v1/get-checkout-session?session_id=${encodeURIComponent(sessionId)}`,
+      `${supabaseUrl}/functions/v1/get-checkout-session?session_id=${encodeURIComponent(
+        sessionId
+      )}`,
       {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Authorization': `Bearer ${supabasePublishableKey}`
-        }
+          Authorization: `Bearer ${supabasePublishableKey}`,
+        },
       }
     );
 
@@ -59,14 +65,14 @@ export async function getCheckoutSession(sessionId: string): Promise<CheckoutSta
     if (!response.ok) {
       return {
         success: false,
-        error: result.error || 'Failed to retrieve checkout session'
+        error: result.error || "Failed to retrieve checkout session",
       };
     }
 
     if (!result.session) {
       return {
         success: false,
-        error: 'Session data not found'
+        error: "Session data not found",
       };
     }
 
@@ -79,14 +85,14 @@ export async function getCheckoutSession(sessionId: string): Promise<CheckoutSta
         metadata: result.session.metadata || {},
         customer_email: result.session.customer_email || undefined,
         payment_status: result.session.payment_status,
-        created: result.session.created
-      }
+        created: result.session.created,
+      },
     };
   } catch (e) {
-    console.error('Error retrieving checkout session:', e);
+    console.error("Error retrieving checkout session:", e);
     return {
       success: false,
-      error: e instanceof Error ? e.message : 'Unknown error occurred'
+      error: e instanceof Error ? e.message : "Unknown error occurred",
     };
   }
 }
@@ -96,14 +102,14 @@ export async function getCheckoutSession(sessionId: string): Promise<CheckoutSta
  */
 function mapStripeStatus(stripeStatus: string): CheckoutStatus {
   switch (stripeStatus) {
-    case 'complete':
-      return 'complete';
-    case 'open':
-      return 'open';
-    case 'expired':
-      return 'expired';
+    case "complete":
+      return "complete";
+    case "open":
+      return "open";
+    case "expired":
+      return "expired";
     default:
-      return 'unknown';
+      return "unknown";
   }
 }
 
@@ -111,34 +117,37 @@ function mapStripeStatus(stripeStatus: string): CheckoutStatus {
  * Get user-friendly message for checkout status
  */
 export function getStatusMessage(status: CheckoutStatus): {
-  type: 'success' | 'error' | 'warning';
+  type: "success" | "error" | "warning";
   title: string;
   message: string;
 } {
   switch (status) {
-    case 'complete':
+    case "complete":
       return {
-        type: 'success',
-        title: 'Payment Successful!',
-        message: 'Your registration has been confirmed and payment processed.'
+        type: "success",
+        title: "You're all set!",
+        message: "Your registration has been confirmed and payment processed.",
       };
-    case 'open':
+    case "open":
       return {
-        type: 'warning',
-        title: 'Payment Not Completed',
-        message: 'Your payment was not completed. You can try again or choose to pay at the door.'
+        type: "warning",
+        title: "Payment Not Completed",
+        message:
+          "Your payment was not completed. You can try again or choose to pay at the door.",
       };
-    case 'expired':
+    case "expired":
       return {
-        type: 'error',
-        title: 'Session Expired',
-        message: 'Your checkout session has expired. Please start a new registration.'
+        type: "error",
+        title: "Session Expired",
+        message:
+          "Your checkout session has expired. Please start a new registration.",
       };
     default:
       return {
-        type: 'error',
-        title: 'Unknown Status',
-        message: 'We couldn\'t determine your payment status. Please contact support.'
+        type: "error",
+        title: "Unknown Status",
+        message:
+          "We couldn't determine your payment status. Please contact support.",
       };
   }
 }
@@ -155,27 +164,27 @@ export function formatPrice(amountInCents: number): string {
  */
 export function getNextSteps(status: CheckoutStatus): string[] {
   switch (status) {
-    case 'complete':
+    case "complete":
       return [
-        'Check your email for a confirmation receipt',
-        'Save the event details to your calendar',
-        'Bring your enthusiasm and drawing materials!'
+        "Check your email for a confirmation receipt",
+        "Save the event details to your calendar",
+        "We look forward to drawing with you!",
       ];
-    case 'open':
+    case "open":
       return [
-        'You can try the payment again',
+        "You can try the payment again",
         'Choose "Pay at Door" to reserve your spot',
-        'Contact us if you need assistance'
+        "Contact us if you need assistance",
       ];
-    case 'expired':
+    case "expired":
       return [
-        'Return to the event page to register again',
-        'Your spot is not reserved until payment is complete'
+        "Return to the event page to register again",
+        "Your spot is not reserved until payment is complete",
       ];
     default:
       return [
-        'Visit our contact page for assistance',
-        'Include your session ID in your message'
+        "Visit our contact page for assistance",
+        "Include your session ID in your message",
       ];
   }
 }
@@ -184,12 +193,12 @@ export function getNextSteps(status: CheckoutStatus): string[] {
  * Check if status indicates successful payment
  */
 export function isPaymentSuccessful(status: CheckoutStatus): boolean {
-  return status === 'complete';
+  return status === "complete";
 }
 
 /**
  * Check if user can retry payment
  */
 export function canRetryPayment(status: CheckoutStatus): boolean {
-  return status === 'open' || status === 'expired';
+  return status === "open" || status === "expired";
 }

@@ -141,6 +141,10 @@ This is a perfect opportunity for artists of all skill levels to practice their 
       <h2 class="text-xl font-bold text-green-900 mb-4">Event Details</h2>
       <div class="space-y-3">
         <div>
+          <strong class="text-gray-700">Event Type</strong>
+          <div class="text-lg capitalize">{event.event_type.replace('_', ' ')}</div>
+        </div>
+        <div>
           <strong class="text-gray-700">Date</strong>
           <div class="text-lg">{formattedDate}</div>
         </div>
@@ -184,16 +188,9 @@ This is a perfect opportunity for artists of all skill levels to practice their 
           <strong class="text-gray-700">Capacity</strong>
           <div class="text-lg">{event.capacity} artists</div>
         </div>
-        <div>
-          <strong class="text-gray-700">Event Type</strong>
-          <div class="text-lg capitalize">{event.event_type.replace('_', ' ')}</div>
-        </div>
       </div>
       
-      <!-- Registration Form -->
-      <div class="pt-4 border-t border-gray-200">
-        <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
-      </div>
+      <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
     </div>
   </div>
 
