@@ -104,11 +104,11 @@
   </div>
 {:else}
   <form on:submit|preventDefault={handleSubmit} class="bg-white border border-gray-200 rounded-lg p-6 shadow-md">
-    <h3 class="text-xl font-bold text-green-900 mb-4">Register for This Event</h3>
+    <h3 class="text-2xl font-bold text-green-900 mb-4">Reserve your spot</h3>
     
     <div class="space-y-4">
       <div>
-        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+        <label for="name" class="block font-bold text-gray-700 mb-1">Name *</label>
         <input 
           id="name"
           type="text" 
@@ -120,7 +120,7 @@
       </div>
       
       <div>
-        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+        <label for="email" class="block font-bold text-gray-700 mb-1">Email *</label>
         <input 
           id="email"
           type="email" 
@@ -133,32 +133,32 @@
       
       <div>
         <!-- TODO: Fix label -->
-        <label class="block text-sm font-medium text-gray-700 mb-3">Payment Method *</label>
+        <label class="block font-bold text-gray-700 mb-3">Payment method *</label>
         <div class="space-y-2">
-          <label for="payment-online" class="flex items-center">
+          <label for="payment-online" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
             <input 
               id="payment-online"
               type="radio" 
               bind:group={form.payment_method}
               value="online"
               disabled={loading}
-              class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300"
+              class="w-3"
             />
-            <span class="ml-2 text-sm">
-              <strong>Pay Online Now</strong> - ${eventPrice} (secure payment with card)
+            <span class="pl-3">
+              <strong>Pay online now</strong> - ${eventPrice} (secure payment with card)
             </span>
           </label>
-          <label for="payment-door" class="flex items-center">
+          <label for="payment-door" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
             <input 
               id="payment-door"
               type="radio" 
               bind:group={form.payment_method}
               value="door"
               disabled={loading}
-              class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300"
+              class="w-3"
             />
-            <span class="ml-2 text-sm">
-              <strong>Pay at Door</strong> - ${eventPrice} (cash at event)
+            <span class="pl-3">
+              <strong>Pay at door</strong> - ${eventPrice} (cash at event)
             </span>
           </label>
         </div>
@@ -170,10 +170,10 @@
           bind:checked={form.newsletter_signup}
           id="newsletter"
           disabled={loading}
-          class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+          class="h-4 w-4"
         />
-        <label for="newsletter" class="ml-2 text-sm text-gray-700">
-          Subscribe to our newsletter for event updates
+        <label for="newsletter" class="pl-3 text-gray-700 font-normal text-md">
+          Subscribe to the Appleton Drawing Club newsletter for event updates and drawing news.
         </label>
       </div>
       
