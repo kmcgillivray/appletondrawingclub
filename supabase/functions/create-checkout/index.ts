@@ -29,6 +29,7 @@ Deno.serve(async (req): Promise<Response> => {
       email,
       newsletter_signup,
       price,
+      registration_id,
       website,
     } = await req.json();
 
@@ -94,6 +95,7 @@ Deno.serve(async (req): Promise<Response> => {
         email,
         newsletter_signup: newsletter_signup ? "true" : "false",
         customer_id: customerId,
+        registration_id: registration_id || "",
       },
       customer: customerId,
     });
