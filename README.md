@@ -28,8 +28,8 @@ A modern SvelteKit website for the Appleton Drawing Club featuring static conten
 ### Content Management
 
 - **Markdown blog posts** in `src/posts/` with custom front matter
-- **Event data** managed in `src/lib/data/events.js`
-- **Automatic post generation** from markdown files
+- **Event data** managed in `src/lib/data/events.ts`
+- **Automatic post generation** from markdown files to TypeScript
 
 ## Quick Start
 
@@ -187,8 +187,9 @@ src/
 │   │   ├── RegistrationForm.svelte
 │   │   └── EventCard.svelte
 │   ├── data/            # Static data files
-│   │   ├── events.js    # Event definitions
-│   │   └── posts.js     # Generated blog posts
+│   │   ├── events.ts    # Event definitions (TypeScript)
+│   │   ├── events.yaml  # Event data backup/import format
+│   │   └── posts.ts     # Generated blog posts (TypeScript)
 │   ├── types.ts         # TypeScript type definitions
 │   └── utils/           # Utility functions
 ├── posts/               # Markdown blog posts
