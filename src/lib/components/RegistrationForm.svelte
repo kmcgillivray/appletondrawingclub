@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { RegistrationFormData, RegistrationResponse } from '$lib/types';
   import CheckoutModal from './CheckoutModal.svelte';
+  import RegistrationMessages from './RegistrationMessages.svelte';
   
   export let eventId: string;
   export let eventPrice: number;
@@ -32,18 +33,20 @@
         await handleDoorPayment();
       }
     } catch (e) {
-      error = e instanceof Error ? e.message : 'Registration failed';
+      // Provide user-friendly error messages
+      if (e instanceof Error) {
+        error = e.message;
+      } else if (typeof e === 'string') {
+        error = e;
+      } else {
+        error = 'Registration failed due to an unexpected error. Please try again or contact us for assistance.';
+      }
       loading = false;
     }
   }
   
   async function handleOnlinePayment() {
-    // Validate form before opening modal
-    if (!form.name.trim() || !form.email.trim()) {
-      throw new Error('Please fill in all required fields');
-    }
-    
-    // Open the checkout modal
+    // Open the checkout modal (HTML5 validation handles required fields)
     showCheckoutModal = true;
     loading = false;
   }
@@ -51,12 +54,12 @@
   async function handleDoorPayment() {
     const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
     if (!supabaseUrl) {
-      throw new Error('Missing Supabase configuration');
+      throw new Error('Registration system is temporarily unavailable. Please try again in a few minutes.');
     }
     
     const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
     if (!supabasePublishableKey) {
-      throw new Error('Missing Supabase configuration');
+      throw new Error('Registration system is temporarily unavailable. Please try again in a few minutes.');
     } 
 
     const response = await fetch(`${supabaseUrl}/functions/v1/register`, {
@@ -78,7 +81,17 @@
     const result: RegistrationResponse = await response.json();
     
     if (!response.ok) {
-      throw new Error(result.error || 'Registration failed');
+      // TODO: Implement typed error codes rather than relying on error message strings
+      // Provide specific error messages based on common scenarios
+      if (result.error?.includes('already registered')) {
+        throw new Error('You have already registered for this event. Check your email for confirmation details.');
+      } else if (result.error?.includes('Invalid email')) {
+        throw new Error('Please enter a valid email address (example: yourname@email.com).');
+      } else if (response.status >= 500) {
+        throw new Error('Registration system is temporarily unavailable. Please try again in a few minutes.');
+      } else {
+        throw new Error(result.error || 'Registration failed. Please try again or contact us for assistance.');
+      }
     }
     
     success = true;
@@ -91,17 +104,11 @@
 </script>
 
 {#if success}
-  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
-    <h3 class="text-lg font-bold text-green-800 mb-2">Registration Successful!</h3>
-    <p class="text-green-700">
-      You're registered for this event. 
-      {#if form.payment_method === 'door'}
-        You can pay ${eventPrice} at the door. We'll send you a confirmation email shortly.
-      {:else}
-        Payment confirmation and event details will be sent to your email.
-      {/if}
-    </p>
-  </div>
+  <RegistrationMessages 
+    type={form.payment_method === 'door' ? 'success-door' : 'success-online'}
+    {eventPrice}
+    {eventTitle}
+  />
 {:else}
   <form on:submit|preventDefault={handleSubmit} class="bg-white border border-gray-200 rounded-lg p-6 shadow-md">
     <h3 class="text-2xl font-bold text-green-900 mb-4">Reserve your spot</h3>
@@ -190,7 +197,12 @@
     
     
     {#if error}
-      <div class="mt-4 text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>
+      <div class="mt-4">
+        <RegistrationMessages 
+          type="error"
+          message={error}
+        />
+      </div>
     {/if}
     
     <button 
