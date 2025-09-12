@@ -10,6 +10,7 @@ import type {
   RegistrationResponse,
 } from "../_shared/types.ts";
 import { findOrCreateCustomer } from "../_shared/stripe-customer.ts";
+import { PostgrestError } from "https://esm.sh/@supabase/postgrest-js@1.21.4/dist/cjs/index.d.ts";
 
 Deno.serve(async (req): Promise<Response> => {
   // Handle CORS preflight requests
@@ -85,6 +86,16 @@ Deno.serve(async (req): Promise<Response> => {
       if (regError.code === "23505") {
         return jsonResponse(
           { error: "You have already registered for this event" },
+          400
+        );
+      }
+
+      // Handle foreign key violation - event doesn't exist
+      if (regError.code === "23503") {
+        return jsonResponse(
+          {
+            error: "Event not found. Please check the event ID and try again.",
+          },
           400
         );
       }
