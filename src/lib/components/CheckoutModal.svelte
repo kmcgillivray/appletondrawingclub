@@ -23,6 +23,7 @@
   let checkoutLoading = true;
   let error = '';
   let checkout: any = null;
+  let registrationId: string | null = null;
   
   // Focus management
   let previouslyFocusedElement: HTMLElement | null = null;
@@ -61,6 +62,34 @@
         throw new Error('Missing Supabase configuration');
       }
       
+      // Create pending registration first
+      if (!registrationId) {
+        const registrationResponse = await fetch(`${supabaseUrl}/functions/v1/register`, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${supabasePublishableKey}`
+          },
+          body: JSON.stringify({
+            event_id: eventId,
+            name: formData.name,
+            email: formData.email,
+            payment_method: 'online',
+            newsletter_signup: formData.newsletter_signup,
+            processing_status: 'pending',
+            website: formData.website || ''
+          })
+        });
+        
+        const registrationResult = await registrationResponse.json();
+        
+        if (!registrationResponse.ok || !registrationResult.success) {
+          throw new Error(registrationResult.error || 'Failed to create registration');
+        }
+        
+        registrationId = registrationResult.registration.id;
+      }
+      
       const fetchClientSecret = async () => {
         // TODO: Improve fetch response typing
         const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout`, {
@@ -76,6 +105,7 @@
             email: formData.email,
             newsletter_signup: formData.newsletter_signup,
             price: eventPrice,
+            registration_id: registrationId,
             website: formData.website || '' // Anti-spam field
           })
         });

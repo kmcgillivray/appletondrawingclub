@@ -5,6 +5,7 @@ export interface RegistrationRequest {
   email: string;
   payment_method: string;
   newsletter_signup: boolean;
+  processing_status?: string; // For creating pending registrations
   website?: string; // Honeypot field - should be empty for legitimate users
 }
 
@@ -17,6 +18,9 @@ export interface Registration {
   payment_status: string;
   newsletter_signup: boolean;
   stripe_customer_id: string;
+  stripe_event_id?: string;
+  stripe_session_id?: string;
+  processing_status: string;
   created_at: string;
 }
 

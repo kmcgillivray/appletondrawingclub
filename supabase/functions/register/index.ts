@@ -30,6 +30,7 @@ Deno.serve(async (req): Promise<Response> => {
       email,
       payment_method,
       newsletter_signup,
+      processing_status,
       website,
     } = requestData;
 
@@ -70,6 +71,7 @@ Deno.serve(async (req): Promise<Response> => {
           payment_status: "pending",
           newsletter_signup: newsletter_signup || false,
           stripe_customer_id: customerId,
+          processing_status: processing_status || "completed",
         },
       ])
       .select()
@@ -79,10 +81,11 @@ Deno.serve(async (req): Promise<Response> => {
       console.error("Supabase error:", regError);
 
       // Handle duplicate registration (if unique constraint exists)
+      // TODO: Handle this error code better with a shared constant or typed response
       if (regError.code === "23505") {
         return jsonResponse(
           { error: "You have already registered for this event" },
-          400,
+          400
         );
       }
 
