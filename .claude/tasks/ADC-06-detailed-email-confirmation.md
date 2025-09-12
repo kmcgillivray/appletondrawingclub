@@ -1,612 +1,295 @@
-# ADC-06: Detailed Email Confirmation
+# ADC-06: Enhanced Event Information in Email
 
 ## User Story
-As a user, I want the email confirmation to include the important event details so that I have all the information I need for the event in one place.
+As a user, I want the email confirmation to include additional helpful event details like what to bring, parking information, and easy ways to add the event to my calendar.
 
 ## Acceptance Criteria
-- [ ] Email includes comprehensive event details (date, time, location with address)
-- [ ] Email shows what to bring and what's provided
-- [ ] Email includes parking and arrival instructions
-- [ ] Email has contact information for questions
-- [ ] Email includes calendar attachment or add-to-calendar link
+- [ ] Email includes what to bring and what's provided
+- [ ] Email includes parking and arrival instructions  
+- [ ] Email includes add-to-calendar link for Google Calendar
+- [ ] Email includes map/directions link
 - [ ] Email shows model/instructor information when available
-- [ ] Email includes event policies and code of conduct link
-- [ ] Email has map link or location directions
+- [ ] Email includes event description
 - [ ] Email shows refund policy information
-- [ ] Email includes social media links for the club
-- [ ] Email has mobile-friendly design
+- [ ] Email has mobile-friendly responsive design
 - [ ] Email includes event image when available
 
 ## Prerequisites
-- ADC-05 (Email Confirmation System) completed
-- Email templates are working
-- Event data includes all necessary details
+- ADC-05 (Simple Email Confirmation System) completed
+- Basic email templates are working
+- Event data structure supports additional fields
 
 ## Implementation Steps
 
-### 1. Create Enhanced Event Data Structure
+### 1. Enhance Event Data Structure
 
-First, update the test event data to include comprehensive details.
+Update the event interface in `src/lib/types.ts` to support additional fields:
 
-Update `src/routes/events/test-event/+page.svelte`:
-```svelte
-<script>
-  const event = {
-    id: 'test-event',
-    title: 'Mixed Pose Life Drawing',
-    description: 'Join us for an evening of life drawing with mixed poses ranging from quick gesture sketches to longer studies. This session is perfect for artists of all levels who want to improve their figure drawing skills.',
-    date: '2024-03-14',
-    time: '7:00-9:00PM', 
-    location: 'The Photo Opp Studio',
-    address: '123 Main Street, Appleton, WI 54911',
-    price: 15.00,
-    capacity: 20,
-    event_type: 'figure_drawing',
-    model: 'Professional model with 5+ years experience',
-    instructor: null,
-    special_notes: 'Bring your own drawing materials (paper, pencils, charcoal, etc.). Easels and drawing boards will be provided.',
-    image_url: 'https://res.cloudinary.com/appleton-drawing-club/image/upload/v1/events/mixed-pose-drawing.jpg',
+```typescript
+export interface Event {
+  // Existing fields...
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  location: {
+    name: string;
+    address: string;
+  };
+  price: number;
+  // ... other existing fields
+  
+  // New optional fields for enhanced emails
+  what_to_bring?: string[];
+  what_we_provide?: string[];
+  parking_info?: string;
+  arrival_info?: string;
+  refund_policy?: string;
+  image_url?: string;
+}
+```
+
+Then add enhanced details to an event in `src/lib/data/events.ts`:
+```typescript
+export const events = {
+  'test-event': {
+    // ... existing basic fields
+    
+    // New enhanced fields
     what_to_bring: [
       'Drawing materials (pencils, charcoal, pastels, etc.)',
-      'Paper or sketchbooks',
+      'Paper or sketchbooks', 
       'Eraser and blending tools',
       'Water bottle'
     ],
     what_we_provide: [
       'Professional model',
-      'Easels and drawing boards', 
-      'Good lighting setup',
+      'Easels and drawing boards',
+      'Good lighting setup', 
       'Chairs and seating',
       'Timer for pose changes'
     ],
     parking_info: 'Free parking available in the lot behind the building. Street parking also available.',
     arrival_info: 'Please arrive 10-15 minutes early to set up your materials. The building entrance is on Main Street.',
-    refund_policy: 'Refunds available up to 24 hours before the event. Contact hello@appletondrawingclub.com',
-    code_of_conduct_url: 'https://appletondrawingclub.com/code-of-conduct'
-  };
-</script>
+    refund_policy: 'Refunds available up to 24 hours before the event.',
+    image_url: 'https://res.cloudinary.com/appleton-drawing-club/image/upload/v1/events/mixed-pose-drawing.jpg'
+  }
+};
 ```
 
-### 2. Create Enhanced Email Template
+### 2. Enhance Simple Email Template  
 
-Update the email template in `netlify/functions/send-confirmation-email.js`:
+Update the simple email template in `supabase/functions/_shared/email-templates.ts` to include the enhanced information while keeping it simple and readable:
 
-```javascript
-function getRegistrationConfirmationEmail(registration, event) {
-    const subject = `You're all set for ${event.title}!`;
-    
-    const formatDate = (dateStr) => {
-        return new Date(dateStr).toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        });
-    };
+Add these enhancements to the existing `getRegistrationConfirmationEmail` function:
 
-    const addToCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${encodeURIComponent(event.date.replace(/-/g, '') + 'T190000/' + event.date.replace(/-/g, '') + 'T210000')}&details=${encodeURIComponent(`${event.description}\n\nRegistration ID: ${registration.id.slice(0, 8)}\n\nQuestions? Contact hello@appletondrawingclub.com`)}&location=${encodeURIComponent(event.address || event.location)}`;
+```typescript
+// Add these helper functions at the top of the file
+const createCalendarUrl = (event: any, registrationId: string) => {
+  const eventTitle = encodeURIComponent(event.title);
+  const eventDetails = encodeURIComponent(`Registration ID: ${registrationId}\n\nContact: https://appletondrawingclub.com/contact`);
+  const location = encodeURIComponent(event.location?.address || event.location?.name || event.location);
+  
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}`;
+};
 
-    const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(event.address || event.location)}`;
-    
-    const html = `
+const createMapUrl = (event: any) => {
+  const location = event.location?.address || event.location?.name || event.location;
+  return `https://maps.google.com/maps?q=${encodeURIComponent(location)}`;
+};
+
+// Then enhance the main function
+export function getRegistrationConfirmationEmail(data: RegistrationEmailData) {
+  const { registration, event } = data;
+  const confirmationId = registration.id.slice(0, 8);
+  const eventDate = new Date(event.date).toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric', 
+    month: 'long',
+    day: 'numeric',
+  });
+
+  const subject = `Registration Confirmed: ${event.title}`;
+
+  // Enhanced but still simple HTML
+  const html = `
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're all set for ${event.title}!</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9fafb;
-        }
-        .email-container {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .tagline {
-            opacity: 0.9;
-            font-size: 16px;
-        }
-        .content {
-            padding: 30px;
-        }
-        .confirmation-box {
-            background: #f0fdf4;
-            border: 2px solid #bbf7d0;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 25px 0;
-            text-align: center;
-        }
-        .confirmation-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-        .event-hero {
-            margin: 25px 0;
-            text-align: center;
-        }
-        .event-hero img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .event-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #16a34a;
-            margin: 15px 0;
-        }
-        .quick-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
-        }
-        .quick-detail {
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #16a34a;
-        }
-        .quick-detail-label {
-            font-weight: 600;
-            color: #374151;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        .quick-detail-value {
-            color: #111827;
-            font-weight: 500;
-        }
-        .section {
-            margin: 30px 0;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #374151;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        .section-icon {
-            margin-right: 8px;
-            font-size: 20px;
-        }
-        .payment-status {
-            background: ${registration.payment_method === 'online' ? '#eff6ff' : '#fef3c7'};
-            border: 2px solid ${registration.payment_method === 'online' ? '#3b82f6' : '#f59e0b'};
-            border-radius: 8px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-        .payment-status h3 {
-            color: ${registration.payment_method === 'online' ? '#1d4ed8' : '#d97706'};
-            margin: 0 0 10px 0;
-        }
-        .list-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .list-box {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .list-box h4 {
-            color: #374151;
-            margin: 0 0 15px 0;
-            font-size: 16px;
-        }
-        .list-box ul {
-            margin: 0;
-            padding-left: 20px;
-            color: #6b7280;
-        }
-        .list-box li {
-            margin-bottom: 5px;
-        }
-        .info-box {
-            background: #fef3c7;
-            border: 1px solid #fde68a;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .info-box.warning {
-            background: #fef2f2;
-            border-color: #fecaca;
-        }
-        .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-        .button {
-            display: inline-block;
-            padding: 14px 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        .button-primary {
-            background: #16a34a;
-            color: white;
-        }
-        .button-secondary {
-            background: #f3f4f6;
-            color: #374151;
-            border: 2px solid #d1d5db;
-        }
-        .footer {
-            background: #f8fafc;
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid #e5e7eb;
-        }
-        .social-links {
-            margin: 20px 0;
-        }
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            color: #16a34a;
-            text-decoration: none;
-        }
-        .footer-text {
-            color: #6b7280;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-        @media (max-width: 600px) {
-            .quick-details {
-                grid-template-columns: 1fr;
-            }
-            .list-grid {
-                grid-template-columns: 1fr;
-            }
-            .action-buttons {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-    <div class="email-container">
-        <div class="header">
-            <div class="logo">Appleton Drawing Club</div>
-            <div class="tagline">Your creative community in the Fox Cities</div>
-        </div>
-        
-        <div class="content">
-            <div class="confirmation-box">
-                <div class="confirmation-icon">🎨</div>
-                <h2 style="color: #16a34a; margin: 0 0 10px 0;">You're All Set!</h2>
-                <p style="margin: 0; font-size: 16px;">Hi ${registration.name}, you're registered for our upcoming event.</p>
-                <p style="margin: 10px 0 0 0; font-weight: 600; color: #6b7280;">Confirmation ID: ${registration.id.slice(0, 8).toUpperCase()}</p>
-            </div>
-            
-            ${event.image_url ? `
-                <div class="event-hero">
-                    <img src="${event.image_url}" alt="${event.title}" />
-                </div>
-            ` : ''}
-            
-            <div class="event-title">${event.title}</div>
-            
-            <div class="quick-details">
-                <div class="quick-detail">
-                    <div class="quick-detail-label">📅 DATE</div>
-                    <div class="quick-detail-value">${formatDate(event.date)}</div>
-                </div>
-                <div class="quick-detail">
-                    <div class="quick-detail-label">⏰ TIME</div>
-                    <div class="quick-detail-value">${event.time}</div>
-                </div>
-                <div class="quick-detail">
-                    <div class="quick-detail-label">📍 LOCATION</div>
-                    <div class="quick-detail-value">${event.location}</div>
-                </div>
-                <div class="quick-detail">
-                    <div class="quick-detail-label">💰 PRICE</div>
-                    <div class="quick-detail-value">$${event.price}</div>
-                </div>
-            </div>
-            
-            <div class="action-buttons">
-                <a href="${addToCalendarUrl}" class="button button-primary" target="_blank">
-                    📅 Add to Calendar
-                </a>
-                <a href="${mapUrl}" class="button button-secondary" target="_blank">
-                    🗺️ Get Directions
-                </a>
-            </div>
-            
-            <div class="payment-status">
-                ${registration.payment_method === 'online' ? `
-                    <h3>💳 Payment Confirmed</h3>
-                    <p style="margin: 0;">Your payment of $${event.price} has been processed successfully. You're all set to attend!</p>
-                ` : `
-                    <h3>💰 Pay at the Door</h3>
-                    <p style="margin: 0;">Please bring $${event.price} (cash or card) to pay when you arrive. We recommend arriving a few minutes early.</p>
-                `}
-            </div>
-            
-            <div class="section">
-                <div class="section-title">
-                    <span class="section-icon">📝</span>
-                    Event Description
-                </div>
-                <p style="color: #6b7280; line-height: 1.6;">${event.description}</p>
-            </div>
-            
-            ${event.model || event.instructor ? `
-                <div class="section">
-                    <div class="section-title">
-                        <span class="section-icon">${event.event_type === 'workshop' ? '👩‍🏫' : '🎭'}</span>
-                        ${event.event_type === 'workshop' ? 'Instructor' : 'Model'}
-                    </div>
-                    <p style="color: #6b7280;">${event.instructor || event.model}</p>
-                </div>
-            ` : ''}
-            
-            <div class="section">
-                <div class="section-title">
-                    <span class="section-icon">📦</span>
-                    What to Bring & What We Provide
-                </div>
-                <div class="list-grid">
-                    ${event.what_to_bring ? `
-                        <div class="list-box">
-                            <h4>✅ Please Bring:</h4>
-                            <ul>
-                                ${event.what_to_bring.map(item => `<li>${item}</li>`).join('')}
-                            </ul>
-                        </div>
-                    ` : ''}
-                    ${event.what_we_provide ? `
-                        <div class="list-box">
-                            <h4>🎁 We'll Provide:</h4>
-                            <ul>
-                                ${event.what_we_provide.map(item => `<li>${item}</li>`).join('')}
-                            </ul>
-                        </div>
-                    ` : ''}
-                </div>
-            </div>
-            
-            <div class="section">
-                <div class="section-title">
-                    <span class="section-icon">🚗</span>
-                    Location & Parking
-                </div>
-                <p style="color: #6b7280; margin-bottom: 15px;"><strong>Address:</strong> ${event.address || event.location}</p>
-                ${event.parking_info ? `<p style="color: #6b7280; margin-bottom: 10px;"><strong>Parking:</strong> ${event.parking_info}</p>` : ''}
-                ${event.arrival_info ? `<p style="color: #6b7280;"><strong>Arrival:</strong> ${event.arrival_info}</p>` : ''}
-            </div>
-            
-            ${event.special_notes ? `
-                <div class="info-box">
-                    <h4 style="color: #d97706; margin: 0 0 10px 0;">📌 Important Notes</h4>
-                    <p style="margin: 0; color: #92400e;">${event.special_notes}</p>
-                </div>
-            ` : ''}
-            
-            <div class="section">
-                <div class="section-title">
-                    <span class="section-icon">ℹ️</span>
-                    Good to Know
-                </div>
-                <div class="list-box">
-                    <ul style="color: #6b7280;">
-                        <li><strong>Refund Policy:</strong> ${event.refund_policy || 'Contact us for refund requests'}</li>
-                        <li><strong>Questions?</strong> Email us at hello@appletondrawingclub.com</li>
-                        <li><strong>Code of Conduct:</strong> We maintain a respectful, inclusive environment for all</li>
-                        ${registration.newsletter_signup ? '<li><strong>Newsletter:</strong> You\'re subscribed to our updates</li>' : ''}
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 40px 0 20px 0;">
-                <p style="font-size: 18px; color: #374151; margin-bottom: 15px;">Looking forward to creating with you!</p>
-                <a href="mailto:hello@appletondrawingclub.com" class="button button-primary">
-                    ✉️ Contact Us
-                </a>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <div style="margin-bottom: 20px;">
-                <strong style="color: #16a34a;">Appleton Drawing Club</strong><br>
-                <span class="footer-text">Bringing together artists of all levels in the Fox Cities</span>
-            </div>
-            
-            <div class="social-links">
-                <a href="https://appletondrawingclub.com">🌐 Website</a>
-                <a href="mailto:hello@appletondrawingclub.com">✉️ Email</a>
-                <a href="https://instagram.com/appletondrawingclub">📸 Instagram</a>
-            </div>
-            
-            <div class="footer-text">
-                <p>This email was sent because you registered for an event with Appleton Drawing Club.</p>
-                ${registration.newsletter_signup ? `
-                    <p style="margin-top: 15px;">
-                        You're subscribed to our newsletter. 
-                        <a href="https://buttondown.email/appleton-drawing-club/unsubscribe" style="color: #6b7280;">Unsubscribe here</a>
-                    </p>
-                ` : ''}
-            </div>
-        </div>
+<body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
+  
+  <h1 style="color: #16a34a;">Appleton Drawing Club</h1>
+  
+  <h2>Registration Confirmed!</h2>
+  
+  <p>Hi <strong>${registration.name}</strong>,</p>
+  
+  <p>You're registered for <strong>${event.title}</strong>.</p>
+  
+  <p><strong>Confirmation ID:</strong> ${confirmationId}</p>
+
+  ${event.image_url ? `<img src="${event.image_url}" alt="${event.title}" style="width: 100%; max-width: 400px; border-radius: 8px; margin: 20px 0;">` : ''}
+  
+  <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+  
+  <h3>Event Details</h3>
+  <p><strong>Date:</strong> ${eventDate}</p>
+  <p><strong>Time:</strong> ${event.time}</p>
+  <p><strong>Location:</strong> ${event.location.name || event.location}</p>
+  ${event.location.address ? `<p><strong>Address:</strong> ${event.location.address}</p>` : ''}
+  <p><strong>Price:</strong> $${event.price}</p>
+  
+  <div style="margin: 20px 0;">
+    <a href="${createCalendarUrl(event, confirmationId)}" style="display: inline-block; background: #16a34a; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">📅 Add to Calendar</a>
+    <a href="${createMapUrl(event)}" style="display: inline-block; background: #f5f5f5; color: #333; padding: 10px 15px; text-decoration: none; border-radius: 5px;">🗺️ Directions</a>
+  </div>
+
+  ${event.description ? `
+  <h3>About This Event</h3>
+  <p style="color: #666; line-height: 1.5;">${event.description}</p>
+  ` : ''}
+
+  ${event.model || event.instructor ? `
+  <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
+    <p><strong>${event.event_type === 'workshop' ? 'Instructor' : 'Model'}:</strong> ${event.instructor || event.model}</p>
+  </div>
+  ` : ''}
+
+  ${event.what_to_bring || event.what_we_provide ? `
+  <h3>What to Know</h3>
+  ${event.what_to_bring ? `
+    <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
+      <p><strong>Please bring:</strong></p>
+      <ul>${event.what_to_bring.map(item => `<li>${item}</li>`).join('')}</ul>
     </div>
+  ` : ''}
+  ${event.what_we_provide ? `
+    <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
+      <p><strong>We'll provide:</strong></p>
+      <ul>${event.what_we_provide.map(item => `<li>${item}</li>`).join('')}</ul>
+    </div>
+  ` : ''}
+  ` : ''}
+
+  ${event.parking_info || event.arrival_info ? `
+  <h3>Getting There</h3>
+  ${event.parking_info ? `<p><strong>Parking:</strong> ${event.parking_info}</p>` : ''}
+  ${event.arrival_info ? `<p><strong>Arrival:</strong> ${event.arrival_info}</p>` : ''}
+  ` : ''}
+  
+  <div style="background: ${registration.payment_method === 'online' ? '#f0f9ff' : '#fffbeb'}; padding: 15px; border-radius: 5px; margin: 20px 0;">
+    <p><strong>Payment:</strong> ${registration.payment_method === 'online' 
+      ? `Payment complete - you're all set!`
+      : `Please bring $${event.price} (cash or card) to pay at the door.`
+    }</p>
+  </div>
+  
+  ${event.special_notes ? `
+  <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0;">
+    <p><strong>Important:</strong> ${event.special_notes}</p>
+  </div>
+  ` : ''}
+
+  ${event.refund_policy ? `
+  <p style="font-size: 14px; color: #666;"><strong>Refund Policy:</strong> ${event.refund_policy}</p>
+  ` : ''}
+  
+  <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+  
+  <p>Questions? <a href="https://appletondrawingclub.com/contact">Contact us here</a></p>
+  
+  <p style="font-size: 14px; color: #666;">
+    Appleton Drawing Club<br>
+    <a href="https://appletondrawingclub.com">appletondrawingclub.com</a>
+  </p>
+  
+  ${registration.newsletter_signup ? `
+  <p style="font-size: 12px; color: #999;">
+    <a href="https://buttondown.email/appleton-drawing-club/unsubscribe">Unsubscribe from newsletter</a>
+  </p>
+  ` : ''}
+
 </body>
 </html>`;
 
-    // Enhanced text version
-    const text = `
-🎨 YOU'RE ALL SET FOR ${event.title.toUpperCase()}!
+  // Enhanced plain text version
+  const text = `
+Registration Confirmed: ${event.title}
 
 Hi ${registration.name},
 
-Great news! You're registered for our upcoming event.
-Confirmation ID: ${registration.id.slice(0, 8).toUpperCase()}
+You're registered for ${event.title}.
 
-📅 EVENT DETAILS
-${'-'.repeat(40)}
-Event: ${event.title}
-Date: ${formatDate(event.date)}
+Confirmation ID: ${confirmationId}
+
+EVENT DETAILS
+Date: ${eventDate}
 Time: ${event.time}
-Location: ${event.location}
-Address: ${event.address || event.location}
+Location: ${event.location.name || event.location}
+${event.location.address ? `Address: ${event.location.address}` : ''}
 Price: $${event.price}
 
-💰 PAYMENT STATUS
-${registration.payment_method === 'online' 
-    ? `✅ PAYMENT CONFIRMED: Your payment of $${event.price} has been processed.`
-    : `💵 PAY AT DOOR: Please bring $${event.price} (cash or card) when you arrive.`
+${event.description ? `ABOUT THIS EVENT\n${event.description}\n` : ''}
+
+${event.model || event.instructor ? `${event.event_type === 'workshop' ? 'INSTRUCTOR' : 'MODEL'}: ${event.instructor || event.model}\n` : ''}
+
+${event.what_to_bring ? `PLEASE BRING:\n${event.what_to_bring.map(item => `• ${item}`).join('\n')}\n` : ''}
+
+${event.what_we_provide ? `WE'LL PROVIDE:\n${event.what_we_provide.map(item => `• ${item}`).join('\n')}\n` : ''}
+
+${event.parking_info ? `PARKING: ${event.parking_info}\n` : ''}
+${event.arrival_info ? `ARRIVAL: ${event.arrival_info}\n` : ''}
+
+PAYMENT: ${registration.payment_method === 'online' 
+  ? `Payment complete - you're all set!`
+  : `Please bring $${event.price} (cash or card) to pay at the door.`
 }
 
-📝 ABOUT THIS EVENT
-${event.description}
+${event.special_notes ? `IMPORTANT: ${event.special_notes}\n` : ''}
 
-${event.model || event.instructor ? `
-🎭 ${event.event_type === 'workshop' ? 'INSTRUCTOR' : 'MODEL'}: ${event.instructor || event.model}
-` : ''}
+${event.refund_policy ? `REFUND POLICY: ${event.refund_policy}\n` : ''}
 
-${event.what_to_bring ? `
-✅ PLEASE BRING:
-${event.what_to_bring.map(item => `• ${item}`).join('\n')}
-` : ''}
+Add to Calendar: ${createCalendarUrl(event, confirmationId)}
+Get Directions: ${createMapUrl(event)}
 
-${event.what_we_provide ? `
-🎁 WE'LL PROVIDE:
-${event.what_we_provide.map(item => `• ${item}`).join('\n')}
-` : ''}
-
-🚗 LOCATION & PARKING
-${event.parking_info ? `Parking: ${event.parking_info}` : ''}
-${event.arrival_info ? `Arrival: ${event.arrival_info}` : ''}
-
-${event.special_notes ? `
-📌 IMPORTANT NOTES
-${event.special_notes}
-` : ''}
-
-ℹ️ GOOD TO KNOW
-• Refund Policy: ${event.refund_policy || 'Contact us for refund requests'}
-• Questions? Email hello@appletondrawingclub.com
-• Code of Conduct: We maintain a respectful, inclusive environment
-${registration.newsletter_signup ? '• You\'re subscribed to our newsletter updates' : ''}
-
-📅 Add to Calendar: ${addToCalendarUrl}
-🗺️ Get Directions: ${mapUrl}
-
-Looking forward to creating with you!
+Questions? Contact us at https://appletondrawingclub.com/contact
 
 Appleton Drawing Club
 https://appletondrawingclub.com
-hello@appletondrawingclub.com
-`;
 
-    return { subject, html, text };
+${registration.newsletter_signup 
+  ? 'You\'re subscribed to our newsletter. Unsubscribe: https://buttondown.email/appleton-drawing-club/unsubscribe'
+  : ''
 }
-```
+  `.trim();
 
-### 3. Create Database Migration for Enhanced Event Schema
-
-Create a new Supabase migration to add the additional event fields:
-
-```sql
--- Add enhanced event fields
-ALTER TABLE events ADD COLUMN IF NOT EXISTS address TEXT;
-ALTER TABLE events ADD COLUMN IF NOT EXISTS image_url TEXT;
-ALTER TABLE events ADD COLUMN IF NOT EXISTS what_to_bring TEXT[];
-ALTER TABLE events ADD COLUMN IF NOT EXISTS what_we_provide TEXT[];
-ALTER TABLE events ADD COLUMN IF NOT EXISTS parking_info TEXT;
-ALTER TABLE events ADD COLUMN IF NOT EXISTS arrival_info TEXT;
-ALTER TABLE events ADD COLUMN IF NOT EXISTS refund_policy TEXT;
-ALTER TABLE events ADD COLUMN IF NOT EXISTS code_of_conduct_url TEXT;
-
--- Add some default values for existing events
-UPDATE events SET 
-    refund_policy = 'Refunds available up to 24 hours before the event. Contact hello@appletondrawingclub.com',
-    code_of_conduct_url = 'https://appletondrawingclub.com/code-of-conduct'
-WHERE refund_policy IS NULL;
-```
-
-### 4. Add Calendar File Generation (Optional Enhancement)
-
-Create `netlify/functions/generate-calendar-event.js` for .ics file generation:
-```javascript
-exports.handler = async (event, context) => {
-    if (event.httpMethod !== 'GET') {
-        return { statusCode: 405, body: 'Method not allowed' };
-    }
-
-    const { registrationId } = event.queryStringParameters;
-    
-    // Fetch registration and event data
-    // Generate .ics file content
-    // Return as downloadable file
-    
-    // This is optional for ADC-06 but could be added later
+  return { subject, html, text };
 };
 ```
 
 ## Testing Criteria
-- [ ] Email includes all comprehensive event details
-- [ ] Calendar links work correctly across different calendar apps
+- [ ] Enhanced email includes all comprehensive event details
+- [ ] Calendar links work correctly and populate event information  
 - [ ] Map links open correct location
 - [ ] Email displays properly on mobile devices
-- [ ] All conditional content displays correctly based on event type
+- [ ] All conditional content displays correctly based on available event data
 - [ ] Payment status section shows correct information
-- [ ] Social links and contact information are accurate
-- [ ] Email loads images properly (when available)
-- [ ] Text version includes all essential information
-- [ ] Email renders correctly across email clients
+- [ ] Contact information directs to website contact form
+- [ ] Event images display properly when available
+- [ ] Plain text version includes all essential enhanced information
+- [ ] Email maintains simple, readable design while adding useful details
 
-## Files Created/Modified
-- `netlify/functions/send-confirmation-email.js` - Enhanced email template with comprehensive details
-- `src/routes/events/test-event/+page.svelte` - Updated with enhanced event data structure
-- Supabase migration - Additional event fields for comprehensive information
+## Files Modified
+- `src/lib/types.ts` - Enhanced Event interface with additional optional fields
+- `src/lib/data/events.ts` - Updated event data with enhanced details  
+- `supabase/functions/_shared/email-templates.ts` - Enhanced simple email template
 
-## Next Steps
-This completes the core registration flow! The next phase would include:
-- Dynamic event management (create/edit events via admin interface)
-- Event calendar display from database
-- Admin registration dashboard
-- Capacity limits and sold-out handling
-
-## Success Metrics
-After completing ADC-01 through ADC-06:
-- ✅ Complete end-to-end registration flow working
-- ✅ Both payment methods (online and door) functional  
-- ✅ Professional email confirmations with all details
-- ✅ User feedback for all scenarios (success, failure, cancelled)
-- ✅ Single working event ready for real user testing
-- ✅ Foundation ready to scale to multiple events
+## Next Steps  
+This builds on the simple email foundation from ADC-05 and adds useful enhanced information while keeping the design clean and maintainable. The next phase could include:
+- Admin interface for managing events with enhanced data
+- Integration with real calendar systems
+- A/B testing different email designs
+- Analytics on email engagement
