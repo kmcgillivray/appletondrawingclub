@@ -18,7 +18,7 @@
     </h1>
   </div>
   <img
-    src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1745845059/ADC_Portrait_20250423_023_b50vsz.jpg"
+    src="https://res.cloudinary.com/db5mnmxzn/image/upload/c_pad,w_1000/v1745845059/ADC_Portrait_20250423_023_b50vsz.webp"
     alt="A group of artists drawing portraits of a model."
   />
   
