@@ -5,9 +5,9 @@ A modern SvelteKit website for the Appleton Drawing Club featuring static conten
 ## Features
 
 - 📅 **Event Management** - Display upcoming and past drawing events with detailed information
-- 📝 **Event Registration** - Pay-at-door registration system with anti-spam protection
+- 📝 **Event Registration** - Dual payment system: online Stripe payments and pay-at-door with anti-spam protection
 - 📰 **Blog System** - Markdown-based blog posts with automatic generation
-- 🔒 **Secure Backend** - Supabase Edge Functions for registration processing
+- 🔒 **Secure Backend** - Supabase Edge Functions for registration and Stripe payment processing
 - 📱 **Responsive Design** - Mobile-first design with Tailwind CSS
 
 ## Architecture
@@ -22,8 +22,10 @@ A modern SvelteKit website for the Appleton Drawing Club featuring static conten
 ### Backend
 
 - **Supabase** for database and Edge Functions
+- **Stripe** for secure online payment processing
 - **Row Level Security (RLS)** for data protection
 - **Anti-spam protection** with honeypot validation
+- **Webhook handling** for payment confirmation
 
 ### Content Management
 
@@ -58,8 +60,13 @@ A modern SvelteKit website for the Appleton Drawing Club featuring static conten
    VITE_SUPABASE_URL=your_supabase_project_url
    VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 
+   # Stripe Configuration
+   VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
+
    # For Edge Functions (server-side only)
    SB_SECRET_KEY=your_supabase_secret_key
+   STRIPE_SECRET_KEY=sk_test_...
+   STRIPE_WEBHOOK_SECRET=whsec_...
    ```
 
 3. **Set up Supabase**
@@ -77,6 +84,9 @@ A modern SvelteKit website for the Appleton Drawing Club featuring static conten
 
    # Deploy Edge Functions
    supabase functions deploy register --no-verify-jwt
+   supabase functions deploy create-checkout --no-verify-jwt
+   supabase functions deploy stripe-webhook --no-verify-jwt
+   supabase functions deploy get-checkout-session --no-verify-jwt
    ```
 
    The database schema is already defined in `supabase/migrations/` and includes:
@@ -148,31 +158,53 @@ npm run preview
 4. Configure environment variables in Netlify dashboard:
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_PUBLISHABLE_KEY`
+   - `VITE_STRIPE_PUBLISHABLE_KEY`
 
 ### Backend (Supabase Edge Functions)
 
 ```bash
-# Deploy registration function
+# Deploy all Edge Functions
 supabase functions deploy register --no-verify-jwt
+supabase functions deploy create-checkout --no-verify-jwt  
+supabase functions deploy stripe-webhook --no-verify-jwt
+supabase functions deploy get-checkout-session --no-verify-jwt
 
 # Set environment variables in Supabase dashboard
-# - SB_SECRET_KEY (your secret key)
-# - SUPABASE_URL (your project URL)
+supabase secrets set SB_SECRET_KEY=your_supabase_secret_key
+supabase secrets set STRIPE_SECRET_KEY=sk_test_...
+supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_...
 ```
+
+### Stripe Webhook Configuration
+
+1. In Stripe Dashboard → Developers → Webhooks
+2. Add endpoint: `https://your-project.supabase.co/functions/v1/stripe-webhook`
+3. Listen for events: `checkout.session.completed`, `payment_intent.payment_failed`
+4. Copy webhook signing secret to environment variables
 
 ## Event Registration System
 
-The registration system allows users to register for drawing events with payment at the door:
+The registration system supports both online payment and pay-at-door options:
 
-### User Flow
+### Payment Options
 
-1. User visits event page
-2. Fills out registration form (name, email, newsletter preference)
-3. Submits form with anti-spam protection
-4. Receives confirmation and pays at the event
+**Online Payment (Stripe)**:
+1. User selects "Pay Online" option
+2. Stripe embedded checkout opens in modal
+3. Secure card payment processing
+4. Automatic registration confirmation
+5. Webhook handles database updates
+
+**Pay at Door**:
+1. User selects "Pay at Door" option
+2. Registration is created with pending status
+3. User pays cash/card at the event
+4. Manual confirmation by organizers
 
 ### Security Features
 
+- **PCI-compliant payments** through Stripe
+- **Webhook signature verification** for payment confirmation
 - **Honeypot field** prevents basic bot spam
 - **Server-side validation** ensures data integrity
 - **CORS protection** restricts API access to legitimate domains
@@ -185,6 +217,8 @@ src/
 ├── lib/
 │   ├── components/       # Reusable Svelte components
 │   │   ├── RegistrationForm.svelte
+│   │   ├── CheckoutModal.svelte
+│   │   ├── RegistrationMessages.svelte
 │   │   └── EventCard.svelte
 │   ├── data/            # Static data files
 │   │   ├── events.ts    # Event definitions (TypeScript)
@@ -194,12 +228,19 @@ src/
 │   └── utils/           # Utility functions
 ├── posts/               # Markdown blog posts
 ├── routes/              # SvelteKit routes
+│   ├── checkout/
+│   │   └── return/      # Stripe payment return handler
+│   └── events/
 └── app.html            # HTML template
 
 supabase/
-└── functions/
-    ├── register/        # Registration Edge Function
-    └── _shared/         # Shared utilities and types
+├── functions/
+│   ├── register/        # Pay-at-door registration
+│   ├── create-checkout/ # Stripe checkout session creation
+│   ├── stripe-webhook/  # Payment confirmation webhook
+│   ├── get-checkout-session/ # Session status retrieval
+│   └── _shared/         # Shared utilities and types
+└── migrations/          # Database schema
 
 scripts/
 └── generate-posts.js    # Blog post generation script
@@ -212,6 +253,7 @@ scripts/
 - `npm run preview` - Preview production build
 - `npm run generate:posts` - Generate blog post data from markdown files
 - `npm run prepare` - Sync SvelteKit (runs on install)
+- `supabase functions deploy <function-name> --no-verify-jwt` - Deploy individual Edge Functions
 
 ## Environment Variables
 
@@ -219,11 +261,14 @@ scripts/
 
 - `VITE_SUPABASE_URL` - Your Supabase project URL
 - `VITE_SUPABASE_PUBLISHABLE_KEY` - Supabase publishable key for client-side requests
+- `VITE_STRIPE_PUBLISHABLE_KEY` - Stripe publishable key for client-side payments
 
 ### Required for Edge Functions
 
 - `SB_SECRET_KEY` - Supabase secret key for server-side database operations
 - `SUPABASE_URL` - Your Supabase project URL (same as VITE_SUPABASE_URL)
+- `STRIPE_SECRET_KEY` - Stripe secret key for server-side payment processing
+- `STRIPE_WEBHOOK_SECRET` - Stripe webhook signing secret for payment verification
 
 ## Contributing
 

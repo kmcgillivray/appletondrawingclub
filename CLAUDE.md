@@ -10,6 +10,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run generate:posts` - Generate blog post data from markdown files
 - `npm run prepare` - Sync SvelteKit (runs on install)
 - `supabase functions deploy register --no-verify-jwt` - Deploy registration Edge Function
+- `supabase functions deploy create-checkout --no-verify-jwt` - Deploy Stripe checkout Edge Function
+- `supabase functions deploy stripe-webhook --no-verify-jwt` - Deploy Stripe webhook Edge Function
+- `supabase functions deploy get-checkout-session --no-verify-jwt` - Deploy checkout session retrieval
 
 ## Architecture Overview
 
@@ -32,15 +35,16 @@ This is a **SvelteKit static site** for the Appleton Drawing Club, configured fo
 - **Dynamic routes**: `/posts/[slug]` for individual blog posts
 - **Event system**: Events have different types (`figure_drawing`, `workshop`, `portrait`, `special_event`) and statuses
 - **Component library**: Reusable components in `src/lib/components/` for events, blog posts, and UI elements
-- **Registration system**: Dynamic event registration with pay-at-door functionality
+- **Registration system**: Dynamic event registration with dual payment options (Stripe online + pay-at-door)
 
 ### Registration System Architecture
 
-- **Frontend**: `RegistrationForm.svelte` component with TypeScript validation and anti-spam protection
-- **Backend**: Supabase Edge Functions handle form submission and database operations
+- **Frontend**: `RegistrationForm.svelte` component with dual payment options, `CheckoutModal.svelte` for Stripe integration
+- **Backend**: Supabase Edge Functions handle registration, Stripe checkout sessions, and webhook processing
+- **Payment Processing**: Stripe embedded checkout with secure card payments and webhook confirmation
 - **Database**: PostgreSQL with Row Level Security (RLS) policies
 - **Authentication**: Service role authentication for database writes, publishable key for client requests
-- **Security**: Honeypot field, server-side validation, CORS protection, and input sanitization
+- **Security**: PCI-compliant payments, webhook signature verification, honeypot field, server-side validation
 
 ### Styling & Assets
 
@@ -55,15 +59,20 @@ This is a **SvelteKit static site** for the Appleton Drawing Club, configured fo
 - `src/lib/utils/events.js` - Event filtering and utility functions
 - `src/routes/posts/[slug]/+page.js` - Dynamic post loading with prerendering entries
 - `svelte.config.js` - Static adapter configuration with 404 handling
-- `src/lib/components/RegistrationForm.svelte` - Event registration form with validation
+- `src/lib/components/RegistrationForm.svelte` - Event registration form with dual payment options
+- `src/lib/components/CheckoutModal.svelte` - Stripe embedded checkout modal component
 - `src/lib/types.ts` - TypeScript interfaces for events and registration
-- `supabase/functions/register/index.ts` - Registration Edge Function
+- `supabase/functions/register/index.ts` - Pay-at-door registration Edge Function
+- `supabase/functions/create-checkout/index.ts` - Stripe checkout session creation
+- `supabase/functions/stripe-webhook/index.ts` - Payment confirmation webhook handler
+- `supabase/functions/get-checkout-session/index.ts` - Session status retrieval
 - `supabase/functions/_shared/` - Shared utilities and types for Edge Functions
 
 ### Registration Flow Files
 
 - `src/lib/utils/markdown.js` - Markdown rendering utility for rich event descriptions
 - `src/routes/events/test-event/+page.svelte` - Example event page with registration
+- `src/routes/checkout/return/+page.svelte` - Stripe payment return URL handler
 - `.claude/tasks/` - Task documentation for implemented features and future enhancements
 
 ### Build Process
@@ -76,11 +85,14 @@ The build process requires generating posts before building (`npm run generate:p
 
 - `VITE_SUPABASE_URL` - Your Supabase project URL
 - `VITE_SUPABASE_PUBLISHABLE_KEY` - Supabase publishable key for client-side requests
+- `VITE_STRIPE_PUBLISHABLE_KEY` - Stripe publishable key for client-side payments
 
 ### Required for Edge Functions (Supabase)
 
 - `SB_SECRET_KEY` - Supabase secret key for server-side database operations
 - `SUPABASE_URL` - Your Supabase project URL (same as VITE_SUPABASE_URL)
+- `STRIPE_SECRET_KEY` - Stripe secret key for server-side payment processing
+- `STRIPE_WEBHOOK_SECRET` - Stripe webhook signing secret for payment verification
 
 ## Registration System Details
 
@@ -92,8 +104,8 @@ The registration system uses a `registrations` table with the following structur
 - `event_id` (TEXT) - References event ID from events.ts
 - `name` (TEXT) - Registrant's name
 - `email` (TEXT) - Registrant's email
-- `payment_method` (TEXT) - Always 'door' for pay-at-door
-- `payment_status` (TEXT) - Always 'pending' until paid
+- `payment_method` (TEXT) - 'door' for pay-at-door, 'online' for Stripe payments
+- `payment_status` (TEXT) - 'pending' for pay-at-door, 'completed' for successful online payments
 - `newsletter_signup` (BOOLEAN) - Newsletter preference
 - `created_at` (TIMESTAMP) - Registration timestamp
 
@@ -139,8 +151,13 @@ Events in `src/lib/data/events.ts` follow this TypeScript interface:
 
 ### Backend Deployment (Supabase)
 
-- Deploy with: `supabase functions deploy register --no-verify-jwt`
+- Deploy with: 
+  - `supabase functions deploy register --no-verify-jwt`
+  - `supabase functions deploy create-checkout --no-verify-jwt`
+  - `supabase functions deploy stripe-webhook --no-verify-jwt`
+  - `supabase functions deploy get-checkout-session --no-verify-jwt`
 - Environment variables set in Supabase Edge Functions dashboard
 - Functions are automatically versioned and can be rolled back
 - Logs available in Supabase dashboard for debugging
+- **Stripe Webhook Setup**: Configure endpoint `https://your-project.supabase.co/functions/v1/stripe-webhook` in Stripe Dashboard
 - I don't have hello@appletondrawingclub.com set up as an email address. Users will need to go to the contact page to send a message for now.
