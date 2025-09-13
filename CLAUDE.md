@@ -81,18 +81,12 @@ The build process requires generating posts before building (`npm run generate:p
 
 ## Environment Variables
 
-### Required for Frontend (Netlify)
+Environment variables are documented in the example files with detailed descriptions:
 
-- `VITE_SUPABASE_URL` - Your Supabase project URL
-- `VITE_SUPABASE_PUBLISHABLE_KEY` - Supabase publishable key for client-side requests
-- `VITE_STRIPE_PUBLISHABLE_KEY` - Stripe publishable key for client-side payments
+- **Frontend (SvelteKit)**: See `.env.local.example` for client-side and server-side variables
+- **Edge Functions (Supabase)**: See `supabase/functions/.env.example` for backend service configuration
 
-### Required for Edge Functions (Supabase)
-
-- `SB_SECRET_KEY` - Supabase secret key for server-side database operations
-- `SUPABASE_URL` - Your Supabase project URL (same as VITE_SUPABASE_URL)
-- `STRIPE_SECRET_KEY` - Stripe secret key for server-side payment processing
-- `STRIPE_WEBHOOK_SECRET` - Stripe webhook signing secret for payment verification
+The example files include security notes and deployment guidance for each variable.
 
 ## Registration System Details
 
@@ -151,7 +145,7 @@ Events in `src/lib/data/events.ts` follow this TypeScript interface:
 
 ### Backend Deployment (Supabase)
 
-- Deploy with: 
+- Deploy with:
   - `supabase functions deploy register --no-verify-jwt`
   - `supabase functions deploy create-checkout --no-verify-jwt`
   - `supabase functions deploy stripe-webhook --no-verify-jwt`
@@ -160,4 +154,3 @@ Events in `src/lib/data/events.ts` follow this TypeScript interface:
 - Functions are automatically versioned and can be rolled back
 - Logs available in Supabase dashboard for debugging
 - **Stripe Webhook Setup**: Configure endpoint `https://your-project.supabase.co/functions/v1/stripe-webhook` in Stripe Dashboard
-- I don't have hello@appletondrawingclub.com set up as an email address. Users will need to go to the contact page to send a message for now.
