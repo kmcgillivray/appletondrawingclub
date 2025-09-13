@@ -11,6 +11,7 @@ import type {
 } from "../_shared/types.ts";
 import { findOrCreateCustomer } from "../_shared/stripe-customer.ts";
 import { sendRegistrationConfirmationEmail } from "../_shared/email-utils.ts";
+import { syncToNewsletter } from "../_shared/buttondown.ts";
 
 Deno.serve(async (req): Promise<Response> => {
   // Handle CORS preflight requests
@@ -175,6 +176,17 @@ Deno.serve(async (req): Promise<Response> => {
       } catch (emailError) {
         console.error("Failed to send confirmation email:", emailError);
         // Don't fail the registration if email fails - just log it
+      }
+    }
+
+    // Sync to newsletter if user opted in
+    if (registration.newsletter_signup) {
+      try {
+        await syncToNewsletter(registration.email);
+      } catch (newsletterError) {
+        console.error("Newsletter sync failed:", newsletterError);
+        // Don't fail the registration if newsletter sync fails - just log it
+        // Most errors are logged inside syncToNewsletter function, so this is just a catch-all
       }
     }
 
