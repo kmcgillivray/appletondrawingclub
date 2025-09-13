@@ -32,7 +32,6 @@ Deno.serve(async (req): Promise<Response> => {
       quantity,
       payment_method,
       newsletter_signup,
-      processing_status,
       website,
     } = requestData;
 
@@ -70,8 +69,9 @@ Deno.serve(async (req): Promise<Response> => {
     // Find or create Stripe customer
     const customerId = await findOrCreateCustomer(email, name);
 
-    // Determine payment status - door payments are completed immediately
-    const paymentStatus = payment_method === "door" ? "completed" : "pending";
+    // Determine processing status - door payments are completed immediately
+    const processingStatus =
+      payment_method === "door" ? "completed" : "pending";
 
     // Create registration
     const { data: registration, error: regError } = await supabase
@@ -83,10 +83,10 @@ Deno.serve(async (req): Promise<Response> => {
           email,
           quantity,
           payment_method,
-          payment_status: paymentStatus,
+          payment_status: "pending",
           newsletter_signup: newsletter_signup || false,
           stripe_customer_id: customerId,
-          processing_status: processing_status || "completed",
+          processing_status: processingStatus,
         },
       ])
       .select()
@@ -118,7 +118,7 @@ Deno.serve(async (req): Promise<Response> => {
     }
 
     // Send confirmation email for completed registrations (pay-at-door)
-    if (registration.payment_status === "completed") {
+    if (registration.processing_status === "completed") {
       try {
         // Query event data from database with location
         const { data: eventData, error: eventError } = await supabase

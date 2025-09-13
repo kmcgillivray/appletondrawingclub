@@ -6,7 +6,6 @@ export interface RegistrationRequest {
   quantity: number; // Number of people (1-6)
   payment_method: string;
   newsletter_signup: boolean;
-  processing_status?: string; // For creating pending registrations
   website?: string; // Honeypot field - should be empty for legitimate users
 }
 
