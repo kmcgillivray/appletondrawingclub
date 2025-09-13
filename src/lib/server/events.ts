@@ -1,17 +1,17 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Event } from "$lib/types.js";
-import { SUPABASE_SERVICE_ROLE_KEY, SUPABASE_URL } from "$env/static/private";
+import { SUPABASE_PRIVATE_KEY, SUPABASE_URL } from "$env/static/private";
 
 // Server-side only utility for fetching events from database during build time
 // Uses service role key for elevated permissions
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+if (!SUPABASE_URL || !SUPABASE_PRIVATE_KEY) {
   throw new Error(
     "Missing required environment variables for Supabase connection"
   );
 }
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_PRIVATE_KEY);
 
 /**
  * Fetches all events from the database with joined location data
