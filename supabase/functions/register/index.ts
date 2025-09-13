@@ -10,6 +10,7 @@ import type {
   RegistrationResponse,
 } from "../_shared/types.ts";
 import { findOrCreateCustomer } from "../_shared/stripe-customer.ts";
+import { sendRegistrationConfirmationEmail } from "../_shared/email-utils.ts";
 
 Deno.serve(async (req): Promise<Response> => {
   // Handle CORS preflight requests
@@ -69,6 +70,9 @@ Deno.serve(async (req): Promise<Response> => {
     // Find or create Stripe customer
     const customerId = await findOrCreateCustomer(email, name);
 
+    // Determine payment status - door payments are completed immediately
+    const paymentStatus = payment_method === "door" ? "completed" : "pending";
+
     // Create registration
     const { data: registration, error: regError } = await supabase
       .from("registrations")
@@ -79,7 +83,7 @@ Deno.serve(async (req): Promise<Response> => {
           email,
           quantity,
           payment_method,
-          payment_status: "pending",
+          payment_status: paymentStatus,
           newsletter_signup: newsletter_signup || false,
           stripe_customer_id: customerId,
           processing_status: processing_status || "completed",
@@ -111,6 +115,67 @@ Deno.serve(async (req): Promise<Response> => {
       }
 
       throw regError;
+    }
+
+    // Send confirmation email for completed registrations (pay-at-door)
+    if (registration.payment_status === "completed") {
+      try {
+        // Query event data from database with location
+        const { data: eventData, error: eventError } = await supabase
+          .from("events")
+          .select(
+            `
+            id,
+            title,
+            date,
+            time,
+            price,
+            special_notes,
+            location:locations (
+              name,
+              street_address,
+              locality,
+              region,
+              postal_code
+            )
+          `
+          )
+          .eq("id", event_id)
+          .single();
+
+        if (eventError) {
+          console.error("Failed to fetch event for email:", eventError);
+        } else if (eventData && eventData.location) {
+          // TODO: Fix typing returns from Supabase queries
+          const location = eventData.location as any;
+          // Send confirmation email
+          await sendRegistrationConfirmationEmail({
+            registration: {
+              id: registration.id,
+              name: registration.name,
+              email: registration.email,
+              quantity: registration.quantity,
+              payment_method: registration.payment_method,
+              newsletter_signup: registration.newsletter_signup,
+            },
+            event: {
+              id: eventData.id,
+              title: eventData.title,
+              date: eventData.date,
+              time: eventData.time,
+              location: {
+                name: location.name,
+                address: `${location.street_address}, ${location.locality}, ${location.region} ${location.postal_code}`,
+              },
+              price: eventData.price,
+              special_notes: eventData.special_notes,
+            },
+          });
+        }
+      } catch (emailError) {
+        console.error("Failed to send confirmation email:", emailError);
+        // Don't fail the registration if email fails - just log it
+      }
     }
 
     const response: RegistrationResponse = {
