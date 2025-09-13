@@ -43,6 +43,7 @@ interface RegistrationEmailData {
     id: string;
     name: string;
     email: string;
+    quantity: number;
     payment_method: string;
     newsletter_signup: boolean;
   };
@@ -98,12 +99,13 @@ export function getRegistrationConfirmationEmail(data: RegistrationEmailData) {
   <p><strong>Date:</strong> ${eventDate}</p>
   <p><strong>Time:</strong> ${event.time}</p>
   <p><strong>Location:</strong> ${event.location.name}</p>
-  <p><strong>Price:</strong> $${event.price}</p>
+  <p><strong>Quantity:</strong> ${registration.quantity} ${registration.quantity === 1 ? 'person' : 'people'}</p>
+  <p><strong>Price:</strong> $${event.price} per person (Total: $${event.price * registration.quantity})</p>
   
   <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
     <p><strong>Payment:</strong> ${registration.payment_method === 'online' 
       ? `Payment complete - you're all set!`
-      : `Please bring $${event.price} (cash or card) to pay at the door.`
+      : `Please bring $${event.price * registration.quantity} (cash or card) to pay at the door.`
     }</p>
   </div>
   
@@ -146,11 +148,12 @@ Event: ${event.title}
 Date: ${eventDate}
 Time: ${event.time}
 Location: ${event.location.name}
-Price: $${event.price}
+Quantity: ${registration.quantity} ${registration.quantity === 1 ? 'person' : 'people'}
+Price: $${event.price} per person (Total: $${event.price * registration.quantity})
 
 ${registration.payment_method === 'online' 
-  ? `PAYMENT COMPLETE: Your payment of $${event.price} has been processed. You're all set!`
-  : `PAY AT DOOR: Please bring $${event.price} (cash or card) to pay when you arrive at the event.`
+  ? `PAYMENT COMPLETE: Your payment of $${event.price * registration.quantity} has been processed. You're all set!`
+  : `PAY AT DOOR: Please bring $${event.price * registration.quantity} (cash or card) to pay when you arrive at the event.`
 }
 
 ${event.special_notes ? `IMPORTANT NOTES: ${event.special_notes}` : ''}
@@ -184,6 +187,7 @@ interface SendRegistrationEmailParams {
     id: string;
     name: string;
     email: string;
+    quantity: number;
     payment_method: string;
     newsletter_signup: boolean;
   };
@@ -241,21 +245,40 @@ Modify the existing `supabase/functions/register/index.ts` to integrate email se
 ```typescript
 // Add these imports at the top
 import { sendRegistrationConfirmationEmail } from '../_shared/email-utils.ts';
-// Note: You may need to copy events.ts to the functions directory or use a different approach
-// to access the events data, as Deno can't directly import from the frontend src directory
 
-// After successful registration creation (around line 85-95):
+// After successful registration creation (around line 115-120):
 try {
-  // Find the event data from events.ts
-  const eventData = Object.values(events).find(e => e.id === event_id);
+  // Query event data from database with location
+  const { data: eventData, error: eventError } = await supabase
+    .from('events')
+    .select(`
+      id,
+      title,
+      date,
+      time,
+      price,
+      special_notes,
+      locations (
+        name,
+        street_address,
+        locality,
+        region,
+        postal_code
+      )
+    `)
+    .eq('id', event_id)
+    .single();
   
-  if (eventData) {
+  if (eventError) {
+    console.error('Failed to fetch event for email:', eventError);
+  } else if (eventData) {
     // Send confirmation email
     await sendRegistrationConfirmationEmail({
       registration: {
         id: registration.id,
         name: registration.name,
         email: registration.email,
+        quantity: registration.quantity,
         payment_method: registration.payment_method,
         newsletter_signup: registration.newsletter_signup,
       },
@@ -264,7 +287,10 @@ try {
         title: eventData.title,
         date: eventData.date,
         time: eventData.time,
-        location: eventData.location,
+        location: {
+          name: eventData.locations.name,
+          address: `${eventData.locations.street_address}, ${eventData.locations.locality}, ${eventData.locations.region} ${eventData.locations.postal_code}`,
+        },
         price: eventData.price,
         special_notes: eventData.special_notes,
       },
@@ -281,31 +307,26 @@ try {
 Optionally, create `supabase/functions/send-confirmation-email/index.ts` for manual email sending:
 
 ```typescript
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createSupabaseClient } from "../_shared/supabase.ts";
 import { sendRegistrationConfirmationEmail } from '../_shared/email-utils.ts';
-// Note: Copy events data to functions directory or fetch from database
-
-const supabase = createClient(
-  Deno.env.get('SUPABASE_URL') ?? '',
-  Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-);
+import { handleCors, jsonResponse } from "../_shared/utils.ts";
 
 Deno.serve(async (req) => {
+  // Handle CORS preflight requests
+  if (req.method === "OPTIONS") {
+    return handleCors();
+  }
+
   if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return jsonResponse({ error: 'Method not allowed' }, 405);
   }
 
   try {
+    const supabase = createSupabaseClient();
     const { registrationId } = await req.json();
 
     if (!registrationId) {
-      return new Response(JSON.stringify({ error: 'Registration ID is required' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return jsonResponse({ error: 'Registration ID is required' }, 400);
     }
 
     // Get registration details
@@ -317,19 +338,33 @@ Deno.serve(async (req) => {
 
     if (regError || !registration) {
       console.error('Failed to fetch registration:', regError);
-      return new Response(JSON.stringify({ error: 'Registration not found' }), {
-        status: 404,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return jsonResponse({ error: 'Registration not found' }, 404);
     }
 
-    // Find event data
-    const eventData = Object.values(events).find(e => e.id === registration.event_id);
-    if (!eventData) {
-      return new Response(JSON.stringify({ error: 'Event not found' }), {
-        status: 404,
-        headers: { 'Content-Type': 'application/json' },
-      });
+    // Query event data from database with location
+    const { data: eventData, error: eventError } = await supabase
+      .from('events')
+      .select(`
+        id,
+        title,
+        date,
+        time,
+        price,
+        special_notes,
+        locations (
+          name,
+          street_address,
+          locality,
+          region,
+          postal_code
+        )
+      `)
+      .eq('id', registration.event_id)
+      .single();
+
+    if (eventError || !eventData) {
+      console.error('Failed to fetch event:', eventError);
+      return jsonResponse({ error: 'Event not found' }, 404);
     }
 
     // Send email
@@ -338,6 +373,7 @@ Deno.serve(async (req) => {
         id: registration.id,
         name: registration.name,
         email: registration.email,
+        quantity: registration.quantity,
         payment_method: registration.payment_method,
         newsletter_signup: registration.newsletter_signup,
       },
@@ -346,24 +382,22 @@ Deno.serve(async (req) => {
         title: eventData.title,
         date: eventData.date,
         time: eventData.time,
-        location: eventData.location,
+        location: {
+          name: eventData.locations.name,
+          address: `${eventData.locations.street_address}, ${eventData.locations.locality}, ${eventData.locations.region} ${eventData.locations.postal_code}`,
+        },
         price: eventData.price,
         special_notes: eventData.special_notes,
       },
     });
 
-    return new Response(JSON.stringify({ 
+    return jsonResponse({ 
       success: true, 
       emailId: emailResult.id 
-    }), {
-      headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
     console.error('Email function error:', error);
-    return new Response(JSON.stringify({ error: 'Internal server error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return jsonResponse({ error: 'Internal server error' }, 500);
   }
 });
 ```
@@ -382,6 +416,8 @@ Deploy the new functions to Supabase:
 supabase functions deploy send-confirmation-email --no-verify-jwt
 supabase functions deploy register --no-verify-jwt  # Redeploy with email integration
 ```
+
+**Note:** The `register` function already exists and handles database-based events, so this redeploy will add email sending capability to the existing function.
 
 ### 8. Set Up DNS Records
 
