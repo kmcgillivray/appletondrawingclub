@@ -9,7 +9,7 @@
   let loading = true;
   let session: CheckoutSessionData | null = null;
   let error = '';
-  let eventData: { title: string; price: string; eventId: string } | null = null;
+  let eventData: { title: string; price: string; eventId: string; quantity: number } | null = null;
   
   onMount(async () => {
     const sessionId = page.url.searchParams.get('session_id');
@@ -27,10 +27,12 @@
       
       // Extract event data from session metadata
       if (session.metadata) {
+        const quantity = parseInt(session.metadata.quantity || '1', 10);
         eventData = {
           title: session.metadata.event_title || 'Unknown Event',
           price: formatPrice(session.amount_total),
-          eventId: session.metadata.event_id || ''
+          eventId: session.metadata.event_id || '',
+          quantity: isNaN(quantity) ? 1 : quantity
         };
       }
     } else {
@@ -55,12 +57,12 @@
     if (eventData?.eventId) {
       goto(`/events/${eventData.eventId}`);
     } else {
-      goto('/events');
+      goto('/calendar');
     }
   }
   
   function handleBackToEvents() {
-    goto('/events');
+    goto('/calendar');
   }
   
   function getMessageType() {
@@ -122,8 +124,9 @@
     <RegistrationMessages 
       type={getMessageType()}
       message={getErrorMessage()}
-      eventPrice={eventData ? parseFloat(eventData.price.replace('$', '')) : 0}
+      eventPrice={eventData ? parseFloat(eventData.price.replace('$', '')) / (eventData.quantity || 1) : 0}
       eventTitle={eventData?.title || 'Unknown Event'}
+      quantity={eventData?.quantity || 1}
     />
     
     <!-- Next steps -->
@@ -163,6 +166,7 @@
           </button>
         </div>
       {:else}
+        <!-- TODO: Update to an actual link -->
         <button 
           on:click={handleBackToEvents}
           class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium"

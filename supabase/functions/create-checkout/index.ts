@@ -29,6 +29,7 @@ Deno.serve(async (req): Promise<Response> => {
       email,
       newsletter_signup,
       price,
+      quantity,
       registration_id,
       website,
     } = await req.json();
@@ -46,6 +47,7 @@ Deno.serve(async (req): Promise<Response> => {
       name,
       email,
       price,
+      quantity,
     });
     if (validationError) {
       return jsonResponse({ error: validationError }, 400);
@@ -59,6 +61,14 @@ Deno.serve(async (req): Promise<Response> => {
     // Validate price
     if (typeof price !== "number" || price <= 0) {
       return jsonResponse({ error: "Invalid price" }, 400);
+    }
+
+    // Validate quantity
+    if (!quantity || quantity < 1 || quantity > 6) {
+      return jsonResponse(
+        { error: "Invalid quantity. Please select 1-6 people." },
+        400
+      );
     }
 
     // Find or create Stripe customer
@@ -78,7 +88,7 @@ Deno.serve(async (req): Promise<Response> => {
             },
             unit_amount: Math.round(price * 100), // Convert to cents
           },
-          quantity: 1,
+          quantity: quantity,
         },
       ],
       mode: "payment",
@@ -93,6 +103,7 @@ Deno.serve(async (req): Promise<Response> => {
         event_title,
         name,
         email,
+        quantity: quantity.toString(),
         newsletter_signup: newsletter_signup ? "true" : "false",
         customer_id: customerId,
         registration_id: registration_id || "",

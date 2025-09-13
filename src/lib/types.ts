@@ -42,6 +42,7 @@ export interface Registration {
   event_id: string;
   name: string;
   email: string;
+  quantity: number;
   payment_method: PaymentMethod;
   payment_status: PaymentStatus;
   newsletter_signup: boolean;
@@ -52,6 +53,7 @@ export interface Registration {
 export interface RegistrationFormData {
   name: string;
   email: string;
+  quantity: number;
   newsletter_signup: boolean;
 }
 

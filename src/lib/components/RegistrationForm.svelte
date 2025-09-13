@@ -10,6 +10,7 @@
   let form: RegistrationFormData & { payment_method: string } = {
     name: '',
     email: '',
+    quantity: 1,
     newsletter_signup: false,
     payment_method: 'online' // 'door' or 'online'
   };
@@ -72,6 +73,7 @@
         event_id: eventId,
         name: form.name,
         email: form.email,
+        quantity: form.quantity,
         payment_method: 'door',
         newsletter_signup: form.newsletter_signup,
         website: website // Anti-spam field
@@ -108,6 +110,7 @@
     type={form.payment_method === 'door' ? 'success-door' : 'success-online'}
     {eventPrice}
     {eventTitle}
+    quantity={form.quantity}
   />
 {:else}
   <form on:submit|preventDefault={handleSubmit} class="bg-white border border-gray-200 rounded-lg p-6 shadow-md">
@@ -139,36 +142,55 @@
       </div>
       
       <div>
-        <!-- TODO: Fix label -->
-        <label class="block font-bold text-gray-700 mb-3">Payment method *</label>
-        <div class="space-y-2">
-          <label for="payment-online" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
-            <input 
-              id="payment-online"
-              type="radio" 
-              bind:group={form.payment_method}
-              value="online"
-              disabled={loading}
-              class="w-3"
-            />
-            <span class="pl-3">
-              <strong>Pay online now</strong> - ${eventPrice} (secure payment with card)
-            </span>
-          </label>
-          <label for="payment-door" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
-            <input 
-              id="payment-door"
-              type="radio" 
-              bind:group={form.payment_method}
-              value="door"
-              disabled={loading}
-              class="w-3"
-            />
-            <span class="pl-3">
-              <strong>Pay at door</strong> - ${eventPrice} (cash at event)
-            </span>
-          </label>
-        </div>
+        <label for="quantity" class="block font-bold text-gray-700 mb-1">How many people? *</label>
+        <select
+          id="quantity"
+          bind:value={form.quantity}
+          required
+          disabled={loading}
+          class="w-full"
+        >
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
+          <option value={6}>6</option>
+        </select>
+      </div>
+      
+      <div>
+        <fieldset>
+          <legend class="block font-bold text-gray-700 mb-3">Payment method *</legend>
+          <div class="space-y-2">
+            <label for="payment-online" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input 
+                id="payment-online"
+                type="radio" 
+                bind:group={form.payment_method}
+                value="online"
+                disabled={loading}
+                class="w-3"
+              />
+              <span class="pl-3">
+                <strong>Pay online now</strong> - ${eventPrice * form.quantity} (secure payment with card)
+              </span>
+            </label>
+            <label for="payment-door" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input 
+                id="payment-door"
+                type="radio" 
+                bind:group={form.payment_method}
+                value="door"
+                disabled={loading}
+                class="w-3"
+              />
+              <span class="pl-3">
+                <strong>Pay at door</strong> - ${eventPrice * form.quantity} (cash at event)
+              </span>
+            </label>
+          </div>
+        </fieldset>
       </div>
       
       <div class="flex items-center">
@@ -234,6 +256,7 @@
   formData={{
     name: form.name,
     email: form.email,
+    quantity: form.quantity,
     newsletter_signup: form.newsletter_signup,
     website: website
   }}
