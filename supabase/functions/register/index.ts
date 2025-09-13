@@ -10,7 +10,6 @@ import type {
   RegistrationResponse,
 } from "../_shared/types.ts";
 import { findOrCreateCustomer } from "../_shared/stripe-customer.ts";
-import { PostgrestError } from "https://esm.sh/@supabase/postgrest-js@1.21.4/dist/cjs/index.d.ts";
 
 Deno.serve(async (req): Promise<Response> => {
   // Handle CORS preflight requests
