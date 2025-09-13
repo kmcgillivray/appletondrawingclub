@@ -29,6 +29,7 @@ Deno.serve(async (req): Promise<Response> => {
       event_id,
       name,
       email,
+      quantity,
       payment_method,
       newsletter_signup,
       processing_status,
@@ -46,10 +47,19 @@ Deno.serve(async (req): Promise<Response> => {
       event_id,
       name,
       email,
+      quantity,
       payment_method,
     });
     if (validationError) {
       return jsonResponse({ error: validationError }, 400);
+    }
+
+    // Validate quantity
+    if (!quantity || quantity < 1 || quantity > 6) {
+      return jsonResponse(
+        { error: "Invalid quantity. Please select 1-6 people." },
+        400
+      );
     }
 
     // Validate email format
@@ -68,6 +78,7 @@ Deno.serve(async (req): Promise<Response> => {
           event_id,
           name,
           email,
+          quantity,
           payment_method,
           payment_status: "pending",
           newsletter_signup: newsletter_signup || false,

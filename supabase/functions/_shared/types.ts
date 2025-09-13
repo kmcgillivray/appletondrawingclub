@@ -3,6 +3,7 @@ export interface RegistrationRequest {
   event_id: string;
   name: string;
   email: string;
+  quantity: number; // Number of people (1-6)
   payment_method: string;
   newsletter_signup: boolean;
   processing_status?: string; // For creating pending registrations
@@ -14,6 +15,7 @@ export interface Registration {
   event_id: string;
   name: string;
   email: string;
+  quantity: number;
   payment_method: string;
   payment_status: string;
   newsletter_signup: boolean;

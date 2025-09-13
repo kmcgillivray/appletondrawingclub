@@ -3,6 +3,7 @@
   export let message = '';
   export let eventPrice = 0;
   export let eventTitle = '';
+  export let quantity = 1;
 </script>
 
 {#if type === 'success-door'}
@@ -16,8 +17,8 @@
       <div class="ml-3">
         <h3 class="text-xl font-bold text-green-800 mb-2">Registration successful!</h3>
         <div class="text-green-700 space-y-2">
-          <p>You're registered for <strong>{eventTitle}</strong>.</p>
-          <p><strong>Payment:</strong> Please bring ${eventPrice} to pay at the door.</p>
+          <p>You're registered for <strong>{eventTitle}</strong> - {quantity} {quantity === 1 ? 'person' : 'people'}.</p>
+          <p><strong>Payment:</strong> Please bring ${eventPrice * quantity} to pay at the door.</p>
           <p><strong>Confirmation:</strong> We'll send you a confirmation email with event details and reminders.</p>
           <p>✍️ <strong>What to bring:</strong> Just yourself and your favorite art supplies!</p>
           <p>❓ <strong>Questions?</strong> Visit our <a href="/contact" class="text-green-600 hover:text-green-700 font-medium underline">contact page</a> to get in touch.</p>
@@ -36,7 +37,7 @@
       <div class="ml-3">
         <h3 class="text-2xl font-bold text-green-800 mb-2">You're all set!</h3>
         <div class="text-green-700 space-y-2">
-          <p>You're registered for <strong>{eventTitle}</strong> and your payment of ${eventPrice} has been processed.</p>
+          <p>You're registered for <strong>{eventTitle}</strong> - {quantity} {quantity === 1 ? 'person' : 'people'} - and your payment of ${eventPrice * quantity} has been processed.</p>
           <p>📧 <strong>Confirmation:</strong> Check your email for your receipt and event details.</p>
           <p>🎨 <strong>What to bring:</strong> Just yourself and your favorite art supplies!</p>
           <p>📍 <strong>Location & timing:</strong> Check your confirmation email for address and arrival details.</p>

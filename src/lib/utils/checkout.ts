@@ -9,6 +9,7 @@ export interface CheckoutSessionData {
     event_title?: string;
     name?: string;
     email?: string;
+    quantity?: string;
     newsletter_signup?: string;
   };
   customer_email?: string;

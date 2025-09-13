@@ -10,6 +10,7 @@
   export let formData: {
     name: string;
     email: string;
+    quantity: number;
     newsletter_signup: boolean;
     website?: string;
   };
@@ -74,6 +75,7 @@
             event_id: eventId,
             name: formData.name,
             email: formData.email,
+            quantity: formData.quantity,
             payment_method: 'online',
             newsletter_signup: formData.newsletter_signup,
             processing_status: 'pending',
@@ -105,6 +107,7 @@
             email: formData.email,
             newsletter_signup: formData.newsletter_signup,
             price: eventPrice,
+            quantity: formData.quantity,
             registration_id: registrationId,
             website: formData.website || '' // Anti-spam field
           })
