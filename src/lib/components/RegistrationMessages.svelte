@@ -34,7 +34,7 @@
         </svg>
       </div>
       <div class="ml-3">
-        <h3 class="text-lg font-bold text-green-800 mb-2">Payment Successful!</h3>
+        <h3 class="text-2xl font-bold text-green-800 mb-2">You're all set!</h3>
         <div class="text-green-700 space-y-2">
           <p>You're registered for <strong>{eventTitle}</strong> and your payment of ${eventPrice} has been processed.</p>
           <p>📧 <strong>Confirmation:</strong> Check your email for your receipt and event details.</p>

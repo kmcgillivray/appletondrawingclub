@@ -14,6 +14,7 @@ const config = {
       handleHttpError: ({ message }) => {
         throw new Error(message);
       },
+      handleUnseenRoutes: "warn",
     },
   },
 };
