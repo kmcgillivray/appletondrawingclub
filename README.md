@@ -53,21 +53,8 @@ A modern SvelteKit website for the Appleton Drawing Club featuring static conten
 
 2. **Set up environment variables**
 
-   Copy `.env.local.example` to `.env.local` and configure:
-
-   ```env
-   # Supabase Configuration
-   VITE_SUPABASE_URL=your_supabase_project_url
-   VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
-
-   # Stripe Configuration
-   VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
-
-   # For Edge Functions (server-side only)
-   SB_SECRET_KEY=your_supabase_secret_key
-   STRIPE_SECRET_KEY=sk_test_...
-   STRIPE_WEBHOOK_SECRET=whsec_...
-   ```
+   Copy `.env.local.example` to `.env.local` and fill in your actual values.
+   See the example file for detailed descriptions of each variable.
 
 3. **Set up Supabase**
 
@@ -164,15 +151,11 @@ npm run preview
 
 ```bash
 # Deploy all Edge Functions
-supabase functions deploy register --no-verify-jwt
-supabase functions deploy create-checkout --no-verify-jwt  
-supabase functions deploy stripe-webhook --no-verify-jwt
-supabase functions deploy get-checkout-session --no-verify-jwt
+supabase functions deploy --no-verify-jwt
 
-# Set environment variables in Supabase dashboard
-supabase secrets set SB_SECRET_KEY=your_supabase_secret_key
-supabase secrets set STRIPE_SECRET_KEY=sk_test_...
-supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_...
+# Set up Edge Functions environment variables
+# Copy supabase/functions/.env.example to supabase/functions/.env
+# Then configure in Supabase dashboard or use the local .env file
 ```
 
 ### Stripe Webhook Configuration
@@ -189,6 +172,7 @@ The registration system supports both online payment and pay-at-door options:
 ### Payment Options
 
 **Online Payment (Stripe)**:
+
 1. User selects "Pay Online" option
 2. Stripe embedded checkout opens in modal
 3. Secure card payment processing
@@ -196,6 +180,7 @@ The registration system supports both online payment and pay-at-door options:
 5. Webhook handles database updates
 
 **Pay at Door**:
+
 1. User selects "Pay at Door" option
 2. Registration is created with pending status
 3. User pays cash/card at the event
@@ -257,18 +242,12 @@ scripts/
 
 ## Environment Variables
 
-### Required for Frontend
+Environment variables are documented in the example files:
 
-- `VITE_SUPABASE_URL` - Your Supabase project URL
-- `VITE_SUPABASE_PUBLISHABLE_KEY` - Supabase publishable key for client-side requests
-- `VITE_STRIPE_PUBLISHABLE_KEY` - Stripe publishable key for client-side payments
+- **Frontend variables**: See `.env.local.example` for SvelteKit configuration
+- **Edge Functions variables**: See `supabase/functions/.env.example` for backend services
 
-### Required for Edge Functions
-
-- `SB_SECRET_KEY` - Supabase secret key for server-side database operations
-- `SUPABASE_URL` - Your Supabase project URL (same as VITE_SUPABASE_URL)
-- `STRIPE_SECRET_KEY` - Stripe secret key for server-side payment processing
-- `STRIPE_WEBHOOK_SECRET` - Stripe webhook signing secret for payment verification
+Copy the example files and fill in your actual values.
 
 ## Contributing
 

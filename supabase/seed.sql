@@ -3,7 +3,7 @@
 
 -- Insert The Photo Opp Studio location (using fixed UUID for consistency)
 INSERT INTO locations (id, name, street_address, locality, region, postal_code) VALUES
-  ('550e8400-e29b-41d4-a716-446655440000', 'The Photo Opp Studio', '123 Main St', 'Appleton', 'WI', '54911')
+  ('550e8400-e29b-41d4-a716-446655440000', 'The Photo Opp Studio', '621 N Bateman Street', 'Appleton', 'WI', '54911')
 ON CONFLICT (id) DO NOTHING;
 
 -- Insert test event data (from src/routes/events/test-event/+page.svelte)

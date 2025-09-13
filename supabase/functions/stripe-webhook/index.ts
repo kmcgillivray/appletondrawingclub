@@ -1,6 +1,7 @@
 import Stripe from "https://esm.sh/stripe@14.21.0";
 import { createSupabaseClient } from "../_shared/supabase.ts";
 import { handleCors } from "../_shared/utils.ts";
+import { sendRegistrationConfirmationEmail } from "../_shared/email-utils.ts";
 
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") ?? "", {
   apiVersion: "2023-10-16",
@@ -120,7 +121,63 @@ async function handleCheckoutCompleted(stripeEvent: Stripe.Event) {
 
   console.log("Registration updated successfully:", registration.id);
 
-  // TODO: Send confirmation email (will be implemented in ADC-05)
+  // Send confirmation email for completed payment
+  try {
+    // Query event data from database with location
+    const { data: eventData, error: eventError } = await supabase
+      .from('events')
+      .select(`
+        id,
+        title,
+        date,
+        time,
+        price,
+        special_notes,
+        location:locations (
+          name,
+          street_address,
+          locality,
+          region,
+          postal_code
+        )
+      `)
+      .eq('id', registration.event_id)
+      .single();
+    
+    if (eventError) {
+      console.error('Failed to fetch event for email:', eventError);
+    } else if (eventData && eventData.location) {
+      // TODO: Fix typing returns from Supabase queries
+      const location = eventData.location as any;
+      // Send confirmation email
+      await sendRegistrationConfirmationEmail({
+        registration: {
+          id: registration.id,
+          name: registration.name,
+          email: registration.email,
+          quantity: registration.quantity,
+          payment_method: registration.payment_method,
+          newsletter_signup: registration.newsletter_signup,
+        },
+        event: {
+          id: eventData.id,
+          title: eventData.title,
+          date: eventData.date,
+          time: eventData.time,
+          location: {
+            name: location.name,
+            address: `${location.street_address}, ${location.locality}, ${location.region} ${location.postal_code}`,
+          },
+          price: eventData.price,
+          special_notes: eventData.special_notes,
+        },
+      });
+      console.log('Confirmation email sent for registration:', registration.id);
+    }
+  } catch (emailError) {
+    console.error('Failed to send confirmation email:', emailError);
+    // Don't fail the webhook if email fails - just log it
+  }
 }
 
 function handlePaymentFailed(paymentIntent: Stripe.PaymentIntent) {

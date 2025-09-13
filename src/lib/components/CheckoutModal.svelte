@@ -65,6 +65,7 @@
       
       // Create pending registration first
       if (!registrationId) {
+        // TODO: Improve request and response typing
         const registrationResponse = await fetch(`${supabaseUrl}/functions/v1/register`, {
           method: 'POST',
           headers: { 
@@ -78,7 +79,6 @@
             quantity: formData.quantity,
             payment_method: 'online',
             newsletter_signup: formData.newsletter_signup,
-            processing_status: 'pending',
             website: formData.website || ''
           })
         });
