@@ -1,43 +1,12 @@
 <script lang="ts">
-  import type { Event } from '$lib/types';
   import RegistrationForm from '$lib/components/RegistrationForm.svelte';
   import { renderMarkdown } from '$lib/utils/markdown';
+  import type { Event } from '$lib/types';
+
+  // Get event data from load function
+  export let data: { event: Event };
   
-  // Test event data - hardcoded for now, will be replaced with dynamic data later
-  const event: Event = {
-    id: 'test-event',
-    title: 'Mixed Pose Life Drawing',
-    date: '2024-03-14',
-    time: '7:00-9:00PM',
-    doors_open: '6:30PM',
-    location: {
-      name: 'The Photo Opp Studio',
-      address: {
-        streetAddress: '123 Main St',
-        addressLocality: 'Appleton',
-        addressRegion: 'WI',
-        postalCode: '54911'
-      }
-    },
-    model: 'Professional model',
-    session_leader: 'Kevin McGillivray',
-    price: 15.00,
-    capacity: 20,
-    event_type: 'figure_drawing',
-    special_notes: 'Bring your own drawing materials',
-    summary: 'Mixed pose life drawing session with professional model. Perfect for all skill levels.',
-    description: `Join us for an **evening of life drawing** with mixed poses ranging from quick gesture sketches to longer studies. 
-
-This is a perfect opportunity for artists of all skill levels to practice their figure drawing techniques in a supportive, welcoming environment.
-
-### What to Expect
-- **Warm-up sketches** (2-5 minutes)
-- **Medium poses** (10-15 minutes) 
-- **Long pose** (20+ minutes)
-- All drawing materials provided
-- Friendly, supportive atmosphere`,
-    image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1703199034/IMG_8034_ab2tov.jpg'
-  };
+  const event = data.event;
 
   // Format date for display
   const formatDate = (dateString: string) => {
@@ -95,7 +64,7 @@ This is a perfect opportunity for artists of all skill levels to practice their 
     "description": event.summary,
     "offers": {
       "@type": "Offer",
-      "url": "https://appletondrawingclub.com/events/test-event",
+      "url": `https://appletondrawingclub.com/events/${event.id}`,
       "price": event.price.toString(),
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock"
@@ -174,6 +143,12 @@ This is a perfect opportunity for artists of all skill levels to practice their 
             <div class="text-lg">{event.session_leader}</div>
           </div>
         {/if}
+        {#if event.instructor}
+          <div>
+            <strong class="text-gray-700">Instructor</strong>
+            <div class="text-lg">{event.instructor}</div>
+          </div>
+        {/if}
       </div>
     </div>
 
@@ -184,10 +159,12 @@ This is a perfect opportunity for artists of all skill levels to practice their 
           <strong class="text-gray-700">Price</strong>
           <div class="text-2xl font-bold text-green-700">${event.price}</div>
         </div>
-        <div>
-          <strong class="text-gray-700">Capacity</strong>
-          <div class="text-lg">{event.capacity} artists</div>
-        </div>
+        {#if event.capacity}
+          <div>
+            <strong class="text-gray-700">Capacity</strong>
+            <div class="text-lg">{event.capacity} artists</div>
+          </div>
+        {/if}
       </div>
       
       <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
