@@ -1,5 +1,5 @@
 ---
-title: Long Pose Potrait Drawing
+title: Long Pose Portrait Drawing
 date: "2025-09-24"
 time: 7:00PM-9:00PM
 location_id: 0cb8c569-eb60-49ed-a09a-93a47d5df79b
