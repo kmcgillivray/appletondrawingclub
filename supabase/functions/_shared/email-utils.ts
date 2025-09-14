@@ -22,7 +22,7 @@ interface SendRegistrationEmailParams {
       address: string;
     };
     price: number;
-    special_notes?: string;
+    special_notes: string | null;
   };
 }
 

@@ -147,9 +147,6 @@ Deno.serve(async (req): Promise<Response> => {
         if (eventError) {
           console.error("Failed to fetch event for email:", eventError);
         } else if (eventData && eventData.location) {
-          // TODO: Fix typing returns from Supabase queries
-          const location = eventData.location as any;
-          // Send confirmation email
           await sendRegistrationConfirmationEmail({
             registration: {
               id: registration.id,
@@ -157,7 +154,7 @@ Deno.serve(async (req): Promise<Response> => {
               email: registration.email,
               quantity: registration.quantity,
               payment_method: registration.payment_method,
-              newsletter_signup: registration.newsletter_signup,
+              newsletter_signup: registration.newsletter_signup || false,
             },
             event: {
               id: eventData.id,
@@ -165,8 +162,8 @@ Deno.serve(async (req): Promise<Response> => {
               date: eventData.date,
               time: eventData.time,
               location: {
-                name: location.name,
-                address: `${location.street_address}, ${location.locality}, ${location.region} ${location.postal_code}`,
+                name: eventData.location.name,
+                address: `${eventData.location.street_address}, ${eventData.location.locality}, ${eventData.location.region} ${eventData.location.postal_code}`,
               },
               price: eventData.price,
               special_notes: eventData.special_notes,
@@ -192,7 +189,7 @@ Deno.serve(async (req): Promise<Response> => {
 
     const response: RegistrationResponse = {
       success: true,
-      registration: registration,
+      registration,
     };
 
     return jsonResponse(response);

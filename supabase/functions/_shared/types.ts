@@ -1,3 +1,5 @@
+import { Database } from "./database.types.ts";
+
 // Registration-related types for Edge Functions
 export interface RegistrationRequest {
   event_id: string;
@@ -9,21 +11,7 @@ export interface RegistrationRequest {
   website?: string; // Honeypot field - should be empty for legitimate users
 }
 
-export interface Registration {
-  id: string;
-  event_id: string;
-  name: string;
-  email: string;
-  quantity: number;
-  payment_method: string;
-  payment_status: string;
-  newsletter_signup: boolean;
-  stripe_customer_id: string;
-  stripe_event_id?: string;
-  stripe_session_id?: string;
-  processing_status: string;
-  created_at: string;
-}
+export type Registration = Database["public"]["Tables"]["registrations"]["Row"];
 
 export interface ApiResponse<T = any> {
   success: boolean;
