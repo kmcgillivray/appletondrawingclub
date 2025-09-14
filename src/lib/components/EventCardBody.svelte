@@ -8,7 +8,7 @@
   const isFreeEvent = event.price === 0;
   const isComingSoon = event.status === 'coming_soon';
   const priceString = isFreeEvent ? 'Free' : `$${event.price}`;
-  const buttonText = isComingSoon ? 'Coming soon' : `${priceString}  Reserve your spot`;
+  const buttonText = isComingSoon ? 'Coming soon' : `${priceString} – Reserve your spot`;
 </script>
 
 {#if event.image_url}
