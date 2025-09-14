@@ -15,7 +15,7 @@
   
   {#if data.upcomingEvents.length > 0}
     <h2>Upcoming Events</h2>
-    <ul class="grid md:grid-cols-2 gap-4 list-none">
+    <ul class="ml-0 grid md:grid-cols-2 gap-4 list-none">
       {#each data.upcomingEvents as event}
         <EventCard {event} />
       {/each}

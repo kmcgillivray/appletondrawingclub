@@ -2,25 +2,14 @@
   import RegistrationForm from '$lib/components/RegistrationForm.svelte';
   import { renderMarkdown } from '$lib/utils/markdown';
   import type { Event } from '$lib/types';
+  import { formatEventDate } from '$lib/utils/events';
 
   // Get event data from load function
   export let data: { event: Event };
   
   const event = data.event;
 
-  // Format date for display
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    // Set to Chicago time zone for display
-    return date.toLocaleDateString('en-US', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
-
-  const formattedDate = formatDate(event.date);
+  const formattedDate = formatEventDate(event.date);
   
   // Format location for display
   const formatLocation = (location: Event['location']) => {
