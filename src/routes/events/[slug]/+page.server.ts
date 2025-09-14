@@ -39,7 +39,7 @@ export async function load({ params }) {
     };
   } catch (err) {
     // Re-throw SvelteKit errors (like 404)
-    if (err && typeof err === 'object' && 'status' in err) {
+    if (err && typeof err === "object" && "status" in err) {
       throw err;
     }
 
