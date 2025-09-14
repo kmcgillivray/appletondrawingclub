@@ -74,7 +74,18 @@
 
 <div class="container mx-auto px-4 py-8 max-w-4xl">
   <!-- Hero Section -->
-  <div class="mb-8">
+  <div class="mb-8 text-center">
+    <div class="mb-3">
+      {#if event.event_type === 'workshop'}
+        <span class="px-2 py-1 bg-blue-100 text-blue-900 rounded-full">Workshop</span>
+      {:else if event.event_type === 'portrait'}
+        <span class="px-2 py-1 bg-purple-100 text-purple-900 rounded-full">Portrait Session</span>
+      {:else  if event.event_type === 'figure_drawing'}
+        <span class="px-2 py-1 bg-green-100 text-green-900 rounded-full">Figure Drawing</span>
+      {:else}
+        <span class="px-2 py-1 bg-gray-100 text-gray-900 rounded-full">{event.event_type}</span>
+      {/if}
+    </div>
     <h1 class="text-4xl md:text-5xl font-bold text-green-900 text-center mb-3">
       {event.title}
     </h1>
@@ -101,7 +112,17 @@
       <div class="space-y-3">
         <div>
           <strong class="text-gray-700">Event Type</strong>
-          <div class="text-lg capitalize">{event.event_type.replace('_', ' ')}</div>
+          <div class="capitalize mt-1">
+            {#if event.event_type === 'workshop'}
+              <span class="px-2 py-1 bg-blue-100 text-blue-900 rounded-full">Workshop</span>
+            {:else if event.event_type === 'portrait'}
+              <span class="px-2 py-1 bg-purple-100 text-purple-900 rounded-full">Portrait Session</span>
+            {:else  if event.event_type === 'figure_drawing'}
+              <span class="px-2 py-1 bg-green-100 text-green-900 rounded-full">Figure Drawing</span>
+            {:else}
+              <span class="px-2 py-1 bg-gray-100 text-gray-900 rounded-full">{event.event_type}</span>
+            {/if}
+          </div>
         </div>
         <div>
           <strong class="text-gray-700">Date</strong>
@@ -162,8 +183,32 @@
       </div>
     </div>
 
-    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">      
-      <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
+    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">    
+      {#if event.status === 'coming_soon'}
+        <div class="text-center py-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming Soon!</h2>
+          <p class="text-gray-700 mb-6">This event is not yet open for registration. Please check back later!</p>
+          <button
+            class="bg-gray-400 text-white px-6 py-2 rounded-lg font-medium cursor-not-allowed"
+            disabled
+          >
+            Coming Soon
+          </button>
+        </div>
+      {/if}
+      {#if event.status === 'completed'}
+        <div class="text-center py-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Event Completed</h2>
+          <p class="text-gray-700 mb-6">This event has already taken place. Please check out our upcoming events!</p>
+          <a href="/events" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium">
+            View Upcoming Events
+          </a>
+        </div>
+      {/if}
+
+      {#if event.status === 'registration_open'}
+        <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
+      {/if}
     </div>
   </div>
 
@@ -185,7 +230,31 @@
 
   <!-- Registration Section -->
   <div class="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-200">
-    <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
+    {#if event.status === 'coming_soon'}
+      <div class="text-center py-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming Soon!</h2>
+        <p class="text-gray-700 mb-6">This event is not yet open for registration. Please check back later!</p>
+        <button
+          class="bg-gray-400 text-white px-6 py-2 rounded-lg font-medium cursor-not-allowed"
+          disabled
+        >
+          Coming Soon
+        </button>
+      </div>
+    {/if}
+    {#if event.status === 'completed'}
+      <div class="text-center py-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Event Completed</h2>
+        <p class="text-gray-700 mb-6">This event has already taken place. Please check out our upcoming events!</p>
+        <a href="/events" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium">
+          View Upcoming Events
+        </a>
+      </div>
+    {/if}
+
+    {#if event.status === 'registration_open'}
+      <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
+    {/if}
   </div>
 
   <div class="my-8 border-l-4 border-blue-400 p-6">
