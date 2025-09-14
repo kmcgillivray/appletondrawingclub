@@ -4,6 +4,8 @@
   export let eventPrice = 0;
   export let eventTitle = '';
   export let quantity = 1;
+
+  const isFreeEvent = eventPrice === 0;
 </script>
 
 {#if type === 'success-door'}
@@ -18,7 +20,9 @@
         <h3 class="text-xl font-bold text-green-800 mb-2">Registration successful!</h3>
         <div class="text-green-700 space-y-2">
           <p>You're registered for <strong>{eventTitle}</strong> - {quantity} {quantity === 1 ? 'person' : 'people'}.</p>
-          <p><strong>Payment:</strong> Please bring ${eventPrice * quantity} to pay at the door.</p>
+          {#if !isFreeEvent}
+            <p><strong>Payment:</strong> Please bring ${eventPrice * quantity} to pay at the door.</p>
+          {/if}
           <p><strong>Confirmation:</strong> We'll send you a confirmation email with event details and reminders.</p>
           <p>✍️ <strong>What to bring:</strong> Just yourself and your favorite art supplies!</p>
           <p>❓ <strong>Questions?</strong> Visit our <a href="/contact" class="text-green-600 hover:text-green-700 font-medium underline">contact page</a> to get in touch.</p>
