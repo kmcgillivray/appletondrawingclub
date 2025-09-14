@@ -39,7 +39,7 @@ const eventSchema = z.object({
     "workshop",
     "special_event",
   ]),
-  status: z.enum(["registration_open", "completed"]),
+  status: z.enum(["registration_open", "completed", "coming_soon"]),
   special_notes: z.string().optional(),
   summary: z.string().min(1).max(300),
   description: z.string().min(1),
