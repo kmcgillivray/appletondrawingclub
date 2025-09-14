@@ -3,6 +3,51 @@ import type { Event } from "$lib/types";
 export const eventsData: { events: Event[] } = {
   events: [
     {
+      id: "2025-10-08-intro-to-life-drawing",
+      title: "Introduction to Life Drawing",
+      image_url:
+        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg",
+      date: "2025-10-08",
+      time: "7:00-9:00PM",
+      location: {
+        name: "The Photo Opp Studio",
+        address: {
+          streetAddress: "621 N Bateman Street",
+          addressLocality: "Appleton",
+          addressRegion: "WI",
+          postalCode: "54911",
+        },
+      },
+      summary: "Details coming soon!",
+      description: "Details coming soon!",
+      price: 35,
+      event_type: "workshop",
+      instructor: "Kevin McGillivray",
+      status: "coming_soon",
+    },
+    {
+      id: "2025-10-22-mixed-pose-figure-drawing",
+      title: "Mixed Pose Figure Drawing",
+      image_url:
+        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727289295/IMG_0309_l7lv9x.jpg",
+      date: "2025-10-22",
+      time: "7:00-9:00PM",
+      location: {
+        name: "The Photo Opp Studio",
+        address: {
+          streetAddress: "621 N Bateman Street",
+          addressLocality: "Appleton",
+          addressRegion: "WI",
+          postalCode: "54911",
+        },
+      },
+      summary: "Details coming soon!",
+      description: "Details coming soon!",
+      price: 15,
+      event_type: "figure_drawing",
+      status: "coming_soon",
+    },
+    {
       id: "mixed-pose-life-drawing-2025-08-27",
       title: "Mixed Pose Life Drawing",
       date: "2025-08-27",

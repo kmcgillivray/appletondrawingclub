@@ -9,7 +9,7 @@
     const [year, month, day] = dateString.split('-');
     const chicagoDateString = `${year}-${month}-${day}T12:00:00`;
     const dateObj = new Date(chicagoDateString);
-    
+
     return dateObj.toLocaleDateString('en-US', { 
       weekday: 'short', 
       month: 'short', 
@@ -26,7 +26,7 @@
     </span>
     <a 
       href={nextEvent.url} 
-      target={nextEvent.url.startsWith('http') ? '_blank' : undefined}
+      target={nextEvent.url?.startsWith('http') ? '_blank' : undefined}
       class="ml-2"
     >
       Reserve your spot →

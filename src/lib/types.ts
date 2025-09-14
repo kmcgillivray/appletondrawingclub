@@ -9,8 +9,12 @@ export interface EventLocation {
   };
 }
 
-export type EventType = 'figure_drawing' | 'portrait' | 'workshop' | 'special_event';
-export type EventStatus = 'registration_open' | 'completed';
+export type EventType =
+  | "figure_drawing"
+  | "portrait"
+  | "workshop"
+  | "special_event";
+export type EventStatus = "registration_open" | "completed" | "coming_soon";
 
 export interface Event {
   id: string;
@@ -34,8 +38,8 @@ export interface Event {
 }
 
 // Registration-related types (for ADC-02)
-export type PaymentMethod = 'door' | 'online';
-export type PaymentStatus = 'pending' | 'completed';
+export type PaymentMethod = "door" | "online";
+export type PaymentStatus = "pending" | "completed";
 
 export interface Registration {
   id: string;
