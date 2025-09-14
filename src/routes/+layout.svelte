@@ -19,7 +19,7 @@
 <header class="mx-auto my-8 px-4 max-w-prose">
 	<h1 class="pb-3 text-2xl font-bold text-green-700"><a href="/" class="no-underline">Appleton Drawing Club</a></h1>
 	<nav class="py-3 mb-3">
-		<ul class="flex flex-wrap gap-5 text-lg list-none">
+		<ul class="ml-0 flex flex-wrap gap-5 text-lg list-none">
 			<li class="mb-0"><a href="/calendar" class="text-green-600 hover:text-green-700">Events</a></li>
 			<li class="mb-0"><a href="/modeling" class="text-green-600 hover:text-green-700">For models</a></li>
 			<li class="mb-0"><a href="/faq" class="text-green-600 hover:text-green-700">FAQs</a></li>
@@ -61,7 +61,7 @@
 
 <footer class="mx-auto my-8 px-4 max-w-prose text-center">
 	<nav class="py-3 mb-3">
-		<ul class="md:flex gap-3 list-none justify-center">
+		<ul class="ml-0 md:flex gap-3 list-none justify-center">
 			<li class="mb-2"><a href="/calendar" class="text-green-600 underline hover:text-green-700">Events</a></li>
 			<li class="mb-2"><a href="/modeling" class="text-green-600 underline hover:text-green-700">For models</a></li>
 			<li class="mb-2"><a href="/faq" class="text-green-600 underline hover:text-green-700">FAQs</a></li>

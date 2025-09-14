@@ -6,13 +6,15 @@
   export let eventId: string;
   export let eventPrice: number;
   export let eventTitle: string;
+
+  const isFreeEvent = eventPrice === 0;
   
   let form: RegistrationFormData & { payment_method: string } = {
     name: '',
     email: '',
     quantity: 1,
     newsletter_signup: false,
-    payment_method: 'online' // 'door' or 'online'
+    payment_method: isFreeEvent ? 'door' : 'online' // 'door' or 'online'
   };
 
   // Should remain empty for legitimate users
@@ -113,7 +115,7 @@
     quantity={form.quantity}
   />
 {:else}
-  <form on:submit|preventDefault={handleSubmit} class="bg-white border border-gray-200 rounded-lg p-6 shadow-md">
+  <form on:submit|preventDefault={handleSubmit}>
     <h3 class="text-2xl font-bold text-green-900 mb-4">Reserve your spot</h3>
     
     <div class="space-y-4">
@@ -159,6 +161,7 @@
         </select>
       </div>
       
+      {#if !isFreeEvent}
       <div>
         <fieldset>
           <legend class="block font-bold text-gray-700 mb-3">Payment method *</legend>
@@ -192,6 +195,7 @@
           </div>
         </fieldset>
       </div>
+      {/if}
       
       <div class="flex items-center">
         <input 
@@ -241,7 +245,11 @@
           Processing...
         </span>
       {:else}
-        {form.payment_method === 'online' ? 'Pay Online & Register' : 'Reserve Spot (Pay at Door)'}
+        {#if isFreeEvent}
+          Reserve spot - <span class="italic">free</span>
+        {:else}
+          {form.payment_method === 'online' ? 'Pay online & register' : 'Reserve spot (pay at door)'}
+        {/if}
       {/if}
     </button>
   </form>

@@ -29,9 +29,9 @@
 </div>
 
 <section class="mx-auto my-8 px-4 max-w-prose">
-  <h2 id="events" class="pb-3 text-xl font-bold text-green-700">Upcoming Events</h2>
+  <h2 id="events" class="pb-4 text-3xl font-bold text-green-700">Upcoming Events</h2>
   {#if displayEvents.length > 0}
-    <ul class="grid md:grid-cols-2 gap-4 list-none">
+    <ul class="ml-0 grid md:grid-cols-2 gap-4 list-none">
       {#each displayEvents as event (event.url)}
         <EventCard {event} />
       {/each}
@@ -53,9 +53,9 @@
 </section>
 
 <section class="mx-auto my-8 px-4 max-w-prose">
-  <h2 class="pt-3 pb-3 text-xl font-bold text-green-700">Blog posts & inspiration</h2>
+  <h2 class="pt-3 pb-4 text-3xl font-bold text-green-700">Blog posts & inspiration</h2>
 
-  <ul class="grid md:grid-cols-1 gap-4 list-none">
+  <ul class="ml-0 grid md:grid-cols-1 gap-4 list-none">
     {#each blogPosts as post}
       <BlogPostCard {post} />
     {/each}

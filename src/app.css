@@ -57,6 +57,7 @@
     @apply pb-3;
   }
 
+  ul,
   .bullet {
     list-style: disc;
     @apply ml-6;

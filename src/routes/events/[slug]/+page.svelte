@@ -11,6 +11,7 @@
   // Format date for display
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
+    // Set to Chicago time zone for display
     return date.toLocaleDateString('en-US', { 
       weekday: 'long', 
       year: 'numeric', 
@@ -107,7 +108,7 @@
   <!-- Event Information Grid -->
   <div class="grid md:grid-cols-2 gap-6 mb-8">
     <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-      <h2 class="text-xl font-bold text-green-900 mb-4">Event Details</h2>
+      <h2 class="text-2xl font-bold text-green-900 mb-4">Event Details</h2>
       <div class="space-y-3">
         <div>
           <strong class="text-gray-700">Event Type</strong>
@@ -116,9 +117,6 @@
         <div>
           <strong class="text-gray-700">Date</strong>
           <div class="text-lg">{formattedDate}</div>
-        </div>
-        <div>
-          <strong class="text-gray-700">Time</strong>
           <div class="text-lg">{event.time}</div>
         </div>
         {#if event.doors_open}
@@ -129,7 +127,14 @@
         {/if}
         <div>
           <strong class="text-gray-700">Location</strong>
-          <div class="text-lg">{formattedLocation}</div>
+          <div class="text-lg">
+            {event.location.name}<br />
+            {event.location.address.streetAddress}<br />
+            {event.location.address.addressLocality}, {event.location.address.addressRegion} {event.location.address.postalCode}<br />
+            <a href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(event.location.address.streetAddress + ', ' + event.location.address.addressLocality + ', ' + event.location.address.addressRegion)} target="_blank" rel="noopener noreferrer">
+              View on Google Maps
+              </a>
+          </div>
         </div>
         {#if event.model}
           <div>
@@ -149,31 +154,33 @@
             <div class="text-lg">{event.instructor}</div>
           </div>
         {/if}
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-      <h2 class="text-xl font-bold text-green-900 mb-4">Pricing & Registration</h2>
-      <div class="space-y-3 mb-6">
-        <div>
-          <strong class="text-gray-700">Price</strong>
-          <div class="text-2xl font-bold text-green-700">${event.price}</div>
-        </div>
         {#if event.capacity}
           <div>
             <strong class="text-gray-700">Capacity</strong>
             <div class="text-lg">{event.capacity} artists</div>
           </div>
         {/if}
+        <div>
+          <strong class="text-gray-700">Price</strong>
+          <div class="text-2xl font-bold text-green-700">
+            {#if event.price === 0}
+              Free event
+            {:else}
+              ${event.price}
+            {/if}
+          </div>
+        </div>
       </div>
-      
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">      
       <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
     </div>
   </div>
 
   <!-- Description Section -->
   <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8">
-    <h2 class="text-xl font-bold text-green-900 mb-4">About This Event</h2>
+    <h2 class="text-2xl font-bold text-green-900 mb-4">About This Event</h2>
     <div class="prose max-w-none text-gray-700">
       {@html renderMarkdown(event.description)}
     </div>
@@ -188,7 +195,11 @@
   {/if}
 
   <!-- Registration Section -->
-  <div class="mt-8">
+  <div class="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-200">
     <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
+  </div>
+
+  <div class="my-8 border-l-4 border-blue-400 p-6">
+    <p class="text-blue-700 m-0">Interested in paid art modeling for a future session? <a href="/modeling">Sign up here!</a></p>
   </div>
 </div>
