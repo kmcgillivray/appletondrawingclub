@@ -58,7 +58,9 @@ export function getRegistrationConfirmationEmail(data: RegistrationEmailData) {
   <h3>Event Details</h3>
   <p><strong>Date:</strong> ${eventDate}</p>
   <p><strong>Time:</strong> ${event.time}</p>
-  <p><strong>Location:</strong> ${event.location.name}</p>
+  <p><strong>Location:</strong> ${event.location.name}, ${
+    event.location.address
+  }</p>
   <p><strong>Quantity:</strong> ${registration.quantity} ${
     registration.quantity === 1 ? "person" : "people"
   }</p>
