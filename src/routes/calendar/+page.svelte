@@ -14,7 +14,7 @@
   <h1 class="font-caveat text-5xl text-center mb-4">Calendar</h1>
   
   {#if data.upcomingEvents.length > 0}
-    <h2>Upcoming Events</h2>
+    <h2 class="text-3xl">Upcoming Events</h2>
     <ul class="ml-0 grid md:grid-cols-2 gap-4 list-none">
       {#each data.upcomingEvents as event}
         <EventCard {event} />

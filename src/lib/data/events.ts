@@ -21,8 +21,7 @@ export const eventsData: { events: Event[] } = {
         "Mixed pose life drawing session with model David. Perfect for artists of all skill levels.",
       description:
         "Join us for an evening of life drawing with mixed poses ranging from quick gesture sketches to longer studies. This is a perfect opportunity for artists of all skill levels to practice their figure drawing techniques in a supportive, welcoming environment.",
-      url:
-        "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-august-27-2025-tickets-1554628779529?aff=oddtdtcreator",
+      url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-august-27-2025-tickets-1554628779529?aff=oddtdtcreator",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1703199034/IMG_8034_ab2tov.jpg",
       price: 15,
@@ -46,8 +45,7 @@ export const eventsData: { events: Event[] } = {
       model: "Emma",
       summary: "Mixed Pose Life Drawing",
       description: "Mixed Pose Life Drawing",
-      url:
-        "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-september-10-2025-registration-1603149034919?aff=oddtdtcreator",
+      url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-september-10-2025-registration-1603149034919?aff=oddtdtcreator",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1725293285/IMG_0262_aaxson.jpg",
       price: 15,
@@ -73,8 +71,7 @@ export const eventsData: { events: Event[] } = {
       summary: "Free extended pose portrait drawing session at FSM Art House.",
       description:
         "Extended pose portrait drawing session in a relaxed setting. This free event offers longer poses that allow for more detailed study and finished drawings. The intimate atmosphere at FSM Art House provides the perfect environment for focused artistic work.",
-      url:
-        "https://www.eventbrite.com/e/portrait-drawing-with-appleton-drawing-club-free-at-fsm-art-house-tickets-1603163347729?aff=oddtdtcreator",
+      url: "/events/2025-09-24-portrait-drawing",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399179/IMG_0498_hjcuyv.jpg",
       price: 0,
@@ -98,8 +95,7 @@ export const eventsData: { events: Event[] } = {
       summary:
         "Family friendly fantasy poses! Fairies, warriors, and fantastic foes.",
       description: "",
-      url:
-        "https://www.eventbrite.com/e/characters-monsters-life-drawing-tickets-1489636836879?aff=oddtdtcreator",
+      url: "https://www.eventbrite.com/e/characters-monsters-life-drawing-tickets-1489636836879?aff=oddtdtcreator",
       event_type: "special_event",
       price: 15,
       status: "completed",
@@ -122,8 +118,7 @@ export const eventsData: { events: Event[] } = {
       model: "Ashley",
       summary: "Mixed pose life drawing session with Ashley.",
       description: "Mixed pose life drawing session with Ashley.",
-      url:
-        "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-july-16-2025-tickets-1429403407069",
+      url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-july-16-2025-tickets-1429403407069",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
@@ -145,8 +140,7 @@ export const eventsData: { events: Event[] } = {
       summary: "Portrait drawing session where participants draw each other.",
       description:
         "Portrait drawing session where participants draw each other.",
-      url:
-        "https://www.eventbrite.com/e/portrait-club-draw-each-other-tickets-1429398000899",
+      url: "https://www.eventbrite.com/e/portrait-club-draw-each-other-tickets-1429398000899",
       price: 0,
       event_type: "portrait",
       status: "completed",
@@ -168,8 +162,7 @@ export const eventsData: { events: Event[] } = {
       model: "Nick",
       summary: "Mixed pose life drawing session with mythology theme.",
       description: "Mixed pose life drawing session with mythology theme.",
-      url:
-        "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-june-25-2025-tickets-1401844347179?aff=oddtdtcreator",
+      url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-june-25-2025-tickets-1401844347179?aff=oddtdtcreator",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
@@ -192,8 +185,7 @@ export const eventsData: { events: Event[] } = {
       summary: "Outdoor sketching session in the beautiful gardens.",
       description: "Outdoor sketching session in the beautiful gardens.",
       price: 15,
-      url:
-        "https://www.eventbrite.com/e/garden-sketching-at-the-paine-art-center-tickets-1370022597469?aff=oddtdtcreator",
+      url: "https://www.eventbrite.com/e/garden-sketching-at-the-paine-art-center-tickets-1370022597469?aff=oddtdtcreator",
       event_type: "special_event",
       status: "completed",
     },
@@ -235,8 +227,7 @@ export const eventsData: { events: Event[] } = {
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
-      url:
-        "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-may-28-2025-tickets-1353280882549?aff=oddtdtcreator",
+      url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-may-28-2025-tickets-1353280882549?aff=oddtdtcreator",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
@@ -259,8 +250,7 @@ export const eventsData: { events: Event[] } = {
         "Mixed pose life drawing session focused on movement and gesture.",
       description:
         "Mixed pose life drawing session focused on movement and gesture.",
-      url:
-        "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-movement-tickets-1298049273319?aff=oddtdtcreator",
+      url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-movement-tickets-1298049273319?aff=oddtdtcreator",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
@@ -519,8 +509,7 @@ export const eventsData: { events: Event[] } = {
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
-      url:
-        "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-tickets-1006412696467",
+      url: "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-tickets-1006412696467",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
@@ -541,8 +530,7 @@ export const eventsData: { events: Event[] } = {
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
-      url:
-        "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-the-magic-circle-tickets-965335553627",
+      url: "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-the-magic-circle-tickets-965335553627",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
@@ -564,8 +552,7 @@ export const eventsData: { events: Event[] } = {
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
-      url:
-        "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-tickets-927853052457",
+      url: "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-tickets-927853052457",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
@@ -586,8 +573,7 @@ export const eventsData: { events: Event[] } = {
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
-      url:
-        "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-tickets-904423634437",
+      url: "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-tickets-904423634437",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
@@ -609,8 +595,7 @@ export const eventsData: { events: Event[] } = {
       summary: "The very first Appleton Drawing Club session!",
       description:
         "Mixed pose life drawing session - the very first Appleton Drawing Club session!",
-      url:
-        "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-tickets-867544457827",
+      url: "https://www.eventbrite.com/e/life-drawing-with-appleton-drawing-club-tickets-867544457827",
       price: 15,
       event_type: "figure_drawing",
       status: "completed",
