@@ -99,7 +99,7 @@
         <img 
           src={event.image_url} 
           alt={event.title}
-          class="w-full h-auto rounded-lg shadow-lg object-cover max-h-96"
+          class="w-full h-auto rounded-lg shadow-lg object-cover max-h-124"
         />
       </div>
     {/if}
@@ -228,6 +228,17 @@
     </div>
   {/if}
 
+  <div class="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-200">
+    <h2 class="text-2xl font-bold text-green-900 mb-4">Join the Community</h2>
+    <p>Share your drawings on the Appleton Drawing Club community by tagging <a href="https://www.instagram.com/appletondrawingclub/" target="_blank">@appletondrawingclub</a> or using #appletondrawingclub on Instagram! We love to see your drawings online after the session.</p>
+    <h2 class="text-2xl font-bold text-green-900 mt-6 mb-4">Questions?</h2>
+    <p>Read <a href="/faq">frequently asked questions</a>, or <a href="/contact">contact us!</a></p>
+  </div>
+
+  <div class="my-8 border-l-4 border-blue-400 p-6">
+    <p class="text-blue-700 m-0">Interested in paid art modeling for a future session? <a class="text-blue-900" href="/modeling">Sign up here!</a></p>
+  </div>
+
   <!-- Registration Section -->
   <div class="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-200">
     {#if event.status === 'coming_soon'}
@@ -255,9 +266,5 @@
     {#if event.status === 'registration_open'}
       <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
     {/if}
-  </div>
-
-  <div class="my-8 border-l-4 border-blue-400 p-6">
-    <p class="text-blue-700 m-0">Interested in paid art modeling for a future session? <a href="/modeling">Sign up here!</a></p>
   </div>
 </div>
