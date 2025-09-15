@@ -121,7 +121,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-12-03",
       time: "7:00-9:00PM",
       location: {
-        name: "Commodore Club",
+        name: "TBD",
         address: {
           streetAddress: "231 E College Ave",
           addressLocality: "Appleton",
