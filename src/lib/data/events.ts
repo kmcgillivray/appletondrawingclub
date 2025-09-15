@@ -27,6 +27,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-10-22-mixed-pose-figure-drawing",
+      url: "/events/2025-10-22-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727284714/IMG_0327_xeu9bj.jpg",
@@ -46,7 +47,7 @@ export const eventsData: { events: Event[] } = {
       model: "Arthur",
       price: 15,
       event_type: "figure_drawing",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2025-11-05-gesture-drawing-fundamentals",
