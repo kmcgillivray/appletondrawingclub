@@ -20,8 +20,10 @@
       <span class="px-2 py-1 bg-blue-100 text-blue-900 rounded-full text-sm">Workshop</span>
     {:else if event.event_type === 'portrait'}
       <span class="px-2 py-1 bg-purple-100 text-purple-900 rounded-full text-sm">Portrait Session</span>
-    {:else  if event.event_type === 'figure_drawing'}
+    {:else if event.event_type === 'figure_drawing'}
       <span class="px-2 py-1 bg-green-100 text-green-900 rounded-full text-sm">Figure Drawing</span>
+    {:else if event.event_type === 'special_event'}
+      <span class="px-2 py-1 bg-yellow-100 text-yellow-900 rounded-full text-sm">Special Event</span>
     {:else}
       <span class="px-2 py-1 bg-gray-100 text-gray-900 rounded-full text-sm">{event.event_type}</span>
     {/if}

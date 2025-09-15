@@ -40,16 +40,13 @@
     <p class="pb-3">No upcoming events scheduled yet.</p>
   {/if}
   
-  <p class="text-center mt-4 mb-2 text-gray-600 italic pb-3">
-    Fall event schedule coming soon! 
-    <a href="https://buttondown.com/appletondrawingclub" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">
-      Sign up for our newsletter
-    </a> 
-    to be notified when it's available.
-  </p>
-  <p class="text-center pb-3">
-    <a href="/calendar" class="text-blue-600 hover:text-blue-800 underline">View full calendar →</a>
-  </p>
+  <div class="text-center my-10 mx-auto">
+    <a href="/calendar"
+      class="w-full no-underline py-3 px-4 text-white border-none rounded cursor-pointer bg-green-700 hover:bg-green-800"
+    >
+      View full calendar →
+    </a>
+  </div>
 </section>
 
 <section class="mx-auto my-8 px-4 max-w-prose">

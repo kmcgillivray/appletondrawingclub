@@ -11,7 +11,7 @@
 </svelte:head>
 
 <section class="container">
-  <h1 class="font-caveat text-5xl text-center mb-4">Calendar</h1>
+  <h1 class="font-caveat text-6xl text-center mb-4">Calendar</h1>
   
   {#if data.upcomingEvents.length > 0}
     <h2 class="text-3xl">Upcoming Events</h2>
