@@ -29,7 +29,7 @@
 </div>
 
 <section class="mx-auto my-8 px-4 max-w-prose">
-  <h2 id="events" class="pb-4 text-3xl font-bold text-green-700">Upcoming Events</h2>
+  <h2 id="events" class="pb-4 text-3xl font-bold text-green-700">Upcoming events</h2>
   {#if displayEvents.length > 0}
     <ul class="ml-0 grid md:grid-cols-2 gap-4 list-none">
       {#each displayEvents as event (event.id)}
