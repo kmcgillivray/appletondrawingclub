@@ -1,5 +1,6 @@
 <script lang="ts">
   import RegistrationForm from '$lib/components/RegistrationForm.svelte';
+  import EventTypeBadge from '$lib/components/EventTypeBadge.svelte';
   import { renderMarkdown } from '$lib/utils/markdown';
   import type { Event } from '$lib/types';
   import { formatEventDate } from '$lib/utils/events';
@@ -76,15 +77,7 @@
   <!-- Hero Section -->
   <div class="mb-8 text-center">
     <div class="mb-3">
-      {#if event.event_type === 'workshop'}
-        <span class="px-2 py-1 bg-blue-100 text-blue-900 rounded-full">Workshop</span>
-      {:else if event.event_type === 'portrait'}
-        <span class="px-2 py-1 bg-purple-100 text-purple-900 rounded-full">Portrait Session</span>
-      {:else  if event.event_type === 'figure_drawing'}
-        <span class="px-2 py-1 bg-green-100 text-green-900 rounded-full">Figure Drawing</span>
-      {:else}
-        <span class="px-2 py-1 bg-gray-100 text-gray-900 rounded-full">{event.event_type}</span>
-      {/if}
+      <EventTypeBadge eventType={event.event_type} size="lg" />
     </div>
     <h1 class="text-4xl md:text-5xl font-bold text-green-900 text-center mb-3">
       {event.title}
@@ -112,16 +105,8 @@
       <div class="space-y-3">
         <div>
           <strong class="text-gray-700">Event Type</strong>
-          <div class="capitalize mt-1">
-            {#if event.event_type === 'workshop'}
-              <span class="px-2 py-1 bg-blue-100 text-blue-900 rounded-full">Workshop</span>
-            {:else if event.event_type === 'portrait'}
-              <span class="px-2 py-1 bg-purple-100 text-purple-900 rounded-full">Portrait Session</span>
-            {:else  if event.event_type === 'figure_drawing'}
-              <span class="px-2 py-1 bg-green-100 text-green-900 rounded-full">Figure Drawing</span>
-            {:else}
-              <span class="px-2 py-1 bg-gray-100 text-gray-900 rounded-full">{event.event_type}</span>
-            {/if}
+          <div class="mt-1">
+            <EventTypeBadge eventType={event.event_type} />
           </div>
         </div>
         <div>

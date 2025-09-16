@@ -1,6 +1,7 @@
 <script lang="ts">
   import { formatEventDate } from '../utils/events';
   import type { Event } from '../types';
+  import EventTypeBadge from './EventTypeBadge.svelte';
 
   let { event }: { event: Event } = $props();
 
@@ -16,17 +17,7 @@
 {/if}
 <div class="p-3">
   <div class="mb-2">
-    {#if event.event_type === 'workshop'}
-      <span class="px-2 py-1 bg-blue-100 text-blue-900 rounded-full text-sm">Workshop</span>
-    {:else if event.event_type === 'portrait'}
-      <span class="px-2 py-1 bg-purple-100 text-purple-900 rounded-full text-sm">Portrait Session</span>
-    {:else if event.event_type === 'figure_drawing'}
-      <span class="px-2 py-1 bg-green-100 text-green-900 rounded-full text-sm">Figure Drawing</span>
-    {:else if event.event_type === 'special_event'}
-      <span class="px-2 py-1 bg-yellow-100 text-yellow-900 rounded-full text-sm">Special Event</span>
-    {:else}
-      <span class="px-2 py-1 bg-gray-100 text-gray-900 rounded-full text-sm">{event.event_type}</span>
-    {/if}
+    <EventTypeBadge eventType={event.event_type} size="sm" />
   </div>
   <h3 class="text-xl font-bold mb-2 pb-3 text-green-700">{event.title}</h3>
   <p class="text-gray-600 mb-2 pb-3">
