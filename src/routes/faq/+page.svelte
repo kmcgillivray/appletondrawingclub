@@ -69,13 +69,13 @@
   <h2>Is there an instructor?</h2>
 
   <p>
-    Our regular sessions are uninstructed but we plan to offer workshops and classes in the future. Artists frequently help each other and share tips and techniques during the session.
+    We host both open, unguided drawing sessions as well as guided sessions and drawing workshops. At open sessions, a session leader is available to answer questions or offer support, and artists frequently help each other and share tips and techniques during the session. At guided sessions and workshops, an instructor will lead the session and provide instruction, demonstrations, and feedback. Each event description will specify the session format in more detail.
   </p>
 
   <h2>Can I pay by cash?</h2>
 
   <p>
-    Yes, we accept cash at the door for sessions that require payment. However, we appreciate if you can pay online in advance via our website to help us plan the session. You can also RSVP online and select cash as a payment option ahead of time!
+    Yes, we accept cash at the door for sessions that require payment. However, we appreciate if you can pay online in advance via our website to help us plan the session. You can also register online and select cash as a payment option ahead of time!
   </p>
 
   <h2>I'm interested in modeling, how can I get started?</h2>
