@@ -101,7 +101,7 @@
   <!-- Event Information Grid -->
   <div class="grid md:grid-cols-2 gap-6 mb-8">
     <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-      <h2 class="text-2xl font-bold text-green-900 mb-4">Event Details</h2>
+      <h2 class="text-2xl font-bold text-green-900 mb-4">Event details</h2>
       <div class="space-y-3">
         <div>
           <strong class="text-gray-700">Event Type</strong>
@@ -171,13 +171,13 @@
     <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">    
       {#if event.status === 'coming_soon'}
         <div class="text-center py-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming Soon!</h2>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming soon!</h2>
           <p class="text-gray-700 mb-6">This event is not yet open for registration. Please check back later!</p>
           <button
             class="bg-gray-400 text-white px-6 py-2 rounded-lg font-medium cursor-not-allowed"
             disabled
           >
-            Coming Soon
+            Coming soon
           </button>
         </div>
       {/if}
@@ -199,7 +199,7 @@
 
   <!-- Description Section -->
   <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8">
-    <h2 class="text-2xl font-bold text-green-900 mb-4">About This Event</h2>
+    <h2 class="text-2xl font-bold text-green-900 mb-4">About this session</h2>
     <div class="prose max-w-none text-gray-700">
       {@html renderMarkdown(event.description)}
     </div>
@@ -214,7 +214,7 @@
   {/if}
 
   <div class="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-200">
-    <h2 class="text-2xl font-bold text-green-900 mb-4">Join the Community</h2>
+    <h2 class="text-2xl font-bold text-green-900 mb-4">Join the community</h2>
     <p>Share your drawings on the Appleton Drawing Club community by tagging <a href="https://www.instagram.com/appletondrawingclub/" target="_blank">@appletondrawingclub</a> or using #appletondrawingclub on Instagram! We love to see your drawings online after the session.</p>
     <h2 class="text-2xl font-bold text-green-900 mt-6 mb-4">Questions?</h2>
     <p>Read <a href="/faq">frequently asked questions</a>, or <a href="/contact">contact us!</a></p>
@@ -228,13 +228,13 @@
   <div class="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-200">
     {#if event.status === 'coming_soon'}
       <div class="text-center py-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming Soon!</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming soon!</h2>
         <p class="text-gray-700 mb-6">This event is not yet open for registration. Please check back later!</p>
         <button
           class="bg-gray-400 text-white px-6 py-2 rounded-lg font-medium cursor-not-allowed"
           disabled
         >
-          Coming Soon
+          Coming soon
         </button>
       </div>
     {/if}
