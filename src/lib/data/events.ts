@@ -4,6 +4,7 @@ export const eventsData: { events: Event[] } = {
   events: [
     {
       id: "2025-10-08-intro-to-life-drawing",
+      url: "/events/2025-10-08-intro-to-life-drawing",
       title: "Introduction to Life Drawing",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg",
@@ -18,12 +19,12 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      summary: "Details coming soon!",
-      description: "Details coming soon!",
+      summary: "",
+      description: "",
       price: 35,
       event_type: "workshop",
       instructor: "Kevin McGillivray",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2025-10-22-mixed-pose-figure-drawing",
