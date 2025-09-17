@@ -9,6 +9,7 @@ price: 35
 capacity: 10
 event_type: workshop
 instructor: Kevin McGillivray
+model: Emily
 status: registration_open
 ---
 

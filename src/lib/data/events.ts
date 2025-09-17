@@ -24,6 +24,7 @@ export const eventsData: { events: Event[] } = {
       price: 35,
       event_type: "workshop",
       instructor: "Kevin McGillivray",
+      model: "Emily",
       status: "registration_open",
     },
     {
