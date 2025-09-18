@@ -52,6 +52,28 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
+      id: "2025-10-29-halloween-wildlife-drawing",
+      title: "Halloween Special Event!",
+      image_url:
+        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1758214525/IMG_0611_hmqvke.jpg",
+      date: "2025-10-29",
+      time: "7:00-9:00PM",
+      location: {
+        name: "The Photo Opp Studio",
+        address: {
+          streetAddress: "621 N Bateman Street",
+          addressLocality: "Appleton",
+          addressRegion: "WI",
+          postalCode: "54911",
+        },
+      },
+      summary: "",
+      description: "",
+      price: 20,
+      event_type: "special_event",
+      status: "coming_soon",
+    },
+    {
       id: "2025-11-05-gesture-drawing-fundamentals",
       title: "Gesture Drawing Fundamentals",
       image_url:
