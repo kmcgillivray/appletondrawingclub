@@ -54,7 +54,13 @@ And maybe even a special guest:
   </div>
 </div>
 
-# Agenda
+# Details and what to expect
+
+- This event is open to all ages and all experience levels
+- Bring your own easel and preferred art supplies, basic materials are available as a backup
+- Untutored but beginner friendly! A session leader will be available to answer questions or provide other support.
+
+## Agenda
 
 - Pre-session: find a spot and set up your materials!
 - Welcome and introduction: meet the owls and corvids and learn about REGI
