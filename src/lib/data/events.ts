@@ -53,7 +53,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-10-29-halloween-wildlife-drawing",
-      title: "Halloween Wildlife: Owls & Corvids!",
+      title: "Wildlife Drawing: Owls & Corvids!",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1758286740/IMG_0661_yhux4o.jpg",
       date: "2025-10-29",
@@ -70,6 +70,7 @@ export const eventsData: { events: Event[] } = {
       summary: "",
       description: "",
       price: 20,
+      special_notes: "Halloween special + bird rescue fundraiser!",
       event_type: "special_event",
       status: "coming_soon",
     },
