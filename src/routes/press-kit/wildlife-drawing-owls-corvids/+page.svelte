@@ -134,7 +134,7 @@
   <section class="mb-8">
     <h2 class="text-3xl font-bold mb-4">About</h2>
 
-    <div class="gap-6">
+    <div class="grid gap-6">
       <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
         <h3 class="text-xl font-bold mb-3">Appleton Drawing Club</h3>
         <p>Appleton Drawing Club is a welcoming community that hosts regular life drawing sessions, workshops, and special events open to artists of all experience levels. Founded in 2024, the club aims to create opportunities for creative community and artistic growth.</p>
