@@ -4,6 +4,7 @@
 <svelte:head>
   <title>For Models - Appleton Drawing Club</title>
   <meta name="description" content="Interested in modeling for Appleton Drawing Club? Learn more about opportunities and apply to be a model for our life drawing sessions." />
+  <meta property="og:image" content="https://res.cloudinary.com/db5mnmxzn/image/upload/v1745864470/ADC_Portrait_20250423_028_fpte5d.jpg">
 </svelte:head>
 
 <section class="container">

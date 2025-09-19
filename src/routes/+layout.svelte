@@ -11,7 +11,6 @@
 	<meta name="description" content="Friendly, local life drawing in Appleton, WI">
 	<meta name="keywords" content="Appleton Drawing Club, life drawing, figure drawing, drawing, art, Appleton, Wisconsin, Fox Cities, drawing club, artist, model, modeling, life model, figure model, art model, artist model, drawing model, Appleton Drawing Club, life drawing, figure drawing, drawing">
 	<meta name="author" content="Appleton Drawing Club">
-	<meta property="og:image" content="https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_auto,h_450,w_970/v1725293285/IMG_0262_aaxson.jpg">
 </svelte:head>
 
 <NextEventBanner />

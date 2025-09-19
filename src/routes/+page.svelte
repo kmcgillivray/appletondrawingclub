@@ -9,6 +9,7 @@
 
 <svelte:head>
   <title>Home | Appleton Drawing Club</title>
+  <meta property="og:image" content="https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_auto,h_450,w_970/v1725293285/IMG_0262_aaxson.jpg">
 </svelte:head>
 
 <div class="mb-4 p-4 max-w-5xl mx-auto">

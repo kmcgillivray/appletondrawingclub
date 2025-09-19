@@ -4,6 +4,7 @@
 <svelte:head>
   <title>Frequently Asked Questions - Appleton Drawing Club</title>
   <meta name="description" content="Get answers to common questions about life drawing sessions, what to expect, materials to bring, and etiquette at Appleton Drawing Club." />
+  <meta property="og:image" content="https://res.cloudinary.com/db5mnmxzn/image/upload/v1745864640/ADC_Portrait_20250423_014_us6umh.jpg">
 </svelte:head>
 
 <section class="container">
