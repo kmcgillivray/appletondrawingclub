@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-  <title>Press Kit: Wildlife Drawing: Owls & Corvids - Appleton Drawing Club</title>
+  <title>[Press Kit] Wildlife Drawing: Owls & Corvids - Appleton Drawing Club</title>
   <meta name="description" content="Press kit for Appleton Drawing Club's wildlife drawing event featuring live owls, ravens, and crows from REGI. October 29, 2025." />
   <meta property="og:image" content="https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1758315225/250226_ADCWildlifeDrawing_M4W_027_cki8js.jpg">
 </svelte:head>
