@@ -32,7 +32,7 @@ const eventSchema = z.object({
   session_leader: z.string().optional(),
   instructor: z.string().optional(),
   price: z.number().min(0),
-  capacity: z.number().min(1),
+  capacity: z.number().min(1).nullable().optional(),
   event_type: z.enum([
     "figure_drawing",
     "portrait",
