@@ -69,7 +69,7 @@
 
       <p>All proceeds from the Halloween event will be donated to REGI, which provides care and rehabilitation for 800-1,000 injured or orphaned native birds annually. Founded in 1990, REGI holds permits from both Wisconsin and the U.S. Fish and Wildlife Service to possess threatened and endangered indigenous species for rehabilitation and educational purposes.</p>
 
-      <p>"REGI provides a safe haven for injured or orphaned native birds until they are ready to be released back into the wild," McGillivray noted. "They also advocate for birds who can't speak for their own needs for habitat and safety through education and research. REGI cares hundreds of birds every year, essential work that makes our community more vibrant, resilient, and wondrously wild."</p>
+      <p>"REGI provides a safe haven for injured or orphaned native birds until they are ready to be released back into the wild," McGillivray noted. "They also advocate for birds who can't speak for their own needs for habitat and safety through education and research. REGI cares for hundreds of birds every year, essential work that makes our community more vibrant, resilient, and wondrously wild."</p>
 
       <p>The collaboration came about through Appleton Drawing Club's connection to Brandi Grahl, a Photo Opp board member and licensed falconer who helped organize the February wildlife session. Photo Opp has supported Appleton Drawing Club since its founding in April 2024.</p>
 
