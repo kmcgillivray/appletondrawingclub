@@ -1,6 +1,6 @@
 ---
 title: "Wildlife Drawing: Owls & Corvids!"
-image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1758286749/IMG_0670_asuy0y.jpg
+image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1758286740/IMG_0661_yhux4o.jpg
 date: "2025-10-29"
 time: 7:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
