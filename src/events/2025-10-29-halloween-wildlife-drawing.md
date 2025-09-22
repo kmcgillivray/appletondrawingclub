@@ -10,7 +10,7 @@ capacity: null
 event_type: special_event
 session_leader: Kevin McGillivray
 model: Owls, crows, and ravens!
-status: coming_soon
+status: registration_open
 ---
 
 Welcome to a very special Halloween **WILDLIFE drawing session** with Appleton Drawing Club! Draw live from a menagerie of incredible corvids and owls. These majestic **avian ambassadors** will be visting us from [Raptor Education Group (REGI)](https://www.raptoreducationgroup.org). You'll have an up close encounter with these remarkable birds, with plenty of time to draw from direct observation and learn about them with the help of the REGI educators. Just in time for Halloween, make new friends with corvids and owls!
