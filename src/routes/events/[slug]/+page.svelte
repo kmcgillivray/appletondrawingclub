@@ -192,7 +192,7 @@
       {/if}
 
       {#if event.status === 'registration_open'}
-        <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
+        <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} instance="primary" />
       {/if}
     </div>
   </div>
@@ -220,10 +220,6 @@
     <p>Read <a href="/faq">frequently asked questions</a>, or <a href="/contact">contact us!</a></p>
   </div>
 
-  <div class="my-8 border-l-4 border-blue-400 p-6">
-    <p class="text-blue-700 m-0">Interested in paid art modeling for a future session? <a class="text-blue-900" href="/modeling">Sign up here!</a></p>
-  </div>
-
   <!-- Registration Section -->
   <div class="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-200">
     {#if event.status === 'coming_soon'}
@@ -249,7 +245,11 @@
     {/if}
 
     {#if event.status === 'registration_open'}
-      <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} />
+      <RegistrationForm eventId={event.id} eventPrice={event.price} eventTitle={event.title} instance="secondary" />
     {/if}
+  </div>
+
+  <div class="mt-8 border-l-4 border-blue-400 p-6">
+    <p class="text-blue-700 m-0">Interested in paid art modeling for a future session? <a class="text-blue-900" href="/modeling">Sign up here!</a></p>
   </div>
 </div>

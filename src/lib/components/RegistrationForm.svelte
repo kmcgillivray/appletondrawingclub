@@ -6,6 +6,7 @@
   export let eventId: string;
   export let eventPrice: number;
   export let eventTitle: string;
+  export let instance = 'default';
 
   const isFreeEvent = eventPrice === 0;
   
@@ -143,10 +144,10 @@
     
     <div class="space-y-4">
       <div>
-        <label for="name" class="block font-bold text-gray-700 mb-1">Name *</label>
-        <input 
-          id="name"
-          type="text" 
+        <label for="name-{instance}" class="block font-bold text-gray-700 mb-1">Name *</label>
+        <input
+          id="name-{instance}"
+          type="text"
           bind:value={form.name}
           required
           disabled={loading}
@@ -155,10 +156,10 @@
       </div>
       
       <div>
-        <label for="email" class="block font-bold text-gray-700 mb-1">Email *</label>
-        <input 
-          id="email"
-          type="email" 
+        <label for="email-{instance}" class="block font-bold text-gray-700 mb-1">Email *</label>
+        <input
+          id="email-{instance}"
+          type="email"
           bind:value={form.email}
           required
           disabled={loading}
@@ -167,9 +168,9 @@
       </div>
       
       <div>
-        <label for="quantity" class="block font-bold text-gray-700 mb-1">How many people? *</label>
+        <label for="quantity-{instance}" class="block font-bold text-gray-700 mb-1">How many people? *</label>
         <select
-          id="quantity"
+          id="quantity-{instance}"
           bind:value={form.quantity}
           required
           disabled={loading}
@@ -188,11 +189,11 @@
       <div>
         <fieldset>
           <legend class="block font-bold text-gray-700 mb-3">Payment method *</legend>
-          <div class="space-y-2">
-            <label for="payment-online" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
-              <input 
-                id="payment-online"
-                type="radio" 
+          <div class="space-y-3">
+            <label for="payment-online-{instance}" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input
+                id="payment-online-{instance}"
+                type="radio"
                 bind:group={form.payment_method}
                 value="online"
                 disabled={loading}
@@ -202,10 +203,10 @@
                 <strong>Pay online now</strong> - ${eventPrice * form.quantity} (secure payment with card)
               </span>
             </label>
-            <label for="payment-door" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
-              <input 
-                id="payment-door"
-                type="radio" 
+            <label for="payment-door-{instance}" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input
+                id="payment-door-{instance}"
+                type="radio"
                 bind:group={form.payment_method}
                 value="door"
                 disabled={loading}
@@ -225,21 +226,21 @@
         <fieldset>
           <legend class="block font-bold text-gray-700 mb-1">Additional donation to REGI wildlife rescue (optional)</legend>
           <p class="text-sm text-gray-600 mb-3">All proceeds from this event will be donated to REGI! This is an optional additional donation if you would like to further support wildlife education and rescue efforts.</p>
-          <div class="space-y-2">
-            <label for="donation-none" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+          <div class="grid grid-cols-2 gap-3">
+            <label for="donation-none-{instance}" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
               <input
-                id="donation-none"
+                id="donation-none-{instance}"
                 type="radio"
                 bind:group={donationSelection}
                 value="none"
                 disabled={loading}
                 class="w-3"
               />
-              <span class="pl-3">No additional donation</span>
+              <span class="pl-3">None</span>
             </label>
-            <label for="donation-10" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+            <label for="donation-10-{instance}" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
               <input
-                id="donation-10"
+                id="donation-10-{instance}"
                 type="radio"
                 bind:group={donationSelection}
                 value="10"
@@ -248,9 +249,9 @@
               />
               <span class="pl-3">$10</span>
             </label>
-            <label for="donation-20" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+            <label for="donation-20-{instance}" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
               <input
-                id="donation-20"
+                id="donation-20-{instance}"
                 type="radio"
                 bind:group={donationSelection}
                 value="20"
@@ -259,9 +260,9 @@
               />
               <span class="pl-3">$20</span>
             </label>
-            <label for="donation-50" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+            <label for="donation-50-{instance}" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
               <input
-                id="donation-50"
+                id="donation-50-{instance}"
                 type="radio"
                 bind:group={donationSelection}
                 value="50"
@@ -270,9 +271,8 @@
               />
               <span class="pl-3">$50</span>
             </label>
-            <label for="donation-custom" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+            <label class="col-span-2 font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
               <input
-                id="donation-custom"
                 type="radio"
                 bind:group={donationSelection}
                 value="custom"
@@ -282,6 +282,7 @@
               <span class="pl-3 flex items-center">
                 Other: $
                 <input
+                  id="custom-donation-{instance}"
                   type="number"
                   bind:value={customDonationAmount}
                   min="1"
@@ -299,14 +300,14 @@
       {/if}
 
       <div class="flex items-center">
-        <input 
-          type="checkbox" 
+        <input
+          type="checkbox"
           bind:checked={form.newsletter_signup}
-          id="newsletter"
+          id="newsletter-{instance}"
           disabled={loading}
           class="h-4 w-4"
         />
-        <label for="newsletter" class="pl-3 text-gray-700 font-normal text-md">
+        <label for="newsletter-{instance}" class="pl-3 text-gray-700 font-normal">
           Subscribe to the Appleton Drawing Club newsletter for event updates and drawing news.
         </label>
       </div>
@@ -335,7 +336,7 @@
     <button 
       type="submit"
       disabled={loading}
-      class="mt-6 w-full bg-green-700 hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 px-4 rounded-lg font-medium transition-colors"
+      class="mt-6 w-full bg-green-700 hover:bg-green-800 disabled:bg-gray-400 cursor-pointer disabled:cursor-not-allowed text-white py-3 px-4 rounded-lg font-medium transition-colors"
     >
       {#if loading}
         <span class="flex items-center justify-center">
