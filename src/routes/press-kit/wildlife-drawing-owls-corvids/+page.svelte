@@ -128,6 +128,18 @@
         <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1758315344/250226_ADCWildlifeDrawing_M4W_016_cbg8sx.jpg" alt="February 2025 wildlife drawing session" class="w-full rounded-lg">
         <p class="text-gray-600 mt-2"><strong>Photo credit: Char Brandis</strong>. Local artist Steve Anderson drawing at the February 2025 wildlife drawing session.</p>
       </div>
+      <div>
+        <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1758286740/IMG_0661_yhux4o.jpg" alt="Owl drawing" class="w-full rounded-lg">
+        <p class="text-gray-600 mt-2"><strong>Art credit: Kevin McGillivray</strong>. A drawing of a barred owl by organizer Kevin McGillivray.</p>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1758572123/IMG_0671_jftipx.jpg" alt="Crow drawing" class="w-full rounded-lg">
+        <p class="text-gray-600 mt-2"><strong>Art credit: Kevin McGillivray</strong>. A drawing of an albino crow by organizer Kevin McGillivray.</p>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1758286749/IMG_0670_asuy0y.jpg" alt="Raven drawing" class="w-full rounded-lg">
+        <p class="text-gray-600 mt-2"><strong>Art credit: Kevin McGillivray</strong>. A drawing of two ravens by organizer Kevin McGillivray.</p>
+      </div>
     </div>
   </section>
 
