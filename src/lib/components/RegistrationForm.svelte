@@ -9,13 +9,35 @@
 
   const isFreeEvent = eventPrice === 0;
   
-  let form: RegistrationFormData & { payment_method: string } = {
+  let form: RegistrationFormData & { payment_method: string; donation_amount?: number } = {
     name: '',
     email: '',
     quantity: 1,
     newsletter_signup: false,
-    payment_method: isFreeEvent ? 'door' : 'online' // 'door' or 'online'
+    payment_method: isFreeEvent ? 'door' : 'online', // 'door' or 'online'
+    donation_amount: 0
   };
+
+  // Donation selection state
+  let donationSelection: 'none' | '10' | '20' | '50' | 'custom' = 'none';
+  let customDonationAmount = 0;
+
+  // Update donation amount when selection changes
+  $: {
+    if (donationSelection === 'none') {
+      form.donation_amount = 0;
+    } else if (donationSelection === 'custom') {
+      form.donation_amount = customDonationAmount;
+    } else {
+      form.donation_amount = parseInt(donationSelection);
+    }
+  }
+
+  // Check if this is the Halloween wildlife event that supports donations
+  const isHalloweenWildlifeEvent = eventId === '2025-10-29-halloween-wildlife-drawing';
+
+  // Reactive declaration to show donation field based on current form state
+  $: showDonationField = isHalloweenWildlifeEvent && !isFreeEvent && form.payment_method === 'online';
 
   // Should remain empty for legitimate users
   let website = '';
@@ -108,11 +130,12 @@
 </script>
 
 {#if success}
-  <RegistrationMessages 
+  <RegistrationMessages
     type={form.payment_method === 'door' ? 'success-door' : 'success-online'}
     {eventPrice}
     {eventTitle}
     quantity={form.quantity}
+    donationAmount={form.donation_amount || 0}
   />
 {:else}
   <form on:submit|preventDefault={handleSubmit}>
@@ -196,7 +219,85 @@
         </fieldset>
       </div>
       {/if}
-      
+
+      {#if showDonationField}
+      <div>
+        <fieldset>
+          <legend class="block font-bold text-gray-700 mb-1">Additional donation to REGI wildlife rescue (optional)</legend>
+          <p class="text-sm text-gray-600 mb-3">All proceeds from this event will be donated to REGI! This is an optional additional donation if you would like to further support wildlife education and rescue efforts.</p>
+          <div class="space-y-2">
+            <label for="donation-none" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input
+                id="donation-none"
+                type="radio"
+                bind:group={donationSelection}
+                value="none"
+                disabled={loading}
+                class="w-3"
+              />
+              <span class="pl-3">No additional donation</span>
+            </label>
+            <label for="donation-10" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input
+                id="donation-10"
+                type="radio"
+                bind:group={donationSelection}
+                value="10"
+                disabled={loading}
+                class="w-3"
+              />
+              <span class="pl-3">$10</span>
+            </label>
+            <label for="donation-20" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input
+                id="donation-20"
+                type="radio"
+                bind:group={donationSelection}
+                value="20"
+                disabled={loading}
+                class="w-3"
+              />
+              <span class="pl-3">$20</span>
+            </label>
+            <label for="donation-50" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input
+                id="donation-50"
+                type="radio"
+                bind:group={donationSelection}
+                value="50"
+                disabled={loading}
+                class="w-3"
+              />
+              <span class="pl-3">$50</span>
+            </label>
+            <label for="donation-custom" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+              <input
+                id="donation-custom"
+                type="radio"
+                bind:group={donationSelection}
+                value="custom"
+                disabled={loading}
+                class="w-3"
+              />
+              <span class="pl-3 flex items-center">
+                Other: $
+                <input
+                  type="number"
+                  bind:value={customDonationAmount}
+                  min="1"
+                  step="1"
+                  placeholder="25"
+                  disabled={loading || donationSelection !== 'custom'}
+                  on:focus={() => donationSelection = 'custom'}
+                  class="ml-1 w-20 border border-gray-300 rounded px-2 py-1 text-sm focus:ring-green-500 focus:border-green-500 disabled:bg-gray-50"
+                />
+              </span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+      {/if}
+
       <div class="flex items-center">
         <input 
           type="checkbox" 
@@ -224,7 +325,7 @@
     
     {#if error}
       <div class="mt-4">
-        <RegistrationMessages 
+        <RegistrationMessages
           type="error"
           message={error}
         />
@@ -266,7 +367,8 @@
     email: form.email,
     quantity: form.quantity,
     newsletter_signup: form.newsletter_signup,
-    website: website
+    website: website,
+    donation_amount: form.donation_amount || 0
   }}
   on:close={handleModalClose}
 />

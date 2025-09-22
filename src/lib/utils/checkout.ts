@@ -11,6 +11,7 @@ export interface CheckoutSessionData {
     email?: string;
     quantity?: string;
     newsletter_signup?: string;
+    donation_amount?: string;
   };
   customer_email?: string;
   payment_status?: string;
@@ -202,4 +203,17 @@ export function isPaymentSuccessful(status: CheckoutStatus): boolean {
  */
 export function canRetryPayment(status: CheckoutStatus): boolean {
   return status === "open" || status === "expired";
+}
+
+/**
+ * Calculate original event price from total amount and donation
+ */
+export function calculateOriginalEventPrice(
+  totalAmountCents: number,
+  donationAmountDollars: number,
+  quantity: number
+): number {
+  const totalAmountDollars = totalAmountCents / 100;
+  const eventTotalDollars = totalAmountDollars - donationAmountDollars;
+  return eventTotalDollars / quantity;
 }

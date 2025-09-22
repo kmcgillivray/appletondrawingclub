@@ -2,14 +2,14 @@
   import { page } from '$app/state';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { getCheckoutSession, getStatusMessage, getNextSteps, formatPrice, isPaymentSuccessful, canRetryPayment } from '$lib/utils/checkout';
+  import { getCheckoutSession, getStatusMessage, getNextSteps, formatPrice, isPaymentSuccessful, canRetryPayment, calculateOriginalEventPrice } from '$lib/utils/checkout';
   import type { CheckoutSessionData } from '$lib/utils/checkout';
   import RegistrationMessages from '$lib/components/RegistrationMessages.svelte';
   
   let loading = true;
   let session: CheckoutSessionData | null = null;
   let error = '';
-  let eventData: { title: string; price: string; eventId: string; quantity: number } | null = null;
+  let eventData: { title: string; price: number; eventId: string; quantity: number; donationAmount: number } | null = null;
   
   onMount(async () => {
     const sessionId = page.url.searchParams.get('session_id');
@@ -28,11 +28,19 @@
       // Extract event data from session metadata
       if (session.metadata) {
         const quantity = parseInt(session.metadata.quantity || '1', 10);
+        const donationAmount = parseFloat(session.metadata.donation_amount || '0');
+        const originalEventPrice = calculateOriginalEventPrice(
+          session.amount_total,
+          donationAmount,
+          isNaN(quantity) ? 1 : quantity
+        );
+
         eventData = {
           title: session.metadata.event_title || 'Unknown Event',
-          price: formatPrice(session.amount_total),
+          price: originalEventPrice,
           eventId: session.metadata.event_id || '',
-          quantity: isNaN(quantity) ? 1 : quantity
+          quantity: isNaN(quantity) ? 1 : quantity,
+          donationAmount: donationAmount
         };
       }
     } else {
@@ -121,12 +129,13 @@
     {@const statusInfo = getStatusInfo()}
     {@const steps = getSteps()}
     
-    <RegistrationMessages 
+    <RegistrationMessages
       type={getMessageType()}
       message={getErrorMessage()}
-      eventPrice={eventData ? parseFloat(eventData.price.replace('$', '')) / (eventData.quantity || 1) : 0}
+      eventPrice={eventData?.price || 0}
       eventTitle={eventData?.title || 'Unknown Event'}
       quantity={eventData?.quantity || 1}
+      donationAmount={eventData?.donationAmount || 0}
     />
     
     <!-- Next steps -->

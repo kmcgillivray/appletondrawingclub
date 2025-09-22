@@ -13,6 +13,7 @@
     quantity: number;
     newsletter_signup: boolean;
     website?: string;
+    donation_amount?: number;
   };
   
   const dispatch = createEventDispatcher<{ close: void }>();
@@ -79,7 +80,8 @@
             quantity: formData.quantity,
             payment_method: 'online',
             newsletter_signup: formData.newsletter_signup,
-            website: formData.website || ''
+            website: formData.website || '',
+            donation_amount: formData.donation_amount || 0
           })
         });
         
@@ -109,7 +111,8 @@
             price: eventPrice,
             quantity: formData.quantity,
             registration_id: registrationId,
-            website: formData.website || '' // Anti-spam field
+            website: formData.website || '', // Anti-spam field
+            donation_amount: formData.donation_amount || 0
           })
         });
         
