@@ -81,7 +81,7 @@ async function handleCheckoutCompleted(stripeEvent: Stripe.Event) {
     return;
   }
 
-  const { registration_id, customer_id } = session.metadata || {};
+  const { registration_id, customer_id, donation_amount } = session.metadata || {};
 
   // Get customer ID from session (prefer metadata, fallback to session customer)
   const stripeCustomerId = customer_id || (session.customer as string);
@@ -171,6 +171,7 @@ async function handleCheckoutCompleted(stripeEvent: Stripe.Event) {
           price: eventData.price,
           special_notes: eventData.special_notes,
         },
+        donation_amount: donation_amount ? parseInt(donation_amount) : undefined,
       });
       console.log("Confirmation email sent for registration:", registration.id);
     }

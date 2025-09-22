@@ -34,6 +34,7 @@ Deno.serve(async (req): Promise<Response> => {
       payment_method,
       newsletter_signup,
       website,
+      donation_amount,
     } = requestData;
 
     // Honeypot validation - reject if filled out
@@ -168,6 +169,7 @@ Deno.serve(async (req): Promise<Response> => {
               price: eventData.price,
               special_notes: eventData.special_notes,
             },
+            donation_amount: donation_amount && donation_amount > 0 ? donation_amount : undefined,
           });
         }
       } catch (emailError) {

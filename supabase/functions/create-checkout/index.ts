@@ -32,6 +32,7 @@ Deno.serve(async (req): Promise<Response> => {
       quantity,
       registration_id,
       website,
+      donation_amount,
     } = await req.json();
 
     // Anti-spam protection - reject if honeypot filled
@@ -74,23 +75,41 @@ Deno.serve(async (req): Promise<Response> => {
     // Find or create Stripe customer
     const customerId = await findOrCreateCustomer(email, name);
 
+    // Build line items array
+    const lineItems = [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: `${event_title}`,
+            description: `Event registration for ${event_title}`,
+          },
+          unit_amount: Math.round(price * 100), // Convert to cents
+        },
+        quantity: quantity,
+      },
+    ];
+
+    // Add donation line item if donation amount is provided
+    if (donation_amount && donation_amount > 0) {
+      lineItems.push({
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: "REGI Wildlife Rescue Donation",
+            description: "Optional donation to support raptor education and wildlife rescue",
+          },
+          unit_amount: Math.round(donation_amount * 100), // Convert to cents
+        },
+        quantity: 1,
+      });
+    }
+
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
       payment_method_types: ["card"],
-      line_items: [
-        {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: `${event_title}`,
-              description: `Event registration for ${event_title}`,
-            },
-            unit_amount: Math.round(price * 100), // Convert to cents
-          },
-          quantity: quantity,
-        },
-      ],
+      line_items: lineItems,
       mode: "payment",
       payment_intent_data: {
         statement_descriptor: "APPLETON DRAW CLUB",
@@ -107,6 +126,7 @@ Deno.serve(async (req): Promise<Response> => {
         newsletter_signup: newsletter_signup ? "true" : "false",
         customer_id: customerId,
         registration_id: registration_id || "",
+        donation_amount: donation_amount ? donation_amount.toString() : "0",
       },
       customer: customerId,
     });

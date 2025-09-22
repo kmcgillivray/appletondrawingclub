@@ -19,10 +19,11 @@ interface RegistrationEmailData {
     price: number;
     special_notes: string | null;
   };
+  donation_amount?: number;
 }
 
 export function getRegistrationConfirmationEmail(data: RegistrationEmailData) {
-  const { registration, event } = data;
+  const { registration, event, donation_amount } = data;
   const confirmationId = registration.id.slice(0, 8);
   const eventDate = new Date(event.date).toLocaleDateString("en-US", {
     weekday: "long",
@@ -30,6 +31,10 @@ export function getRegistrationConfirmationEmail(data: RegistrationEmailData) {
     month: "long",
     day: "numeric",
   });
+
+  const hasDonation = donation_amount && donation_amount > 0;
+  const eventTotal = event.price * registration.quantity;
+  const grandTotal = eventTotal + (hasDonation ? donation_amount : 0);
 
   const subject = `Registration Confirmed: ${event.title}`;
 
@@ -64,17 +69,23 @@ export function getRegistrationConfirmationEmail(data: RegistrationEmailData) {
   <p><strong>Quantity:</strong> ${registration.quantity} ${
     registration.quantity === 1 ? "person" : "people"
   }</p>
-  <p><strong>Price:</strong> $${event.price} per person (Total: $${
-    event.price * registration.quantity
-  })</p>
+  <p><strong>Event Fee:</strong> $${event.price} per person (Total: $${eventTotal})</p>
+  ${
+    hasDonation
+      ? `<p><strong>REGI Wildlife Rescue Donation:</strong> $${donation_amount}</p>
+  <p><strong>Total Payment:</strong> $${grandTotal}</p>`
+      : ""
+  }
   
   <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
     <p><strong>Payment:</strong> ${
       registration.payment_method === "online"
-        ? `Payment complete - you're all set!`
-        : `Please bring $${
-            event.price * registration.quantity
-          } (cash) to pay at the door.`
+        ? `Payment complete - you're all set!${
+            hasDonation
+              ? ` Thank you for your additional $${donation_amount} donation to REGI wildlife rescue!`
+              : ""
+          }`
+        : `Please bring $${eventTotal} (cash) to pay at the door.`
     }</p>
   </div>
   
@@ -118,18 +129,22 @@ Location: ${event.location.name}
 Quantity: ${registration.quantity} ${
     registration.quantity === 1 ? "person" : "people"
   }
-Price: $${event.price} per person (Total: $${
-    event.price * registration.quantity
-  })
+Event Fee: $${event.price} per person (Total: $${eventTotal})${
+    hasDonation
+      ? `
+REGI Wildlife Rescue Donation: $${donation_amount}
+Total Payment: $${grandTotal}`
+      : ""
+  }
 
 ${
   registration.payment_method === "online"
-    ? `PAYMENT COMPLETE: Your payment of $${
-        event.price * registration.quantity
-      } has been processed. You're all set!`
-    : `PAY AT DOOR: Please bring $${
-        event.price * registration.quantity
-      } (cash) to pay when you arrive at the event.`
+    ? `PAYMENT COMPLETE: Your payment of $${grandTotal} has been processed. You're all set!${
+        hasDonation
+          ? ` Thank you for your additional $${donation_amount} donation to REGI wildlife rescue!`
+          : ""
+      }`
+    : `PAY AT DOOR: Please bring $${eventTotal} (cash) to pay when you arrive at the event.`
 }
 
 ${event.special_notes ? `IMPORTANT NOTES: ${event.special_notes}` : ""}

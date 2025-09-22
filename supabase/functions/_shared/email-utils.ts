@@ -24,18 +24,20 @@ interface SendRegistrationEmailParams {
     price: number;
     special_notes: string | null;
   };
+  donation_amount?: number;
 }
 
 export async function sendRegistrationConfirmationEmail(
   params: SendRegistrationEmailParams
 ) {
   try {
-    const { registration, event } = params;
+    const { registration, event, donation_amount } = params;
 
     // Generate email content using HTML template
     const { subject, html, text } = getRegistrationConfirmationEmail({
       registration,
       event,
+      donation_amount,
     });
 
     const emailFrom =
