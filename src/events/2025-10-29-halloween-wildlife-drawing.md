@@ -33,7 +33,7 @@ If we're lucky, we might even meet:
 
 And maybe even a special guest:
 
-- LOCAL LEGEND Kyle the Hawk
+- LOCAL LEGEND Kyle the Hawk (with licensed falconer Brandi Grahl)
 
 <div class="md:grid grid-cols-2 gap-3">
   <div>
