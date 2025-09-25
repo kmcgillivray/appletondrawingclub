@@ -185,7 +185,7 @@
         <div class="text-center py-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">Event completed</h2>
           <p class="text-gray-700 mb-6">This event has already taken place. Please check out our upcoming events!</p>
-          <a href="/events" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium">
+          <a href="/calendar" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium">
             View upcoming events
           </a>
         </div>
@@ -238,7 +238,7 @@
       <div class="text-center py-12">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Event completed</h2>
         <p class="text-gray-700 mb-6">This event has already taken place. Please check out our upcoming events!</p>
-        <a href="/events" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium">
+        <a href="/calendar" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium">
           View upcoming events
         </a>
       </div>

@@ -285,7 +285,7 @@ export const eventsData: { events: Event[] } = {
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399179/IMG_0498_hjcuyv.jpg",
       price: 0,
       event_type: "portrait",
-      status: "registration_open",
+      status: "completed",
     },
     {
       id: "characters-monsters-life-drawing-2025-08-10",
