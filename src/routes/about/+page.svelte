@@ -21,7 +21,7 @@
   <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1742585097/94efe12d-5c9e-44bd-bfbb-ed71bb7a4baf_rw_1920_q8jnsu.jpg" alt="Kevin McGillivray" class="rounded-full w-48 h-48 float-left mr-4 mb-2">
   
   <p>I'm Kevin McGillivray, host and organizer of Appleton Drawing Club! I've been drawing for as long as I can remember, and started oil painting in 2012 at the Gordon School of Art. A few years ago, I went to my first figure drawing session and became enchanted with the challenge and thrill of figure and portrait drawing. I haven't stopped since!</p>
-  <p>After moving to Appleton in 2023, I started Appleton Drawing Club because I wanted to create an opportunity for other artists to have regular access to life drawing and the benefits of a creative community in a friendly, encouraging space. I'm grateful to have met so many artists and models at our events, and I hope to meet you too!</p>
+  <p>I started Appleton Drawing Club because I wanted to create an opportunity for other artists to have regular access to life drawing and the benefits of a creative community in a friendly, encouraging space. I'm grateful to have met so many artists and models at our events, and I hope to meet you too!</p>
   
   <h2>Join us</h2>
   
