@@ -24,12 +24,14 @@
 		"svelte-check": "^4.3.1",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.9.2",
-		"vite": "^7.0.4"
+		"vite": "^7.0.4",
+		"vitest": "^3.2.4"
 	},
 	"dependencies": {
 		"@dotenvx/dotenvx": "^1.49.0",
 		"@stripe/stripe-js": "^7.9.0",
 		"@supabase/supabase-js": "^2.57.2",
+		"@sveltejs/adapter-netlify": "^5.2.3",
 		"gray-matter": "^4.0.3",
 		"js-yaml": "^4.1.0",
 		"marked": "^16.2.1",
