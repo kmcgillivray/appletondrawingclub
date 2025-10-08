@@ -156,8 +156,12 @@ export type Database = {
           payment_status: string | null
           processing_status: string | null
           quantity: number
+          refund_amount: number | null
+          refund_reason: string | null
+          refunded_at: string | null
           stripe_customer_id: string
           stripe_event_id: string | null
+          stripe_refund_id: string | null
           stripe_session_id: string | null
         }
         Insert: {
@@ -171,8 +175,12 @@ export type Database = {
           payment_status?: string | null
           processing_status?: string | null
           quantity?: number
+          refund_amount?: number | null
+          refund_reason?: string | null
+          refunded_at?: string | null
           stripe_customer_id: string
           stripe_event_id?: string | null
+          stripe_refund_id?: string | null
           stripe_session_id?: string | null
         }
         Update: {
@@ -186,8 +194,12 @@ export type Database = {
           payment_status?: string | null
           processing_status?: string | null
           quantity?: number
+          refund_amount?: number | null
+          refund_reason?: string | null
+          refunded_at?: string | null
           stripe_customer_id?: string
           stripe_event_id?: string | null
+          stripe_refund_id?: string | null
           stripe_session_id?: string | null
         }
         Relationships: [
