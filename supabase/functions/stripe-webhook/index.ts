@@ -45,6 +45,9 @@ Deno.serve(async (req): Promise<Response> => {
       case "checkout.session.completed":
         await handleCheckoutCompleted(stripeEvent);
         break;
+      case "charge.refunded":
+        await handleChargeRefunded(stripeEvent);
+        break;
       case "payment_intent.payment_failed":
         handlePaymentFailed(stripeEvent.data.object as Stripe.PaymentIntent);
         break;
@@ -185,4 +188,96 @@ function handlePaymentFailed(paymentIntent: Stripe.PaymentIntent) {
   console.error("Payment failed for intent:", paymentIntent.id);
   // Payment failures are handled by Stripe's embedded checkout UI
   // Registration remains in pending state for potential retry
+}
+
+async function handleChargeRefunded(stripeEvent: Stripe.Event) {
+  const supabase = createSupabaseClient();
+  const charge = stripeEvent.data.object as Stripe.Charge;
+  const refundId = stripeEvent.id;
+
+  // Get the payment intent to find the associated checkout session
+  const paymentIntentId = charge.payment_intent as string;
+  if (!paymentIntentId) {
+    console.error("No payment intent found for refunded charge:", charge.id);
+    return;
+  }
+
+  console.log("Processing refund for charge:", {
+    chargeId: charge.id,
+    paymentIntentId,
+    amount: charge.amount_refunded,
+    refundId,
+  });
+
+  // Find the registration by payment intent (via checkout session)
+  // First, get the checkout session from Stripe
+  let sessionId: string | null = null;
+  try {
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    // Get the checkout session ID from the payment intent metadata or related checkout session
+    const checkoutSessions = await stripe.checkout.sessions.list({
+      payment_intent: paymentIntentId,
+      limit: 1,
+    });
+
+    if (checkoutSessions.data.length > 0) {
+      sessionId = checkoutSessions.data[0].id;
+    }
+  } catch (error) {
+    console.error("Failed to retrieve payment intent or checkout session:", error);
+  }
+
+  // Try to find registration by session ID first, then fall back to customer email
+  let registrationQuery = supabase
+    .from("registrations")
+    .select("*")
+    .eq("payment_status", "completed");
+
+  if (sessionId) {
+    registrationQuery = registrationQuery.eq("stripe_session_id", sessionId);
+  } else {
+    // Fall back to finding by customer email and recent timeframe
+    const customerEmail = charge.billing_details?.email;
+    if (customerEmail) {
+      registrationQuery = registrationQuery
+        .eq("email", customerEmail)
+        .order("created_at", { ascending: false })
+        .limit(1);
+    } else {
+      console.error("Cannot find registration: no session ID or customer email");
+      return;
+    }
+  }
+
+  const { data: registrations, error: findError } = await registrationQuery;
+
+  if (findError) {
+    console.error("Error finding registration for refund:", findError);
+    throw findError;
+  }
+
+  if (!registrations || registrations.length === 0) {
+    console.warn("No registration found for refunded charge:", charge.id);
+    return;
+  }
+
+  const registration = registrations[0];
+
+  // Update registration to refunded status
+  const { error: updateError } = await supabase
+    .from("registrations")
+    .update({
+      payment_status: "refunded",
+      refunded_at: new Date().toISOString(),
+      refund_amount: charge.amount_refunded / 100, // Convert cents to dollars
+      stripe_refund_id: refundId,
+    })
+    .eq("id", registration.id);
+
+  if (updateError) {
+    console.error("Failed to update registration to refunded:", updateError);
+    throw updateError;
+  }
+
+  console.log("Registration marked as refunded:", registration.id);
 }
