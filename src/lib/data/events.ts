@@ -77,6 +77,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-11-05-gesture-drawing-fundamentals",
+      url: "/events/2025-11-05-gesture-drawing-fundamentals",
       title: "Gesture Drawing Fundamentals",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944086/IMG_7620_1_dt4d1g.jpg",
@@ -91,13 +92,13 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      summary: "Details coming soon!",
-      description: "Details coming soon!",
-      price: 55,
+      summary: "",
+      description: "",
+      price: 45,
       model: "Nick",
       instructor: "Kevin McGillivray",
       event_type: "workshop",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2025-11-12-mixed-pose-figure-drawing",
