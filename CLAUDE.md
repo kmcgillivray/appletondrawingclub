@@ -99,9 +99,13 @@ The registration system uses a `registrations` table with the following structur
 - `name` (TEXT) - Registrant's name
 - `email` (TEXT) - Registrant's email
 - `payment_method` (TEXT) - 'door' for pay-at-door, 'online' for Stripe payments
-- `payment_status` (TEXT) - 'pending' for pay-at-door, 'completed' for successful online payments
+- `payment_status` (TEXT) - 'pending', 'completed', or 'refunded'
 - `newsletter_signup` (BOOLEAN) - Newsletter preference
 - `created_at` (TIMESTAMP) - Registration timestamp
+- `refunded_at` (TIMESTAMP) - When the refund was processed (optional)
+- `refund_reason` (TEXT) - Optional reason for the refund
+- `refund_amount` (NUMERIC) - Amount refunded in dollars (optional, useful for partial refunds)
+- `stripe_refund_id` (TEXT) - Stripe refund transaction ID for online payments (optional)
 
 ### Security Model
 
@@ -117,6 +121,14 @@ The registration system uses a `registrations` table with the following structur
 - **Server-side validation** - Email format, required fields, data sanitization
 - **CORS restrictions** - Will limit origins to legitimate domains (planned)
 - **Input validation** - Prevents malicious data injection
+
+### Refund Handling
+
+- **Automatic refund tracking** - Stripe webhook handles `charge.refunded` events
+- **Status updates** - Registrations are marked with `payment_status: 'refunded'`
+- **Refund metadata** - Tracks refund amount, timestamp, Stripe refund ID, and optional reason
+- **Capacity management** - Refunded registrations are excluded from capacity counts (use query: `WHERE payment_status IN ('pending', 'completed')`)
+- **Manual refunds** - Door payment refunds can be marked manually by updating the registration record
 
 ## Event Data Structure
 
