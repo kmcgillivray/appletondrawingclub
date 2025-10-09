@@ -94,11 +94,14 @@ export const eventsData: { events: Event[] } = {
       summary: "Details coming soon!",
       description: "Details coming soon!",
       price: 55,
+      model: "Nick",
+      instructor: "Kevin McGillivray",
       event_type: "workshop",
       status: "coming_soon",
     },
     {
       id: "2025-11-12-mixed-pose-figure-drawing",
+      url: "/events/2025-11-12-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727289295/IMG_0309_l7lv9x.jpg",
