@@ -99,13 +99,15 @@ The registration system uses a `registrations` table with the following structur
 - `name` (TEXT) - Registrant's name
 - `email` (TEXT) - Registrant's email
 - `payment_method` (TEXT) - 'door' for pay-at-door, 'online' for Stripe payments
-- `payment_status` (TEXT) - 'pending', 'completed', or 'refunded'
+- `payment_status` (TEXT) - 'pending', 'completed', 'refunded', or 'cancelled'
 - `newsletter_signup` (BOOLEAN) - Newsletter preference
 - `created_at` (TIMESTAMP) - Registration timestamp
 - `refunded_at` (TIMESTAMP) - When the refund was processed (optional)
 - `refund_reason` (TEXT) - Optional reason for the refund
 - `refund_amount` (NUMERIC) - Amount refunded in dollars (optional, useful for partial refunds)
 - `stripe_refund_id` (TEXT) - Stripe refund transaction ID for online payments (optional)
+- `cancelled_at` (TIMESTAMP) - When the registration was cancelled (optional)
+- `cancellation_reason` (TEXT) - Optional reason for the cancellation
 
 ### Security Model
 
@@ -129,6 +131,18 @@ The registration system uses a `registrations` table with the following structur
 - **Refund metadata** - Tracks refund amount, timestamp, Stripe refund ID, and optional reason
 - **Capacity management** - Refunded registrations are excluded from capacity counts (use query: `WHERE payment_status IN ('pending', 'completed')`)
 - **Manual refunds** - Door payment refunds can be marked manually by updating the registration record
+
+### Cancellation Handling
+
+- **Pre-payment cancellations** - Use `payment_status: 'cancelled'` for registrations cancelled before payment
+- **Status distinction** - `'cancelled'` = no payment occurred, `'refunded'` = payment occurred then refunded
+- **Cancellation metadata** - Tracks cancellation timestamp and optional reason
+- **Manual process** - Cancellations are set manually via admin dashboard (no webhook)
+- **Capacity management** - Cancelled registrations are excluded from capacity counts (same query as refunds)
+- **Use cases**:
+  - Door payment registrations where person emails to cancel before event
+  - Abandoned online checkouts that were never completed
+  - Administrative cancellations (duplicate registrations, etc.)
 
 ## Event Data Structure
 

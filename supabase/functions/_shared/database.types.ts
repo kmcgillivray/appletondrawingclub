@@ -126,6 +126,8 @@ export type Database = {
       }
       registrations: {
         Row: {
+          cancellation_reason: string | null
+          cancelled_at: string | null
           created_at: string
           email: string
           event_id: string
@@ -145,6 +147,8 @@ export type Database = {
           stripe_session_id: string | null
         }
         Insert: {
+          cancellation_reason?: string | null
+          cancelled_at?: string | null
           created_at?: string
           email: string
           event_id: string
@@ -164,6 +168,8 @@ export type Database = {
           stripe_session_id?: string | null
         }
         Update: {
+          cancellation_reason?: string | null
+          cancelled_at?: string | null
           created_at?: string
           email?: string
           event_id?: string

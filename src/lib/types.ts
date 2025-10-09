@@ -39,7 +39,7 @@ export interface Event {
 
 // Registration-related types (for ADC-02)
 export type PaymentMethod = "door" | "online";
-export type PaymentStatus = "pending" | "completed" | "refunded";
+export type PaymentStatus = "pending" | "completed" | "refunded" | "cancelled";
 
 export interface Registration {
   id: string;
@@ -55,6 +55,8 @@ export interface Registration {
   refund_reason?: string;
   refund_amount?: number;
   stripe_refund_id?: string;
+  cancelled_at?: string;
+  cancellation_reason?: string;
 }
 
 // Form types for registration
