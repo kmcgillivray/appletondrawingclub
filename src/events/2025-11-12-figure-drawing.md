@@ -4,7 +4,7 @@ image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1750127185/I
 date: "2025-11-12"
 time: 7:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
-summary: A classic figure drawing session featuring gestures and longer poses
+summary: A classic figure drawing session featuring short to long poses and a welcoming community
 price: 15
 capacity: 20
 event_type: figure_drawing

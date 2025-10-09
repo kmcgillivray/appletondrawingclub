@@ -15,7 +15,7 @@
     </div>
   {:else}
     <a
-      class="block no-underline hover:bg-gray-50 transition-colors text-green-600 hover:text-green-700"
+      class="block cursor-pointer no-underline hover:bg-gray-50 transition-colors text-green-600 hover:text-green-700"
       href={event.url}
       {...(isExternalLink ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
     >

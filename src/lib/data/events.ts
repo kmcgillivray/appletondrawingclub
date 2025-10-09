@@ -104,6 +104,7 @@ export const eventsData: { events: Event[] } = {
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727289295/IMG_0309_l7lv9x.jpg",
       date: "2025-11-12",
       time: "7:00-9:00PM",
+      model: "Kit",
       location: {
         name: "The Photo Opp Studio",
         address: {
@@ -113,11 +114,11 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      summary: "Details coming soon!",
-      description: "Details coming soon!",
+      summary: "",
+      description: "",
       price: 15,
       event_type: "figure_drawing",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2025-11-19-mixed-pose-figure-drawing",
