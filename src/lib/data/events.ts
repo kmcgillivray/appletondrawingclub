@@ -126,6 +126,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-11-19-mixed-pose-figure-drawing",
+      url: "/events/2025-11-19-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399309/IMG_2309_git7ak.jpg",
@@ -140,11 +141,11 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      summary: "Details coming soon!",
-      description: "Details coming soon!",
+      summary: "",
+      description: "",
       price: 15,
       event_type: "figure_drawing",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2025-12-03-portrait-club",
