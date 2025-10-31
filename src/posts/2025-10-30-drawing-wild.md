@@ -7,7 +7,7 @@ title: Drawing Wild
 
   <figure class="my-6">
     <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/t_1500/v1761876142/_R2A0059-Edit_ky8p02.jpg" alt="Morrie the Turkey Vulture" class="block mb-2" />
-    <caption class="mt-2">Morrie the Turkey Vulture</caption>
+    <caption class="mt-2">Morrie the Turkey Vulture. Thank you to Brandi Grahl for all photos in this post!</caption>
   </figure>
 
   **Last night, over 40 artists and 7 birds gathered to do something wild: draw together!**
