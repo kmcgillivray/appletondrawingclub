@@ -7,11 +7,11 @@
     <img
       src={post.imageUrl}
       alt={post.imageAlt}
-      class="w-full h-48 object-cover"
+      class="w-full h-96 object-cover"
     />
     <div class="p-3">
-      <h3 class="pb-3 text-lg font-bold text-green-700">{post.title}</h3>
-      <p class="text-gray-600 pb-3">By {post.author} • {post.date}</p>
+      <h3 class="pb-0 text-xl font-bold text-green-700">{post.title}</h3>
+      <p class="text-gray-600 pb-0">{post.author} • {post.date}</p>
     </div>
   </a>
 </li>
