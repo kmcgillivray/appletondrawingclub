@@ -132,6 +132,7 @@ export const eventsData: { events: Event[] } = {
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399309/IMG_2309_git7ak.jpg",
       date: "2025-11-19",
       time: "7:00-9:00PM",
+      model: "Emily",
       location: {
         name: "The Photo Opp Studio",
         address: {

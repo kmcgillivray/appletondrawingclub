@@ -9,7 +9,7 @@ price: 15
 capacity: 20
 event_type: figure_drawing
 session_leader: Kevin McGillivray
-model: TBD
+model: Emily
 status: registration_open
 ---
 
