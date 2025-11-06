@@ -73,7 +73,7 @@ export const eventsData: { events: Event[] } = {
       price: 20,
       special_notes: "Halloween special + bird rescue fundraiser!",
       event_type: "special_event",
-      status: "registration_open",
+      status: "completed",
     },
     {
       id: "2025-11-05-gesture-drawing-fundamentals",
@@ -98,7 +98,7 @@ export const eventsData: { events: Event[] } = {
       model: "Nick",
       instructor: "Kevin McGillivray",
       event_type: "workshop",
-      status: "registration_open",
+      status: "completed",
     },
     {
       id: "2025-11-12-mixed-pose-figure-drawing",

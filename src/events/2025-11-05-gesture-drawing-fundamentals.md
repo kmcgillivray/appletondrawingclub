@@ -10,7 +10,7 @@ capacity: 10
 event_type: workshop
 instructor: Kevin McGillivray
 model: Nick
-status: registration_open
+status: completed
 ---
 
 This workshop is a deep dive into the most elusive and mysterious element of figure drawing: gesture! Through a series of exercises and a guided figure drawing session, you'll explore the gestural energy that gives life and movement to all figure drawings. We'll start with a series of exercises designed to define gesture and practice seeing and drawing gesturally, followed by a guided drawing session with an unclothed model. During the session we'll continue to practice gestural exercises with direct feedback and encouragement. By the end of the workshop, you'll have the knowledge and exercises needed to develop confidence and fluency in gesture drawing in your figure drawing practice from short poses to long studies.
