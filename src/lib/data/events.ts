@@ -163,15 +163,14 @@ export const eventsData: { events: Event[] } = {
         },
       },
       special_notes: "ADC Holiday Party!",
-      summary: "Portrait drawing session where participants draw each other.",
-      description:
-        "Portrait drawing session where participants draw each other.",
-      url: "https://www.eventbrite.com/e/portrait-club-draw-each-other-tickets-1429398000899",
+      summary: "",
+      description: "",
+      url: "/events/2025-12-03-portrait-club",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944259/IMG_0080_1_nfio69.jpg",
       price: 0,
       event_type: "special_event",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2025-12-10-intro-to-life-drawing",
