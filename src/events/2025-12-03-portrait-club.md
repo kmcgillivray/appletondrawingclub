@@ -17,6 +17,10 @@ You're invited to join us at **Commodore Club** for a fun and _free_ casual draw
 
 This event is free to attend, although we encourage you to order at least one drink at the bar (non-alcoholic options available!) as a thank you to our generous hosts at Commodore Club.
 
+## Holiday art supply swap
+
+If you’d like to participate in the **holiday art supply swap**, wrap up some unused art supplies from your stock at home and bring them along (value $20 or less). We’ll exchange gifts randomly and you’ll take home some new art supplies to try!
+
 ## Agenda
 
 - Pre-session: Meet at Commodore Club and settle in! Portraits start at 7:00 but feel free to arrive early for socializing and good cheer
