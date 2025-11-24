@@ -65,6 +65,7 @@
 			<li class="mb-2"><a href="/modeling" class="text-green-600 underline hover:text-green-700">For models</a></li>
 			<li class="mb-2"><a href="/faq" class="text-green-600 underline hover:text-green-700">FAQs</a></li>
 			<li class="mb-2"><a href="/code-of-conduct" class="text-green-600 underline hover:text-green-700">Code of conduct</a></li>
+			<li class="mb-2"><a href="/appleton-drawing-club-parental-consent-form.pdf" class="text-green-600 underline hover:text-green-700">Parental consent form</a></li>
 			<li class="mb-2"><a href="/about" class="text-green-600 underline hover:text-green-700">About</a></li>
 			<li class="mb-2"><a href="/contact" class="text-green-600 underline hover:text-green-700">Contact</a></li>
 		</ul>

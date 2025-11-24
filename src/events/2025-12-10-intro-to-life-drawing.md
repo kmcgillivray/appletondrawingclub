@@ -26,7 +26,9 @@ Bring any of your favorite drawing materials – even a simple notebook and pen
 ## Agenda
 
 - Welcome and introduction
-- Short poses: exploring contour
-- Medium poses: exploring structure
-- Long poses: exploring light and shadow
-- Clean up and share what you learned!
+- First set: Gesture warm-up poses (1-5 minute poses)
+- Second set: Medium poses (10-15 minute poses)
+- Third set: Longer poses (25-45 minute poses)
+- Clean up and share your work on the drawing pile!
+
+Between each set we'll walk through a series of demos of exercises and lessons to explore during the session featuring common approaches to figure drawing like construction, contour, and gesture.

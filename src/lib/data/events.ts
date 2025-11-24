@@ -198,6 +198,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-12-17-mixed-pose-figure-drawing",
+      url: "/events/2025-12-17-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       model: "Cory",
       image_url:
@@ -213,11 +214,11 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      summary: "Details coming soon!",
-      description: "Details coming soon!",
+      summary: "",
+      description: "",
       price: 15,
       event_type: "figure_drawing",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "mixed-pose-life-drawing-2025-08-27",
