@@ -13,6 +13,8 @@ status: registration_open
 summary: Join in for a holiday portrait club where we all draw each other!
 ---
 
+**Note: Commodore Club is ages 21+ only, so this event is for artists age 21 or older!**
+
 You're invited to join us at **Commodore Club** for a fun and _free_ casual drawing club hangout where we draw each other's portraits! Everyone will have a chance to take turns posing for short 10 minute portraits in small groups while drawing and hanging out with their friends, neighbors, and fellow artists. This is our Appleton Drawing Club holiday party, so festive attire is encouraged for merry, merry portraits!
 
 This event is free to attend, although we encourage you to order at least one drink at the bar (non-alcoholic options available!) as a thank you to our generous hosts at Commodore Club.
