@@ -9,8 +9,8 @@ price: 15
 capacity: 20
 event_type: figure_drawing
 session_leader: Kevin McGillivray
-model: Kit
-status: registration_open
+model: Ashley
+status: completed
 ---
 
 Welcome to a classic figure drawing session with Appleton Drawing Club! Whether you're a seasoned artist or just starting out, this event is perfect for anyone looking to stretch their drawing skills and meet fellow artists. Join us and enjoy great lighting, music for focus, and a range of short to long poses from our wonderful model.

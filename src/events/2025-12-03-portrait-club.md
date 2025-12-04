@@ -9,7 +9,7 @@ price: 0
 capacity: 25
 image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944259/IMG_0080_1_nfio69.jpg
 event_type: special_event
-status: registration_open
+status: completed
 summary: Join in for a holiday portrait club where we all draw each other!
 ---
 
