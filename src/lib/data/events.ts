@@ -221,7 +221,7 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
-      id: '',
+      id: '2026-01-07',
       title: 'Coming Soon',
       date: '2026-01-07',
       time: '',
@@ -241,7 +241,7 @@ export const eventsData: { events: Event[] } = {
       status: 'coming_soon',
     },
     {
-      id: '',
+      id: '2026-01-14',
       title: 'Coming Soon',
       date: '2026-01-14',
       time: '',
@@ -260,8 +260,8 @@ export const eventsData: { events: Event[] } = {
       event_type: 'figure_drawing',
       status: 'coming_soon',
     },
-        {
-      id: '',
+    {
+      id: '2026-01-21',
       title: 'Coming Soon',
       date: '2026-01-21',
       time: '',
@@ -281,7 +281,7 @@ export const eventsData: { events: Event[] } = {
       status: 'coming_soon',
     },
         {
-      id: '',
+      id: '2026-01-28',
       title: 'Coming Soon',
       date: '2026-01-28',
       time: '',
@@ -301,7 +301,7 @@ export const eventsData: { events: Event[] } = {
       status: 'coming_soon',
     },
     {
-      id: '',
+      id: '2026-02-04',
       title: 'Coming Soon',
       date: '2026-02-04',
       time: '',
@@ -321,7 +321,7 @@ export const eventsData: { events: Event[] } = {
       status: 'coming_soon',
     },
     {
-      id: '',
+      id: '2026-02-11',
       title: 'Coming Soon',
       date: '2026-02-11',
       time: '',
@@ -340,8 +340,8 @@ export const eventsData: { events: Event[] } = {
       event_type: 'figure_drawing',
       status: 'coming_soon',
     },
-        {
-      id: '',
+    {
+      id: '2026-02-18',
       title: 'Coming Soon',
       date: '2026-02-18',
       time: '',
@@ -360,8 +360,8 @@ export const eventsData: { events: Event[] } = {
       event_type: 'special_event',
       status: 'coming_soon',
     },
-        {
-      id: '',
+    {
+      id: '2026-02-25',
       title: 'Coming Soon',
       date: '2026-02-25',
       time: '',
