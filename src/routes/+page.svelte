@@ -24,7 +24,7 @@
   />
   
   <div class="text-center mt-6 px-3 mx-auto">
-    <p class="text-2xl mb-2 pb-3">Join 100+ artists of all skill levels in our welcoming community</p>
+    <p class="text-2xl mb-2 pb-3">Join 150+ artists of all skill levels in our welcoming community</p>
     <p class="text-2xl pb-3">Classic figure drawing • Special themed events & workshops • All skill levels welcome</p>
   </div>
 </div>
