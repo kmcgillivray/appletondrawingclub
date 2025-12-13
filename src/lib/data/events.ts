@@ -221,7 +221,8 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
-      id: '2026-01-07',
+      id: '2026-01-07-guided-figure-drawing7',
+      url: '/events/2026-01-07-guided-figure-drawing',
       title: 'Guided Figure Drawing',
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg',
       date: '2026-01-07',
@@ -241,7 +242,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 35,
       event_type: 'workshop',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-01-14',
