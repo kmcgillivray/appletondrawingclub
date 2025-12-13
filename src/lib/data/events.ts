@@ -223,6 +223,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: '2026-01-07',
       title: 'Guided Figure Drawing',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg',
       date: '2026-01-07',
       time: "7:00-9:00PM",
       location: {
@@ -247,6 +248,7 @@ export const eventsData: { events: Event[] } = {
       title: "Mixed Pose Figure Drawing",
       date: '2026-01-14',
       time: "7:00-9:00PM",
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727284714/IMG_0327_xeu9bj.jpg',
       location: {
         name: "The Photo Opp Studio",
         address: {
@@ -266,6 +268,7 @@ export const eventsData: { events: Event[] } = {
       id: '2026-01-21',
       title: 'Coming Soon',
       date: '2026-01-21',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1765661177/IMG_0701_qrybsz.jpg',
       time: '',
       location: {
         name: '',
@@ -282,23 +285,25 @@ export const eventsData: { events: Event[] } = {
       event_type: 'special_event',
       status: 'coming_soon',
     },
-        {
+    {
       id: '2026-01-28',
-      title: 'Coming Soon',
+      title: 'Mixed Pose Figure Drawing',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944086/IMG_7620_1_dt4d1g.jpg',
       date: '2026-01-28',
-      time: '',
+      time: "7:00-9:00PM",
       location: {
-        name: '',
+        name: "The Photo Opp Studio",
         address: {
-          streetAddress: '',
-          addressLocality: '',
-          addressRegion: '',
-          postalCode: '',
+          streetAddress: "621 N Bateman Street",
+          addressLocality: "Appleton",
+          addressRegion: "WI",
+          postalCode: "54911",
         },
       },
+      model: 'Kerry',
       summary: '',
       description: '',
-      price: 0,
+      price: 15,
       event_type: 'figure_drawing',
       status: 'coming_soon',
     },
