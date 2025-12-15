@@ -1,6 +1,6 @@
 ---
 title: "Mixed Pose Figure Drawing"
-image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1742399413/IMG_3675_oewd2t.jpg
+image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1754400635/IMG_7384_1_watuim.jpg
 date: "2026-01-28"
 time: 7:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
