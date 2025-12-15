@@ -245,7 +245,8 @@ export const eventsData: { events: Event[] } = {
       status: 'registration_open',
     },
     {
-      id: '2026-01-14',
+      id: '2026-01-14-figure-drawing',
+      url: '/events/2026-01-14-figure-drawing',
       title: "Mixed Pose Figure Drawing",
       date: '2026-01-14',
       time: "7:00-9:00PM",
@@ -263,7 +264,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 15,
       event_type: 'figure_drawing',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-01-21',
