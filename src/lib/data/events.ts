@@ -248,6 +248,7 @@ export const eventsData: { events: Event[] } = {
       id: '2026-01-14-figure-drawing',
       url: '/events/2026-01-14-figure-drawing',
       title: "Mixed Pose Figure Drawing",
+      model: 'Roger',
       date: '2026-01-14',
       time: "7:00-9:00PM",
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727284714/IMG_0327_xeu9bj.jpg',
