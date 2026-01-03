@@ -268,7 +268,8 @@ export const eventsData: { events: Event[] } = {
       status: 'registration_open',
     },
     {
-      id: '2026-01-21',
+      id: '2026-01-21-portrait-drawing',
+      url: '/events/2026-01-21-portrait-drawing',
       title: 'Long Pose Portrait Drawing',
       date: '2026-01-21',
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1765661177/IMG_0701_qrybsz.jpg',
@@ -287,7 +288,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 15,
       event_type: 'portrait',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-01-28-figure-drawing',
