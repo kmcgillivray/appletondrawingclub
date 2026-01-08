@@ -10,7 +10,7 @@ capacity: 10
 event_type: workshop
 instructor: Robert Martin
 model: Jerimiah
-status: registration_open
+status: completed
 ---
 
 Curious about getting started with life drawing but not sure what to expect? Been to a few sessions but looking for more support and guidance? Join us for this guided figure drawing session!
