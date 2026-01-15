@@ -221,7 +221,7 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
-      id: '2026-01-07-guided-figure-drawing7',
+      id: '2026-01-07-guided-figure-drawing',
       url: '/events/2026-01-07-guided-figure-drawing',
       title: 'Guided Figure Drawing',
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg',
@@ -273,7 +273,7 @@ export const eventsData: { events: Event[] } = {
       title: 'Long Pose Portrait Drawing',
       date: '2026-01-21',
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1765661177/IMG_0701_qrybsz.jpg',
-      model: 'Lauren',
+      model: 'Davida',
       time: "7:00-9:00PM",
       location: {
         name: "The Photo Opp Studio",
