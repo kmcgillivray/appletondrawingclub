@@ -357,6 +357,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: '2026-02-18-wildlife-drawing',
       title: 'Wildlife Drawing: Hawks & Falcons!',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1758315225/250226_ADCWildlifeDrawing_M4W_027_cki8js.jpg',
       date: '2026-02-18',
       time: "7:00-9:00PM",
       location: {
@@ -378,6 +379,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: '2026-02-24',
       title: 'Gesture Drawing Fundamentals',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1760051713/IMG_7066_1_vksb4j.jpg',
       url: 'https://34e75e-19.myshopify.com/products/gesture-drawing-fundamentals-18',
       date: '2026-02-24',
       time: '6:00-8:00PM',
@@ -394,7 +396,7 @@ export const eventsData: { events: Event[] } = {
       summary: '',
       description: '',
       price: 40,
-      event_type: 'figure_drawing',
+      event_type: 'workshop',
       status: 'registration_open',
     },
     {
