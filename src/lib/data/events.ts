@@ -321,6 +321,7 @@ export const eventsData: { events: Event[] } = {
       date: '2026-02-04',
       time: "6:00-9:00PM",
       instructor: 'Robert Martin',
+      model: 'Emma',
       location: {
         name: "The Photo Opp Studio",
         address: {

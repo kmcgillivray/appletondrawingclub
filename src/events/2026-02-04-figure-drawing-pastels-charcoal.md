@@ -9,7 +9,7 @@ price: 65
 capacity: 10
 event_type: workshop
 instructor: Robert Martin
-model: TBD
+model: Emma
 status: registration_open
 ---
 
