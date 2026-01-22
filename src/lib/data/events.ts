@@ -314,7 +314,8 @@ export const eventsData: { events: Event[] } = {
       status: 'registration_open',
     },
     {
-      id: '2026-02-04',
+      id: '2026-02-04-figure-drawing-pastels-charcoal',
+      url: '/events/2026-02-04-figure-drawing-pastels-charcoal',
       title: 'Figure Drawing with Pastels & Charcoal',
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1769105097/588729662_18433763419098683_317309943784085005_n_ytcl76.jpg',
       date: '2026-02-04',
@@ -333,7 +334,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 65,
       event_type: 'workshop',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-02-11-figure-drawing',
