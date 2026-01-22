@@ -336,7 +336,8 @@ export const eventsData: { events: Event[] } = {
       status: 'coming_soon',
     },
     {
-      id: '2026-02-11',
+      id: '2026-02-11-figure-drawing',
+      url: '/events/2026-02-11-figure-drawing',
       title: 'Mixed Pose Figure Drawing',
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727284714/IMG_0327_xeu9bj.jpg',
       date: '2026-02-11',
@@ -355,7 +356,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 15,
       event_type: 'figure_drawing',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-02-18-wildlife-drawing',
