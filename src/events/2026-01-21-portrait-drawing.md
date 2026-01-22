@@ -8,7 +8,7 @@ session_leader: Kevin McGillivray
 price: 15
 capacity: 20
 event_type: portrait
-status: registration_open
+status: completed
 summary: Join us for a fun evening of life drawing at Appleton Drawing Club - grab your pencils and get ready to sketch!
 image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399179/IMG_0498_hjcuyv.jpg
 ---
