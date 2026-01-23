@@ -1,6 +1,6 @@
 ---
 title: "Wildlife Drawing: Hawks & Falcons!"
-image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1758286740/IMG_0661_yhux4o.jpg
+image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1758315225/250226_ADCWildlifeDrawing_M4W_027_cki8js.jpg
 date: "2026-02-18"
 time: 7:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
