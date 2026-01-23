@@ -35,10 +35,10 @@
   }
 
   // Check if this is the Halloween wildlife event that supports donations
-  const isHalloweenWildlifeEvent = eventId === '2025-10-29-halloween-wildlife-drawing';
+  const isWildlifeEvent = eventId === '2026-02-18-wildlife-drawing';
 
   // Reactive declaration to show donation field based on current form state
-  $: showDonationField = isHalloweenWildlifeEvent && !isFreeEvent && form.payment_method === 'online';
+  $: showDonationField = isWildlifeEvent && !isFreeEvent && form.payment_method === 'online';
 
   // Should remain empty for legitimate users
   let website = '';
@@ -224,8 +224,8 @@
       {#if showDonationField}
       <div>
         <fieldset>
-          <legend class="block font-bold text-gray-700 mb-1">Additional donation to REGI wildlife rescue (optional)</legend>
-          <p class="text-sm text-gray-600 mb-3">All proceeds from this event will be donated to REGI! This is an optional additional donation if you would like to further support wildlife education and rescue efforts.</p>
+          <legend class="block font-bold text-gray-700 mb-1">Additional donation to River Valley Raptors (optional)</legend>
+          <p class="text-sm text-gray-600 mb-3">Proceeds from your registration will be donated to River Valley Raptors! This is an optional additional donation if you would like to further support wildlife education and rescue efforts.</p>
           <div class="grid grid-cols-2 gap-3">
             <label for="donation-none-{instance}" class="font-normal flex items-center border border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-50">
               <input

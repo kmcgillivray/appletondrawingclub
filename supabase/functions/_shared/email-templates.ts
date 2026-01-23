@@ -72,7 +72,7 @@ export function getRegistrationConfirmationEmail(data: RegistrationEmailData) {
   <p><strong>Event Fee:</strong> $${event.price} per person (Total: $${eventTotal})</p>
   ${
     hasDonation
-      ? `<p><strong>REGI Wildlife Rescue Donation:</strong> $${donation_amount}</p>
+      ? `<p><strong>Additional Wildlife Rescue Donation:</strong> $${donation_amount}</p>
   <p><strong>Total Payment:</strong> $${grandTotal}</p>`
       : ""
   }
@@ -82,7 +82,7 @@ export function getRegistrationConfirmationEmail(data: RegistrationEmailData) {
       registration.payment_method === "online"
         ? `Payment complete - you're all set!${
             hasDonation
-              ? ` Thank you for your additional $${donation_amount} donation to REGI wildlife rescue!`
+              ? ` Thank you for your additional $${donation_amount} donation to wildlife rescue!`
               : ""
           }`
         : `Please bring $${eventTotal} (cash) to pay at the door.`
@@ -132,7 +132,7 @@ Quantity: ${registration.quantity} ${
 Event Fee: $${event.price} per person (Total: $${eventTotal})${
     hasDonation
       ? `
-REGI Wildlife Rescue Donation: $${donation_amount}
+Additional Wildlife Rescue Donation: $${donation_amount}
 Total Payment: $${grandTotal}`
       : ""
   }
@@ -141,7 +141,7 @@ ${
   registration.payment_method === "online"
     ? `PAYMENT COMPLETE: Your payment of $${grandTotal} has been processed. You're all set!${
         hasDonation
-          ? ` Thank you for your additional $${donation_amount} donation to REGI wildlife rescue!`
+          ? ` Thank you for your additional $${donation_amount} donation to wildlife rescue!`
           : ""
       }`
     : `PAY AT DOOR: Please bring $${eventTotal} (cash) to pay when you arrive at the event.`

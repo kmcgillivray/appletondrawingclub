@@ -45,7 +45,7 @@
         <div class="text-green-700 space-y-2">
           <p>You're registered for <strong>{eventTitle}</strong> - {quantity} {quantity === 1 ? 'person' : 'people'} - and your payment of ${eventPrice * quantity}{hasDonation ? ` + $${donationAmount} donation` : ''} has been processed.</p>
           {#if hasDonation}
-            <p>🦉 <strong>Thank you!</strong> Your registration and additional ${donationAmount} donation to REGI will help support raptor education and wildlife rescue efforts.</p>
+            <p>🦉 <strong>Thank you!</strong> Your registration and additional ${donationAmount} donation will help support raptor education and wildlife rescue efforts.</p>
           {/if}
           <p>📧 <strong>Confirmation:</strong> Check your email for your receipt and event details.</p>
           <p>🎨 <strong>What to bring:</strong> Just yourself and your favorite art supplies!</p>

@@ -96,7 +96,7 @@ Deno.serve(async (req): Promise<Response> => {
         price_data: {
           currency: "usd",
           product_data: {
-            name: "REGI Wildlife Rescue Donation",
+            name: "Additional Wildlife Rescue Donation",
             description: "Optional donation to support raptor education and wildlife rescue",
           },
           unit_amount: Math.round(donation_amount * 100), // Convert to cents
