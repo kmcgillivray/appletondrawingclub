@@ -15,7 +15,7 @@ status: registration_open
 
 Welcome to a very special **WILDLIFE drawing session** with Appleton Drawing Club! Draw live from a menagerie of incredible hawks and falcons. These majestic **avian ambassadors** will be visiting us from [River Valley Raptors](https://www.rivervalleyraptors.org). You'll have an up close encounter with these remarkable birds, with plenty of time to draw from direct observation and learn about them with the help of local falconers and avian educators. Shake off the winter with an incredible night getting to know hawks and falcons!
 
-# About Raptor Education Group
+# About River Valley Raptors
 
 **Proceeds for this event will be donated to River Valley Raptors.** River Valley Raptors’ mission is to protect the unique habitat and biodiversity of the Driftless Area. We strive to achieve this mission through community engagement, education, and conservation. River Valley Raptors, Inc. was founded in 2018 by Abbey and Joe Krumrie. Natives to the Driftless Area, Joe and Abbey both started working with raptors in 2009. They have worked at several education and wildlife rehabilitation centers throughout the U.S. Joe became a licensed falconer in 2013 and Abbey in 2015. Abbey is also a certified professional bird trainer through IATCB and both Abbey and Joe are members of the International Association of Avian Trainers and Educators.
 
