@@ -10,7 +10,7 @@ capacity: 10
 event_type: workshop
 instructor: Robert Martin
 model: Emma
-status: registration_open
+status: completed
 ---
 
 In this session, Robert (Bobbi) Martin will guide participants through their full approach to completing a figure drawing from life, from sketching the subject in vine, blocking in value with charcoal, carving color with pastel, and finishing with light. Over the three hour session, you'll take a deep dive into Bobbi's unique and evocative approach to color and form, learning transformative strategies for developing a drawing from start to finish while also bringing your subject to life on the page. This workshop is perfect for anyone wanting to take their figure drawings to the next level and get started with the colorful world of chalk pastels.
