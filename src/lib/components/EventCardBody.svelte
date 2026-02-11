@@ -8,8 +8,14 @@
   const formattedDate = formatEventDate(event.date);
   const isFreeEvent = event.price === 0;
   const isComingSoon = event.status === 'coming_soon';
+  const isCancelled = event.status === 'cancelled';
   const priceString = isFreeEvent ? 'Free' : `$${event.price}`;
-  const buttonText = isComingSoon ? 'Coming soon' : `${priceString} – Reserve your spot`;
+  let buttonText = $state(`${priceString} – Reserve your spot`);
+  if (isComingSoon) {
+    buttonText = 'Coming Soon';
+  } else if (isCancelled) {
+    buttonText = 'Cancelled! Please join us for our next event';
+  }
 </script>
 
 {#if event.image_url}
@@ -31,8 +37,8 @@
     <p class="font-bold mb-2 pb-3">{event.special_notes}</p>
   {/if}
   <button
-    class="w-full p-2 text-white border-none rounded {isComingSoon ? 'bg-gray-400 cursor-not-allowed' : 'cursor-pointer bg-green-700 hover:bg-green-800'}"
-    disabled={isComingSoon}
+    class="w-full p-2 text-white border-none rounded {isComingSoon || isCancelled ? 'bg-gray-400 cursor-not-allowed' : 'cursor-pointer bg-green-700 hover:bg-green-800'}"
+    disabled={isComingSoon || isCancelled}
   >
     {buttonText}
   </button>

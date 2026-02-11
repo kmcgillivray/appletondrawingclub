@@ -14,7 +14,7 @@ export type EventType =
   | "portrait"
   | "workshop"
   | "special_event";
-export type EventStatus = "registration_open" | "completed" | "coming_soon";
+export type EventStatus = "registration_open" | "completed" | "coming_soon" | "cancelled";
 
 export interface Event {
   id: string;

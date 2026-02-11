@@ -358,7 +358,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 15,
       event_type: 'figure_drawing',
-      status: 'registration_open',
+      status: 'cancelled',
     },
     {
       id: '2026-02-18-wildlife-drawing',

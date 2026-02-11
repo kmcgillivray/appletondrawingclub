@@ -5,11 +5,12 @@
   let { event }: { event: Event } = $props();
 
   const isComingSoon = event.status === 'coming_soon';
+  const isCancelled = event.status === 'cancelled';
   const isExternalLink = event.url?.startsWith('http');
 </script>
 
 <li class="block shadow bg-white mb-2">
-  {#if isComingSoon}
+  {#if isComingSoon || isCancelled}
     <div class="block">
       <EventCardBody {event} />
     </div>
