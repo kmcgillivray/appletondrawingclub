@@ -231,6 +231,15 @@
 
   <!-- Registration Section -->
   <div class="mt-8 bg-white rounded-lg shadow-md p-6 border border-gray-200">
+    {#if event.status === 'cancelled'}
+      <div class="text-center py-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Event cancelled</h2>
+        <p class="text-gray-700 mb-6">Unfortunately, this event has been cancelled. Please check out our upcoming events!</p>
+        <a href="/calendar" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium">
+          View upcoming events
+        </a>
+      </div>
+    {/if}
     {#if event.status === 'coming_soon'}
       <div class="text-center py-12">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming soon!</h2>
