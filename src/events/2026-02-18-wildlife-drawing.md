@@ -10,7 +10,7 @@ capacity: 35
 event_type: special_event
 session_leader: Kevin McGillivray
 model: Hawks, falcons, and other avian ambassadors!
-status: registration_open
+status: completed
 ---
 
 Welcome to a very special **WILDLIFE drawing session** with Appleton Drawing Club! Draw live from a menagerie of incredible hawks and falcons. These majestic **avian ambassadors** will be visiting us from [River Valley Raptors](https://www.rivervalleyraptors.org). You'll have an up close encounter with these remarkable birds, with plenty of time to draw from direct observation and learn about them with the help of local falconers and avian educators. Shake off the winter with an incredible night getting to know hawks and falcons!
