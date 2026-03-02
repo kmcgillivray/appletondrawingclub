@@ -384,7 +384,7 @@ export const eventsData: { events: Event[] } = {
         {
       id: '2026-03-25-figure-drawing',
       title: 'Mixed Pose Figure Drawing',
-      date: '2026-03-15',
+      date: '2026-03-25',
       time: "7:00-9:00PM",
       location: {
         name: "The Photo Opp Studio",
