@@ -425,7 +425,8 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: '2026-04-15-portrait-club',
-      title: 'Portrait Club & ADC Anniversary Celebration!',
+      title: 'Portrait Club & Anniversary Celebration!',
+      special_notes: 'Celebrating 2 years of Appleton Drawing Club!',
       date: '2026-04-15',
       time: "7:00-9:00PM",
       location: {
@@ -464,6 +465,29 @@ export const eventsData: { events: Event[] } = {
       price: 15,
       event_type: 'figure_drawing',
       status: 'coming_soon',
+    },
+    {
+      id: '2026-04-27',
+      title: 'Gesture Drawing Fundamentals',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1760051713/IMG_7066_1_vksb4j.jpg',
+      url: 'https://34e75e-19.myshopify.com/products/gesture-drawing-fundamentals-19',
+      date: '2026-04-27',
+      time: '6:00-8:00PM',
+      location: {
+        name: 'Trout Museum of Art',
+        address: {
+          streetAddress: '',
+          addressLocality: '',
+          addressRegion: '',
+          postalCode: '',
+        },
+      },
+      instructor: 'Kevin McGillivray',
+      summary: '',
+      description: '',
+      price: 40,
+      event_type: 'workshop',
+      status: 'registration_open',
     },
     {
       id: '2026-04-29-figure-drawing',
