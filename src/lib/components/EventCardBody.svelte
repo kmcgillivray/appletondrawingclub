@@ -12,7 +12,7 @@
   const priceString = isFreeEvent ? 'Free' : `$${event.price}`;
   let buttonText = $state(`${priceString} – Reserve your spot`);
   if (isComingSoon) {
-    buttonText = 'Coming Soon';
+    buttonText = 'Coming soon';
   } else if (isCancelled) {
     buttonText = 'Cancelled! Please join us for our next event';
   }

@@ -385,7 +385,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: '2026-03-25-figure-drawing',
       url: '/events/2026-03-25-figure-drawing',
-      title: 'Mixed Pose Figure Drawing',
+      title: 'Themed Figure Drawing',
       date: '2026-03-25',
       time: "7:00-9:00PM",
       location: {
@@ -402,7 +402,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 15,
       event_type: 'figure_drawing',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-04-08-figure-drawing',
