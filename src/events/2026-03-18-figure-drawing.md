@@ -8,7 +8,7 @@ price: 15
 capacity: 20
 event_type: figure_drawing
 session_leader: Chris Dorn
-model: TBD
+model: Liz
 status: registration_open
 ---
 
