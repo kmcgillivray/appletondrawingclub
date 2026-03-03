@@ -363,6 +363,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: '2026-03-18-figure-drawing',
       url: '/events/2026-03-18-figure-drawing',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1750168197/IMG_6163_dhkzn5.jpg',
       title: 'Mixed Pose Figure Drawing',
       date: '2026-03-18',
       time: "7:00-9:00PM",
@@ -384,6 +385,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: '2026-03-25-figure-drawing',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1765661177/IMG_0701_qrybsz.jpg',
       url: '/events/2026-03-25-figure-drawing',
       title: 'Themed Figure Drawing',
       date: '2026-03-25',
@@ -406,6 +408,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: '2026-04-08-figure-drawing',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1730471148/IMG_0191_afzi3o.jpg',
       title: 'Coming soon',
       date: '2026-04-08',
       time: "7:00-9:00PM",
@@ -428,6 +431,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: '2026-04-15-portrait-club',
       title: 'Portrait Club & Anniversary Celebration!',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944259/IMG_0080_1_nfio69.jpg',
       special_notes: 'Celebrating 2 years of Appleton Drawing Club!',
       date: '2026-04-15',
       time: "7:00-9:00PM",
