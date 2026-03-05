@@ -432,6 +432,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: '2026-04-15-portrait-club',
       title: 'Portrait Club & Anniversary Celebration!',
+      url: '/events/2026-04-15-portrait-club',
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944259/IMG_0080_1_nfio69.jpg',
       special_notes: 'Celebrating 2 years of Appleton Drawing Club!',
       date: '2026-04-15',
@@ -445,12 +446,12 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      model: '',
+      model: 'You!',
       summary: '',
       description: '',
       price: 0,
       event_type: 'special_event',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-04-22-figure-drawing',
