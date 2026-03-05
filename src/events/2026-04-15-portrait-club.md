@@ -2,7 +2,7 @@
 title: "Portrait Club: Draw Each Other!"
 date: "2026-04-15"
 time: 7:00PM-9:00PM
-location_id: 96b779f8-6ee8-4f0b-9e92-044b7d1a6a1b
+location_id: 550e8400-e29b-41d4-a716-446655440000
 model: You!
 session_leader: Kevin McGillivray
 price: 0
