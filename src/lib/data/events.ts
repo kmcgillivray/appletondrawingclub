@@ -514,7 +514,7 @@ export const eventsData: { events: Event[] } = {
       summary: '',
       description: '',
       price: 15,
-      event_type: 'figure_drawing',
+      event_type: 'portrait',
       status: 'coming_soon',
     },
     {
