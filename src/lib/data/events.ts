@@ -387,7 +387,7 @@ export const eventsData: { events: Event[] } = {
       id: '2026-03-25-figure-drawing',
       image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1765661177/IMG_0701_qrybsz.jpg',
       url: '/events/2026-03-25-figure-drawing',
-      title: 'Themed Figure Drawing',
+      title: 'Themed Figure Drawing: Fairy Wings! 🧚',
       date: '2026-03-25',
       time: "7:00-9:00PM",
       location: {

@@ -1,9 +1,9 @@
 ---
-title: "Themed Figure Drawing"
+title: "Themed Figure Drawing: Fairy Wings"
 date: "2026-03-25"
 time: 7:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
-summary: A themed figure drawing session featuring short to long poses and a welcoming community
+summary: A themed figure drawing session featuring short to long fairy themed poses and a welcoming community
 price: 15
 capacity: 20
 event_type: figure_drawing
@@ -12,9 +12,9 @@ model: Emily
 status: registration_open
 ---
 
-**This will be a special themed session! More details soon.**
+## 🧚🧚🧚
 
-Welcome to a figure drawing session with Appleton Drawing Club! Whether you're a seasoned artist or just starting out, this event is perfect for anyone looking to stretch their drawing skills and meet fellow artists. Join us and enjoy a range of short to long poses from our wonderful model, great lighting, music for focus, and a friendly community.
+Welcome to a special _fairy themed_ figure drawing session with Appleton Drawing Club! Whether you're a seasoned artist or just starting out, this event is perfect for anyone looking to stretch their drawing skills and meet fellow artists. Emily will be posing in fantasy fairy inspired poses, so the evening is sure to turn into a fairytale. Join us and enjoy a range of short to long poses from our wonderful model, great lighting, music for focus, and a friendly community.
 
 - Short to long poses (1-30 minutes)
 - Unclothed model (Must be 18+ years old to attend. If under 18 years old, must be accompanied by a parent or guardian and/or provide a [consent form](/appleton-drawing-club-parental-consent-form.pdf) signed by a parent or guardian).
