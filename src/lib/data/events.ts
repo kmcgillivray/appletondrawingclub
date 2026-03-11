@@ -385,7 +385,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: '2026-03-25-figure-drawing',
-      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1765661177/IMG_0701_qrybsz.jpg',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_north,h_750,w_750/v1773195877/Falero_Luis_Ricardo_Lily_Fairy_1888_jn1cb6.jpg',
       url: '/events/2026-03-25-figure-drawing',
       title: 'Themed Figure Drawing: Fairytale 🧚',
       date: '2026-03-25',
