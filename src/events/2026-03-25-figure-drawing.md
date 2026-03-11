@@ -1,5 +1,6 @@
 ---
 title: "Themed Figure Drawing: Fairytale"
+image_url: "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_north,h_750,w_950/v1773195877/Falero_Luis_Ricardo_Lily_Fairy_1888_jn1cb6.jpg"
 date: "2026-03-25"
 time: 7:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
