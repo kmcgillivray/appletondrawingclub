@@ -10,7 +10,7 @@ capacity: 20
 event_type: figure_drawing
 session_leader: Chris Dorn
 model: Emily
-status: registration_open
+status: completed
 ---
 
 ## 🧚🧚🧚
