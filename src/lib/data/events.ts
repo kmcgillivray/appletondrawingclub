@@ -381,7 +381,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 15,
       event_type: 'figure_drawing',
-      status: 'registration_open',
+      status: 'completed',
     },
     {
       id: '2026-03-25-figure-drawing',
@@ -404,7 +404,7 @@ export const eventsData: { events: Event[] } = {
       description: '',
       price: 15,
       event_type: 'figure_drawing',
-      status: 'registration_open',
+      status: 'completed',
     },
     {
       id: '2026-04-08-figure-drawing',
