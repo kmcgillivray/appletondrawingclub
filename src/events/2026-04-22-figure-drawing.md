@@ -1,5 +1,6 @@
 ---
 title: "Themed Figure Drawing: Classical Drapery"
+image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1774917248/SC70482_nuq9f4.jpg'
 date: "2026-04-22"
 time: 7:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
