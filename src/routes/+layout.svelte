@@ -34,7 +34,7 @@
 
 <section class="mx-auto my-8 px-4 max-w-prose">
 	<h2 class="pb-3 text-xl font-bold text-green-700">About Appleton Drawing Club</h2>
-	<p class="pb-3">Appleton Drawing Club is a group of artists who meet regularly to draw from life. We welcome artists of all skill levels and backgrounds. We are dedicated to providing a safe and respectful environment for models and artists alike.</p>
+	<p class="pb-3">Appleton Drawing Club is a group of artists who meet regularly to draw from life. We welcome artists of all skill levels and backgrounds. We are dedicated to providing a creative, safe, and inspiring environment for models and artists.</p>
 	<p class="pb-3"><a href="/about" class="text-green-600 underline hover:text-green-700">Read more about Appleton Drawing Club</a></p>
 	<p class="pb-3"><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/appletondrawingclub/" class="text-green-600 underline hover:text-green-700">Follow Appleton Drawing Club on Instagram</a></p>
 </section>

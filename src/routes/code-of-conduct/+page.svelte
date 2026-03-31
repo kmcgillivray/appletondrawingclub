@@ -3,13 +3,13 @@
 
 <svelte:head>
   <title>Life Drawing Code of Conduct - Appleton Drawing Club</title>
-  <meta name="description" content="Code of conduct for Appleton Drawing Club sessions to ensure a safe and respectful environment for models and artists alike." />
+  <meta name="description" content="Code of conduct for Appleton Drawing Club sessions to ensure a safe and respectful environment for models and artists." />
 </svelte:head>
 
 <section class="container">
   <h1 class="text-5xl text-center mb-4">Life Drawing Code of Conduct</h1>
   
-  <p>Appleton Drawing Club is dedicated to providing a safe and respectful environment for models and artists alike. We expect all participants to adhere to the following code of conduct:</p>
+  <p>Appleton Drawing Club is dedicated to providing a safe and respectful environment for models and artists. We expect all participants to adhere to the following code of conduct:</p>
   
   <ul class="bullet">
     <li>Arrive on time and be ready to start at the scheduled time.</li>

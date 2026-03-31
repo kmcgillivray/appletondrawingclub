@@ -52,7 +52,7 @@
   <h2>What is the etiquette during a session?</h2>
 
   <p>
-    Our sessions have a <a href="/code-of-conduct">code of conduct</a> to ensure a safe and respectful environment for models and artists alike. Please review the code of conduct before attending a session.
+    Our sessions have a <a href="/code-of-conduct">code of conduct</a> to ensure a creative, safe, and inspiring environment for models and artists. Please review the code of conduct before attending a session.
   </p>
 
   <h2>What should I bring to a session?</h2>
