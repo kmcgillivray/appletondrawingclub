@@ -455,7 +455,9 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: '2026-04-22-figure-drawing',
-      title: 'Coming soon',
+      title: 'Themed Figure Drawing: Classical Drapery',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_north,h_750,w_750/v1774917248/SC70482_nuq9f4.jpg',
+      url: '/events/2026-04-22-figure-drawing',
       date: '2026-04-22',
       time: "7:00-9:00PM",
       location: {
@@ -467,12 +469,12 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      model: '',
+      model: 'Persephone',
       summary: '',
       description: '',
       price: 15,
       event_type: 'figure_drawing',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-04-27',
@@ -498,8 +500,9 @@ export const eventsData: { events: Event[] } = {
       status: 'registration_open',
     },
     {
-      id: '2026-04-29-figure-drawing',
-      title: 'Coming soon',
+      id: '2026-04-29-portrait-drawing',
+      title: 'Themed Portrait Drawing: Royalty',
+      image_url: 'https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1774917097/IMG_0815_wvj1rj.jpg',
       date: '2026-04-29',
       time: "7:00-9:00PM",
       location: {
@@ -511,7 +514,7 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      model: '',
+      model: 'Shasta',
       summary: '',
       description: '',
       price: 15,
