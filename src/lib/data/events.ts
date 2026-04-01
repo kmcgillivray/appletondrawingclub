@@ -422,7 +422,7 @@ export const eventsData: { events: Event[] } = {
           postalCode: "54911",
         },
       },
-      model: 'Erick',
+      model: 'Lauren',
       summary: '',
       description: '',
       price: 15,
