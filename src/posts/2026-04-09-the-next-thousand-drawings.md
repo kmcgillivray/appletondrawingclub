@@ -5,7 +5,7 @@ title: The Next Thousand Drawings
   <h1 class="text-5xl text-center mb-4">The Next Thousand Drawings</h1>
   <p class="text-center text-xl">By Kevin McGillivray • April 9, 2026</p>
 
-  <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1745845059/ADC_Portrait_20250423_023_b50vsz.jpg" alt="Wildlife Drawing" class="block my-2" />
+  <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1775754091/Frame_28-2_tmvpgz.jpg" alt="Wildlife Drawing" class="block my-2" />
 
   Appleton Drawing Club turns two this month! It feels like I just sharpened my pencils after the first year, and now it’s time again. It felt like the blink of an eye, but looking back it’s been a busy and inspiring year. Let’s look at some stats!
 
