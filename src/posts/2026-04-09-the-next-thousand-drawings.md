@@ -25,7 +25,7 @@ title: The Next Thousand Drawings
   [Carli Ihde](https://www.instagram.com/carlieyed/) brought us a kid-friendly fantasy life drawing class exploring visual development, character design, storytelling, and lots of swords (provided by our friends at [Badger’s Den Sword Academy](https://www.appletonwhfa.com)). We also enjoyed wonderful workshops taught by [Bobbi Martin](https://www.instagram.com/robertmartinstudio/) that expanded the way students approach both drawing processes and mediums in a pastel and charcoal masterclass. Finally, we went on field trips to collaborate with local organizations like the Paine Art Center in Oshkosh to host classes on floral and landscape sketching.
 
   <figure>
-  <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1775752868/IMG_9918_zig02b.jpg">
+  <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1775752868/IMG_9918_zig02b.jpg" />
   <caption>Robert Martin's first workshop session with the drawing club</caption>
   </figure>
 
@@ -36,7 +36,7 @@ title: The Next Thousand Drawings
   Our first wildlife session was a highlight of the first year, and we were lucky to host two sessions in year two in collaboration with regional bird rescue and conservation organizations, [Raptor Education Group](https://www.raptoreducationgroup.org) and [River Valley Raptors](https://www.rivervalleyraptors.org). Over 80 artists attended these sessions, raising over $1000 for bird rescue and environment protection efforts.
 
   <figure>
-  <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1761876157/_R2A0011-Edit_lxss8k.jpg">
+  <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1761876157/_R2A0011-Edit_lxss8k.jpg" />
   <caption>A packed room of artists and birds at our wildlife drawing session with REGI</caption>
   </figure>
 
@@ -49,7 +49,7 @@ title: The Next Thousand Drawings
   After two years, the drawing club has transformed in ways I couldn’t have predicted and for which I am inexpressibly grateful. The sessions are now attended by a community that supports and encourages each other both personally and creatively, and welcomes new faces warmly. Artists and models have grown from uncertain newbies into seasoned practitioners. Alongside our regular classic life drawing sessions, we enjoy a full calendar of special events and workshops supported by local teachers and organizations. The drawing club is a place where people practice creativity of all kinds, and go deep on practicing observational drawing skills and the creative expression of modeling.
 
   <figure>
-  <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1775752985/ADC_Portrait_20250423_031_1_zveql2.jpg">
+  <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1775752985/ADC_Portrait_20250423_031_1_zveql2.jpg" />
   <caption>One of our many post-session drawing piles</caption>
   </figure>
 
