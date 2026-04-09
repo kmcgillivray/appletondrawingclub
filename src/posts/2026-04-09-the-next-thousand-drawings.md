@@ -48,12 +48,13 @@ title: The Next Thousand Drawings
 
   After two years, the drawing club has transformed in ways I couldn’t have predicted and for which I am inexpressibly grateful. The sessions are now attended by a community that supports and encourages each other both personally and creatively, and welcomes new faces warmly. Artists and models have grown from uncertain newbies into seasoned practitioners. Alongside our regular classic life drawing sessions, we enjoy a full calendar of special events and workshops supported by local teachers and organizations. The drawing club is a place where people practice creativity of all kinds, and go deep on practicing observational drawing skills and the creative expression of modeling.
 
-  I like to say that making art involves skills of the head, eyes, hand, and heart. With our minds, we build our knowledge of anatomy, materials, and design. With our eyes, we develop our sensitivity to noticing and observing with care and attention. With our hands, we become fluent in notating and expressing our response to what we notice in the world and inside ourselves. With our hearts, we practice our capacity for curiosity and kindness toward ourselves and others. Whether you’re an artist, writer, model, or any kind of creative practitioner, life drawing is a way to practice these creative skills, and to co-create a world more curious and kind.
-
   <figure>
   <img src="https://res.cloudinary.com/db5mnmxzn/image/upload/v1775752985/ADC_Portrait_20250423_031_1_zveql2.jpg">
   <caption>One of our many post-session drawing piles</caption>
   </figure>
+
+  I like to say that making art involves skills of the head, eyes, hand, and heart. With our minds, we build our knowledge of anatomy, materials, and design. With our eyes, we develop our sensitivity to noticing and observing with care and attention. With our hands, we become fluent in notating and expressing our response to what we notice in the world and inside ourselves. With our hearts, we practice our capacity for curiosity and kindness toward ourselves and others. Whether you’re an artist, writer, model, or any kind of creative practitioner, life drawing is a way to practice these creative skills, and to co-create a world more curious and kind.
+
   
   ## Acknowledgements & neighbors
 

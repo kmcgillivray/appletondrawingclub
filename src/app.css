@@ -42,7 +42,7 @@
   }
 
   h2 {
-    @apply text-xl pb-3;
+    @apply text-2xl pb-3;
   }
 
   h3 {
@@ -51,6 +51,10 @@
 
   figure {
     @apply text-sm italic my-3;
+  }
+
+  caption {
+    @apply mt-3;
   }
 
   p {
