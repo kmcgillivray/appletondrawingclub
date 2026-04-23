@@ -10,7 +10,7 @@ capacity: 20
 event_type: figure_drawing
 session_leader: Kevin McGillivray
 model: Persephone
-status: registration_open
+status: completed
 ---
 
 Welcome to a special _classical drapery_ themed figure drawing session with Appleton Drawing Club! Our model will pose in dynamic poses with flowing drapery inspired by classical sculpture and mythology. Find inspiration in the stories of the ancient world and the rich interaction between figure and fabric.
