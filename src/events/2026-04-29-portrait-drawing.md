@@ -8,7 +8,7 @@ session_leader: Mikey Koziczkowski
 price: 15
 capacity: 20
 event_type: portrait
-status: registration_open
+status: completed
 summary: Join us for a fun evening of life drawing at Appleton Drawing Club - grab your pencils and get ready to sketch!
 image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1774917097/IMG_0815_wvj1rj.jpg
 ---
