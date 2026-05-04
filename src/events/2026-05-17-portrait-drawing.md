@@ -1,7 +1,7 @@
 ---
 title: "Long Pose Portrait Drawing"
 date: "2026-05-17"
-time: 7:00PM-9:00PM
+time: 10:00AM-12:00PM
 location_id: 7451911c-c383-4cc7-a627-0d624886b5c2
 model: Sophia
 session_leader: Mikey Koziczkowski
