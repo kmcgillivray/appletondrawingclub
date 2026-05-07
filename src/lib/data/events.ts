@@ -633,9 +633,9 @@ export const eventsData: { events: Event[] } = {
       model: 'Nikola & Simone',
       summary: '',
       description: '',
-      price: 20,
+      price: 25,
       event_type: 'special_event',
-      status: 'coming_soon',
+      status: 'registration_open',
     },
     {
       id: '2026-06-10-figure-drawing',
