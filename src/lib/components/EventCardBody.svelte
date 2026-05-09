@@ -9,12 +9,15 @@
   const isFreeEvent = event.price === 0;
   const isComingSoon = event.status === 'coming_soon';
   const isCancelled = event.status === 'cancelled';
+  const isSoldOut = event.status === 'sold_out';
   const priceString = isFreeEvent ? 'Free' : `$${event.price}`;
   let buttonText = $state(`${priceString} – Reserve your spot`);
   if (isComingSoon) {
     buttonText = 'Coming soon';
   } else if (isCancelled) {
     buttonText = 'Cancelled! Please join us for our next event';
+  } else if (isSoldOut) {
+    buttonText = 'Sold out!';
   }
 </script>
 
@@ -37,8 +40,8 @@
     <p class="font-bold mb-2 pb-3">{event.special_notes}</p>
   {/if}
   <button
-    class="w-full p-2 text-white border-none rounded {isComingSoon || isCancelled ? 'bg-gray-400 cursor-not-allowed' : 'cursor-pointer bg-green-700 hover:bg-green-800'}"
-    disabled={isComingSoon || isCancelled}
+    class="w-full p-2 text-white border-none rounded {isComingSoon || isCancelled || isSoldOut ? 'bg-gray-400 cursor-not-allowed' : 'cursor-pointer bg-green-700 hover:bg-green-800'}"
+    disabled={isComingSoon || isCancelled || isSoldOut}
   >
     {buttonText}
   </button>

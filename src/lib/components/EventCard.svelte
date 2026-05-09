@@ -6,11 +6,12 @@
 
   const isComingSoon = event.status === 'coming_soon';
   const isCancelled = event.status === 'cancelled';
+  const isSoldOut = event.status === 'sold_out';
   const isExternalLink = event.url?.startsWith('http');
 </script>
 
 <li class="block shadow bg-white mb-2">
-  {#if isComingSoon || isCancelled}
+  {#if isComingSoon || isCancelled || isSoldOut}
     <div class="block">
       <EventCardBody {event} />
     </div>
