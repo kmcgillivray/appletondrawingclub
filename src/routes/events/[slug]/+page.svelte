@@ -11,22 +11,15 @@
   const event = data.event;
 
   const formattedDate = formatEventDate(event.date);
-  
-  // Format location for display
-  const formatLocation = (location: Event['location']) => {
-    return `${location.name}, ${location.address.streetAddress}, ${location.address.addressLocality}, ${location.address.addressRegion}`;
-  };
-  
-  const formattedLocation = formatLocation(event.location);
 </script>
 
 <svelte:head>
   <title>{event.title} | Appleton Drawing Club</title>
-  <meta name="description" content="Join us for {event.title} on {formattedDate} at {formattedLocation}. ${event.price} - {event.summary}" />
+  <meta name="description" content="Join us for {event.title} on {formattedDate} at {event.location.name}. ${event.price} - {event.summary}" />
   
   <!-- Open Graph tags -->
   <meta property="og:title" content="{event.title} | Appleton Drawing Club" />
-  <meta property="og:description" content="Join us for {event.title} on {formattedDate} at {formattedLocation}. ${event.price} - {event.summary}" />
+  <meta property="og:description" content="Join us for {event.title} on {formattedDate} at {event.location.name}. ${event.price} - {event.summary}" />
   <meta property="og:image" content="{event.image_url}" />
   <meta property="og:type" content="event" />
   
