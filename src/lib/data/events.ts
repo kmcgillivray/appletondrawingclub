@@ -680,7 +680,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-06-17-ally-wilber-workshop",
       url: "/events/2026-06-17-ally-wilber-workshop",
-      title: "Ally Wilber Workshop",
+      title: "Drawing with Shadow, Light, and Smoke",
       date: "2026-06-17",
       time: "7:00-9:00PM",
       location: {
