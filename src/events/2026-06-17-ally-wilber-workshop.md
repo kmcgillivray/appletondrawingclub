@@ -9,7 +9,7 @@ capacity: 10
 event_type: workshop
 instructor: Ally Wilber
 model: Ashley
-status: coming_soon
+status: registration_open
 ---
 
 Join Appleton artist Ally Wilber in this one-of-a-kind workshop. You'll explore figure drawing through shadow, soot, and reductive mark-making using charcoal, erasure, and safe fire painting (fumage) demonstrations. Drawing from a live model, we’ll focus on pulling light from darkness - creating mood and movement instead of hard lines rigid realism. Expect smoke, strange curves, and an emphasis on atmosphere and intuition.

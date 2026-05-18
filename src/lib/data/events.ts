@@ -699,7 +699,7 @@ export const eventsData: { events: Event[] } = {
       description: "",
       price: 45,
       event_type: "workshop",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2026-06-24-figure-drawing",
