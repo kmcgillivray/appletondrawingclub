@@ -679,6 +679,8 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-06-17-ally-wilber-workshop",
+      image_url:
+        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1779109267/Screenshot_2026-05-18_at_8.00.06_AM_ofartu.png",
       url: "/events/2026-06-17-ally-wilber-workshop",
       title: "Drawing with Shadow, Light, and Smoke",
       date: "2026-06-17",

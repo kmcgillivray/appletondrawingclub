@@ -1,5 +1,6 @@
 ---
 title: "Drawing with Shadow, Light, and Smoke"
+image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1779109267/Screenshot_2026-05-18_at_8.00.06_AM_ofartu.png
 date: "2026-06-17"
 time: 6:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
