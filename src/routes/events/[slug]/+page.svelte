@@ -124,6 +124,12 @@
               </a>
           </div>
         </div>
+        {#if event.instructor}
+          <div>
+            <strong class="text-gray-700">Instructor</strong>
+            <div class="text-lg">{event.instructor}</div>
+          </div>
+        {/if}
         {#if event.model}
           <div>
             <strong class="text-gray-700">Model</strong>
@@ -134,12 +140,6 @@
           <div>
             <strong class="text-gray-700">Session Leader</strong>
             <div class="text-lg">{event.session_leader}</div>
-          </div>
-        {/if}
-        {#if event.instructor}
-          <div>
-            <strong class="text-gray-700">Instructor</strong>
-            <div class="text-lg">{event.instructor}</div>
           </div>
         {/if}
         {#if event.capacity}

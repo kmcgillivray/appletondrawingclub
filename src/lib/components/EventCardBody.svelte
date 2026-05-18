@@ -33,8 +33,8 @@
     {formattedDate}<br />
     {event.time}<br />
     {event.location.name}
-    {#if event.model}<br />Model: {event.model}{/if}
     {#if event.instructor}<br />Instructor: {event.instructor}{/if}
+    {#if event.model}<br />Model: {event.model}{/if}
   </p>
   {#if event.special_notes}
     <p class="font-bold mb-2 pb-3">{event.special_notes}</p>
