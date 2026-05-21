@@ -10,7 +10,7 @@ capacity: 8
 event_type: special_event
 session_leader: Kevin McGillivray
 model: Nikola & Simone
-status: registration_open
+status: sold_out
 ---
 
 **Would you like the Victorian house tour? Join us for a special costumed portrait drawing session at [Hearthstone Historic House Museum](https://www.hearthstonemuseum.org)!**
@@ -32,7 +32,6 @@ Bring the past and present together and join us for Victorian Parlor Sketching!
 - Two sittings: the light will shift from natural to electric light halfway through the session - **sketching encouraged** as the light will be changing!
 - Untutored but beginner friendly! A session leader will be available to answer questions or provide other support.
 - Due to the limited space, this special session will be **limited to 8 artists**. Register early to save a spot!
-
 
 ## Agenda
 

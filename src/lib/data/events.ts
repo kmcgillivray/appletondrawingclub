@@ -653,7 +653,7 @@ export const eventsData: { events: Event[] } = {
       description: "",
       price: 25,
       event_type: "special_event",
-      status: "registration_open",
+      status: "sold_out",
     },
     {
       id: "2026-06-10-figure-drawing",

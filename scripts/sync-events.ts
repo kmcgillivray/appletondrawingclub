@@ -15,7 +15,7 @@ const SUPABASE_PRIVATE_KEY = process.env.SUPABASE_PRIVATE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_PRIVATE_KEY) {
   throw new Error(
-    "Missing SUPABASE_URL or SUPABASE_PRIVATE_KEY in environment variables"
+    "Missing SUPABASE_URL or SUPABASE_PRIVATE_KEY in environment variables",
   );
 }
 
@@ -39,7 +39,15 @@ const eventSchema = z.object({
     "workshop",
     "special_event",
   ]),
-  status: z.enum(["registration_open", "completed", "coming_soon", "cancelled"]).optional(),
+  status: z
+    .enum([
+      "registration_open",
+      "completed",
+      "coming_soon",
+      "cancelled",
+      "sold_out",
+    ])
+    .optional(),
   special_notes: z.string().optional(),
   summary: z.string().min(1).max(300),
   description: z.string().min(1),
@@ -70,7 +78,7 @@ async function syncEvents() {
     if (!parseResult.success) {
       console.error(
         `Validation error in ${file}:`,
-        z.treeifyError(parseResult.error)
+        z.treeifyError(parseResult.error),
       );
       continue;
     }
