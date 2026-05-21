@@ -28,6 +28,7 @@
 	},
 	"dependencies": {
 		"@dotenvx/dotenvx": "^1.49.0",
+		"@sentry/sveltekit": "^10.53.1",
 		"@stripe/stripe-js": "^7.9.0",
 		"@supabase/supabase-js": "^2.57.2",
 		"gray-matter": "^4.0.3",
