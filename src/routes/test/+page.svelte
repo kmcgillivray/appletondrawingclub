@@ -1,5 +1,4 @@
 <script>
-  throw new Error("test error");
 </script>
 
 <svelte:head>
@@ -9,5 +8,5 @@
 </svelte:head>
 
 <section class="container">
-  <p>testing</p>
+  <button onclick={() => { throw new Error('hello') }}>testing</button>
 </section>
