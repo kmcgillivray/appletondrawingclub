@@ -13,7 +13,9 @@ model: Richard Edge
 status: registration_open
 ---
 
-Join us for a special **live music and drawing session** with our guest and model, [Richard Edge](https://www.instagram.com/richard__edge/)! Richard is on tour for their debut album release, _Vespers_, produced by local Appleton-based record label, [Crutch of Memory](https://www.instagram.com/crutchofmemory/). Richard will bring their summer tour to the drawing club, a unique chance to combine art and music in one great evening. Sketch Richard during the set, and also during a short posed portrait half way through the session.
+Join us for a special **live music and drawing session** with our guest and model, [Richard Edge](https://www.instagram.com/richard__edge/)! Richard is on tour for their debut album release, _Vespers_, produced by local Appleton-based record label, [Crutch of Memory](https://www.instagram.com/crutchofmemory/). Richard will bring their summer tour to the drawing club, a unique chance to combine art and music in one great evening.
+
+Bring your pencils, paper, and keen eyes and ears. Sketch Richard while enjoying the folk/blues/punk sound of their twelve string guitar and capture the music on paper. We'll also have a short posed portrait sitting half way through the session for an opportunity for a more traditional portrait! Get inspired, hang out with your fellow artists, and enjoy the _Vespers Summer Tour_!
 
 ## About Vespers
 
@@ -28,6 +30,10 @@ From Crutch of Memory:
 ➡️ [Pre-order Vespers on Vinyl](https://www.crutchofmemory.com/shop/p/richard-edge-vespers-vinyl-lp-preorder-ps5me)
 
 ➡️ [Pre-order Vespers on Bandcamp](https://crutchofmemory.bandcamp.com/album/vespers)
+
+## What to bring
+
+Bring your own easel and preferred art supplies, we'll have a few materials available as a backup if you don't have your own!
 
 ## Did you say you "can't draw"??
 

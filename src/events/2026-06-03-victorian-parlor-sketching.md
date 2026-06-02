@@ -10,7 +10,7 @@ capacity: 8
 event_type: special_event
 session_leader: Kevin McGillivray
 model: Nikola & Simone
-status: sold_out
+status: registration_open
 ---
 
 **Would you like the Victorian house tour? Join us for a special costumed portrait drawing session at [Hearthstone Historic House Museum](https://www.hearthstonemuseum.org)!**
