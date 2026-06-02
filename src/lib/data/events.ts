@@ -680,6 +680,30 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
+      id: "2026-06-16-richard-edge",
+      image_url:
+        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1780437687/re6_zdec5n.png",
+      url: "/events/2026-06-16-richard-edge",
+      title: "Sketch Concert: Richard Edge Vespers Summer Tour",
+      date: "2026-06-16",
+      time: "7:00-9:00PM",
+      location: {
+        name: "The Photo Opp Studio",
+        address: {
+          streetAddress: "621 N Bateman Street",
+          addressLocality: "Appleton",
+          addressRegion: "WI",
+          postalCode: "54911",
+        },
+      },
+      model: "",
+      summary: "",
+      description: "",
+      price: 15,
+      event_type: "special_event",
+      status: "registration_open",
+    },
+    {
       id: "2026-06-17-ally-wilber-workshop",
       image_url:
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1779109267/Screenshot_2026-05-18_at_8.00.06_AM_ofartu.png",
