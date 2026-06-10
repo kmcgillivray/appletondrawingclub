@@ -677,7 +677,7 @@ export const eventsData: { events: Event[] } = {
       description: "",
       price: 15,
       event_type: "figure_drawing",
-      status: "registration_open",
+      status: "cancelled",
     },
     {
       id: "2026-06-16-richard-edge",
