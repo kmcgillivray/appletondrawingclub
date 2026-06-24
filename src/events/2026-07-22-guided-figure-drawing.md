@@ -9,7 +9,7 @@ price: 25
 capacity: 10
 event_type: workshop
 instructor: Kevin McGillivray
-model: TBD
+model: Gabriella
 status: registration_open
 ---
 
