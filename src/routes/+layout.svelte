@@ -67,6 +67,7 @@
 			<li class="mb-2"><a href="/code-of-conduct" class="text-green-600 underline hover:text-green-700">Code of conduct</a></li>
 			<li class="mb-2"><a href="/about" class="text-green-600 underline hover:text-green-700">About</a></li>
 			<li class="mb-2"><a href="/contact" class="text-green-600 underline hover:text-green-700">Contact</a></li>
+			<li class="mb-2"><a href="https://billing.stripe.com/p/login/7sYbJ085t568aemg4pasg00" class="text-green-600 underline hover:text-green-700">Coaching Login</a></li>
 		</ul>
 	</nav>
 	<p class="text-xl font-caveat">Made with ♥️ and charcoal in Appleton, WI</p>
