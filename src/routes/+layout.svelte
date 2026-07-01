@@ -63,7 +63,7 @@
 	<nav class="py-3 mb-3">
 		<ul class="ml-0 md:flex gap-3 list-none justify-center">
 			<li class="mb-2"><a href="/calendar" class="text-green-600 underline hover:text-green-700">Events</a></li>
-			<li class="mb-2"><a href="/coaching" class="text-green-600 underline hover:text-green-700">Art Coaching Program</a></li>
+			<li class="mb-2"><a href="/coaching" class="text-green-600 underline hover:text-green-700">Art Coaching</a></li>
 			<li class="mb-2"><a href="/faq" class="text-green-600 underline hover:text-green-700">FAQs</a></li>
 			<li class="mb-2"><a href="/modeling" class="text-green-600 underline hover:text-green-700">For models</a></li>
 			<li class="mb-2"><a href="/code-of-conduct" class="text-green-600 underline hover:text-green-700">Code of conduct</a></li>
