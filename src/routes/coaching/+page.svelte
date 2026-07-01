@@ -10,8 +10,6 @@
 <section class="container">
   <h1 class="font-caveat text-5xl text-center mb-4">Coaching & Mentorship Program</h1>
   
-  <!-- TODO: Add image / hero copy -->
-  
   <p>One of the best ways to grow as an artist is to work regularly with another experienced artist who can see your work with fresh eyes to provide encouragement and direct feedback while understanding your specific goals and challenges. This one-on-one learning environment can expand your perspective, deepen your practical skills, and clarify your artistic direction.</p>
     
   <p>That's why I'm excited to invite you to the <strong>Appleton Drawing Club Coaching Program</strong>! Unlike one-off evening workshops or classes with fixed lesson plans, this program is designed to provide ongoing support directly driven by your specific goals and challenge areas. This means the program is flexible for all experience levels and can cover a wide range of topics in the world of observational drawing and painting:</p>
@@ -32,7 +30,7 @@
     <li>Each month, you'll share samples of your work via email along with relevant questions, challenges, and context about your personal goals and focus</li>
     <li>You'll receive a 30-60 minute video with critique, recommended exercises, and inspiring resources to support your next steps</li>
     <li>Includes a free registration to an Appleton Drawing Club open session each month</li>
-    <li>$60 per month, pause or cancel any time! Spots are limited.</li>
+    <li><s>$60</s> <strong>$50 per month for the first students, pause or cancel any time! Spots are limited.</strong></li>
   </ul>
 
   <div class="bg-white p-6 rounded shadow-md mb-6 mt-6">
