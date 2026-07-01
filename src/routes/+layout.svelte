@@ -20,8 +20,9 @@
 	<nav class="py-3 mb-3">
 		<ul class="ml-0 flex flex-wrap gap-5 text-lg list-none">
 			<li class="mb-0"><a href="/calendar" class="text-green-600 hover:text-green-700">Events</a></li>
-			<li class="mb-0"><a href="/modeling" class="text-green-600 hover:text-green-700">For models</a></li>
+			<li class="mb-0"><a href="/coaching" class="text-green-600 hover:text-green-700">Art Coaching Program</a></li>
 			<li class="mb-0"><a href="/faq" class="text-green-600 hover:text-green-700">FAQs</a></li>
+			<li class="mb-0"><a href="/modeling" class="text-green-600 hover:text-green-700">For models</a></li>
 			<li class="mb-0"><a href="/about" class="text-green-600 hover:text-green-700">About</a></li>
 			<li class="mb-0"><a href="/contact" class="text-green-600 hover:text-green-700">Contact</a></li>
 		</ul>
@@ -62,8 +63,9 @@
 	<nav class="py-3 mb-3">
 		<ul class="ml-0 md:flex gap-3 list-none justify-center">
 			<li class="mb-2"><a href="/calendar" class="text-green-600 underline hover:text-green-700">Events</a></li>
-			<li class="mb-2"><a href="/modeling" class="text-green-600 underline hover:text-green-700">For models</a></li>
+			<li class="mb-2"><a href="/coaching" class="text-green-600 underline hover:text-green-700">Art Coaching Program</a></li>
 			<li class="mb-2"><a href="/faq" class="text-green-600 underline hover:text-green-700">FAQs</a></li>
+			<li class="mb-2"><a href="/modeling" class="text-green-600 underline hover:text-green-700">For models</a></li>
 			<li class="mb-2"><a href="/code-of-conduct" class="text-green-600 underline hover:text-green-700">Code of conduct</a></li>
 			<li class="mb-2"><a href="/about" class="text-green-600 underline hover:text-green-700">About</a></li>
 			<li class="mb-2"><a href="/contact" class="text-green-600 underline hover:text-green-700">Contact</a></li>
