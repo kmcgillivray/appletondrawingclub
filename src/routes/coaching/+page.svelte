@@ -30,7 +30,7 @@
     <li>Each month, you'll share samples of your work via email along with relevant questions, challenges, and context about your personal goals and focus</li>
     <li>You'll receive a 30-60 minute video with critique, recommended exercises, and inspiring resources to support your next steps</li>
     <li>Includes a free registration to an Appleton Drawing Club open session each month</li>
-    <li><s>$60</s> <strong>$50 per month for the first students, pause or cancel any time! Spots are limited.</strong></li>
+    <li><strong>$60 per month for the first students, pause or cancel any time! Spots are limited.</strong></li>
   </ul>
 
   <div class="bg-white p-6 rounded shadow-md mb-6 mt-6">
