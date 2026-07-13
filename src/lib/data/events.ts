@@ -851,6 +851,30 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
+      id: "2026-08-12-figure-drawing",
+      image_url:
+        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399179/IMG_0498_hjcuyv.jpg",
+      url: "/events/2026-08-12-figure-drawing",
+      title: "Mixed Pose Figure Drawing",
+      date: "2026-08-05",
+      time: "7:00-9:00PM",
+      location: {
+        name: "The Photo Opp Studio",
+        address: {
+          streetAddress: "621 N Bateman Street",
+          addressLocality: "Appleton",
+          addressRegion: "WI",
+          postalCode: "54911",
+        },
+      },
+      model: "",
+      summary: "",
+      description: "",
+      price: 15,
+      event_type: "figure_drawing",
+      status: "coming_soon",
+    },
+    {
       id: "2026-02-18-wildlife-drawing",
       url: "/events/2026-02-18-wildlife-drawing",
       title: "Wildlife Drawing: Hawks & Falcons!",
