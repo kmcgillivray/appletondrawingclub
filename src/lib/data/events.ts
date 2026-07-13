@@ -875,6 +875,30 @@ export const eventsData: { events: Event[] } = {
       status: "coming_soon",
     },
     {
+      id: "2026-08-19-portrait-sketching",
+      image_url:
+        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1783976668/Untitled-1_xlagfv.jpg",
+      url: "/events/2026-08-19-portrait-sketching",
+      title: "Portrait Sketching Summer Camp",
+      date: "2026-08-19",
+      time: "6:00-9:00PM",
+      location: {
+        name: "The Photo Opp Studio",
+        address: {
+          streetAddress: "621 N Bateman Street",
+          addressLocality: "Appleton",
+          addressRegion: "WI",
+          postalCode: "54911",
+        },
+      },
+      model: "Shasta",
+      summary: "",
+      description: "",
+      price: 40,
+      event_type: "workshop",
+      status: "registration_open",
+    },
+    {
       id: "2026-02-18-wildlife-drawing",
       url: "/events/2026-02-18-wildlife-drawing",
       title: "Wildlife Drawing: Hawks & Falcons!",
