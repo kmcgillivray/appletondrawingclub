@@ -1,15 +1,15 @@
 ---
 title: "Mixed Pose Figure Drawing"
-image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1725293285/IMG_0262_aaxson.jpg
-date: "2026-07-15"
+image_url: https://res.cloudinary.com/db5mnmxzn/image/upload/w_900/v1783975909/IMG_3618_w49l9t.jpg
+date: "2026-08-05"
 time: 7:00-9:00PM
 location_id: 550e8400-e29b-41d4-a716-446655440000
 summary: A classic figure drawing session featuring short to long poses and a welcoming community
 price: 15
 capacity: 20
 event_type: figure_drawing
-session_leader: Chris Dorn
-model: Arthur
+session_leader: Kevin McGillivray
+model: Chad
 status: registration_open
 ---
 
