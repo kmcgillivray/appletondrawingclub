@@ -856,7 +856,7 @@ export const eventsData: { events: Event[] } = {
         "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399179/IMG_0498_hjcuyv.jpg",
       url: "/events/2026-08-12-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      date: "2026-08-05",
+      date: "2026-08-12",
       time: "7:00-9:00PM",
       location: {
         name: "The Photo Opp Studio",
