@@ -10,7 +10,7 @@ capacity: 10
 event_type: workshop
 instructor: Kevin McGillivray
 model: Shasta
-status: registration_open
+status: sold_out
 ---
 
 The fleeting glance, the dramatic tilt of the head, the striking smile... learn how to draw expressive portrait sketches in this beginner-friendly class!

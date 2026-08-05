@@ -896,7 +896,7 @@ export const eventsData: { events: Event[] } = {
       description: "",
       price: 40,
       event_type: "workshop",
-      status: "registration_open",
+      status: "sold_out",
     },
     {
       id: "2026-02-18-wildlife-drawing",
