@@ -40,8 +40,8 @@
     <p class="font-bold mb-2 pb-3">{event.special_notes}</p>
   {/if}
   <button
-    class="w-full p-2 text-white border-none rounded {isComingSoon || isCancelled || isSoldOut ? 'bg-gray-400 cursor-not-allowed' : 'cursor-pointer bg-green-700 hover:bg-green-800'}"
-    disabled={isComingSoon || isCancelled || isSoldOut}
+    class="w-full p-2 text-white border-none rounded {isComingSoon || isCancelled || isSoldOut ? 'bg-gray-400' : 'cursor-pointer bg-green-700 hover:bg-green-800'}"
+    disabled={isComingSoon || isCancelled}
   >
     {buttonText}
   </button>
