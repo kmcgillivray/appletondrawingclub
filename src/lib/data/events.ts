@@ -10,7 +10,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-10-08",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -34,7 +34,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-10-22",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -57,7 +57,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-10-29",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -80,7 +80,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-11-05",
       time: "6:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -97,7 +97,7 @@ export const eventsData: { events: Event[] } = {
       status: "completed",
     },
     {
-      id: "2025-11-12-mixed-pose-figure-drawing",
+      id: "2025-11-12-figure-drawing",
       url: "/events/2025-11-12-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_0309_l7lv9x",
@@ -105,7 +105,7 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       model: "Kit",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -120,7 +120,7 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
-      id: "2025-11-19-mixed-pose-figure-drawing",
+      id: "2025-11-19-figure-drawing",
       url: "/events/2025-11-19-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_2309_git7ak",
@@ -128,7 +128,7 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       model: "Emily",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -173,7 +173,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-12-10",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -189,7 +189,7 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
-      id: "2025-12-17-mixed-pose-figure-drawing",
+      id: "2025-12-17-figure-drawing",
       url: "/events/2025-12-17-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       model: "Cory",
@@ -197,7 +197,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-12-17",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -219,7 +219,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-01-07",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -244,7 +244,7 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       image_id: "IMG_0327_xeu9bj",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -267,7 +267,7 @@ export const eventsData: { events: Event[] } = {
       model: "Davida",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -289,7 +289,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-01-28",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -314,7 +314,7 @@ export const eventsData: { events: Event[] } = {
       instructor: "Robert Martin",
       model: "Emma",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -336,7 +336,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-02-11",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -359,7 +359,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-03-18",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -383,7 +383,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-03-25",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -406,7 +406,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-04-08",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -430,7 +430,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-04-15",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -454,7 +454,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-04-22",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -500,7 +500,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-04-29",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -523,7 +523,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-05-13",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -569,7 +569,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-05-20",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -592,7 +592,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-05-27",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -638,7 +638,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-06-10",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -661,7 +661,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-06-16",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -684,7 +684,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-06-17",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -709,7 +709,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-06-24",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -732,7 +732,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-07-08",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -755,7 +755,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-07-15",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -778,7 +778,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-07-22",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -802,7 +802,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-08-05",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -825,7 +825,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-08-12",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -848,7 +848,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-08-19",
       time: "6:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -871,7 +871,7 @@ export const eventsData: { events: Event[] } = {
       date: "2026-02-18",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -915,7 +915,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-08-27",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -940,7 +940,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-09-10",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -988,7 +988,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-08-10",
       time: "10:00AM-12:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1011,7 +1011,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-07-16",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1055,7 +1055,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-06-25",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1121,7 +1121,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-05-28",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1142,7 +1142,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-05-14",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1165,7 +1165,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-04-23",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1190,7 +1190,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-04-09",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1211,7 +1211,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-03-26",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1232,7 +1232,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-03-12",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1253,7 +1253,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-02-26",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1275,7 +1275,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-02-19",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1317,7 +1317,7 @@ export const eventsData: { events: Event[] } = {
       date: "2025-01-08",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1338,7 +1338,7 @@ export const eventsData: { events: Event[] } = {
       date: "2024-12-11",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1359,7 +1359,7 @@ export const eventsData: { events: Event[] } = {
       date: "2024-11-13",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1380,7 +1380,7 @@ export const eventsData: { events: Event[] } = {
       date: "2024-10-09",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1401,7 +1401,7 @@ export const eventsData: { events: Event[] } = {
       date: "2024-09-18",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1422,7 +1422,7 @@ export const eventsData: { events: Event[] } = {
       date: "2024-08-14",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1444,7 +1444,7 @@ export const eventsData: { events: Event[] } = {
       date: "2024-07-24",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1465,7 +1465,7 @@ export const eventsData: { events: Event[] } = {
       date: "2024-05-29",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
@@ -1486,7 +1486,7 @@ export const eventsData: { events: Event[] } = {
       date: "2024-04-17",
       time: "7:00-9:00PM",
       location: {
-        name: "The Photo Opp Studio",
+        name: "Photo Opp",
         address: {
           streetAddress: "621 N Bateman Street",
           addressLocality: "Appleton",
