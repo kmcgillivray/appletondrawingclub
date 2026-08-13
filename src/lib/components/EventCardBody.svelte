@@ -1,9 +1,12 @@
 <script lang="ts">
   import { formatEventDate } from '../utils/events';
+  import { eventImage } from '../utils/cloudinary';
   import type { Event } from '../types';
   import EventTypeBadge from './EventTypeBadge.svelte';
 
   let { event }: { event: Event } = $props();
+
+  const imgSrc = eventImage(event, 'card') ?? event.image_url;
 
   const formattedDate = formatEventDate(event.date);
   const isFreeEvent = event.price === 0;
@@ -21,8 +24,8 @@
   }
 </script>
 
-{#if event.image_url}
-  <img src={event.image_url} alt={event.title} class="w-full h-auto object-contain" />
+{#if imgSrc}
+  <img src={imgSrc} alt={event.title} class="w-full h-auto object-contain" />
 {/if}
 <div class="p-3">
   <div class="mb-2">

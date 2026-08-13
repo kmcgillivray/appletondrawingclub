@@ -32,7 +32,9 @@ export interface Event {
   special_notes?: string;
   summary: string; // Short plain-text description for previews, meta descriptions, etc.
   description: string; // Detailed description, can contain markdown
-  image_url?: string;
+  image_id?: string; // Cloudinary public_id, e.g. "ADC_Portrait_..._aukrnx"
+  image_gravity?: "center" | "north" | "auto"; // Optional crop-focus override
+  image_url?: string; // Legacy/full URL fallback (e.g. Supabase-sourced events)
   status?: EventStatus;
   url?: string;
 }

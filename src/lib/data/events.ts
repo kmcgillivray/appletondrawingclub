@@ -6,8 +6,7 @@ export const eventsData: { events: Event[] } = {
       id: "2025-10-08-intro-to-life-drawing",
       url: "/events/2025-10-08-intro-to-life-drawing",
       title: "Introduction to Life Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg",
+      image_id: "ADC_Portrait_20250423_029_aukrnx",
       date: "2025-10-08",
       time: "7:00-9:00PM",
       location: {
@@ -31,8 +30,7 @@ export const eventsData: { events: Event[] } = {
       id: "2025-10-22-mixed-pose-figure-drawing",
       url: "/events/2025-10-22-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727284714/IMG_0327_xeu9bj.jpg",
+      image_id: "IMG_0327_xeu9bj",
       date: "2025-10-22",
       time: "7:00-9:00PM",
       location: {
@@ -55,8 +53,7 @@ export const eventsData: { events: Event[] } = {
       id: "2025-10-29-halloween-wildlife-drawing",
       url: "/events/2025-10-29-halloween-wildlife-drawing",
       title: "Wildlife Drawing: Owls & Corvids!",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1758286740/IMG_0661_yhux4o.jpg",
+      image_id: "IMG_0661_yhux4o",
       date: "2025-10-29",
       time: "7:00-9:00PM",
       location: {
@@ -79,8 +76,7 @@ export const eventsData: { events: Event[] } = {
       id: "2025-11-05-gesture-drawing-fundamentals",
       url: "/events/2025-11-05-gesture-drawing-fundamentals",
       title: "Gesture Drawing Fundamentals",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944086/IMG_7620_1_dt4d1g.jpg",
+      image_id: "IMG_7620_1_dt4d1g",
       date: "2025-11-05",
       time: "6:00-9:00PM",
       location: {
@@ -104,8 +100,7 @@ export const eventsData: { events: Event[] } = {
       id: "2025-11-12-mixed-pose-figure-drawing",
       url: "/events/2025-11-12-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727289295/IMG_0309_l7lv9x.jpg",
+      image_id: "IMG_0309_l7lv9x",
       date: "2025-11-12",
       time: "7:00-9:00PM",
       model: "Kit",
@@ -128,8 +123,7 @@ export const eventsData: { events: Event[] } = {
       id: "2025-11-19-mixed-pose-figure-drawing",
       url: "/events/2025-11-19-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399309/IMG_2309_git7ak.jpg",
+      image_id: "IMG_2309_git7ak",
       date: "2025-11-19",
       time: "7:00-9:00PM",
       model: "Emily",
@@ -166,8 +160,7 @@ export const eventsData: { events: Event[] } = {
       summary: "",
       description: "",
       url: "/events/2025-12-03-portrait-club",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944259/IMG_0080_1_nfio69.jpg",
+      image_id: "IMG_0080_1_nfio69",
       price: 0,
       event_type: "special_event",
       status: "registration_open",
@@ -176,8 +169,7 @@ export const eventsData: { events: Event[] } = {
       id: "2025-12-10-intro-to-life-drawing",
       url: "/events/2025-12-10-intro-to-life-drawing",
       title: "Introduction to Life Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg",
+      image_id: "ADC_Portrait_20250423_029_aukrnx",
       date: "2025-12-10",
       time: "7:00-9:00PM",
       location: {
@@ -201,8 +193,7 @@ export const eventsData: { events: Event[] } = {
       url: "/events/2025-12-17-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       model: "Cory",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1745806203/IMG_0548_s0h7i7.jpg",
+      image_id: "IMG_0548_s0h7i7",
       date: "2025-12-17",
       time: "7:00-9:00PM",
       location: {
@@ -224,8 +215,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-01-07-guided-figure-drawing",
       url: "/events/2026-01-07-guided-figure-drawing",
       title: "Guided Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg",
+      image_id: "ADC_Portrait_20250423_029_aukrnx",
       date: "2026-01-07",
       time: "7:00-9:00PM",
       location: {
@@ -252,8 +242,7 @@ export const eventsData: { events: Event[] } = {
       model: "Roger",
       date: "2026-01-14",
       time: "7:00-9:00PM",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727284714/IMG_0327_xeu9bj.jpg",
+      image_id: "IMG_0327_xeu9bj",
       location: {
         name: "The Photo Opp Studio",
         address: {
@@ -274,8 +263,7 @@ export const eventsData: { events: Event[] } = {
       url: "/events/2026-01-21-portrait-drawing",
       title: "Long Pose Portrait Drawing",
       date: "2026-01-21",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1765661177/IMG_0701_qrybsz.jpg",
+      image_id: "IMG_0701_qrybsz",
       model: "Davida",
       time: "7:00-9:00PM",
       location: {
@@ -297,8 +285,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-01-28-figure-drawing",
       url: "/events/2026-01-28-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944086/IMG_7620_1_dt4d1g.jpg",
+      image_id: "IMG_7620_1_dt4d1g",
       date: "2026-01-28",
       time: "7:00-9:00PM",
       location: {
@@ -321,8 +308,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-02-04-figure-drawing-pastels-charcoal",
       url: "/events/2026-02-04-figure-drawing-pastels-charcoal",
       title: "Figure Drawing with Pastels & Charcoal",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1769105097/588729662_18433763419098683_317309943784085005_n_ytcl76.jpg",
+      image_id: "588729662_18433763419098683_317309943784085005_n_ytcl76",
       date: "2026-02-04",
       time: "6:00-9:00PM",
       instructor: "Robert Martin",
@@ -346,8 +332,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-02-11-figure-drawing",
       url: "/events/2026-02-11-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727284714/IMG_0327_xeu9bj.jpg",
+      image_id: "IMG_0327_xeu9bj",
       date: "2026-02-11",
       time: "7:00-9:00PM",
       location: {
@@ -369,8 +354,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-03-18-figure-drawing",
       url: "/events/2026-03-18-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1750168197/IMG_6163_dhkzn5.jpg",
+      image_id: "IMG_6163_dhkzn5",
       title: "Mixed Pose Figure Drawing",
       date: "2026-03-18",
       time: "7:00-9:00PM",
@@ -392,8 +376,8 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-03-25-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_north,h_750,w_750/v1773195877/Falero_Luis_Ricardo_Lily_Fairy_1888_jn1cb6.jpg",
+      image_id: "Falero_Luis_Ricardo_Lily_Fairy_1888_jn1cb6",
+      image_gravity: "north",
       url: "/events/2026-03-25-figure-drawing",
       title: "Themed Figure Drawing: Fairytale 🧚",
       date: "2026-03-25",
@@ -417,8 +401,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-04-08-figure-drawing",
       url: "/events/2026-04-08-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1730471148/IMG_0191_afzi3o.jpg",
+      image_id: "IMG_0191_afzi3o",
       title: "Mixed Pose Figure Drawing",
       date: "2026-04-08",
       time: "7:00-9:00PM",
@@ -442,8 +425,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-04-15-portrait-club",
       title: "Portrait Club & Anniversary Celebration!",
       url: "/events/2026-04-15-portrait-club",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944259/IMG_0080_1_nfio69.jpg",
+      image_id: "IMG_0080_1_nfio69",
       special_notes: "Celebrating 2 years of Appleton Drawing Club!",
       date: "2026-04-15",
       time: "7:00-9:00PM",
@@ -466,8 +448,8 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-04-22-figure-drawing",
       title: "Themed Figure Drawing: Classical Drapery",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_north,h_750,w_750/v1774917248/SC70482_nuq9f4.jpg",
+      image_id: "SC70482_nuq9f4",
+      image_gravity: "north",
       url: "/events/2026-04-22-figure-drawing",
       date: "2026-04-22",
       time: "7:00-9:00PM",
@@ -490,8 +472,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-04-27",
       title: "Gesture Drawing Fundamentals",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1760051713/IMG_7066_1_vksb4j.jpg",
+      image_id: "IMG_7066_1_vksb4j",
       url: "https://34e75e-19.myshopify.com/products/gesture-drawing-fundamentals-19",
       date: "2026-04-27",
       time: "6:00-8:00PM",
@@ -515,8 +496,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-04-29-portrait-drawing",
       url: "/events/2026-04-29-portrait-drawing",
       title: "Themed Portrait Drawing: Royalty",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1774917097/IMG_0815_wvj1rj.jpg",
+      image_id: "IMG_0815_wvj1rj",
       date: "2026-04-29",
       time: "7:00-9:00PM",
       location: {
@@ -539,8 +519,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-05-13-figure-drawing",
       url: "/events/2026-05-13-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1727289295/IMG_0309_l7lv9x.jpg",
+      image_id: "IMG_0309_l7lv9x",
       date: "2026-05-13",
       time: "7:00-9:00PM",
       location: {
@@ -563,8 +542,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-05-17-portrait-drawing",
       url: "/events/2026-05-17-portrait-drawing",
       title: "Long Pose Portrait Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1734964970/IMG_3064_ww1t8k.jpg",
+      image_id: "IMG_3064_ww1t8k",
       date: "2026-05-17",
       time: "10:00AM-12:00PM",
       location: {
@@ -587,8 +565,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-05-20-figure-drawing",
       url: "/events/2026-05-20-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1777407525/IMG_2036_mpee5c.jpg",
+      image_id: "IMG_2036_mpee5c",
       date: "2026-05-20",
       time: "7:00-9:00PM",
       location: {
@@ -611,8 +588,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-05-27-figure-drawing",
       url: "/events/2026-05-27-figure-drawing",
       title: "Mixed Pose Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1750127185/IMG_6443_kj4nkm.jpg",
+      image_id: "IMG_6443_kj4nkm",
       date: "2026-05-27",
       time: "7:00-9:00PM",
       location: {
@@ -633,8 +609,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-06-03-victorian-parlor-sketching",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1778159964/DSC_1443_resized_2_ylbz3c.jpg",
+      image_id: "DSC_1443_resized_2_ylbz3c",
       url: "/events/2026-06-03-victorian-parlor-sketching",
       title: "Victorian Parlor Sketching",
       date: "2026-06-03",
@@ -657,8 +632,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-06-10-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1730471148/IMG_0191_afzi3o.jpg",
+      image_id: "IMG_0191_afzi3o",
       url: "/events/2026-06-10-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-06-10",
@@ -681,8 +655,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-06-16-richard-edge",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1780437687/re6_zdec5n.png",
+      image_id: "re6_zdec5n",
       url: "/events/2026-06-16-richard-edge",
       title: "Sketch Concert: Richard Edge Vespers Summer Tour",
       date: "2026-06-16",
@@ -705,8 +678,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-06-17-ally-wilber-workshop",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1779109267/Screenshot_2026-05-18_at_8.00.06_AM_ofartu.png",
+      image_id: "Screenshot_2026-05-18_at_8.00.06_AM_ofartu",
       url: "/events/2026-06-17-ally-wilber-workshop",
       title: "Drawing with Shadow, Light, and Smoke",
       date: "2026-06-17",
@@ -731,8 +703,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-06-24-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1760051713/IMG_7066_1_vksb4j.jpg",
+      image_id: "IMG_7066_1_vksb4j",
       url: "/events/2026-06-24-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-06-24",
@@ -755,8 +726,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-07-08-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757944086/IMG_7620_1_dt4d1g.jpg",
+      image_id: "IMG_7620_1_dt4d1g",
       url: "/events/2026-07-08-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-07-08",
@@ -779,8 +749,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-07-15-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1730471148/IMG_0191_afzi3o.jpg",
+      image_id: "IMG_0191_afzi3o",
       url: "/events/2026-07-15-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-07-15",
@@ -805,8 +774,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-07-22-guided-figure-drawing",
       url: "/events/2026-07-22-guided-figure-drawing",
       title: "Guided Figure Drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1757862307/ADC_Portrait_20250423_029_aukrnx.jpg",
+      image_id: "ADC_Portrait_20250423_029_aukrnx",
       date: "2026-07-22",
       time: "7:00-9:00PM",
       location: {
@@ -828,8 +796,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-08-05-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1783975909/IMG_3618_w49l9t.jpg",
+      image_id: "IMG_3618_w49l9t",
       url: "/events/2026-08-05-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-08-05",
@@ -852,8 +819,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-08-12-figure-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399179/IMG_0498_hjcuyv.jpg",
+      image_id: "IMG_0498_hjcuyv",
       url: "/events/2026-08-12-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-08-12",
@@ -876,8 +842,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-08-19-portrait-sketching",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1783976668/Untitled-1_xlagfv.jpg",
+      image_id: "Untitled-1_xlagfv",
       url: "/events/2026-08-19-portrait-sketching",
       title: "Portrait Sketching Summer Camp",
       date: "2026-08-19",
@@ -902,8 +867,7 @@ export const eventsData: { events: Event[] } = {
       id: "2026-02-18-wildlife-drawing",
       url: "/events/2026-02-18-wildlife-drawing",
       title: "Wildlife Drawing: Hawks & Falcons!",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1758315225/250226_ADCWildlifeDrawing_M4W_027_cki8js.jpg",
+      image_id: "250226_ADCWildlifeDrawing_M4W_027_cki8js",
       date: "2026-02-18",
       time: "7:00-9:00PM",
       location: {
@@ -925,8 +889,7 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-02-24",
       title: "Gesture Drawing Fundamentals",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1760051713/IMG_7066_1_vksb4j.jpg",
+      image_id: "IMG_7066_1_vksb4j",
       url: "https://34e75e-19.myshopify.com/products/gesture-drawing-fundamentals-18",
       date: "2026-02-24",
       time: "6:00-8:00PM",
@@ -966,8 +929,7 @@ export const eventsData: { events: Event[] } = {
       description:
         "Join us for an evening of life drawing with mixed poses ranging from quick gesture sketches to longer studies. This is a perfect opportunity for artists of all skill levels to practice their figure drawing techniques in a supportive, welcoming environment.",
       url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-august-27-2025-tickets-1554628779529?aff=oddtdtcreator",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1703199034/IMG_8034_ab2tov.jpg",
+      image_id: "IMG_8034_ab2tov",
       price: 15,
       event_type: "figure_drawing",
       status: "registration_open",
@@ -990,8 +952,7 @@ export const eventsData: { events: Event[] } = {
       summary: "Mixed Pose Life Drawing",
       description: "Mixed Pose Life Drawing",
       url: "https://www.eventbrite.com/e/figure-drawing-with-appleton-drawing-club-september-10-2025-registration-1603149034919?aff=oddtdtcreator",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1725293285/IMG_0262_aaxson.jpg",
+      image_id: "IMG_0262_aaxson",
       price: 15,
       special_notes: "2 for 1 tickets available!",
       event_type: "figure_drawing",
@@ -1016,8 +977,7 @@ export const eventsData: { events: Event[] } = {
       description:
         "Extended pose portrait drawing session in a relaxed setting. This free event offers longer poses that allow for more detailed study and finished drawings. The intimate atmosphere at FSM Art House provides the perfect environment for focused artistic work.",
       url: "/events/2025-09-24-portrait-drawing",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399179/IMG_0498_hjcuyv.jpg",
+      image_id: "IMG_0498_hjcuyv",
       price: 0,
       event_type: "portrait",
       status: "completed",
@@ -1218,8 +1178,7 @@ export const eventsData: { events: Event[] } = {
       description:
         "Celebrating one year of Appleton Drawing Club with mixed pose portrait drawing.",
       url: "https://www.eventbrite.com/e/1294900374879?aff=oddtdtcreator",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/c_fill,g_center,h_750,w_750/v1742399179/IMG_0498_hjcuyv.jpg",
+      image_id: "IMG_0498_hjcuyv",
       price: 15,
       event_type: "portrait",
       status: "completed",
@@ -1305,8 +1264,7 @@ export const eventsData: { events: Event[] } = {
       summary: "Wildlife drawing session featuring live birds of prey.",
       description: "Wildlife drawing session featuring live birds of prey.",
       url: "https://www.eventbrite.com/e/1122267425079?aff=oddtdtcreator",
-      image_url:
-        "https://res.cloudinary.com/db5mnmxzn/image/upload/v1742585378/250226_ADCWildlifeDrawing_M4W_012_teyyz9.jpg",
+      image_id: "250226_ADCWildlifeDrawing_M4W_012_teyyz9",
       price: 15,
       event_type: "special_event",
       status: "completed",
