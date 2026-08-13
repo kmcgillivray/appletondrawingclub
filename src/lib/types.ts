@@ -36,6 +36,8 @@ export interface Event {
   image_gravity?: "center" | "north" | "auto"; // Optional crop-focus override
   image_url?: string; // Legacy/full URL fallback (e.g. Supabase-sourced events)
   status?: EventStatus;
+  // Optional link override — external URL or special internal route.
+  // When omitted, the card links to `/events/${id}`.
   url?: string;
 }
 

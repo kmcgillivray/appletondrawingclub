@@ -7,7 +7,6 @@
   let specialNotesHtml = $derived(event.special_notes ? `<p><strong>${event.special_notes}</strong></p>` : '');
   let priceText = $derived(event.price || 'Details and registration');
   let buttonText = $derived(event.price ? `${event.price} – Reserve your spot` : 'Details and registration');
-  let isExternalLink = $derived(event.url.startsWith('http'));
 </script>
 
 <li class="mb-2">

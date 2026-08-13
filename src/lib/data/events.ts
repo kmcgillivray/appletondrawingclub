@@ -4,7 +4,6 @@ export const eventsData: { events: Event[] } = {
   events: [
     {
       id: "2025-10-08-intro-to-life-drawing",
-      url: "/events/2025-10-08-intro-to-life-drawing",
       title: "Introduction to Life Drawing",
       image_id: "ADC_Portrait_20250423_029_aukrnx",
       date: "2025-10-08",
@@ -27,8 +26,7 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
-      id: "2025-10-22-mixed-pose-figure-drawing",
-      url: "/events/2025-10-22-figure-drawing",
+      id: "2025-10-22-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_0327_xeu9bj",
       date: "2025-10-22",
@@ -51,7 +49,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-10-29-halloween-wildlife-drawing",
-      url: "/events/2025-10-29-halloween-wildlife-drawing",
       title: "Wildlife Drawing: Owls & Corvids!",
       image_id: "IMG_0661_yhux4o",
       date: "2025-10-29",
@@ -74,7 +71,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-11-05-gesture-drawing-fundamentals",
-      url: "/events/2025-11-05-gesture-drawing-fundamentals",
       title: "Gesture Drawing Fundamentals",
       image_id: "IMG_7620_1_dt4d1g",
       date: "2025-11-05",
@@ -98,7 +94,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-11-12-figure-drawing",
-      url: "/events/2025-11-12-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_0309_l7lv9x",
       date: "2025-11-12",
@@ -121,7 +116,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-11-19-figure-drawing",
-      url: "/events/2025-11-19-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_2309_git7ak",
       date: "2025-11-19",
@@ -159,7 +153,6 @@ export const eventsData: { events: Event[] } = {
       special_notes: "ADC Holiday Party!",
       summary: "",
       description: "",
-      url: "/events/2025-12-03-portrait-club",
       image_id: "IMG_0080_1_nfio69",
       price: 0,
       event_type: "special_event",
@@ -167,7 +160,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-12-10-intro-to-life-drawing",
-      url: "/events/2025-12-10-intro-to-life-drawing",
       title: "Introduction to Life Drawing",
       image_id: "ADC_Portrait_20250423_029_aukrnx",
       date: "2025-12-10",
@@ -190,7 +182,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2025-12-17-figure-drawing",
-      url: "/events/2025-12-17-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       model: "Cory",
       image_id: "IMG_0548_s0h7i7",
@@ -213,7 +204,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-01-07-guided-figure-drawing",
-      url: "/events/2026-01-07-guided-figure-drawing",
       title: "Guided Figure Drawing",
       image_id: "ADC_Portrait_20250423_029_aukrnx",
       date: "2026-01-07",
@@ -237,7 +227,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-01-14-figure-drawing",
-      url: "/events/2026-01-14-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       model: "Roger",
       date: "2026-01-14",
@@ -260,7 +249,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-01-21-portrait-drawing",
-      url: "/events/2026-01-21-portrait-drawing",
       title: "Long Pose Portrait Drawing",
       date: "2026-01-21",
       image_id: "IMG_0701_qrybsz",
@@ -283,7 +271,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-01-28-figure-drawing",
-      url: "/events/2026-01-28-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_7620_1_dt4d1g",
       date: "2026-01-28",
@@ -306,7 +293,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-02-04-figure-drawing-pastels-charcoal",
-      url: "/events/2026-02-04-figure-drawing-pastels-charcoal",
       title: "Figure Drawing with Pastels & Charcoal",
       image_id: "588729662_18433763419098683_317309943784085005_n_ytcl76",
       date: "2026-02-04",
@@ -330,7 +316,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-02-11-figure-drawing",
-      url: "/events/2026-02-11-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_0327_xeu9bj",
       date: "2026-02-11",
@@ -353,7 +338,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-03-18-figure-drawing",
-      url: "/events/2026-03-18-figure-drawing",
       image_id: "IMG_6163_dhkzn5",
       title: "Mixed Pose Figure Drawing",
       date: "2026-03-18",
@@ -378,7 +362,6 @@ export const eventsData: { events: Event[] } = {
       id: "2026-03-25-figure-drawing",
       image_id: "Falero_Luis_Ricardo_Lily_Fairy_1888_jn1cb6",
       image_gravity: "north",
-      url: "/events/2026-03-25-figure-drawing",
       title: "Themed Figure Drawing: Fairytale 🧚",
       date: "2026-03-25",
       time: "7:00-9:00PM",
@@ -400,7 +383,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-04-08-figure-drawing",
-      url: "/events/2026-04-08-figure-drawing",
       image_id: "IMG_0191_afzi3o",
       title: "Mixed Pose Figure Drawing",
       date: "2026-04-08",
@@ -424,7 +406,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-04-15-portrait-club",
       title: "Portrait Club & Anniversary Celebration!",
-      url: "/events/2026-04-15-portrait-club",
       image_id: "IMG_0080_1_nfio69",
       special_notes: "Celebrating 2 years of Appleton Drawing Club!",
       date: "2026-04-15",
@@ -450,7 +431,6 @@ export const eventsData: { events: Event[] } = {
       title: "Themed Figure Drawing: Classical Drapery",
       image_id: "SC70482_nuq9f4",
       image_gravity: "north",
-      url: "/events/2026-04-22-figure-drawing",
       date: "2026-04-22",
       time: "7:00-9:00PM",
       location: {
@@ -494,7 +474,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-04-29-portrait-drawing",
-      url: "/events/2026-04-29-portrait-drawing",
       title: "Themed Portrait Drawing: Royalty",
       image_id: "IMG_0815_wvj1rj",
       date: "2026-04-29",
@@ -517,7 +496,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-05-13-figure-drawing",
-      url: "/events/2026-05-13-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_0309_l7lv9x",
       date: "2026-05-13",
@@ -540,7 +518,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-05-17-portrait-drawing",
-      url: "/events/2026-05-17-portrait-drawing",
       title: "Long Pose Portrait Drawing",
       image_id: "IMG_3064_ww1t8k",
       date: "2026-05-17",
@@ -563,7 +540,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-05-20-figure-drawing",
-      url: "/events/2026-05-20-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_2036_mpee5c",
       date: "2026-05-20",
@@ -586,7 +562,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-05-27-figure-drawing",
-      url: "/events/2026-05-27-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       image_id: "IMG_6443_kj4nkm",
       date: "2026-05-27",
@@ -610,7 +585,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-06-03-victorian-parlor-sketching",
       image_id: "DSC_1443_resized_2_ylbz3c",
-      url: "/events/2026-06-03-victorian-parlor-sketching",
       title: "Victorian Parlor Sketching",
       date: "2026-06-03",
       time: "6:30-9:00PM",
@@ -633,7 +607,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-06-10-figure-drawing",
       image_id: "IMG_0191_afzi3o",
-      url: "/events/2026-06-10-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-06-10",
       time: "7:00-9:00PM",
@@ -656,7 +629,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-06-16-richard-edge",
       image_id: "re6_zdec5n",
-      url: "/events/2026-06-16-richard-edge",
       title: "Sketch Concert: Richard Edge Vespers Summer Tour",
       date: "2026-06-16",
       time: "7:00-9:00PM",
@@ -679,7 +651,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-06-17-ally-wilber-workshop",
       image_id: "Screenshot_2026-05-18_at_8.00.06_AM_ofartu",
-      url: "/events/2026-06-17-ally-wilber-workshop",
       title: "Drawing with Shadow, Light, and Smoke",
       date: "2026-06-17",
       time: "7:00-9:00PM",
@@ -704,7 +675,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-06-24-figure-drawing",
       image_id: "IMG_7066_1_vksb4j",
-      url: "/events/2026-06-24-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-06-24",
       time: "7:00-9:00PM",
@@ -727,7 +697,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-07-08-figure-drawing",
       image_id: "IMG_7620_1_dt4d1g",
-      url: "/events/2026-07-08-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-07-08",
       time: "7:00-9:00PM",
@@ -750,7 +719,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-07-15-figure-drawing",
       image_id: "IMG_0191_afzi3o",
-      url: "/events/2026-07-15-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-07-15",
       time: "7:00-9:00PM",
@@ -772,7 +740,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-07-22-guided-figure-drawing",
-      url: "/events/2026-07-22-guided-figure-drawing",
       title: "Guided Figure Drawing",
       image_id: "ADC_Portrait_20250423_029_aukrnx",
       date: "2026-07-22",
@@ -797,7 +764,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-08-05-figure-drawing",
       image_id: "IMG_3618_w49l9t",
-      url: "/events/2026-08-05-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-08-05",
       time: "7:00-9:00PM",
@@ -820,7 +786,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-08-12-figure-drawing",
       image_id: "IMG_0498_hjcuyv",
-      url: "/events/2026-08-12-figure-drawing",
       title: "Mixed Pose Figure Drawing",
       date: "2026-08-12",
       time: "7:00-9:00PM",
@@ -843,7 +808,6 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-08-19-portrait-sketching",
       image_id: "Untitled-1_xlagfv",
-      url: "/events/2026-08-19-portrait-sketching",
       title: "Portrait Sketching Summer Camp",
       date: "2026-08-19",
       time: "6:00-9:00PM",
@@ -865,7 +829,6 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-02-18-wildlife-drawing",
-      url: "/events/2026-02-18-wildlife-drawing",
       title: "Wildlife Drawing: Hawks & Falcons!",
       image_id: "250226_ADCWildlifeDrawing_M4W_027_cki8js",
       date: "2026-02-18",
@@ -959,7 +922,7 @@ export const eventsData: { events: Event[] } = {
       status: "registration_open",
     },
     {
-      id: "long-pose-portrait-drawing-2025-09-24",
+      id: "2025-09-24-portrait-drawing",
       title: "Long Pose Portrait Drawing",
       date: "2025-09-24",
       time: "7:00-9:00PM",
@@ -976,7 +939,6 @@ export const eventsData: { events: Event[] } = {
       summary: "Free extended pose portrait drawing session at FSM Art House.",
       description:
         "Extended pose portrait drawing session in a relaxed setting. This free event offers longer poses that allow for more detailed study and finished drawings. The intimate atmosphere at FSM Art House provides the perfect environment for focused artistic work.",
-      url: "/events/2025-09-24-portrait-drawing",
       image_id: "IMG_0498_hjcuyv",
       price: 0,
       event_type: "portrait",

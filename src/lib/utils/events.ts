@@ -5,6 +5,19 @@ export function loadEvents(): Event[] {
   return eventsData.events || [];
 }
 
+/**
+ * Resolves an event's link. Internal events derive their URL from the id
+ * (`/events/${id}`); events with an explicit `url` (external links or special
+ * internal routes) use that override verbatim.
+ */
+export function getEventUrl(event: Event): string {
+  return event.url ?? `/events/${event.id}`;
+}
+
+export function isExternalUrl(url: string): boolean {
+  return url.startsWith("http");
+}
+
 export function filterUpcomingEvents(events: Event[]): Event[] {
   // Get current date in America/Chicago timezone
   const chicagoDateString = new Date().toLocaleDateString("en-CA", {

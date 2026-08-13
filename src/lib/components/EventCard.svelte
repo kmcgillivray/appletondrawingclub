@@ -1,12 +1,14 @@
 <script lang="ts">
   import EventCardBody from './EventCardBody.svelte';
+  import { getEventUrl, isExternalUrl } from '../utils/events';
   import type { Event } from '../types';
 
   let { event }: { event: Event } = $props();
 
   const isComingSoon = event.status === 'coming_soon';
   const isCancelled = event.status === 'cancelled';
-  const isExternalLink = event.url?.startsWith('http');
+  const href = getEventUrl(event);
+  const isExternalLink = isExternalUrl(href);
 </script>
 
 <li class="block shadow bg-white mb-2">
@@ -17,7 +19,7 @@
   {:else}
     <a
       class="block no-underline hover:bg-gray-50 transition-colors text-green-600 hover:text-green-700"
-      href={event.url}
+      {href}
       {...(isExternalLink ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
     >
       <EventCardBody {event} />
