@@ -543,7 +543,7 @@ export const eventsData: { events: Event[] } = {
       model: "Amber",
       price: 15,
       event_type: "figure_drawing",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2026-09-09-figure-drawing",
