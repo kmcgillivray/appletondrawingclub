@@ -547,7 +547,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-09-09-figure-drawing",
-      image_id: "IMG_7620_1_dt4d1g",
+      image_id: "IMG_8613_st4sht",
       title: "Coming Soon",
       date: "2026-09-09",
       time: "7:00-9:00PM",
@@ -561,7 +561,7 @@ export const eventsData: { events: Event[] } = {
     },
     {
       id: "2026-09-16-figure-drawing",
-      image_id: "IMG_7620_1_dt4d1g",
+      image_id: "IMG_0887_1_dwtfyx",
       title: "Coming Soon",
       date: "2026-09-16",
       time: "7:00-9:00PM",
