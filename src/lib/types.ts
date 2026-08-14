@@ -37,8 +37,10 @@ export interface Event {
   capacity?: number;
   event_type: EventType;
   special_notes?: string;
-  summary: string; // Short plain-text description for previews, meta descriptions, etc.
-  description: string; // Detailed description, can contain markdown
+  // Optional — used by the Supabase-sourced detail page (meta tags, JSON-LD,
+  // "About this session"). Omitted from src/lib/data/events.ts preview data.
+  summary?: string; // Short plain-text description for meta descriptions, etc.
+  description?: string; // Detailed description, can contain markdown
   image_id?: string; // Cloudinary public_id, e.g. "ADC_Portrait_..._aukrnx"
   image_gravity?: "center" | "north" | "auto"; // Optional crop-focus override
   image_url?: string; // Legacy/full URL fallback (e.g. Supabase-sourced events)

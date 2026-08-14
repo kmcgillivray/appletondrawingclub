@@ -217,7 +217,7 @@
   <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8">
     <h2 class="text-2xl font-bold text-green-900 mb-4">About this session</h2>
     <div class="prose max-w-none text-gray-700">
-      {@html renderMarkdown(event.description)}
+      {@html renderMarkdown(event.description ?? '')}
     </div>
   </div>
 
