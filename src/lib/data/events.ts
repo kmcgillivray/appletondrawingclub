@@ -10,12 +10,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -33,12 +27,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -55,12 +43,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -77,12 +59,6 @@ export const eventsData: { events: Event[] } = {
       time: "6:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -101,12 +77,6 @@ export const eventsData: { events: Event[] } = {
       model: "Kit",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -123,12 +93,6 @@ export const eventsData: { events: Event[] } = {
       model: "Emily",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -143,12 +107,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Commodore Club",
-        address: {
-          streetAddress: "231 E College Ave",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       special_notes: "ADC Holiday Party!",
       summary: "",
@@ -166,12 +124,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -189,12 +141,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -210,12 +156,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Jerimiah",
       instructor: "Robert Martin",
@@ -234,12 +174,6 @@ export const eventsData: { events: Event[] } = {
       image_id: "IMG_0327_xeu9bj",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -256,12 +190,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -277,12 +205,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Kerry",
       summary: "",
@@ -301,12 +223,6 @@ export const eventsData: { events: Event[] } = {
       model: "Emma",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "",
       description: "",
@@ -322,12 +238,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Justin",
       summary: "",
@@ -344,12 +254,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Liz",
       summary: "",
@@ -367,12 +271,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Emily",
       summary: "",
@@ -389,12 +287,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Lauren",
       summary: "",
@@ -412,12 +304,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "You!",
       summary: "",
@@ -435,12 +321,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Persephone",
       summary: "",
@@ -458,12 +338,6 @@ export const eventsData: { events: Event[] } = {
       time: "6:00-8:00PM",
       location: {
         name: "Trout Museum of Art",
-        address: {
-          streetAddress: "",
-          addressLocality: "",
-          addressRegion: "",
-          postalCode: "",
-        },
       },
       instructor: "Kevin McGillivray",
       summary: "",
@@ -480,12 +354,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Shasta",
       summary: "",
@@ -502,12 +370,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Gabriella",
       summary: "",
@@ -524,12 +386,6 @@ export const eventsData: { events: Event[] } = {
       time: "10:00AM-12:00PM",
       location: {
         name: "Hang Up Gallery",
-        address: {
-          streetAddress: "",
-          addressLocality: "",
-          addressRegion: "",
-          postalCode: "",
-        },
       },
       model: "Sophia",
       summary: "",
@@ -546,12 +402,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Nick",
       summary: "",
@@ -568,12 +418,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Roslyn",
       summary: "",
@@ -590,12 +434,6 @@ export const eventsData: { events: Event[] } = {
       time: "6:30-9:00PM",
       location: {
         name: "Hearthstone Historic House",
-        address: {
-          streetAddress: "",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "",
-        },
       },
       model: "Nikola & Simone",
       summary: "",
@@ -612,12 +450,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Todd",
       summary: "",
@@ -634,12 +466,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "",
       summary: "",
@@ -656,12 +482,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Ashley",
       instructor: "Ally Wilber",
@@ -680,12 +500,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Reese",
       summary: "",
@@ -702,12 +516,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Emma O.",
       summary: "",
@@ -724,12 +532,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Arthur",
       summary: "",
@@ -746,12 +548,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Gabriella",
       instructor: "Kevin McGillivray",
@@ -769,12 +565,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Chad",
       summary: "",
@@ -791,12 +581,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Lucy",
       summary: "",
@@ -813,12 +597,6 @@ export const eventsData: { events: Event[] } = {
       time: "6:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Shasta",
       summary: "",
@@ -835,12 +613,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Avian Ambassadors from River Valley Raptors",
       summary: "",
@@ -858,12 +630,6 @@ export const eventsData: { events: Event[] } = {
       time: "6:00-8:00PM",
       location: {
         name: "Trout Museum of Art",
-        address: {
-          streetAddress: "",
-          addressLocality: "",
-          addressRegion: "",
-          postalCode: "",
-        },
       },
       instructor: "Kevin McGillivray",
       summary: "",
@@ -879,12 +645,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "David",
       summary:
@@ -904,12 +664,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Emma",
       summary: "Mixed Pose Life Drawing",
@@ -928,12 +682,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "FSM Art House",
-        address: {
-          streetAddress: "918 N Oneida Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Kerry",
       summary: "Free extended pose portrait drawing session at FSM Art House.",
@@ -951,12 +699,6 @@ export const eventsData: { events: Event[] } = {
       time: "10:00AM-12:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary:
         "Family friendly fantasy poses! Fairies, warriors, and fantastic foes.",
@@ -974,12 +716,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Ashley",
       summary: "Mixed pose life drawing session with Ashley.",
@@ -996,12 +732,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Commodore Club",
-        address: {
-          streetAddress: "619 W College Ave",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Portrait drawing session where participants draw each other.",
       description:
@@ -1018,12 +748,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       model: "Nick",
       summary: "Mixed pose life drawing session with mythology theme.",
@@ -1041,12 +765,6 @@ export const eventsData: { events: Event[] } = {
       time: "6:00-8:00PM",
       location: {
         name: "Paine Art Center and Gardens",
-        address: {
-          streetAddress: "1410 Algoma Blvd",
-          addressLocality: "Oshkosh",
-          addressRegion: "WI",
-          postalCode: "54901",
-        },
       },
       summary: "Outdoor sketching session in the beautiful gardens.",
       description: "Outdoor sketching session in the beautiful gardens.",
@@ -1062,12 +780,6 @@ export const eventsData: { events: Event[] } = {
       time: "6:00-9:00PM",
       location: {
         name: "Richeson School of Art & Gallery",
-        address: {
-          streetAddress: "557 Marcella Street",
-          addressLocality: "Kimberly",
-          addressRegion: "WI",
-          postalCode: "54136",
-        },
       },
       instructor: "Kevin McGillivray",
       summary: "Workshop covering fundamental charcoal drawing techniques.",
@@ -1084,12 +796,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1105,12 +811,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary:
         "Mixed pose life drawing session focused on movement and gesture.",
@@ -1128,12 +828,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary:
         "Celebrating one year of Appleton Drawing Club with mixed pose portrait drawing.",
@@ -1153,12 +847,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session with spring theme.",
       description: "Mixed pose life drawing session with spring theme.",
@@ -1174,12 +862,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1195,12 +877,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1216,12 +892,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Wildlife drawing session featuring live birds of prey.",
       description: "Wildlife drawing session featuring live birds of prey.",
@@ -1238,12 +908,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1259,12 +923,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "FSM Art House",
-        address: {
-          streetAddress: "918 N Oneida Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Portrait drawing session.",
       description: "Portrait drawing session.",
@@ -1280,12 +938,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1301,12 +953,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1322,12 +968,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1343,12 +983,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1364,12 +998,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1385,12 +1013,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1407,12 +1029,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1428,12 +1044,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "Mixed pose life drawing session.",
       description: "Mixed pose life drawing session.",
@@ -1449,12 +1059,6 @@ export const eventsData: { events: Event[] } = {
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
-        address: {
-          streetAddress: "621 N Bateman Street",
-          addressLocality: "Appleton",
-          addressRegion: "WI",
-          postalCode: "54911",
-        },
       },
       summary: "The very first Appleton Drawing Club session!",
       description:

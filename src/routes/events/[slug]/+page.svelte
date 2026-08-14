@@ -9,6 +9,7 @@
   export let data: { event: Event };
   
   const event = data.event;
+  const address = event.location.address;
 
   const formattedDate = formatEventDate(event.date);
 </script>
@@ -36,13 +37,15 @@
     "location": {
       "@type": "Place",
       "name": event.location.name,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": event.location.address.streetAddress,
-        "addressLocality": event.location.address.addressLocality,
-        "addressRegion": event.location.address.addressRegion,
-        "postalCode": event.location.address.postalCode
-      }
+      ...(address ? {
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": address.streetAddress,
+          "addressLocality": address.addressLocality,
+          "addressRegion": address.addressRegion,
+          "postalCode": address.postalCode
+        }
+      } : {})
     },
     "image": [event.image_url],
     "description": event.summary,
@@ -117,11 +120,13 @@
           <strong class="text-gray-700">Location</strong>
           <div class="text-lg">
             {event.location.name}<br />
-            {event.location.address.streetAddress}<br />
-            {event.location.address.addressLocality}, {event.location.address.addressRegion} {event.location.address.postalCode}<br />
-            <a href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(event.location.address.streetAddress + ', ' + event.location.address.addressLocality + ', ' + event.location.address.addressRegion)} target="_blank" rel="noopener noreferrer">
-              View on Google Maps
+            {#if address}
+              {address.streetAddress}<br />
+              {address.addressLocality}, {address.addressRegion} {address.postalCode}<br />
+              <a href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(address.streetAddress + ', ' + address.addressLocality + ', ' + address.addressRegion)} target="_blank" rel="noopener noreferrer">
+                View on Google Maps
               </a>
+            {/if}
           </div>
         </div>
         {#if event.instructor}

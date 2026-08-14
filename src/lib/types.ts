@@ -1,7 +1,9 @@
 // Event-related types
 export interface EventLocation {
   name: string;
-  address: {
+  // Optional — preview cards show only the name; the detail page renders the
+  // full address from Supabase. Omitted from src/lib/data/events.ts.
+  address?: {
     streetAddress: string;
     addressLocality: string;
     addressRegion: string;
@@ -14,7 +16,12 @@ export type EventType =
   | "portrait"
   | "workshop"
   | "special_event";
-export type EventStatus = "registration_open" | "completed" | "coming_soon" | "cancelled" | "sold_out";
+export type EventStatus =
+  | "registration_open"
+  | "completed"
+  | "coming_soon"
+  | "cancelled"
+  | "sold_out";
 
 export interface Event {
   id: string;
