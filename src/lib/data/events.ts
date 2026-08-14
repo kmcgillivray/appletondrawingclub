@@ -571,7 +571,7 @@ export const eventsData: { events: Event[] } = {
       model: "TBD",
       price: 15,
       event_type: "figure_drawing",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2026-09-23-figure-drawing",
