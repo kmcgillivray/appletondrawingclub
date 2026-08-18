@@ -562,16 +562,16 @@ export const eventsData: { events: Event[] } = {
     {
       id: "2026-09-16-figure-drawing",
       image_id: "IMG_8613_st4sht",
-      title: "Coming Soon",
+      title: "Clothed Figure Drawing",
       date: "2026-09-16",
       time: "7:00-9:00PM",
       location: {
         name: "Photo Opp",
       },
-      model: "TBD",
+      model: "Rachelle",
       price: 15,
       event_type: "figure_drawing",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2026-09-23-figure-drawing",
