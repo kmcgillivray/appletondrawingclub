@@ -596,11 +596,11 @@ export const eventsData: { events: Event[] } = {
       location: {
         name: "Photo Opp",
       },
-      model: "TBD",
+      model: "Sophia",
       price: 40,
       instructor: "Kevin McGillivray",
       event_type: "workshop",
-      status: "coming_soon",
+      status: "registration_open",
     },
     {
       id: "2026-02-18-wildlife-drawing",
