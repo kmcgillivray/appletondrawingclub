@@ -10,7 +10,7 @@ capacity: 10
 event_type: workshop
 instructor: Kevin McGillivray
 model: Sophia
-status: registration_open
+status: completed
 ---
 
 There are thousands of details involved in drawing the human form... it takes a lifetime of curiosity and practice to explore! However, there are a handful of simple ideas that can have a huge impact on the way you see and draw the figure once you learn them. In this workshop I'll share my favorite nine of these ideas that have helped me make the biggest leaps in figure drawing over the years. Working with a live model over three hours with hands on demos and feedback, you'll learn super practical skills that will make your figure drawing practice more free, fun, and expressive.
